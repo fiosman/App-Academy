@@ -1,16 +1,13 @@
 require_relative 'card.rb'
-require "byebug"
-
 
 class Board
 
   LETTERS = ("A".."Z").to_a.shuffle
 
-  attr_accessor :deck_size, :deck, :grid
+  attr_accessor :deck
 
   def initialize(deck_size = 10)
-    @deck_size = deck_size
-    @deck = Array.new(@deck_size)
+    @deck = Array.new(deck_size)
     populate_deck
   end
 
@@ -22,7 +19,7 @@ class Board
   end
 
   def populate_letters
-    LETTERS.take(@deck_size/2) * 2
+    LETTERS.take(@deck.count/2) * 2
   end
 
   def render
