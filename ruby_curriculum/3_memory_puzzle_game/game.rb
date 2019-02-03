@@ -4,7 +4,7 @@ require 'set'
 
 class Game
   attr_reader :board, :player
-  def initialize(board_size)
+  def initialize(board_size = 10)
     @board = Board.new(board_size)
     @first_guess = nil 
     @second_guess = nil
@@ -12,14 +12,16 @@ class Game
 
   def guess
     @first_guess = previous_guess
-    @board.deck[@first_guess].face_up = true
-    p @board.render
+    @board.deck[@first_guess].reveal
+    @board.clear
     @second_guess = current_guess
-    @board.deck[@second_guess].face_up = true
+    @board.deck[@second_guess].reveal
+    @board.clear
   end
 
   def play_round
     guess
+    @board.clear
     compare_guesses
   end
 
@@ -27,12 +29,12 @@ class Game
     if @board.deck[@first_guess].revealed_value == @board.deck[@second_guess].revealed_value
       puts 'Nice guess!' 
       @board.delete_pairs
-      p @board.render
     else
       puts 'Please try again'
       @board.reset
-      p @board.render
     end
+    sleep(2)
+    @board.clear
   end
 
   def game_over 
@@ -52,13 +54,11 @@ class Game
   end
 
   def play
-    p @board.render
+    @board.clear
     play_round until game_over 
   end
 
 end
 
-game_1 = Game.new(8)
+game_1 = Game.new
 game_1.play
-
-
