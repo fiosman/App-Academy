@@ -12,7 +12,9 @@ class Game
   end
 
   def play
-    play_round until @player.win 
+    play_round until @player.win
+    system('clear')
+    puts 'All matches found! Congratulations :)' 
   end
 
 end
