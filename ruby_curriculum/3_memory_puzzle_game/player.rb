@@ -40,6 +40,16 @@ class Player
     @second_guess = self.current_guess
     @board.deck[@second_guess].reveal
     @board.clear
+    duplicate?
+  end
+
+  def duplicate? 
+    if @first_guess == @second_guess
+      puts 'You cannot pick the same card in a turn!'
+      sleep(2)
+      @board.reset
+      self.guess
+    end
   end
 
   def win
@@ -47,3 +57,5 @@ class Player
   end
 
 end
+
+
