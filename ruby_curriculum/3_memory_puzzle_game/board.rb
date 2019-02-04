@@ -34,7 +34,6 @@ class Board
 
   def reset
     @deck.each { |card| card.hide }
-    @deck.map { |card| card.hidden_value }
   end
 
   def clear
