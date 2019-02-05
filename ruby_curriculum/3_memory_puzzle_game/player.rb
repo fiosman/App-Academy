@@ -74,7 +74,6 @@ class Player
     if input >= @board.deck.length || input >= @board.deck.length
       puts "Please select a number between 0 & #{@board.deck.length - 1}" 
       sleep(2)
-      @board.reset
     end
   end
 
