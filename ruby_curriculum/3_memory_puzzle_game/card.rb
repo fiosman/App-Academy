@@ -1,12 +1,13 @@
 class Card
   
   attr_reader :hidden_value, :revealed_value
-  attr_accessor :face_up
+  attr_accessor :face_up, :numerical_value
 
-  def initialize(letter)
+  def initialize(letter, number)
     @hidden_value = "*"
     @revealed_value = letter
     @face_up = false
+    @numerical_value = number
   end
 
   def value? 
