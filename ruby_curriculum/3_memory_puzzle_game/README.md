@@ -13,9 +13,5 @@ For now, I have implemented a bruteforce solution that fixes the problem. Howeve
       end
     end
   end
+  ```
 
-  #New Algorithm 
-  def remove_pairs
-    @deck.reject! { |card| card.face_up }
-  end
-        ```
