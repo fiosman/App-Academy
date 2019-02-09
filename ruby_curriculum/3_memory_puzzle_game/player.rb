@@ -45,12 +45,12 @@ class Player
   def compare_guesses
     if @board.deck[player_guess_pos(@first_guess)].revealed_value == @board.deck[player_guess_pos(@second_guess)].revealed_value
       puts 'Nice guess!' 
-      @board.delete_pairs
+      @board.remove_pairs
     else
       puts 'Please try again'
       @board.reset
     end
-    sleep(0.5)
+    sleep(2)
     @board.clear
   end
 
