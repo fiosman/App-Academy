@@ -30,12 +30,8 @@ class Board
     @deck.map { |card| card.value? }
   end
 
-  def delete_pairs
-    @deck.each do |card| 
-      if card.face_up
-         @deck.delete(card) 
-      end
-    end
+  def remove_pairs
+    @deck.reject! { |card| card.face_up == true }
   end
 
   def select_card(player_input)
@@ -43,7 +39,7 @@ class Board
   end
 
   def get_card_pos(card)
-     @deck.find_index(select_card(card).first)
+    @deck.find_index(select_card(card).first)
   end
 
   def reset
@@ -54,12 +50,6 @@ class Board
     system('clear')
     puts self.render.join(" || ")
     puts "\n"
-  end
-
-  def clear_v2 
-    render.each do |ele| 
-      puts ele
-    end
   end
 
   def display_grid 
