@@ -23,5 +23,3 @@ class Card
 
 end
 
-#The bug is that if two matching pairs are next to each other, the game will only delete one of 
-#pairs and the other one will remain faced up 
