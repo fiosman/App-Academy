@@ -52,10 +52,6 @@ class Board
     puts "\n"
   end
 
-  def display_grid 
-    @deck.map { |card| card.hidden_value }
-  end
-
 end
 
 
