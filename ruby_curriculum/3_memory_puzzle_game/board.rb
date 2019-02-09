@@ -31,20 +31,20 @@ class Board
   end
 
   def delete_pairs
-    @deck.each_index do |card_index| 
-      if @deck[card_index].face_up 
-         @deck.delete(@deck[card_index]) 
+    @deck.each do |card| 
+      if card.face_up
+         @deck.delete(card) 
       end
     end
   end
 
   def select_card(player_input)
-    @deck.select { |card| card.numerical_value == player_input }
+    @deck.select { |card| card.hidden_value == player_input }
   end
 
-   def get_card_pos(card)
-     @deck.find_index(self.select_card(card).first)
-   end
+  def get_card_pos(card)
+     @deck.find_index(select_card(card).first)
+  end
 
   def reset
     @deck.each { |card| card.hide }
@@ -52,13 +52,18 @@ class Board
   
   def clear
     system('clear')
-    puts self.render.join(" ")
-    puts self.display_grid.join(" ")
+    puts self.render.join(" || ")
     puts "\n"
   end
 
+  def clear_v2 
+    render.each do |ele| 
+      puts ele
+    end
+  end
+
   def display_grid 
-    @deck.map { |card| card.numerical_value }
+    @deck.map { |card| card.hidden_value }
   end
 
 end

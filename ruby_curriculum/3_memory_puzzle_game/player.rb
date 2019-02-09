@@ -5,7 +5,7 @@ class Player
   attr_accessor :board, :first_guess, :second_guess
   
   def initialize
-     @board = Board.new
+     @board = Board.new(10)
      @first_guess = nil  
      @second_guess = nil
   end
@@ -38,15 +38,19 @@ class Player
     end
   end
 
+  def player_guess_pos(guess) 
+    @board.get_card_pos(guess)
+  end
+
   def compare_guesses
-    if @board.deck[@board.get_card_pos(@first_guess)].revealed_value == @board.deck[@board.get_card_pos(@second_guess)].revealed_value
+    if @board.deck[player_guess_pos(@first_guess)].revealed_value == @board.deck[player_guess_pos(@second_guess)].revealed_value
       puts 'Nice guess!' 
       @board.delete_pairs
     else
       puts 'Please try again'
       @board.reset
     end
-    sleep(2)
+    sleep(0.5)
     @board.clear
   end
 
@@ -73,7 +77,7 @@ class Player
   end
 
   def guess_not_valid?(input) 
-    @board.deck.any? { |card| card.numerical_value == input }
+    @board.deck.any? { |card| card.hidden_value == input }
   end
 
   def win
