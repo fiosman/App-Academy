@@ -4,8 +4,7 @@ Came across an interesting "bug" that took me a bit of time to figure out. When 
 
 For now, I have implemented a bruteforce solution that fixes the problem. However, I am still unsure of the root of the problem. Nonetheless, I will be sure to do more research to figure out why the old algorithm wasn't working. 
 
-       ```ruby
-  #Old Algorithm 
+```ruby
   def delete_pairs
     @deck.each do |card| 
       if card.face_up
@@ -13,5 +12,5 @@ For now, I have implemented a bruteforce solution that fixes the problem. Howeve
       end
     end
   end
-  ```
+```
 
