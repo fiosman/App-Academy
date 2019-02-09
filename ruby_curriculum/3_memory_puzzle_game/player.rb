@@ -57,11 +57,11 @@ class Player
   def guess 
     @board.clear
     self.previous_guess
-    @board.deck[@board.get_card_pos(@first_guess)].reveal
+    @board.deck[player_guess_pos(@first_guess)].reveal
     @board.clear
 
     self.current_guess
-    @board.deck[@board.get_card_pos(@second_guess)].reveal
+    @board.deck[player_guess_pos(@second_guess)].reveal
     @board.clear
 
     duplicate?
