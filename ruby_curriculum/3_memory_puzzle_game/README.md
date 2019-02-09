@@ -1,4 +1,4 @@
-##Challenges 
+#Challenges 
 
 Came across an interesting "bug" that took me a bit of time to figure out. When a player correctly guesses two matching pairs, that are in adjacent positions within the deck array, only one of the pairs would be removed from the deck, while the other remains unchanged. This problem did not seem to be the case when the guessed matching pairs weren't in adjacent positions. 
 
