@@ -31,7 +31,7 @@ class Board
   end
 
   def remove_pairs
-    @deck.reject! { |card| card.face_up == true }
+    @deck.reject! { |card| card.face_up }
   end
 
   def select_card(player_input)
