@@ -4,6 +4,7 @@ Came across an interesting "bug" that took me a bit of time to figure out. When 
 
 For now, I have implemented a bruteforce solution that fixes the problem. However, I am still unsure of the root of the problem. Nonetheless, I will be sure to do more research to figure out why the old algorithm wasn't working. 
 
+Old Algorithm 
 ```ruby
   def delete_pairs
     @deck.each do |card| 
@@ -11,6 +12,14 @@ For now, I have implemented a bruteforce solution that fixes the problem. Howeve
          @deck.delete(card) 
       end
     end
+  end
+```
+
+New Algorithm 
+
+```ruby
+  def remove_pairs
+    @deck.reject! { |card| card.face_up }
   end
 ```
 
