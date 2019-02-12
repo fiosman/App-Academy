@@ -8,4 +8,8 @@ class Tile
      @value = value
   end
 
+  def render_value 
+    @value == "0" ? " " : value
+  end
+
 end
