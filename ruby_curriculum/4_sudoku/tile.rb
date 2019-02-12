@@ -9,7 +9,7 @@ class Tile
   end
 
   def render_value 
-    @value == "0" ? " " : value
+    @value == "0" ? " " : @value
   end
 
 end
