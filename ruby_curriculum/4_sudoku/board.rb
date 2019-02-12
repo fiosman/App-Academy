@@ -5,7 +5,7 @@ class Board
 
   TILE_VALUES = Array.new
 
-  attr_reader :grid, :value
+  attr_reader :grid
 
   def self.populate_values 
     read_values = File.read("./puzzles/sudoku1.txt").split("\n")
