@@ -22,6 +22,7 @@ class Board
   end
   
   def render_grid
+    border = "+-----+-----+-----+"
     print "  "
     (0..8).each do |column| 
       print "#{column}" + " "
@@ -29,6 +30,7 @@ class Board
     puts "\n"
     @grid.each_with_index do |row, row_idx| 
       puts "#{row_idx} #{row.join(" ")}"
+      (row_idx + 1) % 3 == 0 ? puts(border) : ""
     end
   end
 
