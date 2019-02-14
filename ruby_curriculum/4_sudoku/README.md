@@ -7,4 +7,5 @@ Finished:
 To do: 
 
 * Display 3x3 blocks
+* Display border
 * Game logic 
