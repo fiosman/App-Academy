@@ -2,15 +2,19 @@
 
 class Tile 
 
-  attr_reader :value
+  attr_accessor :value, :given
 
   def initialize(value)
      @value = value
-     #@given = given
+     @given = nil
   end
 
   def render_value 
     @value == "0" ? "." : @value
+  end
+
+  def given? 
+    @value == "." ? @given = false : @given = true
   end
 
 end
