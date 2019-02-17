@@ -11,7 +11,7 @@ class Board
     read_values = File.read("./puzzles/sudoku1.txt").split("\n")
 
     read_values.each do |value| 
-      value.split("").map { |int_value| TILE_VALUES << Tile.new(int_value).render_value.red }
+      value.split("").map { |int_value| TILE_VALUES << Tile.new(int_value).render_value }
     end
     
     TILE_VALUES.each_slice(9).to_a
@@ -43,8 +43,15 @@ class Board
   end
   puts border
   end
+
+  def [](position)
+    @grid[position]
+  end
+
+  def []=(position,val)
+    @grid[position] = val
+  end
+
 end
 
- board_1 = Board.new
- board_1.render_grid
 
