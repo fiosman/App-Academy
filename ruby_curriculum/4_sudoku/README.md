@@ -1,10 +1,13 @@
-# In Progress
+# Sudoku Checker
 
 Finished: 
 
-* Grid rendering, tile populating
+* Grid & board rendering, tile populating
 
 To do: 
 
-* Display 3x3 blocks
-* Game logic 
+* Game I/O logic & puzzle checker
+
+Future modifications: 
+
+* Implement a sudoku solver! 
