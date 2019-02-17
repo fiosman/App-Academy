@@ -6,10 +6,11 @@ class Tile
 
   def initialize(value)
      @value = value
+     #@given = given
   end
 
   def render_value 
-    @value == "0" ? " " : @value
+    @value == "0" ? "." : @value
   end
 
 end
