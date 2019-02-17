@@ -13,8 +13,10 @@ class Board
     read_values.each do |value| 
       value.split("").map { |int_value| TILE_VALUES << Tile.new(int_value) }
     end
-    TILE_VALUES.each_slice(9).to_a
-
+    
+    TILE_VALUES.each_slice(9).to_a.each do |row| 
+      row.each_index { |idx| row[idx].given? }
+    end
   end
 
   def initialize
