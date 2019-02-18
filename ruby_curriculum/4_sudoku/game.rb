@@ -101,7 +101,4 @@ end
 
 game_1 = Game.new
 game_1.play
-#p game_1.valid_move?
-#p game_1.board
-#game_1.play
 

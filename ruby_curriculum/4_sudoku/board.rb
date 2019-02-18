@@ -7,8 +7,8 @@ class Board
 
   attr_reader :grid, :block_hsh
 
-  def self.populate_values 
-    read_values = File.read("./puzzles/sudoku1.txt").split("\n")
+  def self.populate_values(file)
+    read_values = File.read(file).split("\n")
 
     read_values.each do |value| 
       value.split("").map { |int_value| TILE_VALUES << Tile.new(int_value) }
@@ -20,7 +20,7 @@ class Board
   end
 
   def initialize
-    @grid = Board.populate_values
+    @grid = Board.populate_values("./puzzles/sudoku1.txt")
     @block_hsh = block_range
   end
 
