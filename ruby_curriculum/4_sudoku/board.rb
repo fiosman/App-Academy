@@ -5,7 +5,7 @@ class Board
 
   TILE_VALUES = Array.new
 
-  attr_reader :grid
+  attr_reader :grid, :block_hsh
 
   def self.populate_values 
     read_values = File.read("./puzzles/sudoku1.txt").split("\n")
@@ -21,6 +21,7 @@ class Board
 
   def initialize
     @grid = Board.populate_values
+    @block_hsh = block_range
   end
 
   def render_grid
@@ -53,6 +54,12 @@ class Board
     @grid[position] = val
   end
 
-end
+  def block_range
+    #https://stackoverflow.com/questions/39567/what-is-the-best-way-to-convert-an-array-to-a-hash-in-ruby
+    (0..8).map do |idx| 
+      [idx, (idx-idx%3..idx-idx%3+2)]
+    end.to_h
+  end
 
+end
 
