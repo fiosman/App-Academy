@@ -4,6 +4,7 @@ require 'colorize'
 class Board
 
   TILE_VALUES = Array.new
+  FILE = "./puzzles/sudoku1.txt"
 
   attr_reader :grid, :block_hsh
 
@@ -20,7 +21,7 @@ class Board
   end
 
   def initialize
-    @grid = Board.populate_values("./puzzles/sudoku1.txt")
+    @grid = Board.populate_values(FILE)
     @block_hsh = block_range
   end
 
