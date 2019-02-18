@@ -43,7 +43,7 @@ class Game
   end
 
   def valid_move? 
-
+    system('clear')
     @board.render_grid 
 
     temp_pos = self.prompt_pos
@@ -57,11 +57,9 @@ class Game
          !block_check(row, column, temp_val) && 
             @board[row][column].given == false
             @board[row][column].value = temp_val
-            print @board.grid
      end
-
-    @board.render_grid
     valid_move?
+    
   end
 
   def row_check(row, input)
@@ -95,6 +93,7 @@ class Game
    end
 
   def play 
+    system('clear')
     valid_move?
   end
 
