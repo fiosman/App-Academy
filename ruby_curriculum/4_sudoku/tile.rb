@@ -1,4 +1,5 @@
 ####Each tile represents a position on the Sudoku Board####
+require 'colorize'
 
 class Tile 
 
@@ -10,7 +11,13 @@ class Tile
   end
 
   def render_value 
-    @value == "0" ? "." : @value
+    if @value == "0" 
+      print "."
+    elsif @value != "0" && @given == false
+      print @value.green
+    else
+      print @value.red
+    end
   end
 
   def given? 
