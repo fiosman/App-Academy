@@ -14,7 +14,7 @@ class Tile
   end
 
   def given? 
-    @value == "." ? @given = false : @given = true
+    @value != "0" ? @given = true : @given = false
   end
 
 end
