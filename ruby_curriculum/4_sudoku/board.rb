@@ -51,10 +51,6 @@ class Board
     @grid[position]
   end
 
-  def []=(position,val)
-    @grid[position] = val
-  end
-
   def block_range
     #https://stackoverflow.com/questions/39567/what-is-the-best-way-to-convert-an-array-to-a-hash-in-ruby
     (0..8).map do |idx| 

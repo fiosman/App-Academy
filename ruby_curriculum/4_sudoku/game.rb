@@ -26,29 +26,13 @@ class Game
     prompt_val
   end
 
-  def get_pos
-    response = self.prompt_pos
-    row = response[0]
-    column = response[1]
-    @board[row][column]
-  end
-
-  def set_pos 
-    pos = self.prompt_pos
-    response = self.prompt_val
-     row = pos[0]
-     column = pos[1]
-     @board[row][column] = response
-     @board.render_grid
-  end
-
   def valid_move? 
     system('clear')
     @board.render_grid 
 
-    temp_pos = self.prompt_pos
-    row = temp_pos[0]
-    column = temp_pos[1]
+    pos = self.prompt_pos
+    row = pos[0]
+    column = pos[1]
 
     temp_val = self.prompt_val
 
