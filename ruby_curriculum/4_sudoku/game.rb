@@ -42,8 +42,7 @@ class Game
             @board[row][column].given == false
             @board[row][column].value = temp_val
      end
-    valid_move?
-    
+    @board.render_grid
   end
 
   def row_check(row, input)
@@ -68,21 +67,23 @@ class Game
     block_vals.include?(input)
   end
 
-   def solved? 
-  #   arr_vals = []
-  #   @board.grid.each do |row_pos| 
-  #    arr_vals.push (row_pos.map { |row| row.given? })
-  #   end
-  #   arr_vals.flatten.all? { |ele| ele == true }
-   end
+  def solved? 
+    vals_arr = []
+    @board.grid.each do |ele| 
+      vals_arr << ele.map { |tile| tile.value }
+    end
+    vals_arr.flatten.map(&:to_i).all?(&:nonzero?)
+  end
 
   def play 
     system('clear')
-    valid_move?
+    valid_move? until solved?
+    puts 'Congratulations! You have solved this puzzle.'
   end
 
 end
 
 game_1 = Game.new
 game_1.play
+
 
