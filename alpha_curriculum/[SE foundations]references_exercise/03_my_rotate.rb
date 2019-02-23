@@ -10,7 +10,14 @@
 # to be the same before and after calling your method.
 
 def my_rotate!(array, amt)
-  
+  amt.abs.times do
+    if amt > 0 
+      array.push(array.shift)
+    else
+      array.unshift(array.pop)
+    end
+  end
+  array
 end
 
 
