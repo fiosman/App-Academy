@@ -2,7 +2,7 @@
 # The method should return a 2D array with n rows and m columns (this means that there are n subarrays, each of length m).
 
 def grid(n, m)
-
+  Array.new(n) { Array.new (m)}
 end
 
 result_1 = grid(2, 3)
