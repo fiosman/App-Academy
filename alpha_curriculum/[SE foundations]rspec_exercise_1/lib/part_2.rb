@@ -40,4 +40,3 @@ def caesar_cipher(message, n)
   new_message
 end
 
-p caesar_cipher('zebra', 4)
