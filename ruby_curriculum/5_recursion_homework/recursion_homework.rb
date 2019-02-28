@@ -9,7 +9,6 @@ def add_numbers(nums_array)
 end
 
 def gamma_function(n)
-
 end
 
 def ice_cream_shop(flavors, favorite)
@@ -17,6 +16,8 @@ def ice_cream_shop(flavors, favorite)
 end
 
 def reverse(string)
-
+  return string if string.length <= 1
+  string[-1] + reverse(string[1..-2]) + string[0]
 end
 
+p reverse('hello')
