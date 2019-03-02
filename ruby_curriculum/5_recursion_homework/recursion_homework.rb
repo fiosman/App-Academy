@@ -15,6 +15,10 @@ def gamma_function(n)
 end
 
 def ice_cream_shop(flavors, favorite)
+ 
+  return false if flavors.empty? 
+  return true if flavors.shift == favorite
+  ice_cream_shop(flavors, favorite)
 
 end
 
@@ -22,4 +26,5 @@ def reverse(string)
   return string if string.length <= 1
   string[-1] + reverse(string[0..-2]) 
 end
+
 
