@@ -15,7 +15,6 @@ def gamma_function(n)
 end
 
 def ice_cream_shop(flavors, favorite)
- 
   return false if flavors.empty? 
   return true if flavors.shift == favorite
   ice_cream_shop(flavors, favorite)
