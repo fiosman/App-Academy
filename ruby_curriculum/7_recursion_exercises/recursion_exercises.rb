@@ -8,8 +8,9 @@ def sum_iterative(array)
 end
 
 #Recursive approach 
-def sum_recursive(array)
-
+def sum_recursive(array) 
+  return array.first if array.length == 1
+  array.first + sum_recursive(array[1..-1])
 end
 
 #Write a recursive method, range, that takes a start and an end and returns an array of all 
