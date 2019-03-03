@@ -5,8 +5,10 @@
 #Iterative approach
 def range(start_range, end_range)
   (start_range...end_range).inject([]) do |array, ele|
+    return [] if end_range < start_range
     array << ele 
   end
 end
 
 #Recursive approach 
+p range(7,0)
