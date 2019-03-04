@@ -1,5 +1,3 @@
-
-
 #Write both a recursive and iterative version of sum of an array.
 
 #Iterative approach
