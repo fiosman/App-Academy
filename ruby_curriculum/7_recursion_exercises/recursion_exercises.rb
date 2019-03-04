@@ -19,3 +19,18 @@ def range(start_range, end_range)
   return [] if end_range <= start_range
   range(start_range, end_range - 1) << end_range - 1
 end
+
+#Write a recursive and an iterative Fibonacci method. 
+#The method should take in an integer n and return the first n Fibonacci numbers in an array.
+
+def fibonacci_iterative(n)
+  init = [0,1]
+  return init if n <= 2
+
+  while init.length < n 
+    init << init[-1] + init[-2]
+  end
+  init
+end
+
+
