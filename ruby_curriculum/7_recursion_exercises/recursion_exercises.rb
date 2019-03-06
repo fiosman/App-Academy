@@ -33,4 +33,12 @@ def fibonacci_iterative(n)
   init
 end
 
+def fibonacci_recursive(n)
+  return [0] if n == 0 
+  return [0,1] if n == 1
+  fib_arr = fibonacci_recursive(n-1)
+  fib_arr.push(fib_arr[-1] + fib_arr[-2])
+end
+
+p fibonacci_recursive(5)
 
