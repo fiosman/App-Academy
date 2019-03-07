@@ -1,5 +1,5 @@
 #Write both a recursive and iterative version of sum of an array.
-
+require 'byebug'
 #Iterative approach
 def sum_iterative(array)
   array.reduce(&:+)
@@ -40,10 +40,11 @@ def fibonacci_recursive(n)
   fib_arr.push(fib_arr[-1] + fib_arr[-2])
 end
 
-def first_exponent
-
+def first_exponent(base, pwr)
+  return 1 if pwr == 0
+  base * first_exponent(base,pwr-1)
 end
 
-def second_exponent
-
+def second_exponent(base, pwr)
 end
+
