@@ -40,5 +40,10 @@ def fibonacci_recursive(n)
   fib_arr.push(fib_arr[-1] + fib_arr[-2])
 end
 
-p fibonacci_recursive(5)
+def first_exponent
 
+end
+
+def second_exponent
+
+end
