@@ -49,8 +49,8 @@ def second_exponent(base, pwr)
   if pwr == 0 
     return 1
   elsif pwr % 2 == 0 
-    temp = second_exponent(base, pwr/2)
-    temp * temp
+    res = second_exponent(base, pwr/2)
+    res * res
   else
     return base * second_exponent(base, pwr-1) 
   end
