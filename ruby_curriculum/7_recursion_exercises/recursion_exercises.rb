@@ -40,6 +40,7 @@ def fibonacci_recursive(n)
   fib_arr.push(fib_arr[-1] + fib_arr[-2])
 end
 
+#Write two versions of exponent that use two different recursions
 def first_exponent(base, pwr)
   return 1 if pwr == 0
   base * first_exponent(base,pwr-1)
@@ -52,7 +53,7 @@ def second_exponent(base, pwr)
     res = second_exponent(base, pwr/2)
     res * res
   else
-    return base * second_exponent(base, pwr-1) 
+    base * second_exponent(base, pwr-1) 
   end
 end
 
