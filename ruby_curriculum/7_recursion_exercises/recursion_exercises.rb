@@ -59,7 +59,18 @@ end
 
 #Using recursion and the is_a? method, write an Array#deep_dup method 
 #that will perform a "deep" duplication of the interior arrays.
-def deep_dup 
 
+class Array
+  def deep_dup 
+    self.reduce([]) { |arr, ele| ele.is_a?(Array) ? arr += ele.deep_dup : arr << ele } 
+  end
 end
+
+
+
+
+
+
+
+
 
