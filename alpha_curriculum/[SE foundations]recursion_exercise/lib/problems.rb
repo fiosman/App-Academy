@@ -53,11 +53,10 @@ end
 # sum_array([4, 10, -1, 2]) # => 15
 def sum_array(array)
   return 0 if array.empty? 
-  return array[0] if array.length == 1
+  return array.first if array.length == 1
 
-  array[0] + sum_array(array[1..-1])
+  array.pop + sum_array(array)
 end
-
 
 
 # Write a method, reverse_string(str), that takes in a string.
