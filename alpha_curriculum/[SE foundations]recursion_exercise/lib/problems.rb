@@ -84,8 +84,6 @@ end
 #reverse_string('he') => 'e' + 'h'
 #reverse_string('h') => 'h'
 
-
-
 # A 1-dimensional array is also known as a flattened array.
 # Write a method, flatten(data), that accepts a single argument. The
 # method should take in an array of any dimension and return the flattened
@@ -115,5 +113,16 @@ end
 #     2-dimensional array: [['some data']]
 #     3-dimensional array: [[['some data']]]
 def flatten(data)
+  arr = []
+  return [data] if !data.is_a? Array
 
+  data.each do |ele| 
+    if ele.is_a? Array 
+      arr += flatten(ele)
+    else
+      arr << ele
+    end
+  end
+  arr
 end
+
