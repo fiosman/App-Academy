@@ -44,7 +44,7 @@ class Array
         (0...self.length-1).each do |idx1|
             (idx1...self.length - 1).each do |idx2|
                 left_val = self[idx1]
-                right_val = self[idx2]
+                right_val = self[idx2 + 1]
                 pair_sum_arr << [left_val, right_val] if left_val + right_val == num
             end
         end
