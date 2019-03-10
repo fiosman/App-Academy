@@ -113,16 +113,16 @@ end
 #     2-dimensional array: [['some data']]
 #     3-dimensional array: [[['some data']]]
 def flatten(data)
-  arr = []
+  one_d = []
   return [data] if !data.is_a? Array
 
   data.each do |ele| 
     if ele.is_a? Array 
-      arr += flatten(ele)
+      one_d += flatten(ele)
     else
-      arr << ele
+      one_d << ele
     end
   end
-  arr
+  one_d
 end
 
