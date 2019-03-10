@@ -18,9 +18,17 @@ end
 # composite?(9)     # => true
 # composite?(13)    # => false
 def composite?(num)
-    
-end
+    if num <= 2 
+        return false 
+    end 
 
+    (2...num).each do |ele|
+        if num % ele == 0 
+            return true
+        end
+    end
+    false
+end
 
 # A bigram is a string containing two letters.
 # Write a method, find_bigrams, that takes in a string and an array of bigrams.
@@ -32,7 +40,7 @@ end
 # find_bigrams("the theater is empty", ["cy", "em", "ty", "ea", "oo"])  # => ["em", "ty", "ea"]
 # find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])        # => ["ck", "oo"]
 def find_bigrams(str, bigrams)
-
+    
 end
 
 class Hash
