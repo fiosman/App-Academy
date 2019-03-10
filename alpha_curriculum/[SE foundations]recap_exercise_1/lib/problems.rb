@@ -6,7 +6,19 @@
 #
 # all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])   # => ["action europe", "tear impromptu"]
 def all_vowel_pairs(words)
+    vowels =['a', 'e', 'i', 'o', 'u']
+    all_vowels = []
+
+    words.each_index do |idx1|
+        (idx1..words.length-1).each do |idx2|
+           pair = words[idx1] + " " + words[idx2]  
+           all_vowels << pair if vowels.all? { |vowel| pair.include?(vowel) }
+        end       
+    end
+    all_vowels
 end
+
+p all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])
 
 # Write a method, composite?, that takes in a number and returns a boolean indicating if the number
 # has factors besides 1 and itself
@@ -115,5 +127,3 @@ class String
     end
 end
 
-#p "zezra".caesar_cipher    #=> "difve"
-#p "bootcamp".caesar_cipher(2)
