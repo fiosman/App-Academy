@@ -18,8 +18,6 @@ def all_vowel_pairs(words)
     all_vowels
 end
 
-p all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])
-
 # Write a method, composite?, that takes in a number and returns a boolean indicating if the number
 # has factors besides 1 and itself
 #
@@ -87,9 +85,6 @@ class Hash
          hsh
     end
 end
-
-hash_1 = {4=>4, 10=>11, 12=>3, 5=>6, 7=>8}
-p hash_1.my_select
 
 class String
     # Write a method, String#substrings, that takes in a optional length argument
