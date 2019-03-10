@@ -1,11 +1,13 @@
 # Write a method, least_common_multiple, that takes in two numbers and returns the smallest number that is a mutiple 
 # of both of the given numbers
 def least_common_multiple(num_1, num_2)
-    sum = num_1 
+    multiple = num_1 
 
+    factor = 1
     while true 
-        sum += num_1
-        return sum if sum % num_2 == 0 
+        multiple = num_1 * factor
+        factor += 1
+        return multiple if multiple % num_2 == 0 
     end
 end
 
