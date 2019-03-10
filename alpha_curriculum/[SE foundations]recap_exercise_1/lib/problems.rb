@@ -39,17 +39,17 @@ end
 # find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])        # => ["ck", "oo"]
 def find_bigrams(str, bigrams)
     string_arr = str.split(" ")
-    picked_bigrams = []
+    found_bigrams = []
 
     string_arr.each do |word| 
         (0...word.length-1).each do |idx| 
            pair = word[idx..idx+1]
            if bigrams.include?(pair)
-            picked_bigrams << pair
+            found_bigrams << pair
            end
         end
     end
-    bigrams.select { |bigram| picked_bigrams.include?(bigram) }
+    bigrams.select { |bigram| found_bigrams.include?(bigram) }
 end
 
 class Hash
