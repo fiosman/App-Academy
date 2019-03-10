@@ -14,9 +14,17 @@ end
 # Write a method, most_frequent_bigram, that takes in a string and returns the two adjacent letters that appear the
 # most in the string.
 def most_frequent_bigram(str)
+    arr = []
+    hsh = Hash.new(0)
 
+    (0...str.length-1).each do |idx| 
+        arr << str[idx..idx+1]
+    end
+    arr.each do |ele| 
+       hsh[ele] += 1 
+    end
+    hsh.sort_by { |k,v| v }.last.first
 end
-
 
 class Hash
     # Write a method, Hash#inverse, that returns a new hash where the key-value pairs are swapped
