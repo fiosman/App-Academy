@@ -69,8 +69,21 @@ end
 # reverse_string("internet")    # => "tenretni"
 # reverse_string("friends")     # => "sdneirf"
 def reverse_string(str)
-
+  return str if str.length <= 1 
+  str[-1] + reverse_string(str[0...-1])
 end
+#reverse_string('hello') => 'o' + reverse_string('hell')
+#reverse_string('hell') => 'l' + reverse_string('hel')
+#reverse_string('hel') => 'l' + reverse_string('he')
+#reverse_string('he') => 'e' + reverse_string('h')
+#reverse_string('h') => 'h'
+
+#reverse_string('hello') => 'o' + 'lleh'
+#reverse_string('hell') => 'l' + 'leh'
+#reverse_string('hel') => 'l' + 'eh'
+#reverse_string('he') => 'e' + 'h'
+#reverse_string('h') => 'h'
+
 
 
 # A 1-dimensional array is also known as a flattened array.
