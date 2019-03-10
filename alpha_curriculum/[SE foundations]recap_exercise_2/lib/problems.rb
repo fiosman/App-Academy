@@ -29,10 +29,13 @@ end
 class Hash
     # Write a method, Hash#inverse, that returns a new hash where the key-value pairs are swapped
     def inverse
-
+        hsh = {}
+        self.each do |k,v|
+            hsh[v] = k 
+        end
+        hsh
     end
 end
-
 
 class Array
     # Write a method, Array#pair_sum_count, that takes in a target number returns the number of pairs of elements that sum to the given target
