@@ -79,9 +79,17 @@ class Hash
     # hash_2.my_select { |k, v| k + 1 == v }      # => {10=>11, 5=>6, 7=>8})
     # hash_2.my_select                            # => {4=>4}
     def my_select(&prc)
-
+        hsh = {}
+        prc ||= Proc.new { |k,v| hsh[k] = v if k == v }
+        self.each do |k,v|
+            hsh[k] = v if prc.call(k,v)
+        end
+         hsh
     end
 end
+
+hash_1 = {4=>4, 10=>11, 12=>3, 5=>6, 7=>8}
+p hash_1.my_select
 
 class String
     # Write a method, String#substrings, that takes in a optional length argument
