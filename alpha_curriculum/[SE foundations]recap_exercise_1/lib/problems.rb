@@ -101,6 +101,19 @@ class String
     # "bootcamp".caesar_cipher(2) #=> "dqqvecor"
     # "zebra".caesar_cipher(4)    #=> "difve"
     def caesar_cipher(num)
+        alphabets = ('a'..'z').to_a
+        new_string = ''
 
+        self.each_char do |char| 
+            if alphabets.index(char) >= 25 
+                new_string += alphabets[num - 1]
+            else
+                new_string += alphabets[alphabets.index(char) + num]
+            end
+        end
+        new_string
     end
 end
+
+#p "zezra".caesar_cipher    #=> "difve"
+#p "bootcamp".caesar_cipher(2)
