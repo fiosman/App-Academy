@@ -40,9 +40,16 @@ end
 class Array
     # Write a method, Array#pair_sum_count, that takes in a target number returns the number of pairs of elements that sum to the given target
     def pair_sum_count(num)
-
+        pair_sum_arr = []
+        (0...self.length-1).each do |idx1|
+            (idx1...self.length - 1).each do |idx2|
+                left_val = self[idx1]
+                right_val = self[idx2]
+                pair_sum_arr << [left_val, right_val] if left_val + right_val == num
+            end
+        end
+        pair_sum_arr.count
     end
-
 
     # Write a method, Array#bubble_sort, that takes in an optional proc argument.
     # When given a proc, the method should sort the array according to the proc.
