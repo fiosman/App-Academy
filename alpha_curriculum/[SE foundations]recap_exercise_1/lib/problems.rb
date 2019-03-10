@@ -6,9 +6,7 @@
 #
 # all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])   # => ["action europe", "tear impromptu"]
 def all_vowel_pairs(words)
-
 end
-
 
 # Write a method, composite?, that takes in a number and returns a boolean indicating if the number
 # has factors besides 1 and itself
@@ -40,7 +38,18 @@ end
 # find_bigrams("the theater is empty", ["cy", "em", "ty", "ea", "oo"])  # => ["em", "ty", "ea"]
 # find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])        # => ["ck", "oo"]
 def find_bigrams(str, bigrams)
-    
+    string_arr = str.split(" ")
+    picked_bigrams = []
+
+    string_arr.each do |word| 
+        (0...word.length-1).each do |idx| 
+           pair = word[idx..idx+1]
+           if bigrams.include?(pair)
+            picked_bigrams << pair
+           end
+        end
+    end
+    bigrams.select { |bigram| picked_bigrams.include?(bigram) }
 end
 
 class Hash
