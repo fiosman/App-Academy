@@ -1,3 +1,4 @@
+require 'byebug'
 # Write a method, least_common_multiple, that takes in two numbers and returns the smallest number that is a mutiple 
 # of both of the given numbers
 def least_common_multiple(num_1, num_2)
@@ -55,6 +56,19 @@ class Array
     # When given a proc, the method should sort the array according to the proc.
     # When no proc is given, the method should sort the array in increasing order.
     def bubble_sort(&prc)
+        prc ||= Proc.new { |a,b| a <=> b }
 
+        swapped = true
+
+        while swapped
+            swapped = false
+            (0...self.length - 1).each do |idx| 
+                if prc.call(self[idx], self[idx+1]) == 1
+                    self[idx], self[idx+1] = self[idx+1], self[idx]
+                    swapped = true
+                end
+            end
+        end
+        self
     end
 end
