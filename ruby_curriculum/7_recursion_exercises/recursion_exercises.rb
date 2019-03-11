@@ -75,10 +75,28 @@ class Array
   end
 end
 
-def bsearch 
-  
 
+#Write a recursive binary search: bsearch(array, target). Note that binary search only works on sorted arrays. Make sure to return the location of the found object (or nil if not found!). 
+#Hint: you will probably want to use subarrays.
+
+def bsearch(array, target)
+  return nil if array.empty? 
+
+  mid_index = array.length / 2
+  
+  if array[mid_index] == target 
+    return mid_index
+  elsif array[mid_index] > target 
+    #search lower half of the array
+    bsearch(array[0...mid_index], target)
+  elsif array[mid_index] < target 
+     #search upper half of the array
+    bsearch(array[mid_index + 1..-1], target) 
+    #something wrong here.. need to fix
+  end
 end
+
+p bsearch([1,2,3,4,5], 5)
 
 
 
