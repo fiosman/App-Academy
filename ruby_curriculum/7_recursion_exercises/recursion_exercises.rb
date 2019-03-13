@@ -100,6 +100,10 @@ def bsearch(array, target )
 
 end
 
+def merge_sort
+
+end
+
  
 
 
