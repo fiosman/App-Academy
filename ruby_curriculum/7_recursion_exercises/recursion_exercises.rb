@@ -101,7 +101,7 @@ def bsearch(array, target )
 end
 
 #Implement a method merge_sort that sorts an Array:
-def merge_sort
+def merge_sort(arr, low, high)
 
 end
 
