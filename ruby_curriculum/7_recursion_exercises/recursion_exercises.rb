@@ -101,20 +101,26 @@ def bsearch(array, target )
 end
 
 #Implement a method merge_sort that sorts an Array:
-def merge_sort(arr, low, high)
+ def merge_sort(lo, hi)
+  
+ end
 
+def merge(left_arr, right_arr)
+  merged_arr = []
+  left_arr_idx, right_arr_idx = 0, 0
+  left_n, right_n = left_arr.size, right_arr.size
+
+  while left_arr_idx < left_n && right_arr_idx < right_n
+    if left_arr[left_arr_idx] <= right_arr[right_arr_idx] 
+      merged_arr << left_arr[left_arr_idx]
+      left_arr_idx += 1
+    else
+      merged_arr << right_arr[right_arr_idx]
+      right_arr_idx += 1
+    end
+  end
+  merged_arr + left_arr[left_arr_idx..left_n-1] + right_arr[right_arr_idx..right_n-1]
 end
-
-def merge 
-
-end
-
- 
-
-
-
-
-
 
 
 
