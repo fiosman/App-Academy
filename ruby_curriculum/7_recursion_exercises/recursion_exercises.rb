@@ -141,7 +141,6 @@ def merge(left_arr, right_arr)
   merged_arr
 end
 
- p merge_sort([1,9,3,8,81,3,7,4,100])
 
 
 
