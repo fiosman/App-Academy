@@ -101,16 +101,24 @@ def bsearch(array, target )
 end
 
 #Implement a method merge_sort that sorts an Array:
- def merge_sort(lo, hi)
+ def merge_sort(arr)
+  return arr if arr.length <= 1 
 
+  mid = arr.length/2
+  left_arr = arr[0...mid]
+  right_arr = arr[mid..-1]
+
+  sorted_left_arr = merge_sort(left_arr)
+  sorted_right_arr = merge_sort(right_arr)
+
+  merge(sorted_left_arr, sorted_right_arr)
  end
 
 def merge(left_arr, right_arr)
   merged_arr = []
   left_arr_idx, right_arr_idx = 0, 0
-  left_n, right_n = left_arr.size, right_arr.size
 
-  while left_arr_idx < left_n && right_arr_idx < right_n
+  while left_arr_idx < left_arr.length && right_arr_idx < right_arr.length
     if left_arr[left_arr_idx] <= right_arr[right_arr_idx] 
       merged_arr << left_arr[left_arr_idx]
       left_arr_idx += 1
@@ -120,17 +128,20 @@ def merge(left_arr, right_arr)
     end
   end
 
-  while left_arr_idx < left_n 
+  while left_arr_idx < left_arr.length
     merged_arr << left_arr[left_arr_idx]
     left_arr_idx += 1
   end
 
-  while right_arr_idx < right_n 
+  while right_arr_idx < right_arr.length
     merged_arr << right_arr[right_arr_idx]
     right_arr_idx += 1
   end
+  
+  merged_arr
 end
 
+ p merge_sort([1,9,3,8,81,3,7,4,100])
 
 
 
