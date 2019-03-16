@@ -102,7 +102,7 @@ end
 
 #Implement a method merge_sort that sorts an Array:
  def merge_sort(lo, hi)
-  
+
  end
 
 def merge(left_arr, right_arr)
@@ -119,8 +119,18 @@ def merge(left_arr, right_arr)
       right_arr_idx += 1
     end
   end
-  merged_arr + left_arr[left_arr_idx..left_n-1] + right_arr[right_arr_idx..right_n-1]
+
+  while left_arr_idx < left_n 
+    merged_arr << left_arr[left_arr_idx]
+    left_arr_idx += 1
+  end
+
+  while right_arr_idx < right_n 
+    merged_arr << right_arr[right_arr_idx]
+    right_arr_idx += 1
+  end
 end
+
 
 
 
