@@ -142,6 +142,10 @@ def merge(left_arr, right_arr)
 end
 
 
+def subsets(arr)
+
+end
+
 
 
 
