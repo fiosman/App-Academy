@@ -141,7 +141,7 @@ def merge(left_arr, right_arr)
   merged_arr
 end
 
-
+#Write a method subsets that will return all subsets of an array.
 def subsets(arr)
   #consider what happens if an empty array is passed in... Well, we just return an empty array. 
   #And if a single element is passed in? We return a subet containing two elements, the element itself and the empty array. 
