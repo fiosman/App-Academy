@@ -147,10 +147,12 @@ def subsets(arr)
   #And if a single element is passed in? We return a subet containing two elements, the element itself and the empty array. 
   #so first thing we have to do is get the empty array if that single element is passed in. To do this, we can reduce the array size to nothingness.
   #Then all we have to do is concatenate the single empty array to the single element passed in (in this case the last element in the array) to make a subset. 
+  #This solution should return a total of 2**arr.length subsets. Does not correct for proper subsets.  (i.e. (2**arr.length) - 1)
   return [[]] if arr.empty?
   subsets = subsets(arr[0...arr.length-1]) 
   subsets + subsets.map { |subset| subset += [arr.last] }
 end
+
 
 
 
