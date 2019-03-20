@@ -158,7 +158,14 @@ end
 #For an array of length n there are n! different permutations. 
 #So for an array with three elements we will have 3 * 2 * 1 = 6 different permutations.
 def permutations(array)
+  return [array] if array.size <= 1  
 
+  total_perms = []
+  array.each_with_index do |num, idx| 
+    #As we iterate through the array, add the current element to the beginning of each permutation of the remaining elements. 
+    permutations(array[0...idx] + array[idx+1..-1]).each { |perm| total_perms << [num] + perm }
+  end
+  total_perms
 end
 
 
