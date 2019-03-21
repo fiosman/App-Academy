@@ -168,5 +168,9 @@ def permutations(array)
   total_perms
 end
 
+#Making Change problem - http://web.archive.org/web/20130215052843/http://rubyquiz.com/quiz154.html
+def greedy_make_change 
+
+end
 
 
