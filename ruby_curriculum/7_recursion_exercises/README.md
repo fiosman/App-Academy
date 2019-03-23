@@ -1,4 +1,4 @@
 # Recursion Exercises
 
-My solutions to set of recursion problems 
+My solutions to App Academy's first set of recursion challenges 
 
