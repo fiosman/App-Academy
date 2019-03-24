@@ -186,5 +186,5 @@ def greedy_make_change(change, coins = [10,25,1,5])
 
 end
 
-p greedy_make_change(54) #=> [25,25,1,1,1,1,1]
+p greedy_make_change(54) #=> [25,25,1,1,1,1]
 
