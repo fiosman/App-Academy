@@ -168,8 +168,25 @@ def permutations(array)
 end
 
 #Making Change problem - http://web.archive.org/web/20130215052843/http://rubyquiz.com/quiz154.html
-def greedy_make_change 
+def greedy_make_change(change, coins = [10,25,1,5])
+  return [] if coins.empty? 
 
+  coin_change = []
+
+  available_coins = coins.sort
+  max_coin = available_coins.last
+  coin_count = change/max_coin 
+
+
+  coin_count.times { coin_change << max_coin }
+  remaining_amount = change - coin_change.sum
+
+  if !remaining_amount.zero?
+    coins.pop
+    greedy_make_change(remaining_amount, coins)
+  end
+  coin_change
 end
 
+p greedy_make_change(55) #=> [25,25,1,1,1,1,1]
 
