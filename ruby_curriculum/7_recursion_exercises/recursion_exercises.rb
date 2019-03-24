@@ -169,11 +169,6 @@ end
 
 #Making Change problem - http://web.archive.org/web/20130215052843/http://rubyquiz.com/quiz154.html
 def greedy_make_change(change, coins = [10,25,1,5])
-
-  #debugger 
-
-  return [] if coins.empty? 
-
   coin_change = []
 
   available_coins = coins.sort
@@ -186,9 +181,10 @@ def greedy_make_change(change, coins = [10,25,1,5])
 
   if !remaining_amount.zero?
     available_coins.pop
-   greedy_make_change(remaining_amount, available_coins)
+   coin_change += greedy_make_change(remaining_amount, available_coins)
   end
   coin_change
+  
 end
 
 p greedy_make_change(55) #=> [25,25,1,1,1,1,1]
