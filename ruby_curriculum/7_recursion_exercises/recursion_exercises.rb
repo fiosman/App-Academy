@@ -175,7 +175,6 @@ def greedy_make_change(change, coins = [10,25,1,5])
   max_coin = coins.sort.last
   coin_count = change/max_coin 
 
-
   coin_count.times { coin_change << max_coin }
   remaining_amount = change - coin_change.sum
 
