@@ -185,10 +185,21 @@ def greedy_make_change(change, coins = [10,25,1,5])
 
 end
 
-p greedy_make_change(54) #=> [25,25,1,1,1,1]
-p greedy_make_change(24, [10,7,1]) #=> incorrectly returns [10,10,1,1,1,1], should be [10,7,7]. Calls for a better version!
+#p greedy_make_change(54) #=> [25,25,1,1,1,1]
+#p greedy_make_change(24, [10,7,1]) #=> incorrectly returns [10,10,1,1,1,1], should be [10,7,7]. Calls for a better version!
 
 def make_better_change(change, coins=[10,25,1,5])
+  #debugger
+  return [] if change == 0 
+
+  coin_change =  []
   
+  coins.each do |coin| 
+    next if coin > change
+    remaining_change = change - coin
+    coin_change << [coin] + make_better_change(remaining_change, coins)
+  end
+  coin_change.sort_by { |change| change.length }.first
 end
+
 
