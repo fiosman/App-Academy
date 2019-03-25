@@ -9,9 +9,11 @@ class WordChainer
   end
 
   def adjacent_words(word)
-    
+    same_length_words = self.dictionary.select { |word_d| word_d.length == word.length }
   end
+
 end
 
-word_c = WordChainer.new("dictionary.txt")
-p word_c.dictionary
+#word_c = WordChainer.new("dictionary.txt")
+#p word_c.dictionary
+
