@@ -13,7 +13,7 @@ class WordChainer
     #check for length
     same_length_words = self.dictionary.select { |word_d| word_d.length == word.length }
     #check for words that are different by 1 character at only 1 position
-    #strategy - loop through the chars of the word, then return the index of the letter that is different from the dictionary word. Keep track in a counter
+    #strategy - loop through the chars of each dictionary word, compare to chars of the given word. If letter at only 1 position is not the same, push that word to selected_words array. 
     #debugger
     selected_words = []
     diff_counter = 0 
@@ -29,18 +29,6 @@ class WordChainer
     end
     selected_words
   end
-
-  #   word_chars.each_with_index do |d_word, idx1|
-  #     (0...d_word.length).each do |idx2| 
-  #       if !word_chars.include?(d_word[idx])
-  #         counter += 1
-  #       end
-  #     end
-  #   selected_words << d_word if counter == 1 
-  #   counter = 0
-  #   end
-  #   selected_words
-  # end
 
 end
 
