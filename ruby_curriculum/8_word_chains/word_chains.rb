@@ -7,6 +7,8 @@ class WordChainer
 
   def initialize(dictionary_file_name)
     @dictionary = Set.new(File.read(dictionary_file_name).split("\n"))
+    @current_words = []
+    @all_seen_words = []
   end
 
   def adjacent_words(word)
@@ -28,6 +30,10 @@ class WordChainer
       diff_counter = 0 
     end
     selected_words
+  end
+
+  def run(source, target)
+
   end
 
 end
