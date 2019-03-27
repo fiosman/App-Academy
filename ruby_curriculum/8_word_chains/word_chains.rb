@@ -6,7 +6,7 @@ class WordChainer
   attr_reader :dictionary
 
   def initialize(dictionary_file_name)
-    @dictionary = Set.new(File.read(dictionary_file_name).split)
+    @dictionary = Set.new(File.read(dictionary_file_name).split("\n"))
   end
 
   def adjacent_words(word)
@@ -32,6 +32,7 @@ class WordChainer
 end
 
 
-word_c = WordChainer.new("dictionary.txt")
-p word_c.adjacent_words('yow')
+ word_c = WordChainer.new("dictionary.txt")
+# p word_c.adjacent_words('yow')
+p word_c.dictionary
 
