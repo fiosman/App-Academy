@@ -5,10 +5,8 @@ class WordChainer
 
   attr_reader :dictionary
 
-  def initialize(dictionary_file_name)
+  def initialize(dictionary_file_name, source)
     @dictionary = Set.new(File.read(dictionary_file_name).split("\n"))
-    @current_words = []
-    @all_seen_words = []
   end
 
   def adjacent_words(word)
@@ -33,10 +31,13 @@ class WordChainer
   end
 
   def run(source, target)
+    @current_words = [source]
+    @all_seen_words = [source]
+
     until @current_words.empty? 
       new_current_words = []
       @current_words.each do |c_word| 
-        adjacent_words(current_word).each do |adj_current_word| 
+        adjacent_words(c_word).each do |adj_current_word| 
           next if all_seen_words.include?(adj_current_word)
           new_current_words << adj_current_word 
           @all_seen_words << adj_current_word
