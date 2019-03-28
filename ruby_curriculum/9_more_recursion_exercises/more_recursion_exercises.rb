@@ -1,7 +1,11 @@
 #Problem 1: You have array of integers. Write a recursive solution to find the sum of the integers.
 
 def sum_recur(array)
+  return array.first if array.size == 1
+  array.first + sum_recur(array[1..-1])
 end
+
+p sum_recur([1,2,3,4])
 
 #Problem 2: You have array of integers. Write a recursive solution to determine whether or not the array contains a specific value.
 
