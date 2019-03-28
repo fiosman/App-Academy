@@ -36,4 +36,8 @@ end
 # Problem 6: Write a recursive function to reverse a string. Don't use any built-in #reverse methods!
 
 def reverse(string)
+  return string if string.length == 1 
+  string[-1] + reverse(string[0...-1])
 end
+
+p reverse('hello')
