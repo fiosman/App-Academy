@@ -1,3 +1,5 @@
+require 'byebug'
+
 #Problem 1: You have array of integers. Write a recursive solution to find the sum of the integers.
 
 def sum_recur(array)
@@ -26,10 +28,13 @@ end
 # Problem 4: You have array of integers. Write a recursive solution to determine whether or not two adjacent elements of the array add to 12.
 
 def add_to_twelve?(array)
-  
+  #debugger
+  return false if array.size == 1 
+  return true if array[-2] + array[-1] == 12
+  add_to_twelve?(array[1..-1])
 end
 
-p add_to_twelve?([1,2,3,4,5])
+p add_to_twelve?([1,2,3,4,8])
 
 # Problem 5: You have array of integers. Write a recursive solution to determine if the array is sorted.
 
