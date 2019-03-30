@@ -7,7 +7,8 @@ def sum_recur(array)
   array.first + sum_recur(array[1..-1])
 end
 
-#p sum_recur([1,2,3,4]) # => 10
+#p sum_recur([1,2,3,4]) => 10
+#p sum_recur([1]) => 1
 
 #Problem 2: You have array of integers. Write a recursive solution to determine whether or not the array contains a specific value.
 
@@ -17,7 +18,8 @@ def includes?(array, target)
   includes?(array[1..-1], target)
 end
 
-#p includes?([1,2,3], 4) # => false 
+#p includes?([1,2,3], 4) => false
+#p includes?([9,4,3,10], 10) => true
 
 # Problem 3: You have an unsorted array of integers. Write a recursive solution to count the number of occurrences of a specific value.
 
@@ -28,7 +30,8 @@ def num_occur(array, target)
   freq + num_occur(array[1..-1], target)
 end
 
-#p num_occur([7,8,2,1,1,1,3,3,3,3,3,3], 3)
+#p num_occur([7,8,2,1,1,1,3,3,3,3,3,3], 3) => 6
+#p num_occur([7,8,1,3,4,5,5], 10) => 0
 
 # Problem 4: You have array of integers. Write a recursive solution to determine whether or not two adjacent elements of the array add to 12.
 
@@ -39,7 +42,8 @@ def add_to_twelve?(array)
   add_to_twelve?(array[1..-1])
 end
 
-#p add_to_twelve?([1,2,3,4,8])
+#p add_to_twelve?([1,2,3,4,8]) => true
+#p add_to_twelve?([1,9,4,4]) => false
 
 # Problem 5: You have array of integers. Write a recursive solution to determine if the array is sorted.
 
@@ -49,8 +53,8 @@ def sorted?(array)
   sorted?(array[1..-1])
 end
 
-#p sorted?(18, 1, 2, 9, 1101)
-#p sorted?(7, 19, 22, 42, 113)
+#p sorted?(18, 1, 2, 9, 1101) => false
+#p sorted?(7, 19, 22, 42, 113) => true
 
 # Problem 6: Write a recursive function to reverse a string. Don't use any built-in #reverse methods!
 
@@ -59,4 +63,5 @@ def reverse(string)
   string[-1] + reverse(string[0...-1])
 end
 
-#p reverse('hello')
+#p reverse('hello') => olleh
+#p reverse('fares') => seraf
