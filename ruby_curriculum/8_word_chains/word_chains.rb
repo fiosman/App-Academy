@@ -36,11 +36,12 @@ class WordChainer
     @current_words = [source]
     @all_seen_words = { source => nil }
 
-    until @current_words.empty? 
+    until @current_words.empty? || @all_seen_words.has_key?(target)
       new_current_words = []
       explore_current_words(new_current_words)
       @current_words = new_current_words
     end
+    build_path(target)
   end
 
   def explore_current_words(c_words)
@@ -55,6 +56,16 @@ class WordChainer
       p new_current_word 
       p @all_seen_words[new_current_word]
     end
+  end
+
+  def build_path(target)
+    path = []
+
+    until target.nil? 
+      path << @all_seen_words[target]
+      target = @all_seen_words[target]
+    end
+    path
   end
 
 end
