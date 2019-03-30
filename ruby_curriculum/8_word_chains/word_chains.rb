@@ -70,8 +70,3 @@ class WordChainer
 
 end
 
-
- word_c = WordChainer.new("dictionary.txt")
-p word_c.adjacent_words('yow')
-#p word_c.dictionary
-
