@@ -65,6 +65,7 @@ class WordChainer
       path << @all_seen_words[target]
       target = @all_seen_words[target]
     end
+    
     path
   end
 
