@@ -45,13 +45,13 @@ class WordChainer
   end
 
   def explore_current_words(c_words)
-     @current_words.each do |c_word| 
-        adjacent_words(c_word).each do |adj_current_word| 
-          next if @all_seen_words.include?(adj_current_word)
-          c_words << adj_current_word 
-          @all_seen_words << adj_current_word
-        end
+    @current_words.each do |c_word| 
+      adjacent_words(c_word).each do |adj_current_word| 
+        next if @all_seen_words.include?(adj_current_word)
+        c_words << adj_current_word 
+        @all_seen_words << adj_current_word
       end
+    end
   end
 
 end
