@@ -3,12 +3,12 @@ require 'byebug'
 
 class WordChainer
 
-  attr_reader :dictionary
+  attr_accessor :dictionary, :current_words, :all_seen_words
 
   def initialize(dictionary_file_name, source)
     @dictionary = Set.new(File.read(dictionary_file_name).split("\n"))
     @current_words = []
-    @all_seen_words = []
+    @all_seen_words = {}
   end
 
   def adjacent_words(word)
@@ -34,12 +34,11 @@ class WordChainer
 
   def run(source, target)
     @current_words = [source]
-    @all_seen_words = [source]
+    @all_seen_words = { source => nil }
 
     until @current_words.empty? 
       new_current_words = []
       explore_current_words(new_current_words)
-      p new_current_words
       @current_words = new_current_words
     end
   end
@@ -49,8 +48,12 @@ class WordChainer
       adjacent_words(c_word).each do |adj_current_word| 
         next if @all_seen_words.include?(adj_current_word)
         c_words << adj_current_word 
-        @all_seen_words << adj_current_word
+        @all_seen_words[adj_current_word] = c_word
       end
+    end
+    c_words.each do |new_current_word| 
+      p new_current_word 
+      p @all_seen_words[new_current_word]
     end
   end
 
