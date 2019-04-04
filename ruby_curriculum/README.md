@@ -1,3 +1,3 @@
 # Ruby Curriculum 
 
-Focus on debugging, OOP, Big-O, Data Structures, Recursion, RSpec & TDD. 
+Focus on Debugging, OOP, Big-O, Data Structures & Algorithms, Recursion, RSpec & TDD. 
