@@ -5,7 +5,7 @@ class Board
   attr_accessor :grid
 
   def initialize(grid_size)
-    @grid = Array.new(grid_size) { Array.new(grid_size) { Tile.new }} 
+    @grid = Array.new(grid_size) { Array.new(grid_size) { Tile.new(rand(0..9)) }} 
   end
 
   def render(column_size, row_size)
@@ -21,7 +21,7 @@ class Board
       print "#{row}" 
 
       (0...column_size).each do |column|
-        print "  #{column}"
+        print "  #{self.grid[row][column].value}"
       end
       print "\n"
 
@@ -30,5 +30,5 @@ class Board
 
 end
 
-board_1 = Board.new(8)
-board_1.render(9,9)
+# board_1 = Board.new(9)
+# board_1.render(9,9)
