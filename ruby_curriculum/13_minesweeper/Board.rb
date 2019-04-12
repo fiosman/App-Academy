@@ -19,7 +19,7 @@ class Board
     (0...row_size).each do |row|
       print "\n"
       print "#{row}" 
-      
+
       (0...column_size).each do |column|
         print "  #{column}"
       end
@@ -32,22 +32,3 @@ end
 
 board_1 = Board.new(8)
 board_1.render(9,9)
-
-#to-do -> Print out actual grid (i.e. 9x9, each square is a tile and is a bomb or not). 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | |
-#------------------ 
-# | | | | | | | | | 
-#------------------
-# | | | | | | | | | 
