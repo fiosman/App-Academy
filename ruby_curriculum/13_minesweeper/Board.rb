@@ -19,6 +19,7 @@ class Board
     (0...row_size).each do |row|
       print "\n"
       print "#{row}" 
+      
       (0...column_size).each do |column|
         print "  #{column}"
       end
