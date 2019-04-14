@@ -3,9 +3,8 @@ class Tile
   attr_accessor :value
   def initialize(value)
     @value = value
-    @bomb = nil 
-    @revealed = nil
-    @hidden = true 
+    @bomb = true 
+    @revealed = true
   end
 
   def status? 
