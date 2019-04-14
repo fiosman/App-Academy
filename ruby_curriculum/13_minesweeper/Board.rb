@@ -41,11 +41,3 @@ class Board
 
 end
 
- board_1 = Board.new(9)
- #p board_1.grid
- board_1.render(9, 9)
-#p board_1.grid
-#p board_1[1][1]
- #p board_1.grid
-#board_1.populate_board
- #board_1.render(9,9)
