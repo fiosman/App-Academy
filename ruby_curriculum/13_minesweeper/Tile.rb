@@ -1,19 +1,23 @@
 class Tile
 
-  attr_accessor :value
-  def initialize(value)
-    @value = value
-    @bomb = true 
-    @revealed = true
+  attr_accessor :bomb_state, :ui_val, :revealed
+
+  def initialize
+    @bomb_state = nil
+    @revealed = false
+    @ui_val = nil
   end
 
-  def status? 
-     if self.value == 1 
-       @bomb = true 
-       @revealed = false 
-     else 
-      @bomb = false 
-      @revealed = true
+  def ui_status
+     if self.bomb_state == true && self.revealed == true
+      @ui_val = :*
+     else  
+      @ui_val = :&
     end
   end
+
+  def bomb_status 
+    rand(1..2) == 1 ? @bomb_state = true : @bomb_state = false
+  end
+
 end
