@@ -8,7 +8,6 @@ class Game
   end
 
   def game_over? 
-
   end
 
   def play 
