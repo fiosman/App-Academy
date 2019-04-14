@@ -9,9 +9,9 @@ class Board
   end
 
   def render(column_size, row_size)
-    print "   "
+    print "      "
     (0...column_size).each do  |column| 
-      print "#{column}" + "  "
+      print "#{column}" + "        "
     end
     
     print "\n"
@@ -21,7 +21,7 @@ class Board
       print "#{row}" 
 
       (0...column_size).each do |column|
-        print "  #{self.grid[row][column].value}"
+        print "   | #{self.grid[row][column].value} | " 
       end
       print "\n"
 
@@ -39,3 +39,7 @@ class Board
 
 end
 
+ board_1 = Board.new(9)
+ #p board_1.grid
+ p board_1.populate_board
+ board_1.render(9,9)
