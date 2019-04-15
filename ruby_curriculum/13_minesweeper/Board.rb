@@ -10,9 +10,9 @@ class Board
   end
 
   def render(column_size=9, row_size=9)
-    print "     "
+    print "  "
     (0...column_size).each do  |column| 
-      print "#{column}" + "       "
+      print " #{column} " #+ "  "
     end
     
     print "\n"
@@ -22,7 +22,7 @@ class Board
       print "#{row}" 
 
       (0...column_size).each do |column|
-        print "   | #{self.grid[row][column].ui_status} | " 
+        print "  #{self.grid[row][column].ui_status}" 
       end
       print "\n"
 
