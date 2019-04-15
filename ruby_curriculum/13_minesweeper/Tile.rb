@@ -11,7 +11,7 @@ class Tile
   def ui_status 
     if self.bomb_state == true && self.revealed == true
       @ui_val = :*
-    else
+     else
       @ui_val = :" "
     end
   end

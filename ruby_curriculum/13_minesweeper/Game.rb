@@ -19,6 +19,7 @@ class Game
   end
 
   def play 
+    p @board.grid
     @board.render
     fetch_value
   end
@@ -28,7 +29,7 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    @board.grid[row][col].revealed = true 
+    @board.grid[row][col].revealed = true
     @board.render
     p @board.grid[row][col]
   end
