@@ -5,14 +5,12 @@ class Tile
   def initialize
     @bomb_state = nil
     @revealed = false
-    @ui_val = nil
+    @ui_val = nil.to_s.to_sym
   end
 
   def ui_status
      if self.bomb_state == true && self.revealed == true
       @ui_val = :*
-     else  
-      @ui_val = :&
     end
   end
 
