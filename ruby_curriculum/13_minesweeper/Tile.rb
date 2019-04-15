@@ -8,7 +8,7 @@ class Tile
     @ui_val = nil.to_s.to_sym
   end
 
-  def ui_status
+  def ui_status 
      if self.bomb_state == true && self.revealed == true
       @ui_val = :*
     end
