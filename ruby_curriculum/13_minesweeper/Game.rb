@@ -37,4 +37,6 @@ class Game
 end
 
 game_1 = Game.new(9)
-game_1.play
+game_1.run
+
+#To-do - Figure out how many adjacent cells to a specific cell are bombs 

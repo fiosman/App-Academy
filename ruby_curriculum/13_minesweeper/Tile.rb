@@ -4,7 +4,7 @@ class Tile
 
   def initialize
     @bomb_state = nil
-    @revealed = true
+    @revealed = false
     @ui_val = nil
   end
 
