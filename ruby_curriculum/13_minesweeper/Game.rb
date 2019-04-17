@@ -10,7 +10,6 @@ class Game
   end
 
   def run
-    @board.render
     play until game_over?
   end
 
@@ -22,6 +21,7 @@ class Game
     p @board.grid
     @board.render
     fetch_value
+    system('clear')
   end
 
   def fetch_value 
@@ -29,14 +29,28 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    @board.grid[row][col].revealed = true
-    @board.render
-    p @board.grid[row][col]
+    #if you hit a bomb... reveal all tiles, game over
+    if @board.grid[row][col].bomb_state == true
+       display_all
+       @board.render
+    #otherwise, reveal that one value 
+    else
+      @board.grid[row][col].revealed = true 
+      @board.render
+    end
   end
+
+  def display_all 
+    @board.grid.each do |set| 
+      set.each { |tile| tile.revealed = true }
+    end
+  end 
 
 end
 
 game_1 = Game.new(9)
 game_1.run
+
+
 
 #To-do - Figure out how many adjacent cells to a specific cell are bombs 
