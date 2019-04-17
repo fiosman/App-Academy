@@ -12,7 +12,7 @@ class Board
   def render(column_size=9, row_size=9)
     print "  "
     (0...column_size).each do  |column| 
-      print " #{column} " #+ "  "
+      print " #{column} " 
     end
     
     print "\n"
