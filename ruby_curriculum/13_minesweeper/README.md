@@ -1,3 +1,3 @@
 # Minesweeper 
 
-Command line version of the classic Minesweeper! Coming soon :) 
+Command line version of the classic Minesweeper! In progress :) 
