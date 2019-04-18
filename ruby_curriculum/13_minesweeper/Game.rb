@@ -9,19 +9,25 @@ class Game
     @board = Board.new(grid_size)
   end
 
+  #keep playing the game until player picks a bomb
   def run
+    p @board.grid
     play until game_over?
+    p 'Oops, you lost!'
   end
 
-  def game_over? 
-
+  #Game is over if user selects a bomb
+  def game_over?  
+    @board.grid.each do |set| 
+      return set.any? { |tile| tile.ui_val == :* }
+    end
   end
 
   def play 
     p @board.grid
     @board.render
     fetch_value
-    system('clear')
+    #system('clear')
   end
 
   def fetch_value 
@@ -29,7 +35,7 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    #if you hit a bomb... reveal all tiles, game over
+    #if you hit a bomb... reveal all tiles
     if @board.grid[row][col].bomb_state == true
        display_all
        @board.render
@@ -40,6 +46,7 @@ class Game
     end
   end
 
+  #display values of all tiles
   def display_all 
     @board.grid.each do |set| 
       set.each { |tile| tile.revealed = true }
