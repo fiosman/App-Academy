@@ -35,6 +35,7 @@ class Game
     row = pos[0]
     col = pos[1]
 
+    @player.prompt_flag if any_revealed? 
     #if you hit a bomb... reveal all tiles
     if @board.grid[row][col].bomb_state == true
        display_all
@@ -53,10 +54,18 @@ class Game
     end
   end 
 
+  def any_revealed? 
+    @board.grid.each do |set| 
+      return set.any? { |tile| tile.revealed == true }
+    end
+  end
+
 end
 
 game_1 = Game.new(9)
+#p game_1.any_revealed?
 game_1.run
+
 
 
 
