@@ -35,14 +35,21 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    @player.prompt_flag if any_revealed? 
+    if any_revealed? 
+      #response = @player.prompt_flag 
+      if @player.prompt_flag == 'y'
+        @board.grid[row][col].flag_state = true 
+        @board.render
+      end
+    end
+    #@player.prompt_flag if any_revealed? 
     #if you hit a bomb... reveal all tiles
-    if @board.grid[row][col].bomb_state == true
+    if @board.grid[row][col].bomb_state == true && @board.grid[row][col].flag_state != true
        display_all
        @board.render
     #otherwise, reveal that one value 
     else
-      @board.grid[row][col].revealed = true 
+      @board.grid[row][col].revealed = true unless @board.grid[row][col].flag_state == true 
       @board.render
     end
   end
@@ -59,6 +66,8 @@ class Game
       return set.any? { |tile| tile.revealed == true }
     end
   end
+
+
 
 end
 
