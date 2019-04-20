@@ -1,17 +1,20 @@
 class Tile
 
-  attr_accessor :bomb_state, :ui_val, :revealed
+  attr_accessor :bomb_state, :ui_val, :revealed, :flag_state
 
   def initialize
     @bomb_state = nil
     @revealed = false
     @ui_val = nil
+    @flag_state = nil
   end
 
   def ui_status 
     if self.bomb_state == true && self.revealed == true
       @ui_val = :*
-     else
+    elsif self.bomb_state == true && self.flag_state == true 
+      @ui_val = :&
+    else
       @ui_val = :" "
     end
   end
