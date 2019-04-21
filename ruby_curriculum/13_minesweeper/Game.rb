@@ -27,7 +27,6 @@ class Game
     p @board.grid
     @board.render
     fetch_value
-    #system('clear')
   end
 
   def fetch_value 
@@ -35,23 +34,8 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    if any_revealed? 
-      #response = @player.prompt_flag 
-      if @player.prompt_flag == 'y'
-        @board.grid[row][col].flag_state = true 
-        @board.render
-      end
-    end
-    #@player.prompt_flag if any_revealed? 
-    #if you hit a bomb... reveal all tiles
-    if @board.grid[row][col].bomb_state == true && @board.grid[row][col].flag_state != true
-       display_all
-       @board.render
-    #otherwise, reveal that one value 
-    else
-      @board.grid[row][col].revealed = true unless @board.grid[row][col].flag_state == true 
-      @board.render
-    end
+    flag_bomb(row,col)
+    reveal_values(row,col)
   end
 
   #display values of all tiles
@@ -67,8 +51,27 @@ class Game
     end
   end
 
+  def reveal_values(row_pos, col_pos)
+    if @board.grid[row_pos][col_pos].bomb_state == true && @board.grid[row_pos][col_pos].flag_state != true
+       display_all
+       @board.render
+    else
+      @board.grid[row_pos][col_pos].revealed = true unless @board.grid[row_pos][col_pos].flag_state == true 
+      @board.render
+    end
+  end
+
+  def flag_bomb(row_pos, col_pos)
+    if any_revealed? 
+      if @player.prompt_flag == 'y'
+        @board.grid[row_pos][col_pos].flag_state = true 
+        @board.render
+      end
+    end
+  end
+
   def ajacent_neighbors 
-    
+
 
   end
 
