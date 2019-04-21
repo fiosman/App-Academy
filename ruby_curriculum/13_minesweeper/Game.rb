@@ -67,6 +67,11 @@ class Game
     end
   end
 
+  def ajacent_neighbors 
+    
+
+  end
+
 
 
 end
