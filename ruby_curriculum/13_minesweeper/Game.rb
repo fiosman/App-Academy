@@ -70,8 +70,10 @@ class Game
     end
   end
 
+  #Adjacent neighbour bombs include the fringe of the revealed area 
+  #(i.e. all squares adjacent to a bomb (touching the square)).
+  #Should display the count of such squares
   def ajacent_neighbors 
-    
 
   end
 
