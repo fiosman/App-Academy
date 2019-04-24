@@ -23,4 +23,9 @@ class Tile
     rand(1..5) == 1 ? @bomb_state = true : @bomb_state = false
   end
 
+  # def count_bombs 
+  #   count = 0 
+  #   if self.bomb_state == true && self.flag_state == true 
+  #   end
+
 end

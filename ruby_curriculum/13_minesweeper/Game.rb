@@ -11,7 +11,7 @@ class Game
 
   #keep playing the game until player picks a bomb
   def run
-    p @board.grid
+    #p @board.grid
     play until game_over?
     p 'Oops, you lost!'
   end
@@ -19,7 +19,7 @@ class Game
   #Game is over if user selects a bomb
   def game_over?  
     @board.grid.each do |set| 
-      return set.any? { |tile| tile.ui_val == :* }
+      return set.any? { |tile| tile.ui_val == :B }
     end
   end
 
@@ -41,7 +41,9 @@ class Game
   #display values of all tiles
   def display_all 
     @board.grid.each do |set| 
-      set.each { |tile| tile.revealed = true }
+      set.each do |tile| 
+         tile.revealed = true
+      end
     end
   end 
 
@@ -58,6 +60,7 @@ class Game
     else
       @board.grid[row_pos][col_pos].revealed = true unless @board.grid[row_pos][col_pos].flag_state == true 
       @board.render
+      #adjacent_neighbors(row_pos, col_pos)
     end
   end
 
@@ -73,14 +76,14 @@ class Game
   #Adjacent neighbour bombs include the fringe of the revealed area 
   #(i.e. all squares adjacent to a bomb (touching the square)).
   #Should display the count of such squares
-  def ajacent_neighbors 
-
+  def adjacent_neighbors(row_pos, col_pos)
   end
 
 end
 
 game_1 = Game.new(9)
 #p game_1.any_revealed?
+#p game_1.game_over?
 game_1.run
 
 
