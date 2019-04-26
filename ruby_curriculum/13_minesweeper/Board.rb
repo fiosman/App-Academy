@@ -42,5 +42,10 @@ class Board
     @grid
   end
 
+  #This method should be in Board class... Generate count of adjacent bombs
+  def get_neighbors(row_pos, col_pos)
+    
+  end
+
 end
 

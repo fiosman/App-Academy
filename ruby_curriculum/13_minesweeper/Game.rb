@@ -77,6 +77,7 @@ class Game
   #(i.e. all squares adjacent to a bomb (touching the square)).
   #Should display the count of such squares
   def adjacent_neighbors(row_pos, col_pos)
+    
   end
 
 end
