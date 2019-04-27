@@ -16,7 +16,7 @@ class Tile
     elsif self.bomb_state == true && self.flag_state == true 
       @ui_val = :F
     else
-      @ui_val = :" " #display count of adjacent neighbours
+      @ui_val = adjacent_bombs_count
     end
   end
 
@@ -24,4 +24,17 @@ class Tile
     rand(1..5) == 1 ? @bomb_state = true : @bomb_state = false
   end
 
+  def adjacent_bombs_count 
+    @neighbors.inject(0) do |count, tile| 
+      if tile.bomb_state == true 
+        count += 1
+      else
+        count 
+      end
+    end
+  end
+
 end
+
+new_tile = Tile.new 
+p new_tile.adjacent_bombs_count
