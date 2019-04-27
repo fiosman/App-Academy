@@ -5,7 +5,7 @@ class Board
   attr_accessor :grid
 
   #Amount of tiles is equal to the grid size (i.e. input of 9 is a 9x9 grid, total of 81 tiles)
-  def initialize(grid_size)
+  def initialize(grid_size=9)
     @grid = Array.new(grid_size) { Array.new(grid_size) { Tile.new }} 
     populate_board
   end
@@ -42,10 +42,21 @@ class Board
     @grid
   end
 
-  #This method should be in Board class... Generate count of adjacent bombs
+  #populate all bombs adjacent to a selected tile
   def get_neighbors(row_pos, col_pos)
-    
-  end
+    directions = [
+      [-1, -1], [0, -1], [1, -1], [-1, 0], 
+      [1, 0], [-1, 1], [0, 1], [1,1]]
+      
+      directions.each do |direction| 
+        neighbor_row = row_pos + direction.first
+        neighbor_col = col_pos + direction.last
+        if neighbor_row.between?(0, @grid.size-1) && neighbor_col.between?(0, @grid.size-1)
+          @grid[row_pos][col_pos].neighbors << @grid[neighbor_row][neighbor_col]
+        end
+      end
+    end
 
 end
+
 

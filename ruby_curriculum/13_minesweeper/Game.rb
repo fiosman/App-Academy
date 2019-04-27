@@ -61,6 +61,7 @@ class Game
       @board.grid[row_pos][col_pos].revealed = true unless @board.grid[row_pos][col_pos].flag_state == true 
       @board.render
       #adjacent_neighbors(row_pos, col_pos)
+      @board.get_neighbors(row_pos, col_pos)
     end
   end
 
@@ -71,13 +72,6 @@ class Game
         @board.render
       end
     end
-  end
-
-  #Adjacent neighbour bombs include the fringe of the revealed area 
-  #(i.e. all squares adjacent to a bomb (touching the square)).
-  #Should display the count of such squares
-  def adjacent_neighbors(row_pos, col_pos)
-    
   end
 
 end
