@@ -21,7 +21,8 @@ class Game
   end
 
   def play 
-    p @board.grid
+    #p @board.grid
+    system('clear')
     @board.render
     fetch_value
   end
