@@ -1,6 +1,5 @@
 require_relative 'Board.rb'
 
-
 class Game
   attr_accessor :board 
 
