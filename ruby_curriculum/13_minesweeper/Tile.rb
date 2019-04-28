@@ -6,22 +6,19 @@ class Tile
     @bomb_state = nil
     @revealed = false
     @ui_val = nil
-    @flag_state = nil
     @neighbors = Array.new
   end
 
   def ui_status 
     if self.bomb_state == true && self.revealed == true
       @ui_val = :B
-    elsif self.bomb_state == true && self.flag_state == true 
-      @ui_val = :F
     else
       @ui_val = adjacent_bombs_count
     end
   end
 
   def bomb_status 
-    rand(1..5) == 1 ? @bomb_state = true : @bomb_state = false
+    rand(1..4) == 1 ? @bomb_state = true : @bomb_state = false
   end
 
   def adjacent_bombs_count 

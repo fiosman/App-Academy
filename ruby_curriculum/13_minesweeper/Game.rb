@@ -1,17 +1,15 @@
 require_relative 'Board.rb'
-require_relative 'Player.rb'
+
 
 class Game
-  attr_accessor :player, :board 
+  attr_accessor :board 
 
   def initialize(grid_size)
-    @player = Player.new
     @board = Board.new(grid_size)
   end
 
   #keep playing the game until player picks a bomb
   def run
-    #p @board.grid
     play until game_over?
     p 'Oops, you lost!'
   end
@@ -30,58 +28,22 @@ class Game
   end
 
   def fetch_value 
-    pos = @player.parse_pos 
+    pos = parse_pos 
     row = pos[0]
     col = pos[1]
 
-    flag_bomb(row,col)
-    reveal_values(row,col)
+    board.reveal_values(row,col)
   end
 
-  #display values of all tiles
-  def display_all 
-    @board.grid.each do |set| 
-      set.each do |tile| 
-         tile.revealed = true
-      end
-    end
-  end 
+  def parse_pos 
+    p "Please enter a position (e.g. 3,4)"
+    response = gets.chomp
 
-  def any_revealed? 
-    @board.grid.each do |set| 
-      return set.any? { |tile| tile.revealed == true }
-    end
-  end
-
-  def reveal_values(row_pos, col_pos)
-    if @board.grid[row_pos][col_pos].bomb_state == true && @board.grid[row_pos][col_pos].flag_state != true
-       display_all
-       @board.render
-    else
-      @board.grid[row_pos][col_pos].revealed = true unless @board.grid[row_pos][col_pos].flag_state == true 
-      @board.render
-      #adjacent_neighbors(row_pos, col_pos)
-      @board.get_neighbors(row_pos, col_pos)
-    end
-  end
-
-  def flag_bomb(row_pos, col_pos)
-    if any_revealed? 
-      if @player.prompt_flag == 'y'
-        @board.grid[row_pos][col_pos].flag_state = true 
-        @board.render
-      end
-    end
+    response.split(",").map { |pos| Integer(pos) } 
   end
 
 end
 
 game_1 = Game.new(9)
-#p game_1.any_revealed?
-#p game_1.game_over?
 game_1.run
 
-
-
-
-#To-do - Figure out how many adjacent cells to a specific cell are bombs 

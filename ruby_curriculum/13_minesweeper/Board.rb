@@ -1,4 +1,5 @@
 require_relative "Tile.rb"
+#require_relative "Player.rb"
 
 class Board
   
@@ -56,6 +57,33 @@ class Board
         end
       end
     end
+
+    def reveal_values(row_pos, col_pos)
+    if @grid[row_pos][col_pos].bomb_state == true 
+       self.display_all
+       self.render
+    else
+      @grid[row_pos][col_pos].revealed = true  
+      self.render
+      self.get_neighbors(row_pos, col_pos)
+    end
+  end
+
+    def any_revealed? 
+    @grid.each do |set| 
+      return set.any? { |tile| tile.revealed == true }
+    end
+  end
+
+  #display values of all tiles
+  def display_all 
+    @grid.each do |set| 
+      set.each do |tile| 
+         tile.revealed = true
+      end
+    end
+  end 
+
 
 end
 

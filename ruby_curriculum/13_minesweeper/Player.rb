@@ -7,10 +7,5 @@ class Player
     response.split(",").map { |pos| Integer(pos) } 
   end
 
-  def prompt_flag 
-    p "Would you like to flag this position as a mine? (Y/N)"
-    response = gets.chomp.downcase 
-  end
-
 end
 
