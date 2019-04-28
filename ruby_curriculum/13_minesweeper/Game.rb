@@ -32,7 +32,7 @@ class Game
     row = pos[0]
     col = pos[1]
 
-    board.reveal_values(row,col)
+    @board.reveal_values(row,col)
   end
 
   def parse_pos 
