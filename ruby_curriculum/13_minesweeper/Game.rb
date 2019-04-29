@@ -20,6 +20,7 @@ class Game
     end
   end
 
+  #Main method is user I/O
   def play 
     #p @board.grid
     system('clear')
@@ -27,6 +28,7 @@ class Game
     fetch_value
   end
 
+  #Parse user position and reveal its value
   def fetch_value 
     pos = parse_pos 
     row = pos[0]
@@ -35,6 +37,7 @@ class Game
     @board.reveal_values(row,col)
   end
 
+  #Prompt for user input, convert to array of integers such that indexing is possible
   def parse_pos 
     p "Please enter a position (e.g. 3,4)"
     response = gets.chomp

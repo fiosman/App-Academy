@@ -58,10 +58,11 @@ class Board
       end
     end
 
-    def reveal_values(row_pos, col_pos)
+  #Reveal value of input tile 
+  def reveal_values(row_pos, col_pos)
     if @grid[row_pos][col_pos].bomb_state == true 
-       self.display_all
-       self.render
+      self.display_all
+      self.render
     else
       @grid[row_pos][col_pos].revealed = true  
       self.render
@@ -69,7 +70,8 @@ class Board
     end
   end
 
-    def any_revealed? 
+  #Explore if a tile has been revealed already
+  def any_revealed? 
     @grid.each do |set| 
       return set.any? { |tile| tile.revealed == true }
     end
@@ -83,7 +85,6 @@ class Board
       end
     end
   end 
-
 
 end
 
