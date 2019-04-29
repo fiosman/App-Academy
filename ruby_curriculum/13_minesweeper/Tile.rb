@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Tile
 
   attr_accessor :bomb_state, :ui_val, :revealed, :neighbors
@@ -5,18 +7,18 @@ class Tile
   def initialize
     @bomb_state = nil
     @revealed = false
-    @ui_val = :*
+    @ui_val = "*".colorize(:blue)
     @neighbors = Array.new
   end
 
   #Handle UI values for each game condition
   def ui_status 
     if self.bomb_state == true && self.revealed == true
-      @ui_val = :B
+      @ui_val = "B".colorize(:red)
     elsif self.revealed == false 
-      @ui_val
+      @ui_val.colorize(:green)
     else
-      @ui_val = adjacent_bombs_count
+      @ui_val = adjacent_bombs_count.to_s.colorize(:magenta)
     end
   end
 
