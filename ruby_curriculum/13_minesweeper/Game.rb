@@ -20,6 +20,11 @@ class Game
     end
   end
 
+  #Game is won if user has revealed all non-bomb cells
+  def game_won? 
+   count_mines == count_unrevealed_cells 
+  end
+
   #Main method is user I/O
   def play 
     #p @board.grid
