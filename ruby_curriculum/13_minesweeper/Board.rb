@@ -86,6 +86,12 @@ class Board
     end
   end 
 
+  def count_mines 
+    @grid.flatten.select { |tile| tile.bomb_state == true }.count
+  end
+
 end
+
+
 
 
