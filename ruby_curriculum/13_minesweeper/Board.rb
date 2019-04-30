@@ -86,11 +86,19 @@ class Board
     end
   end 
 
+  #Return number of mines on the board
   def count_mines 
     @grid.flatten.select { |tile| tile.bomb_state == true }.count
   end
 
+  def count_unrevealed_cells 
+    @grid.flatten.select { |tile| tile.revealed == false }
+  end
+
 end
+
+board1 = Board.new(9)
+p board1.count_unrevealed_cells
 
 
 
