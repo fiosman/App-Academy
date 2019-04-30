@@ -20,9 +20,9 @@ class Game
     end
   end
 
-  #Game is won if user has revealed all non-bomb cells
+  #Game is won when number of unrevealed cells is equal to number of mines on board
   def game_won? 
-   count_mines == count_unrevealed_cells 
+    @board.count_mines == @board.count_unrevealed_cells
   end
 
   #Main method is user I/O
@@ -53,5 +53,6 @@ class Game
 end
 
 game_1 = Game.new(9)
-game_1.run
+#game_1.run
+p game_1.test
 
