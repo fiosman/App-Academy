@@ -92,13 +92,11 @@ class Board
   end
 
   def count_unrevealed_cells 
-    @grid.flatten.select { |tile| tile.revealed == false }
+    @grid.flatten.select { |tile| tile.revealed == false }.count
   end
 
 end
 
-board1 = Board.new(9)
-p board1.count_unrevealed_cells
 
 
 
