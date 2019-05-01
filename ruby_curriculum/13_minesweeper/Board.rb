@@ -78,12 +78,8 @@ class Board
   end
 
   #display values of all tiles
-  def display_all 
-    @grid.each do |set| 
-      set.each do |tile| 
-         tile.revealed = true
-      end
-    end
+  def display_all
+    @grid.each { |set|  set.each { |tile| tile.revealed = true }} 
   end 
 
   #Return number of mines on the board

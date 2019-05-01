@@ -53,6 +53,5 @@ class Game
 end
 
 game_1 = Game.new(9)
-#game_1.run
-p game_1.test
+game_1.run
 
