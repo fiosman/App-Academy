@@ -71,7 +71,7 @@ class Board
 
     if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
       @grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.reveal_values(neighbor.first, neighbor.last) unless neighbor.revealed }
-    
+    end
   end
 
   #Explore if a tile has been revealed already
