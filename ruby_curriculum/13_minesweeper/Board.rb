@@ -53,6 +53,7 @@ class Board
         neighbor_row = row_pos + direction.first
         neighbor_col = col_pos + direction.last
         if neighbor_row.between?(0, @grid.size-1) && neighbor_col.between?(0, @grid.size-1)
+          #p [neighbor_row, neighbor_col]
           @grid[row_pos][col_pos].neighbors << @grid[neighbor_row][neighbor_col]
         end
       end
@@ -67,11 +68,14 @@ class Board
       @grid[row_pos][col_pos].revealed = true  
       self.render
       self.get_neighbors(row_pos, col_pos)
+      #p @grid[row_pos][col_pos].neighbors
     end
 
-    if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
-      @grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.reveal_values(neighbor.first, neighbor.last) unless neighbor.revealed }
-    end
+     if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
+     # @grid[row_pos][col_pos].
+       #@grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.reveal_values(neighbor.first, neighbor.last) unless neighbor.revealed }
+       @grid[row_pos][col_pos].neighbors.each { |neighbor| p neighbor.neighbors }
+     end
   end
 
   #Explore if a tile has been revealed already
@@ -91,6 +95,7 @@ class Board
     @grid.flatten.select { |tile| tile.bomb_state == true }.count
   end
 
+  #Count the number of unrevealed tiles on the board
   def count_unrevealed_cells 
     @grid.flatten.select { |tile| tile.revealed == false }.count
   end
