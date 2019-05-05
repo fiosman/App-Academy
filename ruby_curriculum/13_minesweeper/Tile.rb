@@ -2,7 +2,7 @@ require 'colorize'
 
 class Tile
 
-  attr_accessor :bomb_state, :ui_val, :revealed, :neighbors, :position
+  attr_accessor :bomb_state, :ui_val, :revealed, :neighbors, :position, :bomb_counts
 
   def initialize
     @bomb_state = nil
@@ -10,6 +10,7 @@ class Tile
     @ui_val = "*".colorize(:blue)
     @neighbors = Array.new
     @position = nil
+    @bomb_counts = 0
   end
 
   #Handle UI values for each game condition
@@ -25,7 +26,7 @@ class Tile
 
   #Randomize bomb cells in the grid (25-30%)
   def bomb_status 
-    rand(1..15) == 1 ? @bomb_state = true : @bomb_state = false
+    rand(1..4) == 1 ? @bomb_state = true : @bomb_state = false
   end
 
   #Generate the number of adjacent bombs
@@ -36,6 +37,7 @@ class Tile
       else
         count 
       end
+      @bomb_counts = count
     end
   end
 

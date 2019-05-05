@@ -16,7 +16,7 @@ class Game
   #Game is over if user selects a bomb
   def game_over?  
     @board.grid.each do |set| 
-      return set.any? { |tile| tile.ui_val == :B }
+     return set.any? { |tile| tile.ui_val == :B }
     end
   end
 
