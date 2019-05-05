@@ -33,10 +33,7 @@ class Game
 
   #Parse user position and reveal its value
   def fetch_value 
-    pos = parse_pos 
-    row = pos[0]
-    col = pos[1]
-
+    row, col = parse_pos
     @board.reveal_values(row,col)
   end
 
