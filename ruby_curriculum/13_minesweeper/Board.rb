@@ -31,7 +31,7 @@ class Board
 
     end
   end
-  
+
   #fill up board with tiles, each of which is either bomb or not and has UI symbol
   def populate_board 
     @grid.each_index do |idx1| 
@@ -48,17 +48,19 @@ class Board
     directions = [
       [-1, -1], [0, -1], [1, -1], [-1, 0], 
       [1, 0], [-1, 1], [0, 1], [1,1]]
+    cell_pos = @grid[row_pos][col_pos]
       
       directions.each do |direction| 
         neighbor_row = row_pos + direction.first
         neighbor_col = col_pos + direction.last
         if neighbor_row.between?(0, @grid.size-1) && neighbor_col.between?(0, @grid.size-1)
-          @grid[row_pos][col_pos].neighbors << @grid[neighbor_row][neighbor_col]
+          cell_pos.neighbors << @grid[neighbor_row][neighbor_col]
           @grid[neighbor_row][neighbor_col].position = [neighbor_row, neighbor_col]
         end
       end
-      if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
-        @grid[row_pos][col_pos].neighbors.each do |neighbor| 
+      if cell_pos.adjacent_bombs_count == 0 
+        cell_pos.neighbors.each do |neighbor| 
+          #p [neighbor.position.first, neighbor.position.last] 
           get_neighbors(neighbor.position.first, neighbor.position.last)
         end
       end
