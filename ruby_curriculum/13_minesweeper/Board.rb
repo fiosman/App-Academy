@@ -75,10 +75,6 @@ class Board
       @grid[row_pos][col_pos].revealed = true  
       self.get_neighbors(row_pos, col_pos)
     end
-
-    def reveal_val(row_pos, col_pos)
-      @grid[row_pos][col_pos].revealed = true
-    end
   end
 
   #Explore if a tile has been revealed already
