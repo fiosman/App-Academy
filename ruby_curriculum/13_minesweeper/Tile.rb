@@ -10,7 +10,7 @@ class Tile
     @ui_val = "*".colorize(:blue)
     @neighbors = Array.new
     @position = nil
-    @bomb_counts = 0
+    #@bomb_counts = adjacent_bombs_count
   end
 
   #Handle UI values for each game condition
@@ -37,7 +37,6 @@ class Tile
       else
         count 
       end
-      @bomb_counts = count
     end
   end
 
