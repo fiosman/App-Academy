@@ -27,8 +27,6 @@ class Game
 
   #Main method is user I/O
   def play 
-    #p @board.grid
-    system('clear')
     @board.render
     fetch_value
   end
