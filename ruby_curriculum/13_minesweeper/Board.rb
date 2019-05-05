@@ -52,9 +52,18 @@ class Board
       directions.each do |direction| 
         neighbor_row = row_pos + direction.first
         neighbor_col = col_pos + direction.last
+        #position = [neighbor_row, neighbor_col]
         if neighbor_row.between?(0, @grid.size-1) && neighbor_col.between?(0, @grid.size-1)
           #p [neighbor_row, neighbor_col]
           @grid[row_pos][col_pos].neighbors << @grid[neighbor_row][neighbor_col]
+          @grid[neighbor_row][neighbor_col].position = [neighbor_row, neighbor_col]
+        end
+      end
+      if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
+        @grid[row_pos][col_pos].neighbors.each do |neighbor| 
+          #get the neighbors 
+          get_neighbors(neighbor.position.first, neighbor.position.last)
+          #{ |neighbor| p neighbor.adjacent_bombs_count }
         end
       end
     end
@@ -64,19 +73,41 @@ class Board
     if @grid[row_pos][col_pos].bomb_state == true 
       self.display_all
       self.render
+      #game_over
     else
       @grid[row_pos][col_pos].revealed = true  
-      self.render
+      #self.render
       self.get_neighbors(row_pos, col_pos)
+      #if @grid[row_pos][col_pos].adjacent_bombs_count == 0
+        #print out the number of adjacent bombs in each of the adjacent neighbors cells
       #p @grid[row_pos][col_pos].neighbors
+      #@grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.get_neighbors(1,2) }
+      #@grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.get_neighbors(@position.first, @position.last) }
+      #end
+      #Get the neighbors, count the number of neighbors
     end
 
-     if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
-     # @grid[row_pos][col_pos].
-       #@grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.reveal_values(neighbor.first, neighbor.last) unless neighbor.revealed }
-       @grid[row_pos][col_pos].neighbors.each { |neighbor| p neighbor.neighbors }
-     end
+    def reveal_val(row_pos, col_pos)
+      @grid[row_pos][col_pos].revealed = true
+    end
+
+    # def get_other_neighbors(neighbors) 
+    #   neighbors.each do |neighbor|
+
+    #   end
+    # end
+
+    #  if @grid[row_pos][col_pos].adjacent_bombs_count == 0 
+    #  # @grid[row_pos][col_pos].
+    #    #@grid[row_pos][col_pos].neighbors.each { |neighbor| neighbor.reveal_values(neighbor.first, neighbor.last) unless neighbor.revealed }
+    #    p @grid[row_pos][col_pos].neighbors
+    #    @grid[row_pos][col_pos].neighbors.each { |neighbor| p neighbor.neighbors }
+    #  end
   end
+
+  #Different houses -> [1,2,3,4,5,6,7]
+  #Power off 
+  
 
   #Explore if a tile has been revealed already
   def any_revealed? 
@@ -84,6 +115,12 @@ class Board
       return set.any? { |tile| tile.revealed == true }
     end
   end
+
+  #def [](position)
+    #row = position[0]
+    #col = position[1] 
+    #@grid[row][col] 
+  #end
 
   #display values of all tiles
   def display_all
@@ -102,7 +139,7 @@ class Board
 
 end
 
-
-
-
+#If there is a count of 0 adjacent neighbors, then we want to 
+#explore all the adjacent neighbors of the neighbors in the original call that produced 0 
+#The issue however is 
 
