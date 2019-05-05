@@ -14,7 +14,7 @@ class Board
 
   #display the grid of tiles
   def render(column_size=9, row_size=9)
-    system('clear')
+    #system('clear')
     print "  "
     (0...column_size).each do  |column| 
       print " #{column} " 
@@ -60,6 +60,12 @@ class Board
           cell_pos.neighbors << @grid[neighbor_row][neighbor_col]
           @grid[neighbor_row][neighbor_col].position = [neighbor_row, neighbor_col]
         end 
+      end
+      
+      if cell_pos.adjacent_bombs_count == 0 
+        cell_pos.neighbors.each do |neighbor| 
+          get_neighbors(neighbor.position.first, neighbor.position.last)
+        end
       end
     end
 
