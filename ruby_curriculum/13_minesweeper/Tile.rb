@@ -2,7 +2,7 @@ require 'colorize'
 
 class Tile
 
-  attr_accessor :bomb_state, :ui_val, :revealed, :neighbors, :position, :bomb_counts
+  attr_accessor :bomb_state, :ui_val, :revealed, :neighbors, :position
 
   def initialize
     @bomb_state = nil
@@ -10,7 +10,6 @@ class Tile
     @ui_val = "*".colorize(:blue)
     @neighbors = Array.new
     @position = nil
-    #@bomb_counts = adjacent_bombs_count
   end
 
   #Handle UI values for each game condition
