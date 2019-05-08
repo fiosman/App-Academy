@@ -36,18 +36,24 @@ class Game
     fetch_value
   end
 
-  #Parse user position and reveal its value
+  #Parse user position and reveal its value, handle exceptions
   def fetch_value 
-    row, col = parse_pos
-    @board.reveal_values(row,col)
+    begin 
+      row, col = parse_pos 
+      if row.between?(0, @board.grid.size-1) && col.between?(0, @board.grid.size-1)
+        @board.reveal_values(row,col)
+      end
+    rescue
+      fetch_value
+    end
   end
 
   #Prompt for user input, convert to array of integers such that indexing is possible
   def parse_pos 
-    p "Please enter a position (e.g. 3,4)"
+    p "Please enter a valid position (e.g. 3,4)"
     response = gets.chomp
 
-    response.split(",").map { |pos| Integer(pos) } 
+    response.split(",").map { |pos| Integer(pos) }
   end
 
 end
