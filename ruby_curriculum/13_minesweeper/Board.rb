@@ -62,16 +62,6 @@ class Board
       end
     end
 
-  def new_reveal(row_pos, col_pos)
-    cell_pos = @grid[row_pos][col_pos]
-    if cell_pos.adjacent_bombs_count == 0 
-      cell_pos.neighbors.each do |neighbor| 
-        get_neighbors(neighbor.position.first, neighbor.position.last)
-        neighbor.revealed = true
-      end
-    end
-  end
-
   #Reveal value of input tile 
   def reveal_values(row_pos, col_pos)
     if @grid[row_pos][col_pos].bomb_state == true 
@@ -79,8 +69,16 @@ class Board
       self.render
     else
       @grid[row_pos][col_pos].revealed = true  
-      self.get_neighbors(row_pos,col_pos) 
-      self.new_reveal(row_pos, col_pos)
+      self.get_neighbors(row_pos,col_pos)
+      
+  #handle case where there are zero bombs adjacent to a player-selected tile
+      cell_pos = @grid[row_pos][col_pos]
+      if cell_pos.adjacent_bombs_count == 0 
+        cell_pos.neighbors.each do |neighbor| 
+          get_neighbors(neighbor.position.first, neighbor.position.last)
+          neighbor.revealed = true
+        end
+      end
     end
   end
 
