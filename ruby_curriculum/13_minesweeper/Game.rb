@@ -53,7 +53,6 @@ class Game
 end
 
 game_1 = Game.new(9)
-#p game_1.board
 game_1.run
 
 

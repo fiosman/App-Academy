@@ -1,5 +1,4 @@
 require_relative "Tile.rb"
-#require_relative "Player.rb"
 require 'byebug'
 
 class Board
@@ -38,8 +37,8 @@ class Board
 
   #fill up board with tiles, each of which is either bomb or not and has UI symbol
   def populate_board 
-    @grid.each_index do |idx1| 
-      (@grid[idx1]).each do |tile| 
+    @grid.each_index do |idx| 
+      (@grid[idx]).each do |tile| 
         tile.bomb_status
         tile.ui_status
       end
@@ -82,13 +81,6 @@ class Board
       @grid[row_pos][col_pos].revealed = true  
       self.get_neighbors(row_pos,col_pos) 
       self.new_reveal(row_pos, col_pos)
-    end
-  end
-
-  #Explore if a tile has been revealed already
-  def any_revealed? 
-    @grid.each do |set| 
-      return set.any? { |tile| tile.revealed == true }
     end
   end
 
