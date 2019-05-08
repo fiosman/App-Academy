@@ -9,20 +9,25 @@ class Game
 
   #keep playing the game until player picks a bomb
   def run
-    play until game_over?
-    p 'Oops, you lost!'
+    unless game_won?
+      play until game_over?
+      p "Oops, you've lost the game!"
+    end
+    return
   end
 
   #Game is over if user selects a bomb
   def game_over?  
     @board.grid.each do |set| 
-     return set.any? { |tile| tile.ui_val == :B }
+      return set.any? { |tile| tile.revealed == true && tile.bomb_state == true }
     end
   end
 
   #Game is won when number of unrevealed cells is equal to number of mines on board
   def game_won? 
-    @board.count_mines == @board.count_unrevealed_cells
+    if @board.count_mines == @board.count_unrevealed_cells
+      p "Congrats, you've won!"
+    end
   end
 
   #Main method is user I/O
@@ -48,5 +53,7 @@ class Game
 end
 
 game_1 = Game.new(9)
+#p game_1.board
 game_1.run
+
 

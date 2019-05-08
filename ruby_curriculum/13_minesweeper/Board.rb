@@ -16,7 +16,7 @@ class Board
 
   #display the grid of tiles
   def render(column_size=9, row_size=9)
-    #system('clear')
+    system('clear')
     print "  "
     (0...column_size).each do  |column| 
       print " #{column} " 
