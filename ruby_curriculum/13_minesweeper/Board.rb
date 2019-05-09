@@ -15,7 +15,7 @@ class Board
 
   #display the grid of tiles
   def render(column_size=9, row_size=9)
-    #system('clear')
+    system('clear')
     print "  "
     (0...column_size).each do  |column| 
       print " #{column} " 
@@ -70,7 +70,7 @@ class Board
     else
       @grid[row_pos][col_pos].revealed = true 
       self.get_neighbors(row_pos,col_pos)
-      
+
   #handle case where there are zero bombs adjacent to a player-selected tile
       cell_pos = @grid[row_pos][col_pos]
       if cell_pos.adjacent_bombs_count == 0 
