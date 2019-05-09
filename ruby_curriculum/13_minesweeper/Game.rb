@@ -43,7 +43,7 @@ class Game
       if row.between?(0, @board.grid.size-1) && 
          col.between?(0, @board.grid.size-1) && 
          !@board.grid[row][col].revealed 
-          @board.reveal_values(row,col)
+           @board.reveal_values(row,col)
       end
     rescue
       fetch_value
