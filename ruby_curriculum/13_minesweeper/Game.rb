@@ -40,8 +40,10 @@ class Game
   def fetch_value 
     begin 
       row, col = parse_pos 
-      if row.between?(0, @board.grid.size-1) && col.between?(0, @board.grid.size-1)
-        @board.reveal_values(row,col)
+      if row.between?(0, @board.grid.size-1) && 
+         col.between?(0, @board.grid.size-1) && 
+         !@board.grid[row][col].revealed 
+          @board.reveal_values(row,col)
       end
     rescue
       fetch_value
