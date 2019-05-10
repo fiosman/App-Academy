@@ -1,4 +1,7 @@
 class Map
+
+  attr_accessor :ivar 
+  
   def initialize
     @ivar = []
   end
@@ -18,5 +21,5 @@ class Map
   def show 
 
   end
-  
+
 end
