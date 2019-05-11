@@ -1,3 +1,3 @@
-# Data Structures & Algorithms 
+# Intro to Data Structures
 
-DFS, BFS, Trees & more. 
+Implementations of basic abstract data types 
