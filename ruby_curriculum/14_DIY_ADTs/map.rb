@@ -3,7 +3,7 @@ class Map
   attr_accessor :ivar 
 
   def initialize
-    @ivar = [['Augustine', 3],['Chris', 2]]
+    @ivar = []
   end
 
   def get(key)
@@ -30,13 +30,3 @@ class Map
   end
 
 end
-
-map_1 = Map.new
-#p map_1.get("Fares")
-#p map_1.ivar
-map_1.set('Fares', 3)
-p map_1.ivar
-#p map_1.ivar
-#p map_1.get('Fares')
-#map_1.delete('Fares')
-#p map_1.show
