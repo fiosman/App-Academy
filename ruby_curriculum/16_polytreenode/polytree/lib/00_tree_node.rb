@@ -24,5 +24,15 @@ class PolyTreeNode #this is just one node in a tree
     node.children << self unless node.nil?
   end
 
+  def add_child(child_node)
+    child_node.parent = self
+  end
+
+  def remove_child(child_node)
+    child_node.parent = nil 
+    raise error if !@children.include?(child_node)
+  end
+
 end
+
 
