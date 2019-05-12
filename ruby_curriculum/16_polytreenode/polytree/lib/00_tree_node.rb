@@ -19,8 +19,10 @@ class PolyTreeNode #this is just one node in a tree
   end
 
   def parent=(node)
+    @parent.children.delete(self) if !@parent.nil?
     @parent = node
     node.children << self unless node.nil?
   end
 
 end
+
