@@ -1,9 +1,9 @@
-class PolyTreeNode #this is just one node in a tree
+class PolyTreeNode
 
   def initialize(value)
-    @value = value #returns the value stored at that node
-    @parent = nil #returns the node's parent
-    @children = [] #returns the node's children 
+    @value = value 
+    @parent = nil 
+    @children = [] 
   end
 
   def parent 
@@ -52,7 +52,7 @@ class PolyTreeNode #this is just one node in a tree
       return current_node if target_value == current_node
       queue << current_node.children 
     end
-    
+
     nil
   end
 
