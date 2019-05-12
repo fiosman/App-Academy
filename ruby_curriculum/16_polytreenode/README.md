@@ -1,4 +1,4 @@
 # Trees, BFS, DFS 
 
-Exercise implementing polytrees with breadth-depth search and depth-first search methods 
+Exercise implementing polytrees with breadth-first search and depth-first search methods 
 
