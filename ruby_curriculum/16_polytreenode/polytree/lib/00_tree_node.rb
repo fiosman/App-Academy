@@ -33,6 +33,29 @@ class PolyTreeNode #this is just one node in a tree
     raise error if !@children.include?(child_node)
   end
 
+  def dfs(target_value)
+    return self if target_value == self.value
+  
+    self.children.each do |child| 
+      search = child.dfs(target_value)
+      return search unless search.nil?
+    end
+
+    nil
+  end
+  
+  def bfs(target_value)
+    queue = [self]
+
+    until queue.empty? 
+      current_node = queue.shift
+      return current_node if target_value == current_node
+      queue << current_node.children 
+    end
+    
+    nil
+  end
+
 end
 
 
