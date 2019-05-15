@@ -37,14 +37,14 @@ class KnightPathFinder
       current_node = queue.shift
       new_move_positions(current_node.value).each do |new_position| 
         child = PolyTreeNode.new(new_position)
-        current_position.add_child(child)
+        current_node.add_child(child)
         queue << child
       end
     end
   end
   
   def find_path(end_pos)
-    node = @root_node.dfs(end_pos)
+    end_node = @root_node.dfs(end_pos)
   end
 
 end
