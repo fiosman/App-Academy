@@ -2,12 +2,11 @@ require_relative 'polytreenode'
 
 class KnightPathFinder
 
-  #There are 8 moves a Knight piece can make on a chess board.. L-Shaped (two moves horizontal, one move vertical. Or two moves vertical, one move horizontal)
+  attr_accessor :root_node, :considered_positions
+
   MOVES = [[1,2], [2,1], [-1, 2], [1, -2], [-2, 1], [2, -1], [-2, -1], [-1, -2]]
 
   def self.valid_moves(pos)
-    #A move is valid if it is not out of the chessboard range(i.e. between 0 and 7)
-    #We want to be abel to find new positions we can move to from a given position
     row, col = pos
 
     new_moves = MOVES.map do |move| 
@@ -26,19 +25,19 @@ class KnightPathFinder
   end
 
   def new_move_positions(pos)
-    new_positions = KnightPathFinder.valid_moves(pos).reject { |position| @considered_positions.include?(position) }
-    @considered_positions << positions
-    return new_moves
+    new_positions = KnightPathFinder.valid_moves(pos).select { |position| !@considered_positions.include?(position) }
+    @considered_positions << new_positions
+    return new_positions
   end
 
   def build_move_tree
-    queue = [self.root_node.value]
+    queue = [@root_node]
 
     until queue.empty? 
-      current_pos = queue.shift
-      new_move_positions(current_pos.value).each do |new_pos| 
-        child = PolyTreeNode.new(new_pos)
-        current_pos.add_child(child)
+      current_node = queue.shift
+      new_move_positions(current_node.value).each do |new_position| 
+        child = PolyTreeNode.new(new_position)
+        current_position.add_child(child)
         queue << child
       end
     end
@@ -46,17 +45,6 @@ class KnightPathFinder
   
   def find_path(end_pos)
     node = @root_node.dfs(end_pos)
-    trace_path_back(node)
-  end
-
-  def trace_path_back(node)
-    res = [node]
-
-    
-    
   end
 
 end
-
-kpf = KnightPathFinder.new([0,1])
-#p KnightPathFinder.valid_moves([1,2])
