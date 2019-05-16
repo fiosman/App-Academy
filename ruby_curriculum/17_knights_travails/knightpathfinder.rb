@@ -26,7 +26,7 @@ class KnightPathFinder
 
   def new_move_positions(pos)
     new_positions = KnightPathFinder.valid_moves(pos).select { |position| !@considered_positions.include?(position) }
-    @considered_positions << new_positions
+    @considered_positions += new_positions
     return new_positions
   end
 
@@ -43,8 +43,19 @@ class KnightPathFinder
     end
   end
   
+  #Has to be re-written..
   def find_path(end_pos)
     end_node = @root_node.dfs(end_pos)
+    end_node.trace_path_back #have to write this..
   end
 
 end
+
+if __FILE__ == $PROGRAM_NAME
+  kpf = KnightPathFinder.new([0, 0])
+  p kpf.find_path([6, 2])
+end
+
+
+
+  
