@@ -43,17 +43,27 @@ class KnightPathFinder
     end
   end
   
-  #Has to be re-written..
   def find_path(end_pos)
     end_node = @root_node.dfs(end_pos)
-    end_node.trace_path_back #have to write this..
+    trace_path_back(end_node)
   end
 
+ def trace_path_back(end_node)
+    path_nodes = []
+
+    current_node = end_node
+    until current_node.nil?
+      path_nodes << current_node.value
+      current_node = current_node.parent
+    end
+
+    path_nodes.reverse
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   kpf = KnightPathFinder.new([0, 0])
-  p kpf.find_path([6, 2])
+  p kpf.find_path([7, 6])
 end
 
 
