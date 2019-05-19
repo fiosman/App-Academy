@@ -50,12 +50,14 @@ class PolyTreeNode
     until queue.empty? 
       current_node = queue.shift
       return current_node if target_value == current_node
-      queue << current_node.children 
+      current_node.children.each { |child| queue << child } 
     end
 
     nil
   end
 
 end
+
+p 
 
 
