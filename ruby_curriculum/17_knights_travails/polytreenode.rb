@@ -1,3 +1,5 @@
+require 'byebug'
+
 class PolyTreeNode
 
   def initialize(value)
@@ -19,12 +21,14 @@ class PolyTreeNode
   end
 
   def parent=(node)
+    #Sets a new parent to a node
     @parent.children.delete(self) if !@parent.nil?
     @parent = node
-    node.children << self unless node.nil?
+    node.children << self unless node.nil? #adds the current node to the newly assigned parent node
   end
 
   def add_child(child_node)
+    #the method parent= is called, passing in the current instance (i.e. node)
     child_node.parent = self
   end
 
@@ -47,13 +51,17 @@ class PolyTreeNode
   def bfs(target_value)
     queue = [self]
 
+    #byebug
     until queue.empty? 
       current_node = queue.shift
-      return current_node if target_value == current_node
-      queue << current_node.children 
+      return current_node if target_value == current_node.value
+      current_node.children.each { |child| queue << child }
     end
 
     nil
   end
 
 end
+
+
+
