@@ -58,6 +58,4 @@ class PolyTreeNode
 
 end
 
-p 
-
 
