@@ -38,8 +38,8 @@ class Simon
 
   def require_sequence
     p "Type in each color then press Enter"
-    
-    seq.each do |color| 
+
+    @seq.each do |color| 
       user_guess = gets.chomp 
       @game_over = true if user_guess != color 
     end
