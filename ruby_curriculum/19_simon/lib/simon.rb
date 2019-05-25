@@ -41,11 +41,11 @@ class Simon
   end
 
   def round_success_message
-
+    p "Nice work!"
   end
 
   def game_over_message
-
+    p "Oops, you lose! Try again."
   end
 
   def reset_game
