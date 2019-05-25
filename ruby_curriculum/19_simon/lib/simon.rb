@@ -22,7 +22,7 @@ class Simon
     self.show_sequence 
     self.require_sequence 
 
-    unless self.game_over
+    unless @game_over
       self.round_success_message 
       @sequence_length += 1
     end
@@ -37,7 +37,7 @@ class Simon
   end
 
   def add_random_color
-    self.seq << COLORS.sample
+    @seq << COLORS.sample
   end
 
   def round_success_message
@@ -49,6 +49,8 @@ class Simon
   end
 
   def reset_game
-
+    @sequence_length = 1
+    @game_over = false 
+    @seq = []
   end
 end
