@@ -10,7 +10,12 @@ class Simon
   end
 
   def play
+    until game_over 
+      self.take_turn 
+    end
 
+    self.game_over_message 
+    self.reset_game 
   end
 
   def take_turn
@@ -24,7 +29,7 @@ class Simon
   end
 
   def show_sequence
-
+    self.add_random_color
   end
 
   def require_sequence
