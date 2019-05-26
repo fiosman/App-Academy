@@ -1,6 +1,9 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+    Integer(str)
+  rescue ArgumentError => e
+    p "Cannot convert #{str} to an integer!"
+    p "Error was #{e.message}"
 end
 
 # PHASE 3
