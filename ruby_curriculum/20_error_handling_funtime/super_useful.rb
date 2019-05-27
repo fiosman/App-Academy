@@ -67,7 +67,7 @@ class BestFriend
 
   def self.name_length(name)
     if name.length <= 0 
-      raise EmptyStringError.new "You must enter something!"
+      raise EmptyStringError.new "You must enter a name!"
     else 
       @name = name
     end
@@ -75,7 +75,7 @@ class BestFriend
 
   def self.fav_pastime_length(time)
     if time.length <= 0 
-      raise EmptyStringError.new "You must enter something!"
+      raise EmptyStringError.new "You must enter a favorite past time!"
     else 
       @fav_pastime = time
     end
