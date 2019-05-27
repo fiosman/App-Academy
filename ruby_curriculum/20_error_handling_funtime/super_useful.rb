@@ -50,24 +50,41 @@ end
 # PHASE 4
 
 class BestFriendError < StandardError
-  def message 
-    puts "You aren't best friends with someone if you have not known them for at least 5 years!"
-  end
+end
+
+class EmptyStringError < StandardError 
 end
 
 class BestFriend
-  def initialize(name, yrs_known, fav_pastime)
-    @name = name
-    @yrs_known = BestFriend.test_years(yrs_known)
-    @fav_pastime = fav_pastime
-  end
 
   def self.test_years(yrs_known) 
     if yrs_known < 5
-      raise BestFriendError 
+      raise BestFriendError.new "Must have known someone for atleast 5 years to be friends with them!"
     else
       @years_known = yrs_known
     end
+  end
+
+  def self.name_length(name)
+    if name.length <= 0 
+      raise EmptyStringError.new "You must enter something!"
+    else 
+      @name = name
+    end
+  end
+
+  def self.fav_pastime_length(time)
+    if time.length <= 0 
+      raise EmptyStringError.new "You must enter something!"
+    else 
+      @fav_pastime = time
+    end
+  end
+
+  def initialize(name, yrs_known, fav_pastime)
+    @name = BestFriend.name_length(name)
+    @yrs_known = BestFriend.test_years(yrs_known)
+    @fav_pastime = BestFriend.fav_pastime_length(fav_pastime)
   end
 
   def talk_about_friendship
