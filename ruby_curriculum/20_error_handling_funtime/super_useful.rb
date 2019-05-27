@@ -48,11 +48,26 @@ def feed_me_a_fruit
 end  
 
 # PHASE 4
+
+class BestFriendError < StandardError
+  def message 
+    puts "You aren't best friends with someone if you have not known them for at least 5 years!"
+  end
+end
+
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     @name = name
-    @yrs_known = yrs_known
+    @yrs_known = BestFriend.test_years(yrs_known)
     @fav_pastime = fav_pastime
+  end
+
+  def self.test_years(yrs_known) 
+    if yrs_known < 5
+      raise BestFriendError 
+    else
+      @years_known = yrs_known
+    end
   end
 
   def talk_about_friendship
