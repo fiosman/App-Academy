@@ -39,7 +39,6 @@ def feed_me_a_fruit
     puts "Feed me a fruit! (Enter the name of a fruit:)"
     maybe_fruit = gets.chomp 
     reaction(maybe_fruit)
-  
   rescue CoffeeError => e
     puts e.message
     retry
