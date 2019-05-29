@@ -12,11 +12,11 @@ end
 
 class Manager < Employee
   def initialize(name, title, salary, boss)
-    super(name, title, salary, boss)
+    super
     @employees = []
   end
   
 end
 
-#p manager_1 = Manager.new('f', 't', 'h', 'g')
+#manager_1 = Manager.new('f', 't', 'h', 'g')
 #p manager_1.name
