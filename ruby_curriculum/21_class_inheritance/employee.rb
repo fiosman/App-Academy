@@ -1,7 +1,7 @@
 require 'byebug'
 
 class Employee
-  attr_accessor :name, :title, :salary
+  attr_reader :name, :title, :salary
   attr_accessor :boss
 
   def initialize(name, title, salary, boss)
