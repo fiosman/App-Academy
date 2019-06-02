@@ -1,4 +1,5 @@
 require_relative 'Piece.rb'
+require_relative 'exceptions.rb'
 
 class Board
   def initialize
@@ -6,8 +7,12 @@ class Board
     populate_board
   end
 
-  def move_piece(start_pos, end_pos)
-    unless self[start_pos].nil? || !self[end_pos].nil? 
+  def move_piece(start_pos, end_pos) 
+    if self[start_pos].nil? 
+      raise NoPieceError.new 'Hey there is no piece here!'
+    elsif !self[end_pos].nil? 
+      raise InvalidMoveError.new 'You cannot move to this position!'
+    else
       self[end_pos] = self[start_pos]
       self[start_pos] = nil
     end
@@ -36,8 +41,7 @@ class Board
 end
 
 # pp board_1 = Board.new 
-# board_1.move_piece([0, 0], [0,1])
+# board_1.move_piece([7,1], [0,1])
 # pp board_1
-
 
 
