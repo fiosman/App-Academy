@@ -7,7 +7,10 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-
+    unless self[start_pos].nil? || !self[end_pos].nil? 
+      self[end_pos] = self[start_pos]
+      self[start_pos] = nil
+    end
   end
 
   def populate_board 
@@ -20,10 +23,21 @@ class Board
     @rows
   end
 
-  
+  def [](pos)
+    row, col = pos
+    @rows[row][col]
+  end
+
+  def []=(pos, value)
+    row, col = pos 
+    @rows[row][col] = value
+  end
+
 end
 
-#board_1 = Board.new 
+# pp board_1 = Board.new 
+# board_1.move_piece([0, 0], [0,1])
+# pp board_1
 
 
 
