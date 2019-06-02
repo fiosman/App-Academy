@@ -1,4 +1,4 @@
-require_relative 'piece'
+require_relative 'pieces'
 require_relative 'exceptions'
 
 class Board
@@ -40,8 +40,8 @@ class Board
 
 end
 
-# pp board_1 = Board.new 
-# board_1.move_piece([7,1], [0,1])
-# pp board_1
+pp board_1 = Board.new 
+board_1.move_piece([1,1], [0,1])
+pp board_1
 
 
