@@ -1,5 +1,5 @@
-require_relative 'Piece.rb'
-require_relative 'exceptions.rb'
+require_relative 'piece'
+require_relative 'exceptions'
 
 class Board
   def initialize
