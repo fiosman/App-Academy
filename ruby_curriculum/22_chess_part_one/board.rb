@@ -48,8 +48,8 @@ class Board
 
 end
 
-pp board_1 = Board.new
-board_1.move_piece([3,7], [3,1])
-pp board_1
+# pp board_1 = Board.new
+# board_1.move_piece([3,7], [3,1])
+# pp board_1
 
 
