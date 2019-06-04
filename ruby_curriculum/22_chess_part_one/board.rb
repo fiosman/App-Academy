@@ -10,7 +10,7 @@ class Board
   end
 
   def move_piece(start_pos, end_pos) 
-    if self[start_pos].nil? 
+    if self[start_pos].is_a?(NullPiece)
       raise NoPieceError.new 'Hey there is no piece here!'
     elsif !self[end_pos].is_a?(NullPiece)
       raise InvalidMoveError.new 'You cannot move to this position!'
@@ -48,8 +48,8 @@ class Board
 
 end
 
-# pp board_1 = Board.new 
-# board_1.move_piece([1,1], [3,1])
-# pp board_1
+pp board_1 = Board.new
+ board_1.move_piece([3,7], [3,1])
+pp board_1
 
 
