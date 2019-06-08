@@ -46,6 +46,10 @@ class Board
     @rows[row][col] = value
   end
 
+  def valid_pos?(pos)
+
+  end
+
 end
 
 # pp board_1 = Board.new
