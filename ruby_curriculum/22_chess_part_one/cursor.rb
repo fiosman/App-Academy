@@ -88,11 +88,8 @@ class Cursor
   end
 
   def update_pos(diff)
-    #Fill in the #update_pos(diff) method. 
-    #It should use the diff to reassign @cursor_pos to a new position. 
-    @cursor_pos = diff if @board.valid_pos?(diff)
-    
-    #You may wish to write a Board#valid_pos? 
-    #method to ensure you update @cursor_pos only when the new position is on the board.
+    new_pos = [@cursor_pos.first + @diff.first, @cursor_pos.last + @diff.last]
+    @cursor_pos = new_pos if @board.valid_pos?(new_pos)
   end
+  
 end
