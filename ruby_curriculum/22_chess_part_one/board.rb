@@ -47,13 +47,14 @@ class Board
   end
 
   def valid_pos?(pos)
-
+    row, col = pos 
+    row.between?(0,7) && col.between?(0,7)
   end
 
 end
 
-# pp board_1 = Board.new
-# board_1.move_piece([3,7], [3,1])
-# pp board_1
+#pp board_1 = Board.new
+#board_1.move_piece([1,4], [3,1])
+#pp board_1.valid_pos?([1,3])
 
 
