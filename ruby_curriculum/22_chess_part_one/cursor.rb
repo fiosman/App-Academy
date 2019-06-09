@@ -78,10 +78,10 @@ class Cursor
   def handle_key(key)
     case key 
     when :return, :space
-      @cursor_pos
+      return @cursor_pos
     when :left, :right, :down, :up 
       update_pos(MOVES[key])
-      nil
+      return nil
     when :ctrl_c 
       Process.exit(0)
     end
@@ -91,5 +91,5 @@ class Cursor
     new_pos = [@cursor_pos.first + @diff.first, @cursor_pos.last + @diff.last]
     @cursor_pos = new_pos if @board.valid_pos?(new_pos)
   end
-  
+
 end

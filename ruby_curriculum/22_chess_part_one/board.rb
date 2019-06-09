@@ -26,7 +26,7 @@ class Board
         if row_idx == 0 || row_idx == 7 
           @rows[row_idx][col_idx] = Piece.new
         elsif row_idx == 1 || row_idx == 6 
-          @rows[row_idx][col_idx] = Piece.new 
+          @rows[row_idx][col_idx] = Piece.new
         else 
           @rows[row_idx][col_idx] = NullPiece.new
         end
