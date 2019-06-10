@@ -25,8 +25,9 @@ class Board
 
   def make_move(start_pos, current_player_name)
     starting_cup = @cups[start_pos]
-    current_position = start_pos 
+    @cups[start_pos] = []
 
+    current_position = start_pos
     until starting_cup.empty? 
       current_position += 1
       current_position = 0 if current_position > 13
@@ -64,16 +65,8 @@ class Board
   end
 
   def one_side_empty?
-
-    @cups[0..5].each do |cup| 
-      return true if cup.all? { |stones| stones.empty? }   
-    end
-
-    @cups[7..12].each do |cup| 
-      return true if cup.all? { |stones| stones.empty? }
-    end
-    
-    false
+    @cups[0..5].all? { |cup| cup.empty? } || 
+    @cups[7..12].all? { |cup| cup.empty? }
   end
 
   def winner
