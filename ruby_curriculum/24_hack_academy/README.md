@@ -1,3 +1,3 @@
 # Hack Academy
 
-This is a very simple exercise. Practice modifying pages using Chrome Developer Tools. 
+This is a very simple exercise. Practice modifying web pages using Chrome Developer Tools. 
