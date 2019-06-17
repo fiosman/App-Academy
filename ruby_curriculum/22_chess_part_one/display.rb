@@ -1,6 +1,7 @@
 require 'colorize'
 require_relative 'cursor'
 require_relative 'board'
+require_relative './pieces/bishop'
 
 class Display
   attr_reader :cursor, :board
@@ -13,7 +14,8 @@ class Display
   def render 
     @board.rows.each do |row|
       row.each do |col| 
-        print col.val
+        #print col.val
+        print col.unicode
         print " | "
       end
       puts "\n"
@@ -22,5 +24,5 @@ class Display
   end
 end
 
-display_1 = Display.new(Board.new)
-p display_1.cursor.get_input 
+p display_1 = Display.new(Board.new)
+p display_1.render 
