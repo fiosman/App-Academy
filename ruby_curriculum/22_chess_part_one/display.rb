@@ -15,7 +15,7 @@ class Display
     @board.rows.each do |row|
       row.each do |col| 
         #print col.val
-        print col.unicode
+        print col.val
         print " | "
       end
       puts "\n"

@@ -23,11 +23,16 @@ class Board
   def populate_board 
     @rows.each_with_index do |row, row_idx| 
       row.each_index do |col_idx| 
-        if row_idx == 0 || row_idx == 7 
+
+        case row_idx 
+
+        when row_idx == 0, 7 
+          #populate back row 
           @rows[row_idx][col_idx] = Piece.new
-        elsif row_idx == 1 || row_idx == 6 
-          @rows[row_idx][col_idx] = Piece.new
+        when row_idx == 1,6
+          #populate front row
         else 
+          #popualte empty spots
           @rows[row_idx][col_idx] = NullPiece.new
         end
       end
@@ -49,6 +54,19 @@ class Board
   def valid_pos?(pos)
     row, col = pos 
     row.between?(0,7) && col.between?(0,7)
+  end
+
+  # def spawn_front_row(row_pos, col_pos)
+  #   case row_pos 
+  # end
+
+  def spawn_back_row(col_pos)
+    case col_pos 
+    when 0, 7
+    when 1, 6
+    when 2, 5
+    when 3
+    when 4
   end
 
 end
