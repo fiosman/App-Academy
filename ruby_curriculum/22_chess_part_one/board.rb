@@ -56,17 +56,18 @@ class Board
     row.between?(0,7) && col.between?(0,7)
   end
 
-  # def spawn_front_row(row_pos, col_pos)
-  #   case row_pos 
-  # end
-
   def spawn_back_row(col_pos)
     case col_pos 
     when 0, 7
+      #rook
     when 1, 6
+      #knight
     when 2, 5
+      #bishop
     when 3
+      #queen
     when 4
+      #king
   end
 
 end
