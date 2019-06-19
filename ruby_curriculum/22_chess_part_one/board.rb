@@ -24,9 +24,9 @@ class Board
     @rows.each_with_index do |row, row_idx| 
       row.each_index do |col_idx| 
         if row_idx == 0 || row_idx == 7
-         spawn_back_row(col_idx, row_idx)
+         spawn_back_row(row_idx, col_idx)
         elsif row_idx == 1 || row_idx == 6
-         spawn_front_row(row_idx)
+         spawn_front_row(row_idx, col_idx)
         else 
           @rows[row_idx][col_idx] = NullPiece.new
         end
@@ -49,7 +49,7 @@ class Board
     row.between?(0,7) && col.between?(0,7)
   end
 
-  def spawn_back_row(col_pos, row_pos)
+  def spawn_back_row(row_pos, col_pos)
     case col_pos 
     when 0, 7
       @rows[row_pos][col_pos] = Rook.new
@@ -64,9 +64,10 @@ class Board
     end
   end
 
-  def spawn_front_row(row_pos)
-    8.times do |col| 
-      @rows[row_pos][col] = Pawn.new
+  def spawn_front_row(row_pos, col_pos)
+    case row_pos 
+    when 1,6
+      @rows[row_pos][col_pos] = Pawn.new
     end
   end
 
