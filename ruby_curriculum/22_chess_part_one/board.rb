@@ -23,22 +23,15 @@ class Board
   def populate_board 
     @rows.each_with_index do |row, row_idx| 
       row.each_index do |col_idx| 
-
-        case row_idx 
-
-        when row_idx == 0, 7 
-          #populate back row 
-          @rows[row_idx][col_idx] = Piece.new
-        when row_idx == 1,6
-          #populate front row
+        if row_idx == 0 || row_idx == 7
+         spawn_back_row(col_idx, row_idx)
+        elsif row_idx == 1 || row_idx == 6
+         spawn_front_row(row_idx)
         else 
-          #popualte empty spots
           @rows[row_idx][col_idx] = NullPiece.new
         end
       end
     end
-
-    @rows
   end
 
   def [](pos)
@@ -56,18 +49,25 @@ class Board
     row.between?(0,7) && col.between?(0,7)
   end
 
-  def spawn_back_row(col_pos)
+  def spawn_back_row(col_pos, row_pos)
     case col_pos 
     when 0, 7
-      #rook
+      @rows[row_pos][col_pos] = Rook.new
     when 1, 6
-      #knight
+      @rows[row_pos][col_pos] = Knight.new
     when 2, 5
-      #bishop
+      @rows[row_pos][col_pos] = Bishop.new
     when 3
-      #queen
+      @rows[row_pos][col_pos] = Queen.new
     when 4
-      #king
+      @rows[row_pos][col_pos] = King.new
+    end
+  end
+
+  def spawn_front_row(row_pos)
+    8.times do |col| 
+      @rows[row_pos][col] = Pawn.new
+    end
   end
 
 end
