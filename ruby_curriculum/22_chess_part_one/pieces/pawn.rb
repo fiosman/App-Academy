@@ -1,10 +1,9 @@
 require_relative 'piece'
 
 class Pawn < Piece 
-  attr_reader :unicode, :val
+  attr_reader :val
 
   def initialize
-    @unicode = "\u2659" 
-    @val = :P
+    @val = "\u2659"
   end
 end

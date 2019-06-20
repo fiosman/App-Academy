@@ -1,10 +1,9 @@
 require_relative 'piece'
 
 class Queen < Piece 
-  attr_reader :unicode, :val
+  attr_reader :val
 
   def initialize
-   @unicode = "\u2655"
-   @val = :Q
+   @val = "\u2655"
   end
 end
