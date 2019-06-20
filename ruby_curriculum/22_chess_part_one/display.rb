@@ -1,10 +1,9 @@
 require 'colorize'
-require_relative 'cursor'
 require_relative 'board'
 require_relative './pieces/bishop'
 
 class Display
-  attr_reader :cursor, :board
+  attr_reader :board
 
   def initialize(board)
     @board = board
