@@ -4,6 +4,7 @@ class NullPiece < Piece
   attr_reader :val
   
   def initialize
-    @val = :*
+    @val = "   " 
   end
+
 end

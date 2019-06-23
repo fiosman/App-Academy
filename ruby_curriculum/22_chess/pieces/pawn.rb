@@ -4,6 +4,6 @@ class Pawn < Piece
   attr_reader :val
 
   def initialize
-    @val = "\u2659"
+    @val = " P ".red.bold
   end
 end
