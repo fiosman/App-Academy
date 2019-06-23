@@ -12,22 +12,18 @@ class Display
   def render 
     @board.rows.each_with_index do |row, row_idx|
       row.each_with_index do |square, square_idx| 
-        if row_idx.even? 
-          print even_row(square_idx, square.val)
-        else
-          print odd_row(square_idx, square.val)
-        end
+        print generate_pattern_color(row_idx, square_idx, square.val)
       end
       puts "\n"
     end
   end
 
-  def even_row(square_idx, value)
-    square_idx.even? ? value.colorize(:background => :black) : value.colorize(:background => :white)
-  end
-
-  def odd_row(square_idx, value)
-    square_idx.odd? ? value.colorize(:background => :black) : value.colorize(:background => :white)
+  def generate_pattern_color(row_idx, square_idx, value)
+    if row_idx.even? 
+      square_idx.even? ? value.colorize(:background => :black) : value.colorize(:background => :white)
+    else
+      square_idx.odd? ? value.colorize(:background => :black) : value.colorize(:background => :white)
+    end
   end
 
 end
