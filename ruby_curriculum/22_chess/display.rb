@@ -11,11 +11,13 @@ class Display
 
   def render 
     @board.rows.each_with_index do |row, row_idx|
+      print "#{row_idx + 1} " 
       row.each_with_index do |square, square_idx| 
         print generate_pattern_color(row_idx, square_idx, square.val)
       end
       puts "\n"
     end
+    print "   a  b  c  d  e  f  g  h "
   end
 
   def generate_pattern_color(row_idx, square_idx, value)
