@@ -73,8 +73,9 @@ class Board
 
 end
 
-#pp board_1 = Board.new
-#board_1.move_piece([5,4])
-#pp board_1.valid_pos?([1,3])
+# pp board_1 = Board.new
+# board_1.move_piece([1,3], [5,4])
+# #pp board_1.valid_pos?([1,3])
+# pp board_1
 
 

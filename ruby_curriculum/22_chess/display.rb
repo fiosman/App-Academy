@@ -11,7 +11,7 @@ class Display
 
   def render 
     @board.rows.each_with_index do |row, row_idx|
-      print "#{row_idx + 1} " 
+      print "#{row_idx} " 
       row.each_with_index do |square, square_idx| 
         print generate_pattern_color(row_idx, square_idx, square.val)
       end
@@ -30,7 +30,7 @@ class Display
 
 end
 
-display_1 = Display.new(Board.new)
-# #pp display_1
-display_1.render
+# display_1 = Display.new(Board.new)
+# # #pp display_1
+# display_1.render 
 
