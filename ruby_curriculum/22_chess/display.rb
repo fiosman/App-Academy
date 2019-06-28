@@ -1,17 +1,18 @@
 require 'colorize'
 require_relative 'board'
-require_relative './pieces/bishop'
+require_relative 'pieces'
 
 class Display
   attr_reader :board
 
   def initialize(board)
     @board = board
+    color_pieces
   end
 
   def render 
     @board.rows.each_with_index do |row, row_idx|
-      print "#{row_idx} " 
+      print "#{row_idx} "
       row.each_with_index do |square, square_idx| 
         print generate_pattern_color(row_idx, square_idx, square.val)
       end
@@ -22,15 +23,25 @@ class Display
 
   def generate_pattern_color(row_idx, square_idx, value)
     if row_idx.even? 
-      square_idx.even? ? value.colorize(:background => :black) : value.colorize(:background => :white)
+      square_idx.even? ? value.colorize(:background => :red) : value.colorize(:background => :cyan)
     else
-      square_idx.odd? ? value.colorize(:background => :black) : value.colorize(:background => :white)
+      square_idx.odd? ? value.colorize(:background => :red) : value.colorize(:background => :cyan)
+    end
+  end
+
+  def color_pieces
+    (0..1).each do |idx| 
+      @board.rows[idx].map { |ele| ele.val.black }
+    end
+    (6..7).each do |idx| 
+      @board.rows[idx].map { |ele| ele.val.white }
     end
   end
 
 end
 
-# display_1 = Display.new(Board.new)
-# # #pp display_1
-# display_1.render 
+display_1 = Display.new(Board.new)
+pp display_1
+#display_1.color_pieces
 
+#pp display_1.color_pieces

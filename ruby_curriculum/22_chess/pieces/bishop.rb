@@ -5,6 +5,6 @@ class Bishop < Piece
   attr_reader :val
   
   def initialize
-    @val = " B ".magenta.bold
+    @val = " B "
   end
 end

@@ -5,6 +5,6 @@ class Knight < Piece
   attr_reader :val
 
   def initialize
-    @val = " N ".blue.bold
+    @val = " N "
   end
 end

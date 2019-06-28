@@ -5,6 +5,6 @@ class King < Piece
   attr_reader :val
 
   def initialize
-    @val = " K ".yellow.bold
+    @val = " K "
   end
 end

@@ -5,6 +5,6 @@ class Rook < Piece
   attr_reader :val
 
   def initialize
-    @val = " R ".cyan.bold
+    @val = " R "
   end
 end
