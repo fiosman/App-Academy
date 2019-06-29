@@ -2,9 +2,11 @@ require_relative 'piece'
 require 'colorize'
 
 class Bishop < Piece 
-  attr_reader :val
+  attr_accessor :val, :color
   
-  def initialize
-    @val = " B "
+  def initialize(color,val )
+    super(color, val) 
+    to_symbol 
   end
+  
 end

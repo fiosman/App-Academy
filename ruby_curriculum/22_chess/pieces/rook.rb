@@ -2,9 +2,13 @@ require_relative 'piece'
 require 'colorize'
 
 class Rook < Piece 
-  attr_reader :val
+  attr_accessor :val, :color
 
-  def initialize
-    @val = " R "
+  def initialize(color, val)
+    super(color, val)
   end
 end
+
+rook = Rook.new(:black, 'R')
+#p rook.val
+puts rook.to_symbol

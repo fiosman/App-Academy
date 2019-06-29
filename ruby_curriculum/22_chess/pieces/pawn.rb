@@ -2,9 +2,10 @@ require_relative 'piece'
 require 'colorize'
 
 class Pawn < Piece 
-  attr_reader :val
+  attr_accessor :val, :color
 
-  def initialize
-    @val = " P "
+  def initialize(color, val)
+    super(color, val)
+    to_symbol 
   end
 end

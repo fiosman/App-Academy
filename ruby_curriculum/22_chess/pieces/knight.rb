@@ -2,9 +2,10 @@ require_relative 'piece'
 require 'colorize'
 
 class Knight < Piece 
-  attr_reader :val
+  attr_accessor :val, :color
 
-  def initialize
-    @val = " N "
+  def initialize(val, color)
+    super(color, val)
+    to_symbol 
   end
 end

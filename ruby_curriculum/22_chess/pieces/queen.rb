@@ -2,9 +2,10 @@ require_relative 'piece'
 require 'colorize'
 
 class Queen < Piece 
-  attr_reader :val
+  attr_accessor :val, :color
 
-  def initialize
-   @val = " Q "
+  def initialize(color, val)
+    super(color, val) 
+    to_symbol 
   end
 end

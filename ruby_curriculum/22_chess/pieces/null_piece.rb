@@ -1,7 +1,7 @@
 require_relative 'piece'
 
 class NullPiece < Piece
-  attr_reader :val
+  attr_accessor :val
   
   def initialize
     @val = "   " 
