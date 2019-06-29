@@ -9,6 +9,6 @@ class Rook < Piece
   end
 end
 
-rook = Rook.new(:black, 'R')
-#p rook.val
-puts rook.to_symbol
+# rook = Rook.new(:black, 'R')
+# #p rook.val
+# puts rook.to_symbol
