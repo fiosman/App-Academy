@@ -7,7 +7,6 @@ class Display
 
   def initialize(board)
     @board = board
-    color_pieces
   end
 
   def render 
@@ -29,19 +28,11 @@ class Display
     end
   end
 
-  def color_pieces
-    (0..1).each do |idx| 
-      @board.rows[idx].map { |ele| ele.val.black }
-    end
-    (6..7).each do |idx| 
-      @board.rows[idx].map { |ele| ele.val.white }
-    end
-  end
-
 end
 
-display_1 = Display.new(Board.new)
-pp display_1
-#display_1.color_pieces
+# display_1 = Display.new(Board.new)
+# p display_1
 
-#pp display_1.color_pieces
+
+
+

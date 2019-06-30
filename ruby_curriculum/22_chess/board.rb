@@ -23,11 +23,20 @@ class Board
   def populate_board 
     @rows.each_with_index do |row, row_idx| 
       row.each_index do |col_idx| 
-        if row_idx == 0 || row_idx == 7
-         spawn_back_row(row_idx, col_idx)
-        elsif row_idx == 1 || row_idx == 6
-         spawn_front_row(row_idx, col_idx)
-        else 
+        if row_idx == 0 
+          spawn_back_row(row_idx, col_idx, :black)
+        elsif
+          row_idx == 7 
+          spawn_back_row(row_idx, col_idx, :white)
+        end
+
+        if row_idx == 1 
+          spawn_front_row(row_idx, col_idx, :black)
+        elsif
+          row_idx == 6 
+          spawn_front_row(row_idx, col_idx, :white)
+        end 
+
           @rows[row_idx][col_idx] = NullPiece.new
         end
       end
@@ -49,25 +58,25 @@ class Board
     row.between?(0,7) && col.between?(0,7)
   end
 
-  def spawn_back_row(row_pos, col_pos)
+  def spawn_back_row(row_pos, col_pos, color)
     case col_pos 
     when 0, 7
-      @rows[row_pos][col_pos] = Rook.new
+      @rows[row_pos][col_pos] = Rook.new(color, "R")
     when 1, 6
-      @rows[row_pos][col_pos] = Knight.new
+      @rows[row_pos][col_pos] = Knight.new(color, "N")
     when 2, 5
-      @rows[row_pos][col_pos] = Bishop.new
+      @rows[row_pos][col_pos] = Bishop.new(color, "B")
     when 3
-      @rows[row_pos][col_pos] = Queen.new
+      @rows[row_pos][col_pos] = Queen.new(color, "Q")
     when 4
-      @rows[row_pos][col_pos] = King.new
+      @rows[row_pos][col_pos] = King.new(color, "K")
     end
   end
 
-  def spawn_front_row(row_pos, col_pos)
+  def spawn_front_row(row_pos, col_pos, color)
     case row_pos 
     when 1,6
-      @rows[row_pos][col_pos] = Pawn.new
+      @rows[row_pos][col_pos] = Pawn.new(color, "P")
     end
   end
 
