@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Piece
   attr_reader :val, :color
 
@@ -8,9 +10,9 @@ class Piece
 
   def to_symbol
     if @color == :black 
-      @val.red 
+      @val.black
     else
-      @val.blue
+      @val.white
     end
   end 
 
