@@ -30,8 +30,8 @@ class Display
 
 end
 
-# display_1 = Display.new(Board.new)
-# p display_1
+display_1 = Display.new(Board.new)
+p display_1.render
 
 
 

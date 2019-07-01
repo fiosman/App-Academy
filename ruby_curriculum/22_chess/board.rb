@@ -38,7 +38,6 @@ class Board
         end 
 
           @rows[row_idx][col_idx] = NullPiece.new
-        end
       end
     end
   end

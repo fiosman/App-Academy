@@ -6,6 +6,7 @@ class Rook < Piece
 
   def initialize(color, val)
     super(color, val)
+    to_symbol
   end
 end
 

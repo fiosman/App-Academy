@@ -4,7 +4,7 @@ require 'colorize'
 class Bishop < Piece 
   attr_accessor :val, :color
   
-  def initialize(color,val )
+  def initialize(color, val)
     super(color, val) 
     to_symbol 
   end

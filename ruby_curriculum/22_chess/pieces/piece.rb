@@ -1,7 +1,7 @@
 require 'colorize'
 
 class Piece
-  attr_reader :val, :color
+  attr_accessor :val, :color
 
   def initialize(color, val)
     @val = val
@@ -17,4 +17,5 @@ class Piece
   end 
 
 end
+
 
