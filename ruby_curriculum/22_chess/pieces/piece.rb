@@ -9,7 +9,7 @@ class Piece
   end
 
   def to_symbol
-    puts @val.colorize(@color)
+    @val.colorize(@color)
   end
 
 end

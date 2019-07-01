@@ -11,5 +11,5 @@ class Rook < Piece
   
 end
 
-rook = Rook.new(:blue, 'R')
+#rook = Rook.new(:blue, 'R')
 

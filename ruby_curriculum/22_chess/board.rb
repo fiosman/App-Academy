@@ -56,22 +56,22 @@ class Board
   def spawn_back_row(row_pos, col_pos, color)
     case col_pos 
     when 0, 7
-      @rows[row_pos][col_pos] = Rook.new(color, "R")
+      @rows[row_pos][col_pos] = Rook.new(color, " R ")
     when 1, 6
-      @rows[row_pos][col_pos] = Knight.new(color, "N")
+      @rows[row_pos][col_pos] = Knight.new(color, " N ")
     when 2, 5
-      @rows[row_pos][col_pos] = Bishop.new(color, "B")
+      @rows[row_pos][col_pos] = Bishop.new(color, " B ")
     when 3
-      @rows[row_pos][col_pos] = Queen.new(color, "Q")
+      @rows[row_pos][col_pos] = Queen.new(color, " Q ")
     when 4
-      @rows[row_pos][col_pos] = King.new(color, "K")
+      @rows[row_pos][col_pos] = King.new(color, " K ")
     end
   end
 
   def spawn_front_row(row_pos, col_pos, color)
     case row_pos 
     when 1,6
-      @rows[row_pos][col_pos] = Pawn.new(color, "P")
+      @rows[row_pos][col_pos] = Pawn.new(color, " P ")
     end
   end
 
