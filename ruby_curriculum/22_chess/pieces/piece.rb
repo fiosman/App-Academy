@@ -9,12 +9,8 @@ class Piece
   end
 
   def to_symbol
-    if @color == :black 
-      @val.black
-    else
-      @val.white
-    end
-  end 
+    puts @val.colorize(@color)
+  end
 
 end
 
