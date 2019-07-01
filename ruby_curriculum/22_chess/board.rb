@@ -25,19 +25,15 @@ class Board
       row.each_index do |col_idx| 
         if row_idx == 0 
           spawn_back_row(row_idx, col_idx, :black)
-        elsif
-          row_idx == 7 
+        elsif row_idx == 7 
           spawn_back_row(row_idx, col_idx, :white)
-        end
-
-        if row_idx == 1 
+        elsif row_idx == 1 
           spawn_front_row(row_idx, col_idx, :black)
-        elsif
-          row_idx == 6 
+        elsif row_idx == 6 
           spawn_front_row(row_idx, col_idx, :white)
-        end 
-
+        else
           @rows[row_idx][col_idx] = NullPiece.new
+        end
       end
     end
   end

@@ -1,6 +1,6 @@
 require_relative 'piece'
 
-class NullPiece < Piece
+class NullPiece
   attr_accessor :val
   
   def initialize

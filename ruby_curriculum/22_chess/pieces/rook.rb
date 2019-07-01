@@ -6,10 +6,10 @@ class Rook < Piece
 
   def initialize(color, val)
     super(color, val)
+    to_symbol
   end
   
 end
 
-# rook = Rook.new(:red, 'R')
-# #p rook.val
-# puts rook.to_symbol
+rook = Rook.new(:blue, 'R')
+
