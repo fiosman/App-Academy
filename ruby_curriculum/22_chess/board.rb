@@ -21,18 +21,18 @@ class Board
   end
 
   def populate_board 
-    @rows.each_with_index do |row, row_idx| 
-      row.each_index do |col_idx| 
-        if row_idx == 0 
-          spawn_back_row(row_idx, col_idx, :black)
-        elsif row_idx == 7 
-          spawn_back_row(row_idx, col_idx, :white)
-        elsif row_idx == 1 
-          spawn_front_row(row_idx, col_idx, :black)
-        elsif row_idx == 6 
-          spawn_front_row(row_idx, col_idx, :white)
+    @rows.each_with_index do |row, row_pos| 
+      row.each_index do |col_pos| 
+        if row_pos == 0 
+          spawn_back_row(row_pos, col_pos, :black)
+        elsif row_pos == 7 
+          spawn_back_row(row_pos, col_pos, :white)
+        elsif row_pos == 1 
+          spawn_front_row(row_pos, col_pos, :black)
+        elsif row_pos == 6 
+          spawn_front_row(row_pos, col_pos, :white)
         else
-          @rows[row_idx][col_idx] = NullPiece.new
+          @rows[row_pos][col_pos] = NullPiece.new(:black, "   ")
         end
       end
     end

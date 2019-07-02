@@ -8,7 +8,7 @@ class Piece
     @color = color
   end
 
-  def to_symbol
+  def to_color
     @val.colorize(@color)
   end
 

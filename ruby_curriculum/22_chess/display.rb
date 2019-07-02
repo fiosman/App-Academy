@@ -13,8 +13,7 @@ class Display
     @board.rows.each_with_index do |row, row_idx|
       print "#{row_idx} "
       row.each_with_index do |square, square_idx| 
-        #print square
-        print generate_pattern_color(row_idx, square_idx, square.val)
+        print generate_pattern_color(row_idx, square_idx, square.to_color)
       end
       puts "\n"
     end

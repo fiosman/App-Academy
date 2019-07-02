@@ -1,10 +1,12 @@
 require_relative 'piece'
+require 'colorize'
 
-class NullPiece
-  attr_accessor :val
+class NullPiece < Piece
+  attr_accessor :val, :color
   
-  def initialize
-    @val = "   " 
+  def initialize(color, val)
+    super(color, val)
   end
 
 end
+
