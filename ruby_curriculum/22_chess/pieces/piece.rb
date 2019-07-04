@@ -12,6 +12,10 @@ class Piece
     @val.colorize(@color)
   end
 
+  def valid_moves
+    
+  end
+
 end
 
 
