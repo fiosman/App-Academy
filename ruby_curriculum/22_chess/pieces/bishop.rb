@@ -1,4 +1,5 @@
 require_relative 'piece'
+require_relative './modules/slideable'
 require 'colorize'
 
 class Bishop < Piece 

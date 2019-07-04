@@ -1,4 +1,5 @@
 require_relative 'piece'
+require_relative './modules/stepable'
 require 'colorize'
 
 class Knight < Piece 
