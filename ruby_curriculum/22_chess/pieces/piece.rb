@@ -13,7 +13,7 @@ class Piece
   end
 
   def valid_moves
-    
+    self
   end
 
 end

@@ -32,7 +32,7 @@ class Board
         elsif row_pos == 6 
           spawn_front_row(row_pos, col_pos, :white)
         else
-          @rows[row_pos][col_pos] = NullPiece.new(:black, "   ")
+          @rows[row_pos][col_pos] = NullPiece.instance
         end
       end
     end

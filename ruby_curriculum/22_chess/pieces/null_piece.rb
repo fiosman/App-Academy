@@ -1,11 +1,14 @@
 require_relative 'piece'
 require 'colorize'
+require 'singleton'
 
 class NullPiece < Piece
-  attr_accessor :val, :color
+  include Singleton
+  attr_reader :val, :color
   
-  def initialize(color, val)
-    super(color, val)
+  def initialize
+    @color = nil
+    @val = "   "
   end
 
 end
