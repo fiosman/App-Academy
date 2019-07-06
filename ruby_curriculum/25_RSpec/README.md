@@ -1,3 +1,2 @@
-#RSpec
-
+# RSpec
 Practice RSpec exercises  
