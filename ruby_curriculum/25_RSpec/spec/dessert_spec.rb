@@ -56,7 +56,7 @@ describe Dessert do
 
   describe "#serve" do
     it "contains the titleized version of the chef's name" do 
-      expect(chef).to receive(:titleize).and_return("Chef Fares the Great Baker")
+      allow(chef).to receive(:titleize).and_return("Chef Fares the Great Baker")
       expect(cupcake.serve).to eq("Chef Fares the Great Baker has made 15 cupcakes!")
     end
   end
