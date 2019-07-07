@@ -36,7 +36,15 @@ describe Dessert do
   end
 
   describe "#mix!" do
-    it "shuffles the ingredient array"
+    it "shuffles the ingredient array" do
+      cupcake.add_ingredient('milk')
+      cupcake.add_ingredient('chocolate')
+      cupcake.add_ingredient('sugar')
+      unshuffled_ingredients = ['milk', 'chocolate', 'sugar']
+      expect(cupcake.ingredients).to eq(unshuffled_ingredients)
+      cupcake.mix! 
+      expect(cupcake.ingredients.sort).to eq(unshuffled_ingredients.sort)
+    end
   end
 
   describe "#eat" do
