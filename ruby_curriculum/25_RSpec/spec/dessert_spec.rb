@@ -13,15 +13,12 @@ describe Dessert do
     it "sets a type" do 
       expect(cupcake.type).to eq('cupcake')
     end
-
     it "sets a quantity" do 
       expect(cupcake.quantity).to eq(15)
     end
-
     it "starts ingredients as an empty array" do 
       expect(cupcake.ingredients).to be_empty
     end
-    
     it "raises an argument error when given a non-integer quantity" do 
       expect { Dessert.new("cupcake", "alsdlad", 'Fares')}.to raise_error(ArgumentError) 
     end
@@ -48,9 +45,13 @@ describe Dessert do
   end
 
   describe "#eat" do
-    it "subtracts an amount from the quantity"
-
-    it "raises an error if the amount is greater than the quantity"
+    it "subtracts an amount from the quantity" do 
+      cupcake.eat(5)
+      expect(cupcake.quantity).to eq(10)
+    end
+    it "raises an error if the amount is greater than the quantity" do 
+      expect { cupcake.eat(40) }.to raise_error("not enough left!")
+    end
   end
 
   describe "#serve" do
