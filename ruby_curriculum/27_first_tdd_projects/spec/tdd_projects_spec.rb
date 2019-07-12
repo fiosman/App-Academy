@@ -6,7 +6,7 @@ describe Array do
   subject(:two_sum_arr) { Array.new([-1, 0, 2, -2, 1]) }
 
   describe "#my_uniq" do 
-    it "removes duplicate elements"
     it "receives an Array instance"
+    it "returns an array with duplicate elements removed"
   end
 end
