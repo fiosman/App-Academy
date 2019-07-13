@@ -9,5 +9,8 @@ describe Array do
     it 'removes duplicate elements' do 
       expect(non_uniq_arr.my_uniq).to eq([1,2,3])
     end
+    it 'returns an instance of the Array class' do 
+      expect(non_uniq_arr.my_uniq.instance_of?(Array)).to eq(true)
+    end
   end
 end
