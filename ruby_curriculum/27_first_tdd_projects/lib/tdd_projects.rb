@@ -8,7 +8,7 @@ class Array
     uniq_arr
   end
 
-  def two_sum
+  def two_sum  
   end
 
   def my_transpose 
