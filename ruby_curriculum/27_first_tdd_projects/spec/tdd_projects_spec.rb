@@ -13,4 +13,8 @@ describe Array do
       expect(non_uniq_arr.my_uniq.instance_of?(Array)).to eq(true)
     end
   end
+
+  describe "#two_sum" do 
+    
+  end
 end
