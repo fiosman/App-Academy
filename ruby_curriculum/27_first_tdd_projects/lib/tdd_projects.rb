@@ -1,4 +1,4 @@
-#require 'byebug'
+require 'set'
 
 class Array 
   
@@ -8,7 +8,18 @@ class Array
     uniq_arr
   end
 
-  def two_sum  
+  def two_sum    
+    set = Set.new
+    sum_pairs = []
+
+    self.each do |current_num| 
+      target_num = (0-current_num)
+      if set.include?(target_num)
+        sum_pairs << [self.index(target_num), self.index(current_num)]
+      end
+      set << current_num
+    end
+    sum_pairs
   end
 
   def my_transpose 
@@ -19,3 +30,5 @@ class Array
 
 end
 
+arr = [-1, 0, 2, -2, 1]
+p arr.two_sum
