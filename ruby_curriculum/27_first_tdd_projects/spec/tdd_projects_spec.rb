@@ -18,9 +18,11 @@ describe Array do
     it 'returns a 2D array' do 
       expect(two_sum_arr.two_sum.all?{|sub_arr| sub_arr.is_a?(Array)}).to eq(true)
     end
-    it 'returns all pairs of positions where elements at those positions sum to zero' do 
+    it 'returns all pairs of positions  where elements at those positions sum to zero' do 
       expect(two_sum_arr.two_sum).to eq([[0,4], [2,3]])
     end
-    it 'returns positions pairs of positions in the correct order'
+    it 'returns pairs of positions in the correct order' do 
+      expect(two_sum_arr.two_sum).not_to eq([[2,3], [0,4]])
+    end
   end
 end

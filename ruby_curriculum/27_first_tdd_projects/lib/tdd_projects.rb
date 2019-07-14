@@ -16,10 +16,11 @@ class Array
       target_num = (0-current_num)
       if set.include?(target_num)
         sum_pairs << [self.index(target_num), self.index(current_num)]
+      else
+        set << current_num
       end
-      set << current_num
     end
-    sum_pairs
+    sum_pairs.sort { |a,b| a <=> b }
   end
 
   def my_transpose 
@@ -30,5 +31,4 @@ class Array
 
 end
 
-arr = [-1, 0, 2, -2, 1]
-p arr.two_sum
+
