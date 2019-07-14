@@ -25,4 +25,21 @@ describe Array do
       expect(two_sum_arr.two_sum).not_to eq([[2,3], [0,4]])
     end
   end
+
+  describe "#my_transpose" do 
+    let(:rows) {[
+      [0, 1, 2], 
+      [3, 4, 5], 
+      [6, 7, 8]] }
+    let(:columns) {[
+      [0, 3, 6], 
+      [1, 4, 7], 
+      [2, 5, 8]] }
+    it "returns a 2D array" do 
+      expect(rows.my_transpose.all?{|sub_arr| sub_arr.is_a?(Array)}).to eq(true)
+    end
+    it "returns correct column orientation of matrix" do 
+      expect(rows.my_transpose).to eq(columns)
+    end        
+  end
 end
