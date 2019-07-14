@@ -24,12 +24,18 @@ class Array
   end
 
   def my_transpose 
-    
-  end
+    self.length.times do |i|
+      (i..self.length-1).each do |j|
+        self[i][j], self[j][i] = self[j][i], self[i][j]
+      end
+    end
+    self
+  end  
 
   def stock_picker 
   end
 
 end
+
 
 
