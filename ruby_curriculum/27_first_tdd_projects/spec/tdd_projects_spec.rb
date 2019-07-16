@@ -44,6 +44,17 @@ describe Array do
   end
 
   describe "#stock_picker" do 
-    it "returns zero if the array is descending order"
+    let(:profitable) { [7, 1, 5, 3, 6, 4] }
+    let(:non_profitable) { [7, 6, 4, 3, 1] }
+    context "when there are profitable days" do 
+      it "returns a pair of days from which the stock can be bought and sold for max profit" do 
+        expect(profitable.stock_picker).to eq([2, 5])
+      end
+    end
+    context "when there are no profitable days" do 
+      it "returns an empty array" do 
+        expect(non_profitable.stock_picker).to be_empty
+      end
+    end
   end
 end
