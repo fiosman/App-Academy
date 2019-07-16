@@ -42,4 +42,8 @@ describe Array do
       expect(rows.my_transpose).to eq(columns)
     end        
   end
+
+  describe "#stock_picker" do 
+    it "returns zero if the array is descending order"
+  end
 end
