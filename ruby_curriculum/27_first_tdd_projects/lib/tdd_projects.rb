@@ -33,9 +33,20 @@ class Array
   end  
 
   def stock_picker 
+    max_profit = []
+    self.each do |buying_price|
+      (price..self.length-1).each do |selling_price| 
+      #loop through array
+      #find profit (i.e. price - idx + 1)
+      #store in variable 
+      #re-assign variable if you find a higher profit 
+      #return variable value at the end of program
+      end
+    end
   end
 
 end
+
 
 
 
