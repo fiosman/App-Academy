@@ -1,4 +1,5 @@
 require 'set'
+#require 'byebug'
 
 class Array 
   
@@ -33,16 +34,14 @@ class Array
   end  
 
   def stock_picker 
-    max_profit = []
-    self.each do |buying_price|
-      (price..self.length-1).each do |selling_price| 
-      #loop through array
-      #find profit (i.e. price - idx + 1)
-      #store in variable 
-      #re-assign variable if you find a higher profit 
-      #return variable value at the end of program
+    profitable_days = {}
+    self.each_index do |idx1|
+      (idx1+1..self.length-1).each do |idx2|
+        next if self[idx2] < self[idx1] 
+        profitable_days[[idx1+1, idx2+1]] = self[idx2]-self[idx1]
       end
     end
+    profitable_days.key(profitable_days.values.max)
   end
 
 end

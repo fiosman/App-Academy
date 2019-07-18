@@ -52,8 +52,8 @@ describe Array do
       end
     end
     context "when there are no profitable days" do 
-      it "returns an empty array" do 
-        expect(non_profitable.stock_picker).to be_empty
+      it "returns nil" do 
+        expect(non_profitable.stock_picker).to be_nil
       end
     end
   end
