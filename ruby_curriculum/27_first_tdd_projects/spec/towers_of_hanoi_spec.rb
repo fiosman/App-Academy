@@ -14,6 +14,16 @@ describe "#Game" do
     end
   end
 
-  
+  describe "#move" do 
+    it 'moves a smaller disk onto bigger disk' do 
+      hanoi.move(0,1)
+      expect(hanoi.towers).to eq([[3,2], [1], []])
+    end
+    it 'does not move a larger disk onto smaller disk' do 
+      hanoi.move(0,1)
+      expect(hanoi.towers[1]).not_to include(3,2)
+    end
+  end
+
 
 end
