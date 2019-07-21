@@ -15,15 +15,14 @@ class Game
   end
 
   def play
-    self.render
     until self.won? 
+      self.render
       puts 'Please enter a Tower from which to pick a disk to move'
       move_res = gets.chomp.to_i
       puts 'Please enter a Tower to place the disk you just picked'
       place_res = gets.chomp.to_i 
       self.move(move_res, place_res)
       system('clear')
-      self.render
     end
     puts 'Congratulations, you win!'
   end
