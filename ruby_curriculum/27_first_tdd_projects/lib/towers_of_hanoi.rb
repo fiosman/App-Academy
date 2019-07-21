@@ -15,7 +15,8 @@ class Game
   end
 
   def valid_move?(start_pos, end_pos)
-    
+    return true if @towers[end_pos].empty? 
+    return false if @towers[start_pos].empty? 
   end
 
   def play

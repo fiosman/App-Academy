@@ -26,7 +26,12 @@ describe "#Game" do
   end
 
   describe "#valid_move?" do 
-
+    it 'returns false if starting position is an empty array' do 
+      expect(hanoi.valid_move?(1,0)).to be_falsy
+    end
+    it 'returns true if ending position is an empty array' do 
+      expect(hanoi.valid_move?(0,2)).to be_truthy
+    end
   end
 
   describe "#won?" do 
