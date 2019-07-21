@@ -15,11 +15,15 @@ class Game
   end
 
   def play
-    
+    until won? 
+      
+    end
   end
 
   def render 
-
+    @towers.each_with_index do |tower, idx| 
+      print "Tower #{idx+1} : #{tower.join(' ')} \n"
+    end
   end
 
 end
