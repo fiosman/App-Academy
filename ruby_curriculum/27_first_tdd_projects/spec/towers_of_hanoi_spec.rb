@@ -25,6 +25,10 @@ describe "#Game" do
     end
   end
 
+  describe "#valid_move?" do 
+
+  end
+
   describe "#won?" do 
     let(:winning) { Game.new([[], [3, 2, 1], []]) }
     it 'returns true if towers 1 or 2 have the orientation [3,2,1]' do 

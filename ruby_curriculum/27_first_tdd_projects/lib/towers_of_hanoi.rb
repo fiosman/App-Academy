@@ -14,20 +14,25 @@ class Game
     @towers[end_pos] << @towers[start_pos].pop 
   end
 
+  def valid_move?(start_pos, end_pos)
+    
+  end
+
   def play
+    system('clear')
+    self.render
     until self.won? 
-      self.render
-      puts 'Please enter a Tower from which to pick a disk to move'
+      puts 'Please enter a Tower from which to pick a disk to move (e.g. 0)'
       move_res = gets.chomp.to_i
-      puts 'Please enter a Tower to place the disk you just picked'
+      puts 'Please enter a Tower to place the disk you just picked (e.g. 1)'
       place_res = gets.chomp.to_i 
       self.move(move_res, place_res)
-      system('clear')
+      self.render
     end
     puts 'Congratulations, you win!'
   end
 
-  def render 
+  def render
     @towers.each_with_index do |tower, idx| 
       print "Tower #{idx} : #{tower.join(' ')} \n"
     end
@@ -35,5 +40,7 @@ class Game
 
 end
 
-game = Game.new
-game.play
+if __FILE__ == $PROGRAM_NAME
+  game = Game.new 
+  game.play 
+end
