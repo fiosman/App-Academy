@@ -15,15 +15,26 @@ class Game
   end
 
   def play
-    until won? 
-      
+    self.render
+    until self.won? 
+      puts 'Please enter a Tower from which to pick a disk to move'
+      move_res = gets.chomp.to_i
+      puts 'Please enter a Tower to place the disk you just picked'
+      place_res = gets.chomp.to_i 
+      self.move(move_res, place_res)
+      system('clear')
+      self.render
     end
+    puts 'Congratulations, you win!'
   end
 
   def render 
     @towers.each_with_index do |tower, idx| 
-      print "Tower #{idx+1} : #{tower.join(' ')} \n"
+      print "Tower #{idx} : #{tower.join(' ')} \n"
     end
   end
 
 end
+
+game = Game.new
+game.play
