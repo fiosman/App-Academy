@@ -6,7 +6,7 @@ describe "#Game" do
 
   describe "#initialize" do 
     it "sets up 2D array with three sub-arrays" do 
-      expect(hanoi.towers.all? { |tower| tower.is_a?(Array) }).to eq(true)
+      expect(hanoi.towers.all? { |tower| tower.is_a?(Array) }).to be_truthy
       expect(hanoi.towers.length).to eq(3)
     end
     it "starts with the proper orientation" do 
@@ -17,11 +17,21 @@ describe "#Game" do
   describe "#move" do 
     it 'moves a smaller disk onto bigger disk' do 
       hanoi.move(0,1)
-      expect(hanoi.towers).to eq([[3,2], [1], []])
+      expect(hanoi.towers).to eq([[3 , 2], [1], []])
     end
     it 'does not move a larger disk onto smaller disk' do 
       hanoi.move(0,1)
       expect(hanoi.towers[1]).not_to include(3,2)
+    end
+  end
+
+  describe "#won?" do 
+    let(:winning) { Game.new([[], [3, 2, 1], []]) }
+    it 'returns true if towers 1 or 2 have the orientation [3,2,1]' do 
+      expect(winning.won?).to be_truthy
+    end
+    it 'returns false if orientation is still default' do
+      expect(hanoi.won?).to be_falsy
     end
   end
 

@@ -6,7 +6,8 @@ class Game
   end
 
   def won? 
-
+    return true if @towers[1] == [3,2,1] || @towers[2] == [3,2,1] 
+    false
   end
 
   def move(start_pos, end_pos)
