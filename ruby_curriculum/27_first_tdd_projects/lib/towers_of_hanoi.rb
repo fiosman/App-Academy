@@ -11,13 +11,19 @@ class Game
   end
 
   def move(start_pos, end_pos)
-    @towers[end_pos] << @towers[start_pos].pop 
+    if valid_move?(start_pos, end_pos)
+      @towers[end_pos] << @towers[start_pos].pop
+    else
+      puts "Can't make that move!"
+      sleep(2)
+      self.play
+    end
   end
 
   def valid_move?(start_pos, end_pos)
     return true if @towers[end_pos].empty? 
     return false if @towers[start_pos].empty? 
-    @towers[end_pos].last > @towers[start_pos].pop ? true : false
+    @towers[end_pos].last > @towers[start_pos].last ? true : false
   end
 
   def play
