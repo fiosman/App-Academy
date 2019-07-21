@@ -32,6 +32,10 @@ describe "#Game" do
     it 'returns true if ending position is an empty array' do 
       expect(hanoi.valid_move?(0,2)).to be_truthy
     end
+    it 'does not allow user to place larger disk on top of smaller disk' do 
+      hanoi.move(0,1) 
+      expect(hanoi.valid_move?(0,1)).to eq(false)
+    end
   end
 
   describe "#won?" do 
