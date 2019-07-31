@@ -1,5 +1,5 @@
 class Player
-  def initialize
-    
+  def initialize  
+
   end
 end
