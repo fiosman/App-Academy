@@ -6,7 +6,7 @@ class Card
   end
 
   def self.suits 
-    [:spades, :diamonds, :clubs, :hearts ]
+    [:spades, :diamonds, :clubs, :hearts]
   end
 
   def initialize
