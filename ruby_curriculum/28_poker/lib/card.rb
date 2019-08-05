@@ -1,15 +1,8 @@
 class Card
-  attr_reader :value
+  attr_reader :rank, :suit
 
-  def self.cards 
-    [:ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, :jack, :queen, :king]
+  def initialize(rank, suit)
+    @rank, @suit = rank, suit
   end
 
-  def self.suits 
-    [:spades, :diamonds, :clubs, :hearts]
-  end
-
-  def initialize
-    @value = { Card.suits.sample => Card.cards.sample }
-  end
 end
