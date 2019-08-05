@@ -5,4 +5,8 @@ class Card
     @rank, @suit = rank, suit
   end
 
+  def stringify 
+    "#{@rank} of #{suit}"
+  end
+
 end
