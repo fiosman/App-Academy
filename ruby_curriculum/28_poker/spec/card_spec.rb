@@ -11,4 +11,10 @@ describe Card do
     end
   end
 
+  describe "#stringify" do 
+    it 'returns the sentence version of the rank and suit of a card' do
+      expect(card.stringify).to eq('3 of spades')
+    end
+  end
+
 end
