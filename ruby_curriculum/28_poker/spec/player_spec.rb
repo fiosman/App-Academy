@@ -36,6 +36,6 @@ describe Player do
   end
 
   describe "#discard" do 
-    it 'allows a player to discard an amount of cards'
+    it 'allows a player to discard any cards they pick'
   end
 end
