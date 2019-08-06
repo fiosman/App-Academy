@@ -34,4 +34,8 @@ describe Player do
   describe "#call" do 
     it 'allows player to call' 
   end
+
+  describe "#discard" do 
+    it 'allows a player to discard an amount of cards'
+  end
 end
