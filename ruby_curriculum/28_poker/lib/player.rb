@@ -1,12 +1,12 @@
 require_relative 'deck'
 
 class Player
-  attr_reader :deck 
+  attr_reader :name
   attr_accessor :chips 
 
-  def initialize  
+  def initialize(name)
     @chips = 100
-    @deck = Deck.new
+    @name = name
   end
 
 end
