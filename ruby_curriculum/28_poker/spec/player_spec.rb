@@ -21,6 +21,9 @@ describe Player do
       player.chips -= 10 
       expect(player.chips).to eq(90)
     end
+    it 'uses player name, chip amount, and hand to create a hash id' do 
+      expect(player.id).to eq({'Fares' => [:hand, 100]})
+    end
   end
 
   describe "#fold" do 
