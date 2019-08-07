@@ -5,9 +5,8 @@ describe Game do
   subject(:game) { Game.new }
 
   describe "#initialize" do 
-    it 'sets a deck of cards' do 
-      deck = Deck.new
-      expect(game.deck).to eq(deck)
+    it 'sets a deck of cards' do  
+      expect(game.deck.is_a?(Deck)).to be_truthy
     end
   end
 
