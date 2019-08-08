@@ -22,7 +22,13 @@ describe Player do
       expect(player.chips).to eq(90)
     end
     it 'uses player name, chip amount, and hand to create a hash id' do 
-      expect(player.id).to eq({'Fares' => [:hand, 100]})
+      
+    end
+  end
+
+  describe "#generate_ID" do 
+    it 'uses player name, chip amount, and hand to create a hash ID' do 
+     expect(player.generate_ID).to eq({'Fares' => [:hand, 100]})
     end
   end
 
