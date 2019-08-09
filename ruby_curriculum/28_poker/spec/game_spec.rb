@@ -23,4 +23,8 @@ describe Game do
     end
   end
 
+  describe "#deal_cards" do 
+    it 'assigns 5 cards to each player'
+  end
+
 end
