@@ -6,7 +6,7 @@ class Player
 
   def initialize(name)
     @chips = 100
-    @name, @hand = name, [] 
+    @name, @hand = name, {}
   end
 
 end
