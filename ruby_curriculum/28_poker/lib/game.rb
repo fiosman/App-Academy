@@ -5,7 +5,16 @@ class Game
   attr_reader :deck, :players
 
   def initialize(*players)
-    @deck = Deck.new
-    @players = players.map(&:generate_ID)
+    @deck = Deck.new.shuffle_deck
+    @players = players
+  end
+
+  def deal_cards
+    @players.each do |player|
+      5.times do
+        dealt_card = @deck.shift
+        player.hand << [dealt_card.suit, dealt_card.rank]
+      end
+    end
   end
 end
