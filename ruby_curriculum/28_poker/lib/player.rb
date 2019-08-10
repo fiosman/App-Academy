@@ -4,9 +4,9 @@ class Player
   attr_reader :name, :hand
   attr_accessor :chips 
 
-  def initialize(name, hand=nil)
+  def initialize(name)
     @chips = 100
-    @name, @hand = name, hand 
+    @name, @hand = name, [] 
   end
 
 end
