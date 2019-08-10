@@ -10,9 +10,9 @@ class Game
   end
 
   def deal_cards
-    @players.each do |player|
-      5.times do
-        dealt_card = @deck.shift
+    until @players.all? { |player| player.hand.length == 5 } 
+      @players.each do |player|
+        dealt_card = deck.shift
         player.hand << dealt_card
       end
     end
