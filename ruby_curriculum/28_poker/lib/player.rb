@@ -4,13 +4,9 @@ class Player
   attr_reader :name, :hand
   attr_accessor :chips 
 
-  def initialize(name, hand)
+  def initialize(name, hand=nil)
     @chips = 100
     @name, @hand = name, hand 
-  end
-
-  def generate_ID 
-    { @name => [@hand, @chips] }
   end
 
 end
