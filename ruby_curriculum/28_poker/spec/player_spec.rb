@@ -2,10 +2,7 @@ require 'rspec'
 require 'player'
 
 describe Player do 
-  let(:hand) { [[:ace, :spades], [3, :diamonds],
-               [4, :spades], [:king, :hearts], 
-               [:ace, :clubs]] }
-  subject(:player) { Player.new('Fares', :hand) }
+  subject(:player) { Player.new('Fares') }
 
   describe "#initialize" do 
     it 'provides a player with 100 chips' do 
@@ -15,7 +12,7 @@ describe Player do
       expect(player.name).to eq('Fares')
     end
     it 'assigns a hand to player' do 
-      expect(player.hand). to eq(:hand)
+      expect(player.hand).to be_empty
     end
     it 'modifies the chip amount throughout the game' do 
       player.chips -= 10 
