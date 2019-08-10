@@ -21,9 +21,9 @@ describe Game do
 
   describe "#deal_cards" do 
     it 'assigns 5 cards to each player, one at a time' do 
-      chris_hand = [game.deck[0], game.deck[3], game.deck[6], game.deck[9], game.deck[12]]
-      andrew_hand = [game.deck[1], game.deck[4], game.deck[7], game.deck[10], game.deck[13]]
-      fares_hand = [game.deck[2], game.deck[5], game.deck[8], game.deck[11], game.deck[14]]
+      chris_hand = [game.deck[51], game.deck[48], game.deck[45], game.deck[42], game.deck[39]]
+      andrew_hand = [game.deck[50], game.deck[47], game.deck[44], game.deck[41], game.deck[38]]
+      fares_hand = [game.deck[49], game.deck[46], game.deck[43], game.deck[40], game.deck[37]]
       game.deal_cards
       game.players.each do |player| 
         expect(player.hand.length).to eq(5)
@@ -35,7 +35,7 @@ describe Game do
     end
 
     it 'selects cards from top of the deck' do 
-      selected_cards = game.deck[0...15]
+      selected_cards = game.deck[36..-1]
       game.deal_cards 
       game.players.each do |player| 
         expect(player.hand.all? { |card| selected_cards.include?(card) }).to be_truthy
