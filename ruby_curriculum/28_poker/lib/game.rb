@@ -13,7 +13,7 @@ class Game
     @players.each do |player|
       5.times do
         dealt_card = @deck.shift
-        player.hand << [dealt_card.suit, dealt_card.rank]
+        player.hand << dealt_card
       end
     end
   end
