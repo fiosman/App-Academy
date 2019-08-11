@@ -17,6 +17,9 @@ describe Game do
       expect(game.players[1].name).to eq('Andrew')
       expect(game.players[2].name).to eq('Fares')
     end
+    it 'sets the pot amount to 0 initially' do 
+      game.pot.should be_zero 
+    end
   end
 
   describe "#deal_cards" do 
