@@ -26,19 +26,19 @@ describe Game do
       fares_hand = [game.deck[49], game.deck[46], game.deck[43], game.deck[40], game.deck[37]]
       game.deal_cards
       game.players.each do |player| 
-        expect(player.hand.length).to eq(5)
-        expect(player.hand.all? { |card| card.is_a?(Card) }).to be_truthy
+        expect(player.hand.cards.length).to eq(5)
+        expect(player.hand.cards.all? { |card| card.is_a?(Card) }).to be_truthy
       end
-      expect(game.players[0].hand).to eq(chris_hand)
-      expect(game.players[1].hand).to eq(andrew_hand)
-      expect(game.players[2].hand).to eq(fares_hand)
+      expect(game.players[0].hand.cards).to eq(chris_hand)
+      expect(game.players[1].hand.cards).to eq(andrew_hand)
+      expect(game.players[2].hand.cards).to eq(fares_hand)
     end
 
     it 'selects cards from top of the deck' do 
       selected_cards = game.deck[36..-1]
       game.deal_cards 
       game.players.each do |player| 
-        expect(player.hand.all? { |card| selected_cards.include?(card) }).to be_truthy
+        expect(player.hand.cards.all? { |card| selected_cards.include?(card) }).to be_truthy
       end
     end
 
@@ -46,7 +46,7 @@ describe Game do
       game.deal_cards
       expect(game.deck.length).to eq(37)
       game.players.each do |player| 
-        expect(player.hand.all? { |card| game.deck.include?(card) }).to be_falsy
+        expect(player.hand.cards.all? { |card| game.deck.include?(card) }).to be_falsy
       end
     end
   end
