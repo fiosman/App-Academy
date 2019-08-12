@@ -20,6 +20,16 @@ describe Player do
     end
   end
 
+  describe "#pay_ante" do 
+   let(:ante) { 5 }
+   let(:pot) { 0 }
+    it 'pays the ante price, adds it to the pot, and deducts player chip amount' do
+      player.pay_ante(pot, ante)
+      expect(player.chips).to eq(95)
+      expect(pot).to eq(5)
+    end
+  end
+
   describe "#fold" do 
     it 'allows player to fold' 
   end
