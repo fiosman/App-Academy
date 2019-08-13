@@ -3,8 +3,8 @@ require_relative 'card'
 class Hand
   attr_accessor :cards
 
-  def initialize
-    @cards = []
+  def initialize(cards=[])
+    @cards = cards
   end
 
   def pair_suit_rank 
