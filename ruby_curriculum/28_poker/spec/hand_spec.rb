@@ -5,11 +5,11 @@ require 'card'
 describe Hand do 
 
   let(:cards) { [
-    Card.new(4, :diamonds), 
-    Card.new(3, :spades), 
-    Card.new(3, :hearts), 
-    Card.new(:queen, :diamonds), 
-    Card.new(:jack, :clubs)
+    double('card', rank: 4, suit: :diamonds), 
+    double('card', rank: 3, suit: :spades), 
+    double('card', rank: 3, suit: :hearts), 
+    double('card', rank: :queen, suit: :diamonds), 
+    double('card', rank: :jack, suit: :clubs)
   ] }
 
   subject(:hand) { Hand.new(cards) }
@@ -17,7 +17,6 @@ describe Hand do
   describe "#initialize" do 
     it 'contains 5 card objects' do 
       expect(hand.cards).to eq(cards)
-      expect(hand.cards.all? { |card| card.is_a?(Card) }).to be_truthy
     end
   end
 
