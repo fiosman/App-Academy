@@ -1,52 +1,54 @@
 require 'rspec'
 require 'hand'
-require 'game'
-require 'deck'
+require 'card'
 
 describe Hand do 
-  let(:player) { Player.new('Fares') }
-  let(:game) { Game.new(player) }
-  let(:hand) { game.players[0].hand }
+
+  let(:cards) { [
+    Card.new(4, :diamonds), 
+    Card.new(3, :spades), 
+    Card.new(3, :hearts), 
+    Card.new(:queen, :diamonds), 
+    Card.new(:jack, :clubs)
+  ] }
+
+  subject(:hand) { Hand.new(cards) }
   
   describe "#initialize" do 
-    it 'contains 5 cards from the deck' do 
-      player_cards = game.deck[47..51]
-      game.deal_cards
-      expect(game.players[0].hand.cards).to match_array(player_cards)
+    it 'contains 5 card objects' do 
+      expect(hand.cards).to eq(cards)
+      expect(hand.cards.all? { |card| card.is_a?(Card) }).to be_truthy
     end
   end
 
-  describe "pairing of cards" do
-    before(:each) { game.deal_cards }
-    describe "#pair_suit_rank" do 
-      it 'returns a 2D array, with sub-arrays containing rank/suit pairs' do 
-        paired_cards = hand.pair_suit_rank 
-        hand.cards.each_with_index do |card, idx| 
-          expect(card.rank).to eq(paired_cards[idx].first)
-          expect(card.suit).to eq(paired_cards[idx].last)
-        end
-        expect(paired_cards.all? { |pair| pair.is_a?(Array) }).to be_truthy
-      end
-    end
-
-    describe "#pair_by_rank" do 
-      it 'returns an array containing all the card ranks of a hand' do 
-        paired_ranks = hand.pair_by_rank
-        hand.cards.each_with_index do |card, idx| 
-          expect(card.rank).to eq(paired_ranks[idx])
-        end
-      end
-    end
-
-    describe "#pair_by_suit" do 
-      it 'returns an array containing all the card suits of a hand' do 
-        paired_suits = hand.pair_by_suit
-        hand.cards.each_with_index do |card, idx| 
-          expect(card.suit).to eq(paired_suits[idx])
-        end
-      end
+  describe "#pair_suit_rank" do 
+    let(:paired_hand) { [
+      [4, :diamonds], 
+      [3, :spades], 
+      [3, :hearts], 
+      [:queen, :diamonds], 
+      [:jack, :clubs]
+    ] }
+    it 'returns a 2D array with sub-arrays containing rank/suit pairs' do 
+      expect(hand.pair_suit_rank).to eq(paired_hand)
     end
   end
-  
+
+  describe "#pair_by_rank" do 
+    let(:ranks) { [4, 3, 3, :queen, :jack] }
+    it 'returns an array containing all the card ranks of a hand' do 
+      expect(hand.pair_by_rank).to eq(ranks)
+    end
+  end
+
+  describe "pair_by_suit" do 
+    let(:suit) { [:diamonds, :spades, :hearts, :diamonds, :clubs] }
+    it 'returns an array containing all the card suits of a hand' do 
+      expect(hand.pair_by_suit).to eq(suit)
+    end
+  end
+
+  describe "#four_of_a_kind?" do 
+  end
 end
 
