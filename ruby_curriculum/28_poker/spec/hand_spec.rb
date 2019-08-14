@@ -49,5 +49,31 @@ describe Hand do
 
   describe "#four_of_a_kind?" do 
   end
+
+  describe "#two_pair?" do 
+  end
+
+  describe "#pair?" do 
+  end
+
+  describe "#high_card?" do
+  end
+
+  describe "#royal_flush?"
+  end
+
+  describe "#three_of_a_kind?"
+  end
+
+  describe "#straight_flush?" do 
+  end
+
+  describe "#flush?" do 
+  end
+
+  describe "#full_house?" do 
+  end
+
+
 end
 
