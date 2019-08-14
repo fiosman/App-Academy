@@ -33,17 +33,29 @@ describe Hand do
     end
   end
 
-  describe "#pair_by_rank" do 
-    let(:ranks) { [4, 3, 3, :queen, :jack] }
-    it 'returns an array containing all the card ranks of a hand' do 
-      expect(hand.pair_by_rank).to eq(ranks)
+  describe "#count_repeated_ranks" do 
+    let(:rank_frequencies) { { 4=>1, 3=>2, :queen=>1, :jack=>1 } }
+    let(:ranks_hash) { hand.count_repeated_ranks }
+    it 'returns a hash containing frequencies of each rank within a hand' do 
+      expect(ranks_hash).to eq(rank_frequencies)
+    end
+    it 'hash contains every rank in the hand' do 
+      hand.cards.each do |card| 
+        expect(ranks_hash).to have_key(card.rank)
+      end
     end
   end
 
-  describe "pair_by_suit" do 
-    let(:suit) { [:diamonds, :spades, :hearts, :diamonds, :clubs] }
-    it 'returns an array containing all the card suits of a hand' do 
-      expect(hand.pair_by_suit).to eq(suit)
+  describe "#count_repeated_suits" do 
+    let(:suit_frequencies) { { :diamonds=>2, :spades=>1, :hearts=>1, :clubs=>1 } }
+    let(:suits_hash) { hand.count_repeated_suits }
+    it 'returns a hash containing frequencies of each suit within a hand' do 
+      expect(suits_hash).to eq(suit_frequencies)
+    end
+    it 'hash contains every suit in the hand' do 
+      hand.cards.each do |card| 
+        expect(suits_hash).to have_key(card.suit)
+      end
     end
   end
 
@@ -59,10 +71,10 @@ describe Hand do
   describe "#high_card?" do
   end
 
-  describe "#royal_flush?"
+  describe "#royal_flush?" do 
   end
 
-  describe "#three_of_a_kind?"
+  describe "#three_of_a_kind?" do
   end
 
   describe "#straight_flush?" do 

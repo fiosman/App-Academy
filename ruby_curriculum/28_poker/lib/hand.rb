@@ -11,20 +11,23 @@ class Hand
     self.cards.map { |card| [card.rank, card.suit] }
   end
 
-  def pair_by_rank 
-    self.cards.map(&:rank)
-  end
-
-  def pair_by_suit 
-    self.cards.map(&:suit)
-  end
-
   def four_of_a_kind? 
-    ranks = pair_by_rank
-    ranks.each do |rank| 
-      return true if ranks.count(rank) == 4
-      return false
+  end
+
+  def count_repeated_ranks 
+    rank_frequencies = Hash.new(0)
+    self.cards.each do |card|  
+      rank_frequencies[card.rank] += 1 
+    end 
+    rank_frequencies
+  end
+
+  def count_repeated_suits 
+    suit_frequencies = Hash.new(0)
+    self.cards.each do |card| 
+      suit_frequencies[card.suit] += 1
     end
+    suit_frequencies
   end
 
 end
