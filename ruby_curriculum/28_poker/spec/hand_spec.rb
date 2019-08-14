@@ -60,6 +60,7 @@ describe Hand do
   end
 
   describe "#four_of_a_kind?" do 
+    it 'returns true if a hand contains four cards of the same rank'
   end
 
   describe "#two_pair?" do 
