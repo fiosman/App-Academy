@@ -12,6 +12,7 @@ class Hand
   end
 
   def four_of_a_kind? 
+    count_repeated_ranks.any? { |rank, frequency| frequency == 4 } 
   end
 
   def count_repeated_ranks 
