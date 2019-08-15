@@ -60,7 +60,20 @@ describe Hand do
   end
 
   describe "#four_of_a_kind?" do 
-    it 'returns true if a hand contains four cards of the same rank'
+    context 'when four cards have the same rank' do 
+      before do 
+        hand.cards[3] = double('card', rank: 3, suit: :diamonds)
+        hand.cards[4] = double('card', rank: 3, suit: :clubs)
+      end
+      it 'returns true' do 
+        expect(hand.four_of_a_kind?).to be_truthy
+      end
+    end
+    context 'when four cards do not have the same rank' do 
+      it 'returns false' do 
+        expect(hand.four_of_a_kind?).to be_falsy
+      end
+    end
   end
 
   describe "#two_pair?" do 
