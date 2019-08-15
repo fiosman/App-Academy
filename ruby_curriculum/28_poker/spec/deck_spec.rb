@@ -20,7 +20,7 @@ describe Deck do
 
   describe "#initialize" do 
     it 'sets up an array of 52 cards' do 
-      expect(game_deck.deck.is_a?(Array)).to be_truthy
+      expect(game_deck.deck).to all(be_a(Card))
       expect(game_deck.deck.length).to eq(52)
     end
     it 'ensures the deck includes all combinations of suits/ranks' do 

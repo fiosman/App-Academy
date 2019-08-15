@@ -10,7 +10,7 @@ describe Game do
 
   describe "#initialize" do 
     it 'sets a deck of cards' do  
-      expect(game.deck.all? { |card| card.is_a?(Card) }).to be_truthy
+      expect(game.deck).to all(be_a(Card))
     end
     it 'sets up players for the game' do 
       expect(game.players[0].name).to eq('Chris')
