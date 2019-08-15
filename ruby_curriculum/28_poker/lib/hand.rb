@@ -19,6 +19,10 @@ class Hand
     count_repeated_ranks.any? { |rank, frequency| frequency == 3 }
   end
 
+  def flush? 
+    count_repeated_suits.any? { |rank, frequency| frequency == 5 }
+  end
+
   def count_repeated_ranks 
     rank_frequencies = Hash.new(0)
     self.cards.each do |card|  
