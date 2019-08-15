@@ -15,6 +15,10 @@ class Hand
     count_repeated_ranks.any? { |rank, frequency| frequency == 4 } 
   end
 
+  def three_of_a_kind? 
+    count_repeated_ranks.any? { |rank, frequency| frequency == 3 }
+  end
+
   def count_repeated_ranks 
     rank_frequencies = Hash.new(0)
     self.cards.each do |card|  
