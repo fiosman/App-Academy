@@ -108,6 +108,25 @@ describe Hand do
   end
 
   describe "#flush?" do 
+    context 'when all cards have the same suit' do 
+      before do 
+        hand.cards = [ 
+          double('card', rank: 4, suit: :diamonds), 
+          double('card', rank: :jack, suit: :diamonds), 
+          double('card', rank: 6, suit: :diamonds), 
+          double('card', rank: :king, suit: :diamonds), 
+          double('card', rank: :queen, suit: :diamonds)
+        ]
+      end
+      it 'returns true' do 
+        expect(hand.flush?).to be_truthy
+      end
+    end
+    context 'when all cards do not havec the same suit' do 
+      it 'returns false' do 
+        expect(hand.flush?).to be_falsy
+      end
+    end
   end
 
   describe "#full_house?" do 
