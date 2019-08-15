@@ -89,6 +89,19 @@ describe Hand do
   end
 
   describe "#three_of_a_kind?" do
+    context 'when three cards have the same rank' do 
+      before do 
+        hand.cards[0] = double('card', rank: 3, suit: :diamonds)
+      end
+      it 'returns true' do 
+        expect(hand.three_of_a_kind?).to be_truthy
+      end
+    end
+    context 'when three cards do not have the same rank' do 
+      it 'returns false' do 
+        expect(hand.three_of_a_kind?).to be_falsy
+      end
+    end
   end
 
   describe "#straight_flush?" do 
