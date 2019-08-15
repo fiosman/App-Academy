@@ -66,12 +66,12 @@ describe Hand do
         hand.cards[4] = double('card', rank: 3, suit: :clubs)
       end
       it 'returns true' do 
-        expect(hand.four_of_a_kind?).to be_truthy
+        expect(hand).to be_four_of_a_kind
       end
     end
     context 'when four cards do not have the same rank' do 
       it 'returns false' do 
-        expect(hand.four_of_a_kind?).to be_falsy
+        expect(hand).not_to be_four_of_a_kind
       end
     end
   end
@@ -94,12 +94,12 @@ describe Hand do
         hand.cards[0] = double('card', rank: 3, suit: :diamonds)
       end
       it 'returns true' do 
-        expect(hand.three_of_a_kind?).to be_truthy
+        expect(hand).to be_three_of_a_kind
       end
     end
     context 'when three cards do not have the same rank' do 
       it 'returns false' do 
-        expect(hand.three_of_a_kind?).to be_falsy
+        expect(hand).not_to be_three_of_a_kind
       end
     end
   end
@@ -119,12 +119,12 @@ describe Hand do
         ]
       end
       it 'returns true' do 
-        expect(hand.flush?).to be_truthy
+        expect(hand).to be_flush
       end
     end
     context 'when all cards do not havec the same suit' do 
       it 'returns false' do 
-        expect(hand.flush?).to be_falsy
+        expect(hand).not_to be_flush
       end
     end
   end
