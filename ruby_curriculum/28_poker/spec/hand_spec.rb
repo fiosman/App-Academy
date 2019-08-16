@@ -77,7 +77,22 @@ describe Hand do
   end
 
   describe "#two_pair?" do 
-    
+    context 'when each pair of cards has the same rank' do 
+      before do 
+        hand.cards[3] = double('card', rank: 4, suit: :diamonds)
+      end
+      it 'returns true' do 
+        expect(hand).to be_two_pair
+      end
+    end
+    context 'when there are no two pairs' do 
+      before do 
+        hand.cards[3] = double('card', rank: 3, suit: :diamonds)
+      end
+      it 'returns false' do 
+        expect(hand).not_to be_two_pair
+      end
+    end
   end
 
   describe "#pair?" do 
