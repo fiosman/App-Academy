@@ -32,6 +32,10 @@ class Hand
     return false
   end
 
+  def full_house? 
+    pair? && three_of_a_kind?
+  end
+
   def pair_suit_rank 
     self.cards.map { |card| [card.rank, card.suit] }
   end
