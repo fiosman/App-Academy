@@ -123,6 +123,12 @@ describe Hand do
   end
 
   describe "#royal_flush?" do 
+    context 'when hand is a royal flush' do 
+      it 'returns true'
+    end
+    context 'when hand is not a royal flush' do 
+      it 'returns false'
+    end
   end
 
   describe "#three_of_a_kind?" do
