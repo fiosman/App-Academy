@@ -167,6 +167,25 @@ describe Hand do
   end
 
   describe "#full_house?" do 
+    context 'when a hand consists of three of a kind and a pair' do 
+      before do 
+        hand.cards = [ 
+          double('card', rank: 4, suit: :clubs), 
+          double('card', rank: 4, suit: :diamonds), 
+          double('card', rank: :king, suit: :spades), 
+          double('card', rank: 4, suit: :spades), 
+          double('card', rank: :king, suit: :hearts)
+        ]
+      end
+      it 'returns true' do
+        expect(hand).to be_full_house
+      end
+    end
+    context 'when a hand does not have a pair and three of a kind' do 
+        it 'returns false' do 
+          expect(hand).not_to be_full_house
+      end
+    end
   end
 
 
