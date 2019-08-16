@@ -7,10 +7,6 @@ class Hand
     @cards = cards
   end
 
-  def pair_suit_rank 
-    self.cards.map { |card| [card.rank, card.suit] }
-  end
-
   def four_of_a_kind? 
     count_repeated_ranks.any? { |rank, frequency| frequency == 4 } 
   end
@@ -21,6 +17,14 @@ class Hand
 
   def flush? 
     count_repeated_suits.any? { |rank, frequency| frequency == 5 }
+  end
+
+  def pair? 
+    count_repeated_ranks.any? { |rank, frequency| frequency == 2 } 
+  end
+
+  def pair_suit_rank 
+    self.cards.map { |card| [card.rank, card.suit] }
   end
 
   def count_repeated_ranks 
@@ -38,5 +42,7 @@ class Hand
     end
     suit_frequencies
   end
+
+ 
 
 end
