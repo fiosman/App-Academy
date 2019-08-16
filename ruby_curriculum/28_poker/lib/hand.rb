@@ -8,19 +8,28 @@ class Hand
   end
 
   def four_of_a_kind? 
-    count_repeated_ranks.any? { |rank, frequency| frequency == 4 } 
+    count_repeated_ranks.values.any? { |frequency| frequency == 4 } 
   end
 
   def three_of_a_kind? 
-    count_repeated_ranks.any? { |rank, frequency| frequency == 3 }
+    count_repeated_ranks.values.any? { |frequency| frequency == 3 }
   end
 
   def flush? 
-    count_repeated_suits.any? { |rank, frequency| frequency == 5 }
+    count_repeated_suits.values.any? { |frequency| frequency == 5 }
   end
 
   def pair? 
-    count_repeated_ranks.any? { |rank, frequency| frequency == 2 } 
+    count_repeated_ranks.values.any? { |frequency| frequency == 2 } 
+  end
+
+  def two_pair? 
+    pair_count = 0 
+    count_repeated_ranks.values.each do |frequency| 
+      pair_count += 1 if frequency == 2
+    end
+    return true if pair_count == 2 
+    return false
   end
 
   def pair_suit_rank 
