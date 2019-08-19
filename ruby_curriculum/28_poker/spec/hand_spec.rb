@@ -20,6 +20,14 @@ describe Hand do
     double('card', rank: 10, suit: :diamonds)
   ] }
 
+  let(:straight_flush) { [
+    double('card', rank: 10, suit: :spades), 
+    double('card', rank: 9, suit: :spades), 
+    double('card', rank: 8, suit: :spades), 
+    double('card', rank: 7, suit: :spades), 
+    double('card', rank: 6, suit: :spades)
+  ] }
+
   subject(:hand) { Hand.new(cards) }
   
   describe "#initialize" do 
@@ -151,6 +159,17 @@ describe Hand do
   end
 
   describe "#straight_flush?" do 
+    context 'when there are 5 cards of the same suit in sequence' do 
+      before { hand.cards = straight_flush }
+      it 'returns true' do 
+        expect(hand).to be_straight_flush
+      end
+    end
+    context 'when hand is not a straight flush' do 
+      it 'returns false' do 
+        expect(hand).not_to be_straight_flush
+      end
+    end
   end
 
   describe "#flush?" do 
