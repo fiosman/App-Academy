@@ -12,6 +12,14 @@ describe Hand do
     double('card', rank: :jack, suit: :clubs)
   ] }
 
+  let(:royal_flush) { [
+    double('card', rank: :ace, suit: :diamonds), 
+    double('card', rank: :king, suit: :diamonds), 
+    double('card', rank: :queen, suit: :diamonds), 
+    double('card', rank: :jack, suit: :diamonds), 
+    double('card', rank: 10, suit: :diamonds)
+  ] }
+
   subject(:hand) { Hand.new(cards) }
   
   describe "#initialize" do 
@@ -124,10 +132,15 @@ describe Hand do
 
   describe "#royal_flush?" do 
     context 'when hand is a royal flush' do 
-      it 'returns true'
+      before { hand.cards = royal_flush }
+      it 'returns true' do 
+        expect(hand).to be_royal_flush 
+      end
     end
     context 'when hand is not a royal flush' do 
-      it 'returns false'
+      it 'returns false' do 
+        expect(hand).not_to be_royal_flush
+      end
     end
   end
 
