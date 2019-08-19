@@ -36,6 +36,15 @@ class Hand
     pair? && three_of_a_kind?
   end
 
+  def royal_flush? 
+    return false if !flush? 
+    cards = Set[:king, :jack, :queen, :ace, 10]
+    count_repeated_ranks.each do |rank, frequency| 
+      return false if !cards.include?(rank) || frequency != 1
+    end
+    true
+  end
+
   def pair_suit_rank 
     self.cards.map { |card| [card.rank, card.suit] }
   end
