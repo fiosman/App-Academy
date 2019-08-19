@@ -86,17 +86,13 @@ describe Hand do
 
   describe "#two_pair?" do 
     context 'when each pair of cards has the same rank' do 
-      before do 
-        hand.cards[3] = double('card', rank: 4, suit: :diamonds)
-      end
+      before { hand.cards[3] = double('card', rank: 4, suit: :diamonds) }   
       it 'returns true' do 
         expect(hand).to be_two_pair
       end
     end
     context 'when there are no two pairs' do 
-      before do 
-        hand.cards[3] = double('card', rank: 3, suit: :diamonds)
-      end
+      before { hand.cards[3] = double('card', rank: 3, suit: :diamonds) }
       it 'returns false' do 
         expect(hand).not_to be_two_pair
       end
@@ -110,17 +106,13 @@ describe Hand do
       end
     end
     context 'when there are no two cards with the same rank' do 
-      before do 
-        hand.cards[1] = double('card', rank: 7, suit: :spades)
-      end
+      before { hand.cards[1] = double('card', rank: 7, suit: :spades) }
       it 'returns false' do 
         expect(hand).not_to be_pair
       end
     end
     context 'when there are more than two cards with the same rank' do 
-      before do 
-        hand.cards[0] = double('card', rank: 3, suit: :diamonds) 
-      end
+      before { hand.cards[0] = double('card', rank: 3, suit: :diamonds) }  
       it 'returns false' do 
         expect(hand).not_to be_pair
       end
@@ -146,9 +138,7 @@ describe Hand do
 
   describe "#three_of_a_kind?" do
     context 'when three cards have the same rank' do 
-      before do 
-        hand.cards[0] = double('card', rank: 3, suit: :diamonds)
-      end
+      before { hand.cards[0] = double('card', rank: 3, suit: :diamonds) }
       it 'returns true' do 
         expect(hand).to be_three_of_a_kind
       end
