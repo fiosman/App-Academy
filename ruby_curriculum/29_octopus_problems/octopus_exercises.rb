@@ -78,3 +78,6 @@ def slow_dance(direction, tiles)
   nil
 end
 
+def faster_dance(direction, tiles) 
+  return tiles[direction]
+end
