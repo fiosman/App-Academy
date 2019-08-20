@@ -2,8 +2,9 @@
 def my_min(arr)
   min = arr.first 
 
-  arr.each do |ele|
-    min = ele if ele < min 
+  (1..arr.length-1).each do |idx|
+    min = arr[idx] if arr[idx] < min 
   end
   return min
 end
+
