@@ -69,3 +69,12 @@ def clever_octopus(fish_arr)
   end
   longest
 end
+
+#O(n) time 
+def slow_dance(direction, tiles) 
+  tiles.each_index do |idx| 
+    return idx if tiles[idx] == direction
+  end
+  nil
+end
+
