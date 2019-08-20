@@ -60,3 +60,12 @@ def dominant_octopus(fish_arr)
   sorted_fish_arr = merge_sort(fish_arr) 
   return sorted_fish_arr[-1]
 end
+
+#O(n) time 
+def clever_octopus(fish_arr)
+  longest = fish_arr.first
+  (1...fish_arr.length).each do |idx| 
+    longest = fish_arr[idx] if fish_arr[idx].length > longest.length 
+  end
+  longest
+end
