@@ -19,3 +19,17 @@ def third_anagram(str1, str2)
 
   sorted_str1 == sorted_str2
 end
+
+#O(n) time 
+#O(1) space === Yes, the keys we are inserting into the hash are chars in the string, but there is always a maximum of 26 letters. So it is constant. 
+def fourth_anagram(str1, str2) 
+  str1_hash = Hash.new(0)
+  str2_hash = Hash.new(0)
+
+  str1.each_char { |char| str1_hash[char] += 1 }
+  str2.each_char { |char| str2_hash[char] += 1 }
+
+  str1_hash == str2_hash 
+end
+
+
