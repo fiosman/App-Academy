@@ -11,4 +11,11 @@ def second_anagram(str1, str2)
   str2.empty?
 end
 
+#O(n log(n)) time 
+#O(n) space 
+def third_anagram(str1, str2) 
+  sorted_str1 = str1.split("").sort
+  sorted_str2 = str2.split("").sort
 
+  sorted_str1 == sorted_str2
+end
