@@ -21,3 +21,16 @@ def largest_contiguous_subsum(list)
   end
   sub_arrs.map(&:sum).max
 end
+
+#O(n) time -- Kadane's Algorithm
+def better_largest_contiguous_subsum(list)
+  total_sum = list.first
+  current_sum = list.first
+
+  list.each_index do |idx| 
+    current_sum = [list[idx], current_sum + list[idx]].max
+    total_sum = [total_sum, current_sum].max
+  end
+
+  return total_sum
+end
