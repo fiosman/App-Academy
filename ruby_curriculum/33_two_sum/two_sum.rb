@@ -8,3 +8,21 @@ def bad_two_sum?(target, arr)
   end
   false
 end
+
+#O(n log (n)) time => Ruby's quick sort algorithm 
+#O(n) space 
+def okay_two_sum?(target, arr) 
+  sorted_arr = arr.sort
+  lo = 0 
+  hi = sorted_arr.length - 1 
+
+  while lo < hi 
+    if sorted_arr[lo] + sorted_arr[hi] == target 
+      return true 
+    else
+      sorted_arr[lo] + sorted_arr[hi] < target ? lo += 1 : hi -= 1
+    end
+  end
+
+  false
+end
