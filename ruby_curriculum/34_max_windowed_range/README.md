@@ -1,4 +1,4 @@
-# Max Windowed Range 
+# Windowed Max Range
 
 Learning Goals
 
