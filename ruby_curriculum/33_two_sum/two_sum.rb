@@ -1,3 +1,5 @@
+require 'byebug'
+
 #O(n^2) time 
 #O(1) space
 def bad_two_sum?(target, arr)
@@ -22,6 +24,19 @@ def okay_two_sum?(target, arr)
     else
       sorted_arr[lo] + sorted_arr[hi] < target ? lo += 1 : hi -= 1
     end
+  end
+
+  false
+end
+
+#O(n) time
+#O(n) space
+def best_two_sum(target, arr)
+  nums_hash = {}
+
+  arr.each do |ele| 
+    return true if nums_hash[target - ele] == true
+    nums_hash[ele] = true
   end
 
   false
