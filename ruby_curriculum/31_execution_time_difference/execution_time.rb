@@ -1,5 +1,7 @@
 require 'byebug'
 
+require 'benchmark'
+
 #O(n) time 
 def my_min(arr)
   min = arr.first 
@@ -34,3 +36,4 @@ def better_largest_contiguous_subsum(list)
 
   return total_sum
 end
+
