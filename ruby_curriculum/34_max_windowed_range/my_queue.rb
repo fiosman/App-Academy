@@ -23,7 +23,7 @@ class MyQueue
 
   #first in, first out..
   def dequeue
-    @store.shift
+    @store.shift #O(n) time operation => Indices of elements have to be re-assigned in the array. 
   end
 
 end
