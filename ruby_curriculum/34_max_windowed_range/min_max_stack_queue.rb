@@ -1,4 +1,4 @@
-require_relative "stackqueue"
+require_relative "min_max_stack"
 
 class MinMaxStackQueue
   
@@ -42,3 +42,4 @@ class MinMaxStackQueue
   end
 
 end
+
