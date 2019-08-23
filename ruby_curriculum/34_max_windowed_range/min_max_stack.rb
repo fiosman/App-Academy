@@ -1,9 +1,9 @@
-require_relative "my_stack"
 
 class MinMaxStack
 
   def initialize
-    @store = MyStack.new
+    @store = []
+    @max_stack = []
   end
 
   def size 
@@ -15,23 +15,31 @@ class MinMaxStack
   end
 
   def peek 
-    @store.peek
+    @store[-1]
   end
 
-  def min
-    @store.min_val
-  end
-
-  def max 
-    @store.max_val
-  end
-
-  def pop 
+  def pop
     @store.pop
+    @max_stack.pop
   end
 
   def push(ele)
+    max = ele 
+    
+    if (!@max_stack.empty? && max < @max_stack[-1])
+      max = @max_stack[-1]
+    end
+
     @store.push(ele)
+    @max_stack.push(max)
+  end
+
+  def max_val
+    @max_stack[-1]
+  end
+
+  def min_val
+    @max_stack[0]
   end
 
 end
