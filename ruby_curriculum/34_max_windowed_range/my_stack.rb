@@ -33,11 +33,11 @@ class MyStack
     @max_stack.push(max)
   end
 
-  def max 
+  def max_val
     @max_stack[-1]
   end
 
-  def min 
+  def min_val
     @max_stack[0]
   end
 
