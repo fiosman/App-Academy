@@ -1,3 +1,3 @@
 # Box Model 
 
-Practice styling web pages using Box Model principles. 
+Practice styling web cpages using Box Model principles.
