@@ -55,6 +55,20 @@ def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
   execute(<<-SQL)
+    SELECT 
+      name
+    FROM 
+      countries 
+    WHERE 
+      gdp/population > ( 
+        SELECT 
+          gdp/population
+        FROM 
+          countries
+        WHERE 
+          name = 'United Kingdom'
+      )
+      AND continent = 'Europe'
   SQL
 end
 
