@@ -1,3 +1,3 @@
 # SQL Zoo 
 
-Various SQL fundamentals exercises
+Various SQL fundamentals exercises. 
