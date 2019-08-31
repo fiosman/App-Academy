@@ -83,8 +83,8 @@ def eighties_literature
     FROM 
       nobels 
     WHERE 
-    yr BETWEEN 1980 AND 1989
-    AND subject = 'Literature'
+      yr BETWEEN 1980 AND 1989
+      AND subject = 'Literature'
   SQL
 end
 
@@ -92,6 +92,14 @@ def presidential_prizes
   # Show all details of the presidential winners: ('Theodore Roosevelt',
   # 'Woodrow Wilson', 'Jimmy Carter')
   execute(<<-SQL)
+    SELECT 
+      yr,
+      subject, 
+      winner 
+    FROM 
+      nobels 
+    WHERE 
+      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter')
   SQL
 end
 
