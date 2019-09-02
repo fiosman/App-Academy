@@ -91,6 +91,20 @@ def travoltas_busiest_years
   # Which were the busiest years for 'John Travolta'? Show the year and the
   # number of movies he made for any year in which he made at least 2 movies.
   execute(<<-SQL)
+    SELECT 
+      yr, COUNT(yr) AS number_of_movies_in_yr
+    FROM 
+      movies 
+    JOIN 
+      castings ON movies.id = castings.movie_id 
+    JOIN 
+      actors ON actors.id = castings.actor_id  
+    WHERE 
+      name = 'John Travolta' 
+    GROUP BY 
+      yr 
+    HAVING 
+      COUNT(yr) >= 2
   SQL
 end
 
