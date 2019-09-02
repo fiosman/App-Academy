@@ -158,9 +158,23 @@ def prolific_actors
 end
 
 def films_by_cast_size
-  # List the films released in the year 1978 ordered by the number of actors
+  # List the films released in the year 1978 ordered 
+  # by the number of actors
   # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
+    SELECT 
+      title, 
+      COUNT(DISTINCT castings.actor_id) AS number_of_actors
+    FROM 
+      movies 
+    JOIN 
+      castings ON castings.movie_id = movies.id 
+    WHERE 
+      yr = 1978 
+    GROUP BY 
+      movies.id
+    ORDER BY 
+      COUNT(*) DESC, movies.title ASC
   SQL
 end
 
