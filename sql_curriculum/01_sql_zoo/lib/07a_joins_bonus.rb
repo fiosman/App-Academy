@@ -54,6 +54,14 @@ end
 def blur_songs
   # Select the `song` for each `track` on the album `Blur`.
   execute(<<-SQL)
+    SELECT 
+      t. song 
+    FROM 
+      tracks t
+    JOIN 
+      albums a ON a.asin = t.album 
+    WHERE 
+      a.title = 'Blur'
   SQL
 end
 
@@ -62,6 +70,7 @@ def heart_tracks
   # the word 'Heart' (albums with no such tracks need not be shown). Order first by
   # the number of such tracks, then by album title.
   execute(<<-SQL)
+
   SQL
 end
 
