@@ -41,7 +41,7 @@ class Playwright
   end
 
   def update
-    PlayDBConnection.instance.execute(<<-SQL, self.id, self.name, self.birth_year)
+    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year, self.id)
       UPDATE 
         playwrights 
       SET 
