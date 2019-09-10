@@ -29,10 +29,26 @@ class Playwright
   end
 
   def create
+    raise "#{self} already exists in the database" if @id 
+    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year) 
+      INSERT INTO 
+        playwrights (name, birth_year)
+      VALUES
+        (?, ?)
+    SQL
 
+    @id = PlayDBConnection.instance.last_insert_row_id
   end
 
   def update
+    PlayDBConnection.instance.execute(<<-SQL, self.id, self.name, self.birth_year)
+      UPDATE 
+        playwrights 
+      SET 
+        name = ?, birth_year = ?
+      WHERE 
+        id = ? 
+    SQL 
   end
 
   def get_plays
