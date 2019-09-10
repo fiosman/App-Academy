@@ -19,7 +19,7 @@ class Playwright
     SQL
     return nil unless playwright.length > 0 
 
-    playwright = Playwright.new(playwrights.first)
+    playwright = Playwright.new(playwright.first)
   end
 
   def initialize(options)
@@ -29,6 +29,7 @@ class Playwright
   end
 
   def create
+
   end
 
   def update
