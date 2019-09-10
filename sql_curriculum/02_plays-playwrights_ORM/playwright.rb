@@ -48,10 +48,21 @@ class Playwright
         name = ?, birth_year = ?
       WHERE 
         id = ? 
-    SQL 
+    SQL
   end
 
   def get_plays
+    raise "#{self} does not exist in the database" unless @id
+    plays = PlayDBConnection.instance.execute(<<-SQL, @id)
+      SELECT 
+        * 
+      FROM 
+        plays
+      WHERE 
+        playwrights.id = ?
+    SQL
+
+    plays.map { |play| Play.new(play)}
   end
 
 end
