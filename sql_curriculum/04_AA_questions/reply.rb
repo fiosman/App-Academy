@@ -29,6 +29,19 @@ class Reply
     replies.map { |reply| Reply.new(reply) }
   end
 
+  def self.find_by_question_id(question_id)
+    replies = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+      SELECT 
+        * 
+      FROM 
+        replies 
+      WHERE 
+        subject_question_id = ?
+    SQL
+
+    replies.map { |reply| Reply.new(reply) }
+  end
+
   def initialize(options)
     @body = options['body']
     @subject_question_id = options['subject_question_id']
