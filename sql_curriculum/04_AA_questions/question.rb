@@ -35,9 +35,18 @@ class Question
 
   def initialize(options)
     #options is a hash that we pass in from our database! 
+    @id = options['id']
     @title = options['title']
     @body = options['body']
     @author_id = options['author_id']
+  end
+
+  def author
+    User.find_by_id(@author_id)
+  end
+
+  def replies 
+    Reply.find_by_question_id(@id)
   end
 
 end

@@ -43,6 +43,7 @@ class Reply
   end
 
   def initialize(options)
+    @id = options['id']
     @body = options['body']
     @subject_question_id = options['subject_question_id']
     @user_id = options['user_id']
