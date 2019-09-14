@@ -1,4 +1,6 @@
 require_relative 'questions_database'
+require_relative 'user'
+require_relative 'question'
 
 class Reply
   attr_accessor :body, :subject_question_id, :user_id, :parent_reply_id
@@ -57,5 +59,21 @@ class Reply
   def question 
     Question.find_by_id(@subject_question_id)
   end
-  
+
+  def parent_reply 
+    Reply.find_by_id(@parent_reply_id)
+  end
+
+  def child_replies 
+    child_replies = QuestionsDatabase.instance.execute(<<-SQL, @id)
+      SELECT 
+        * 
+      FROM 
+        replies 
+      WHERE 
+        parent_reply_id = ?
+    SQL
+
+    child_replies.map { |child_reply| Reply.new(child_reply) }
+  end
 end

@@ -1,4 +1,6 @@
 require_relative 'questions_database' 
+require_relative 'user'
+require_relative 'reply'
 
 class Question
   attr_accessor :title, :body, :author_id

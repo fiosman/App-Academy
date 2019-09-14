@@ -22,5 +22,4 @@ class QuestionFollow
     @question_id = options['question_id']
   end
 
-
 end
