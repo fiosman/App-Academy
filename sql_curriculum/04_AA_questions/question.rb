@@ -36,6 +36,10 @@ class Question
     authors.map { |question| Question.new(question) }
   end
 
+  def self.most_followed(n)
+    QuestionFollow.most_followed_questions(n)
+  end
+
   def initialize(options)
     #options is a hash that we pass in from our database! 
     @id = options['id']
