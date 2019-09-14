@@ -20,6 +20,19 @@ class Question
     questions.map { |question| Question.new(question) }
   end
 
+  def self.find_by_author_id(author_id)
+    authors = QuestionsDatabase.instance.execute(<<-SQL, author_id)
+      SELECT
+        * 
+      FROM 
+        questions
+      WHERE
+        author_id = ? 
+    SQL
+
+    authors.map { |question| Question.new(question) }
+  end
+
   def initialize(options)
     #options is a hash that we pass in from our database! 
     @title = options['title']
