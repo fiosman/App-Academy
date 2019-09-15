@@ -40,6 +40,10 @@ class Question
     QuestionFollow.most_followed_questions(n)
   end
 
+  def self.most_liked(n)
+    QuestionLike.most_liked_questions(n)
+  end
+
   def initialize(options)
     #options is a hash that we pass in from our database! 
     @id = options['id']
