@@ -5,6 +5,7 @@ require_relative 'question_follow'
 
 class Question
   attr_accessor :title, :body, :author_id
+  attr_reader :id
 
   def self.find_by_id(id)
     #this returns a hash, but we want an instance with all the attribtues of the table
@@ -71,5 +72,32 @@ class Question
   def num_likes
     QuestionLike.num_likes_for_question_id(@id)
   end
+
+  def save 
+    if @id 
+      QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id, @id) 
+        UPDATE 
+          questions 
+        SET 
+          title = ?, body = ?, author_id = ?
+        WHERE 
+          questions.id = ?; 
+      SQL
+    else
+       QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id) 
+        INSERT INTO 
+          questions (title, body, author_id)
+        VALUES 
+          (?, ?);
+      SQL
+
+       @id = QuestionsDatabase.instance.last_insert_row_id
+    end
+    
+    self
+  end
+
+  end
+
 
 end
