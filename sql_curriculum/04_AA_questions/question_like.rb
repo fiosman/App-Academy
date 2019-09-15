@@ -38,13 +38,26 @@ class QuestionLike
         question_id, COUNT(question_id) AS count
       FROM 
         question_likes 
-              WHERE 
+      WHERE 
         question_id = ?
       GROUP BY 
         question_id
     SQL
 
     question_likes.first['count']
+  end
+
+  def self.liked_questions_for_user_id(user_id)
+    liked_questions = QuestionsDatabase.instance.execute(<<-SQL, user_id)
+      SELECT 
+        * 
+      FROM 
+        questions
+      JOIN 
+        question_likes ON question_likes.question_id = questions.id
+      WHERE 
+        question_likes.user_id = ? 
+    SQL
   end
 
   def initialize(options)
