@@ -88,7 +88,7 @@ class Question
         INSERT INTO 
           questions (title, body, author_id)
         VALUES 
-          (?, ?);
+          (?, ?, ?);
       SQL
 
        @id = QuestionsDatabase.instance.last_insert_row_id
