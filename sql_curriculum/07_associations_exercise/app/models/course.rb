@@ -11,4 +11,5 @@
 #
 
 class Course < ApplicationRecord
+  
 end
