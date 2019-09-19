@@ -14,15 +14,28 @@ class ShortURL < ApplicationRecord
   validates :submit_user_id, :long_url, :short_url, presence: true
   validates :short_url, uniqueness: true
 
-  def self.random_code 
-    new_url = SecureRandom::urlsafe_base64
+  belongs_to :submitter,
+    primary_key: :id, 
+    foreign_key: :submit_user_id, 
+    class_name: :User
 
-    until !ShortURL.exists?(short_url: new_url) 
-      new_url = SecureRandom::urlsafe_base64
+  def self.random_code 
+    new_url = SecureRandom.urlsafe_base64
+
+    until !ShortURL.exists? short_url: new_url 
+      new_url = SecureRandom.urlsafe_base64
     end
 
     return new_url
   end
 
+  def self.generate_short_url(user, long_url)
+    ShortURL.create! submit_user_id: user.id, long_url: long_url, short_url: ShortURL.random_code
+  end
 
 end
+
+#Calling submitter on a shortened url should 
+#return the submitter for that url. 
+#Calling submitted_urls on a user should return 
+#the urls submitted by that user.
