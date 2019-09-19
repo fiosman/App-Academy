@@ -13,4 +13,16 @@
 class ShortURL < ApplicationRecord 
   validates :submit_user_id, :long_url, :short_url, presence: true
   validates :short_url, uniqueness: true
+
+  def self.random_code 
+    new_url = SecureRandom::urlsafe_base64
+
+    until !ShortURL.exists?(short_url: short_url) 
+      new_url = SecureRandom::urlsafe_base64
+    end
+
+    return new_url
+  end
+
+
 end
