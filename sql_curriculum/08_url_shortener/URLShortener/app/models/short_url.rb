@@ -34,8 +34,3 @@ class ShortURL < ApplicationRecord
   end
 
 end
-
-#Calling submitter on a shortened url should 
-#return the submitter for that url. 
-#Calling submitted_urls on a user should return 
-#the urls submitted by that user.
