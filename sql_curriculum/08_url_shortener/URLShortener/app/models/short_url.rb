@@ -43,11 +43,11 @@ class ShortURL < ApplicationRecord
   end
 
   def num_clicks 
-    visits.count 
+    self.visits.count 
   end
 
   def num_uniques 
-    visitors.count
+    self.visitors.select(:id).distinct.count
   end
 
 
