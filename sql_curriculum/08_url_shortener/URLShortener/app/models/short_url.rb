@@ -19,6 +19,15 @@ class ShortURL < ApplicationRecord
     foreign_key: :submit_user_id, 
     class_name: :User
 
+  has_many :clicks, 
+    primary_key: :id,
+    foreign_key: :shortened_url, 
+    class_name: :Visit
+
+  has_many :visitors, 
+    through: :clicks, 
+    source: :user
+
   def self.random_code 
     new_url = SecureRandom.urlsafe_base64
 

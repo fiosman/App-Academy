@@ -15,4 +15,13 @@ class User < ApplicationRecord
     primary_key: :id, 
     foreign_key: :submit_user_id,
     class_name: :ShortURL
+  
+  has_many :visits, 
+    primary_key: :id, 
+    foreign_key: :visitor_id, 
+    class_name: :Visit
+
+  has_many :visited_urls, 
+    through: :visits, 
+    source: :short_url
 end
