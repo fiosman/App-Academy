@@ -19,13 +19,13 @@ class ShortURL < ApplicationRecord
     foreign_key: :submit_user_id, 
     class_name: :User
 
-  has_many :clicks, 
-    primary_key: :id,
+  has_many :visits, 
+    primary_key: :short_url,
     foreign_key: :shortened_url, 
     class_name: :Visit
 
   has_many :visitors, 
-    through: :clicks, 
+    through: :visits, 
     source: :user
 
   def self.random_code 
@@ -41,5 +41,15 @@ class ShortURL < ApplicationRecord
   def self.generate_short_url(user, long_url)
     ShortURL.create! submit_user_id: user.id, long_url: long_url, short_url: ShortURL.random_code
   end
+
+  def num_clicks 
+    visits.count 
+  end
+
+  def num_uniques 
+    visitors.count
+  end
+
+
 
 end
