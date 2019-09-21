@@ -50,6 +50,9 @@ class ShortURL < ApplicationRecord
     self.visitors.select(:id).distinct.count
   end
 
+  def num_recent_uniques 
+    self.visits.select(:id).distinct.where("visits.updated_at > ?", 10.minutes.ago).count
+  end
 
 
 end
