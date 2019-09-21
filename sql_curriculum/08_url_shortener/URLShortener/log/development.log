@@ -274,3 +274,41 @@ Migrating to CreateVisits (20190920020039)
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mVisit Load (0.7ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE "visits"."visitor_id" = $1[0m  [["visitor_id", 2]]
   [1m[36mShortURL Load (0.8ms)[0m  [1m[34mSELECT "short_urls".* FROM "short_urls"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "5678"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mShortURL Load (0.6ms)[0m  [1m[34mSELECT  "short_urls".* FROM "short_urls" WHERE "short_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "exit"], ["LIMIT", 1]]
+  ↳ bin/cli:33
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "5678"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mShortURL Load (0.5ms)[0m  [1m[34mSELECT  "short_urls".* FROM "short_urls" WHERE "short_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "2T3NvL-tRriHbYgeHtArkg"], ["LIMIT", 1]]
+  ↳ bin/cli:33
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.com "], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["email", "fares.osman@outlook.com"], ["created_at", "2019-09-21 21:26:27.912099"], ["updated_at", "2019-09-21 21:26:27.912099"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.co"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.co"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.com"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mShortURL Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "short_urls" WHERE "short_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "rcKCMsnRYcxvZ09oidw6Kg"], ["LIMIT", 1]]
+  ↳ app/models/short_url.rb:35
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/short_url.rb:43
+  [1m[36mShortURL Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "short_urls" WHERE "short_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "rcKCMsnRYcxvZ09oidw6Kg"], ["LIMIT", 1]]
+  ↳ app/models/short_url.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/short_url.rb:43
+  [1m[36mShortURL Create (0.7ms)[0m  [1m[32mINSERT INTO "short_urls" ("short_url", "long_url", "submit_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["short_url", "rcKCMsnRYcxvZ09oidw6Kg"], ["long_url", "www.google.com"], ["submit_user_id", 4], ["created_at", "2019-09-21 21:27:54.910034"], ["updated_at", "2019-09-21 21:27:54.910034"]]
+  ↳ app/models/short_url.rb:43
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/short_url.rb:43
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fares.osman@outlook.com"], ["LIMIT", 1]]
+  ↳ bin/cli:9
+  [1m[36mShortURL Load (0.6ms)[0m  [1m[34mSELECT  "short_urls".* FROM "short_urls" WHERE "short_urls"."short_url" = $1 LIMIT $2[0m  [["short_url", "rcKCMsnRYcxvZ09oidw6Kg"], ["LIMIT", 1]]
+  ↳ bin/cli:33
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShortURL Load (0.5ms)[0m  [1m[34mSELECT  "short_urls".* FROM "short_urls" ORDER BY "short_urls"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
