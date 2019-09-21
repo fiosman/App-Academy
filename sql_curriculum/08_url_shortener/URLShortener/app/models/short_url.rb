@@ -25,6 +25,7 @@ class ShortURL < ApplicationRecord
     class_name: :Visit
 
   has_many :visitors, 
+    -> { distinct },
     through: :visits, 
     source: :user
 
@@ -47,7 +48,7 @@ class ShortURL < ApplicationRecord
   end
 
   def num_uniques 
-    self.visitors.select(:id).distinct.count
+    self.visitors.count
   end
 
   def num_recent_uniques 

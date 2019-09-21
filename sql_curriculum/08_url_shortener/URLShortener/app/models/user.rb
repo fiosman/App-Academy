@@ -21,7 +21,8 @@ class User < ApplicationRecord
     foreign_key: :visitor_id, 
     class_name: :Visit
 
-  has_many :visited_urls, 
+  has_many :visited_urls,
+    -> { distinct }, 
     through: :visits, 
     source: :short_url
 end
