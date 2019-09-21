@@ -1,3 +1,54 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
+def ask_for_email 
+  puts 'Please type in your email:' 
+  response = gets.chomp 
+end
 
+def find_user_by_email(email)
+  User.find_by_email(email)
+end
+
+def ask_for_task 
+  puts 'Please choose one of the following:' 
+  puts '1. Create a shortened URL' 
+  puts '2. Visit a shortened URL'
+  response = gets.chomp
+end
+
+def create_or_visit(user)
+  if ask_for_task == '1'
+    create_short_url(user)
+  elsif ask_for_task == '2'
+    visit_short_url(user)
+  end
+end
+
+def create_short_url(user)
+  url = ShortURL.generate_short_url(user, ask_for_long_url)
+  puts "Short url is #{url.short_url}"
+end
+
+def visit_short_url(user)
+  matching_long_url = ShortURL.find_by_short_url(ask_for_short_url)
+  puts "Launching #{matching_long_url.long_url}"
+  Launchy.open(matching_long_url.long_url)
+end
+
+def ask_for_long_url
+  puts 'Please type in your long URL'
+  response = gets.chomp
+end
+
+def ask_for_short_url 
+  puts 'Please type in the short URL you wish to visit' 
+  response = gets.chomp
+end
+
+def run 
+  email = ask_for_email
+  user = find_user_by_email(email) 
+  create_or_visit(user)
+end
+
+run 
