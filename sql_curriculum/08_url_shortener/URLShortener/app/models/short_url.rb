@@ -13,7 +13,7 @@
 class ShortURL < ApplicationRecord 
   validates :submit_user_id, :long_url, :short_url, presence: true
   validates :short_url, uniqueness: true
-  validate :no_spamming
+  validate :no_spamming, :nonpremium_max
 
   belongs_to :submitter,
     primary_key: :id, 
@@ -73,6 +73,10 @@ class ShortURL < ApplicationRecord
       where('short_urls.created_at >= ?', 1.minute.ago)
     
     errors[:maximum] << 'of 5 submissions per minute!' if submissions.count >= 5
+  end
+
+  def nonpremium_max
+    #nonpremium users cannot create more than 5 total URLs
   end
 
 
