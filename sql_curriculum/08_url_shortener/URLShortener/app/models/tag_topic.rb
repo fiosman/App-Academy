@@ -19,4 +19,12 @@ class TagTopic < ApplicationRecord
   has_many :short_urls, 
     through: :taggings, 
     source: :short_url
+
+  def popular_links 
+    short_urls.joins(:visits).
+    group(:id).
+    order('COUNT(visits.visitor_id) DESC').
+    select('short_url, COUNT(visits.visitor_id) AS number_of_visits'). 
+    limit(5)
+  end
 end 
