@@ -76,7 +76,10 @@ class ShortURL < ApplicationRecord
   end
 
   def nonpremium_max
-    #nonpremium users cannot create more than 5 total URLs
+    #non-premium users cannot create more than 5 total URLs
+    return if self.submitter.premium
+
+    errors[:only] << '5 total submissions per user are allowed' if submitter.submitted_urls.count >= 5
   end
 
 
