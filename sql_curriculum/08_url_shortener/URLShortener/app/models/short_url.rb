@@ -13,6 +13,7 @@
 class ShortURL < ApplicationRecord 
   validates :submit_user_id, :long_url, :short_url, presence: true
   validates :short_url, uniqueness: true
+  validate :no_spamming
 
   belongs_to :submitter,
     primary_key: :id, 
@@ -62,6 +63,16 @@ class ShortURL < ApplicationRecord
 
   def num_recent_uniques 
     self.visits.select(:id).distinct.where("visits.updated_at > ?", 10.minutes.ago).count
+  end
+
+  def no_spamming
+    #throw error if user submit more than 5 requests per minute 
+    submissions = ShortURL.
+      select('*'). 
+      where(submit_user_id: submit_user_id). 
+      where('short_urls.created_at >= ?', 1.minute.ago)
+    
+    errors[:maximum] << 'of 5 submissions per minute!' if submissions.count >= 5
   end
 
 
