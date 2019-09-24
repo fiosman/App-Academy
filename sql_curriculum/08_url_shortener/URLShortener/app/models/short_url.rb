@@ -53,6 +53,11 @@ class ShortURL < ApplicationRecord
     ShortURL.create! submit_user_id: user.id, long_url: long_url, short_url: ShortURL.random_code
   end
 
+  def self.prune(minutes)
+    ShortURL.joins(:visits). 
+      where('visits.created_at < ?', minutes.minutes.ago)
+  end
+
   def num_clicks 
     self.visits.count 
   end
