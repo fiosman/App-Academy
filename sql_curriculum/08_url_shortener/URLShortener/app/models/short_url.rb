@@ -58,7 +58,7 @@ class ShortURL < ApplicationRecord
       where("visits.created_at > \'#{minutes.minutes.ago}\'"). 
       map(&:short_url)
     
-    ShortURL.where.not(short_url: new)
+    ShortURL.where.not(short_url: new).destroy_all
   end
 
   def num_clicks 
