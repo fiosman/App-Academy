@@ -54,8 +54,10 @@ class ShortURL < ApplicationRecord
   end
 
   def self.prune(minutes)
-    new = ShortURL.joins(:visits). 
+    short_urls_visits = ShortURL.joins(:visits)
+    new = short_urls_visits. 
       where("visits.created_at > \'#{minutes.minutes.ago}\'"). 
+      or(short_urls_visits.where("visits.id IS NULL AND short_urls.created_at < \'#{minutes.minutes.ago}\'")).
       map(&:short_url)
     
     ShortURL.where.not(short_url: new).destroy_all
