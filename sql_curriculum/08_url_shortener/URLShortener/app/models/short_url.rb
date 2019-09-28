@@ -20,12 +20,12 @@ class ShortURL < ApplicationRecord
     foreign_key: :submit_user_id, 
     class_name: :User
 
-  has_many :visits, 
+  has_many :visits, dependent: :destroy,
     primary_key: :short_url,
     foreign_key: :shortened_url, 
     class_name: :Visit
 
-  has_many :taggings, 
+  has_many :taggings, dependent: :destroy,
     primary_key: :id, 
     foreign_key: :url_id, 
     class_name: :Tagging
