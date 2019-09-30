@@ -61,3 +61,6 @@ Migrating to CreateCastings (20170711165416)
   [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT "movies"."yr", COUNT(id) AS bad_movies FROM "movies" WHERE (score < 5) GROUP BY "movies"."yr" ORDER BY "movies"."bad_movies" DESC[0m
   [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT  "movies"."yr", COUNT(id) AS bad_movies FROM "movies" WHERE (score < 5) GROUP BY "movies"."yr" ORDER BY "movies"."bad_movies" DESC LIMIT $1[0m  [["LIMIT", 11]]
   [1m[36mMovie Load (1.5ms)[0m  [1m[34mSELECT "movies"."yr", COUNT(id) AS bad_movies FROM "movies" WHERE (score < 5) GROUP BY "movies"."yr" ORDER BY bad_movies DESC[0m
+  [1m[36mActor Load (4.2ms)[0m  [1m[34mSELECT "actors"."name" FROM "actors"[0m
+  [1m[36mActor Load (73.0ms)[0m  [1m[34mSELECT "actors"."name" FROM "actors" ORDER BY "actors"."name" ASC[0m
+  [1m[36mActor Load (9.8ms)[0m  [1m[34mSELECT  "actors"."name" FROM "actors" ORDER BY "actors"."name" ASC LIMIT $1[0m  [["LIMIT", 10]]
