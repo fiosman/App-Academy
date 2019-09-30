@@ -1,0 +1,1560 @@
+  [1m[35m (71.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3830754147492414975);[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAlbums (20170711194021)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.4ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194021"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArtists (20170711194034)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194034"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBuses (20170711194055)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194055"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDrivers (20170711194113)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194113"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGardeners (20170711194130)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "address" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194130"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlants (20170711194145)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194145"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoutes (20170711194240)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194240"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSeeds (20170711194259)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194259"]]
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTracks (20170711194324)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194324"]]
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-11 19:48:18.208423"], ["updated_at", "2017-07-11 19:48:18.208423"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3830754147492414975)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35mSQL (2.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (16.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "albums" CASCADE[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35m (5.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists" CASCADE[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "buses" CASCADE[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35m (5.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "drivers" CASCADE[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35m (8.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "gardeners" CASCADE[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "address" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "routes" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "seeds" CASCADE[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35m (5.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "tracks" CASCADE[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "albums" CASCADE[0m
+  [1m[35m (56.0ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists" CASCADE[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "buses" CASCADE[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "drivers" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "gardeners" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "address" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "routes" CASCADE[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "seeds" CASCADE[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tracks" CASCADE[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170711194324)[0m
+  [1m[35m (3.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170711194021),
+(20170711194034),
+(20170711194055),
+(20170711194113),
+(20170711194130),
+(20170711194145),
+(20170711194240),
+(20170711194259);
+
+[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-11 19:48:27.064919"], ["updated_at", "2017-07-11 19:48:27.064919"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Beyonce"], ["created_at", "2017-07-11 19:48:27.140581"], ["updated_at", "2017-07-11 19:48:27.140581"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nicki Minaj"], ["created_at", "2017-07-11 19:48:27.145673"], ["updated_at", "2017-07-11 19:48:27.145673"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ciara"], ["created_at", "2017-07-11 19:48:27.150301"], ["updated_at", "2017-07-11 19:48:27.150301"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lemonade"], ["artist_id", 1], ["created_at", "2017-07-11 19:48:27.177357"], ["updated_at", "2017-07-11 19:48:27.177357"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I Am... Sasha Fierce"], ["artist_id", 1], ["created_at", "2017-07-11 19:48:27.182545"], ["updated_at", "2017-07-11 19:48:27.182545"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dangerously in Love"], ["artist_id", 1], ["created_at", "2017-07-11 19:48:27.187013"], ["updated_at", "2017-07-11 19:48:27.187013"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "B'Day"], ["artist_id", 1], ["created_at", "2017-07-11 19:48:27.191492"], ["updated_at", "2017-07-11 19:48:27.191492"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "4"], ["artist_id", 1], ["created_at", "2017-07-11 19:48:27.196124"], ["updated_at", "2017-07-11 19:48:27.196124"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Pinkprint"], ["artist_id", 2], ["created_at", "2017-07-11 19:48:27.201105"], ["updated_at", "2017-07-11 19:48:27.201105"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pink Friday"], ["artist_id", 2], ["created_at", "2017-07-11 19:48:27.205801"], ["updated_at", "2017-07-11 19:48:27.205801"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 1"], ["artist_id", 2], ["created_at", "2017-07-11 19:48:27.209291"], ["updated_at", "2017-07-11 19:48:27.209291"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 2"], ["artist_id", 2], ["created_at", "2017-07-11 19:48:27.213689"], ["updated_at", "2017-07-11 19:48:27.213689"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Goodies"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.218389"], ["updated_at", "2017-07-11 19:48:27.218389"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ciara"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.223792"], ["updated_at", "2017-07-11 19:48:27.223792"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 3"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.229204"], ["updated_at", "2017-07-11 19:48:27.229204"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 4"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.233258"], ["updated_at", "2017-07-11 19:48:27.233258"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 5"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.237696"], ["updated_at", "2017-07-11 19:48:27.237696"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 6"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.242372"], ["updated_at", "2017-07-11 19:48:27.242372"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 7"], ["artist_id", 3], ["created_at", "2017-07-11 19:48:27.247022"], ["updated_at", "2017-07-11 19:48:27.247022"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sorry"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.267963"], ["updated_at", "2017-07-11 19:48:27.267963"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pray You Catch Me"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.272691"], ["updated_at", "2017-07-11 19:48:27.272691"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Don't Hurt Yourself"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.277185"], ["updated_at", "2017-07-11 19:48:27.277185"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "6 Inch"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.281639"], ["updated_at", "2017-07-11 19:48:27.281639"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Daddy Lessons"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.286170"], ["updated_at", "2017-07-11 19:48:27.286170"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Love Drought"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.290697"], ["updated_at", "2017-07-11 19:48:27.290697"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Freedom"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.295471"], ["updated_at", "2017-07-11 19:48:27.295471"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Formation"], ["album_id", 1], ["created_at", "2017-07-11 19:48:27.300044"], ["updated_at", "2017-07-11 19:48:27.300044"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Halo"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.304936"], ["updated_at", "2017-07-11 19:48:27.304936"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Video Phone"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.309767"], ["updated_at", "2017-07-11 19:48:27.309767"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "If I Were A Boy"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.314383"], ["updated_at", "2017-07-11 19:48:27.314383"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Disappear"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.319117"], ["updated_at", "2017-07-11 19:48:27.319117"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Satellites"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.324404"], ["updated_at", "2017-07-11 19:48:27.324404"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Diva"], ["album_id", 2], ["created_at", "2017-07-11 19:48:27.330112"], ["updated_at", "2017-07-11 19:48:27.330112"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Baby Boy"], ["album_id", 3], ["created_at", "2017-07-11 19:48:27.334850"], ["updated_at", "2017-07-11 19:48:27.334850"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Be with You"], ["album_id", 3], ["created_at", "2017-07-11 19:48:27.339347"], ["updated_at", "2017-07-11 19:48:27.339347"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Yes"], ["album_id", 3], ["created_at", "2017-07-11 19:48:27.344281"], ["updated_at", "2017-07-11 19:48:27.344281"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ring the Alarm"], ["album_id", 4], ["created_at", "2017-07-11 19:48:27.350146"], ["updated_at", "2017-07-11 19:48:27.350146"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Green Light"], ["album_id", 4], ["created_at", "2017-07-11 19:48:27.355970"], ["updated_at", "2017-07-11 19:48:27.355970"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Irreplaceable"], ["album_id", 4], ["created_at", "2017-07-11 19:48:27.361496"], ["updated_at", "2017-07-11 19:48:27.361496"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Resentment"], ["album_id", 4], ["created_at", "2017-07-11 19:48:27.366884"], ["updated_at", "2017-07-11 19:48:27.366884"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Party"], ["album_id", 5], ["created_at", "2017-07-11 19:48:27.372671"], ["updated_at", "2017-07-11 19:48:27.372671"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Only"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.380657"], ["updated_at", "2017-07-11 19:48:27.380657"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Feeling Myself"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.386808"], ["updated_at", "2017-07-11 19:48:27.386808"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Want Some More"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.392435"], ["updated_at", "2017-07-11 19:48:27.392435"]]
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Buy A Heart"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.401107"], ["updated_at", "2017-07-11 19:48:27.401107"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Win Again"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.408234"], ["updated_at", "2017-07-11 19:48:27.408234"]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Grand Piano"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.416760"], ["updated_at", "2017-07-11 19:48:27.416760"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Favorite"], ["album_id", 6], ["created_at", "2017-07-11 19:48:27.422672"], ["updated_at", "2017-07-11 19:48:27.422672"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fly"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.429006"], ["updated_at", "2017-07-11 19:48:27.429006"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Your Love"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.435152"], ["updated_at", "2017-07-11 19:48:27.435152"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dear Old Nicki"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.443782"], ["updated_at", "2017-07-11 19:48:27.443782"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I'm the Best"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.449690"], ["updated_at", "2017-07-11 19:48:27.449690"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Last Chance"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.455852"], ["updated_at", "2017-07-11 19:48:27.455852"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Here I Am"], ["album_id", 7], ["created_at", "2017-07-11 19:48:27.461898"], ["updated_at", "2017-07-11 19:48:27.461898"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 1"], ["album_id", 8], ["created_at", "2017-07-11 19:48:27.466591"], ["updated_at", "2017-07-11 19:48:27.466591"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 2"], ["album_id", 8], ["created_at", "2017-07-11 19:48:27.470683"], ["updated_at", "2017-07-11 19:48:27.470683"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 3"], ["album_id", 8], ["created_at", "2017-07-11 19:48:27.475897"], ["updated_at", "2017-07-11 19:48:27.475897"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 4"], ["album_id", 8], ["created_at", "2017-07-11 19:48:27.479484"], ["updated_at", "2017-07-11 19:48:27.479484"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 5"], ["album_id", 9], ["created_at", "2017-07-11 19:48:27.483734"], ["updated_at", "2017-07-11 19:48:27.483734"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 6"], ["album_id", 9], ["created_at", "2017-07-11 19:48:27.488438"], ["updated_at", "2017-07-11 19:48:27.488438"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 7"], ["album_id", 9], ["created_at", "2017-07-11 19:48:27.493856"], ["updated_at", "2017-07-11 19:48:27.493856"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "1, 2 Step"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.498754"], ["updated_at", "2017-07-11 19:48:27.498754"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pick Up the Phone"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.503360"], ["updated_at", "2017-07-11 19:48:27.503360"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ooh Baby"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.508097"], ["updated_at", "2017-07-11 19:48:27.508097"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Goodies"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.512963"], ["updated_at", "2017-07-11 19:48:27.512963"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "And I"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.517917"], ["updated_at", "2017-07-11 19:48:27.517917"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Hotline"], ["album_id", 10], ["created_at", "2017-07-11 19:48:27.522330"], ["updated_at", "2017-07-11 19:48:27.522330"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I'm Out"], ["album_id", 11], ["created_at", "2017-07-11 19:48:27.527548"], ["updated_at", "2017-07-11 19:48:27.527548"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sophomore"], ["album_id", 11], ["created_at", "2017-07-11 19:48:27.532542"], ["updated_at", "2017-07-11 19:48:27.532542"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Keep On Lookin"], ["album_id", 11], ["created_at", "2017-07-11 19:48:27.537553"], ["updated_at", "2017-07-11 19:48:27.537553"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Livin' It Up"], ["album_id", 11], ["created_at", "2017-07-11 19:48:27.542580"], ["updated_at", "2017-07-11 19:48:27.542580"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Read My Lips"], ["album_id", 11], ["created_at", "2017-07-11 19:48:27.547785"], ["updated_at", "2017-07-11 19:48:27.547785"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 8"], ["album_id", 12], ["created_at", "2017-07-11 19:48:27.553075"], ["updated_at", "2017-07-11 19:48:27.553075"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 9"], ["album_id", 12], ["created_at", "2017-07-11 19:48:27.559510"], ["updated_at", "2017-07-11 19:48:27.559510"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 10"], ["album_id", 12], ["created_at", "2017-07-11 19:48:27.564749"], ["updated_at", "2017-07-11 19:48:27.564749"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 11"], ["album_id", 12], ["created_at", "2017-07-11 19:48:27.572063"], ["updated_at", "2017-07-11 19:48:27.572063"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 12"], ["album_id", 12], ["created_at", "2017-07-11 19:48:27.579687"], ["updated_at", "2017-07-11 19:48:27.579687"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 13"], ["album_id", 13], ["created_at", "2017-07-11 19:48:27.586455"], ["updated_at", "2017-07-11 19:48:27.586455"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 14"], ["album_id", 13], ["created_at", "2017-07-11 19:48:27.591898"], ["updated_at", "2017-07-11 19:48:27.591898"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 15"], ["album_id", 13], ["created_at", "2017-07-11 19:48:27.597912"], ["updated_at", "2017-07-11 19:48:27.597912"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 16"], ["album_id", 13], ["created_at", "2017-07-11 19:48:27.603930"], ["updated_at", "2017-07-11 19:48:27.603930"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3830754147492414975);[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTracks (20170711194324)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP INDEX  "index_tracks_on_album_id"[0m
+  [1m[35m (5.0ms)[0m  [1m[35mDROP TABLE "tracks"[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194324"]]
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSeeds (20170711194259)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP INDEX  "index_seeds_on_plant_id"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "seeds"[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194259"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoutes (20170711194240)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE "routes"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194240"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlants (20170711194145)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_plants_on_gardener_id"[0m
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE "plants"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194145"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGardeners (20170711194130)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mDROP TABLE "gardeners"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194130"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDrivers (20170711194113)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_drivers_on_bus_id"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "drivers"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194113"]]
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBuses (20170711194055)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP INDEX  "index_buses_on_route_id"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "buses"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194055"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArtists (20170711194034)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "artists"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194034"]]
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlbums (20170711194021)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP INDEX  "index_albums_on_artist_id"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "albums"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170711194021"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3830754147492414975)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3830754147492414975);[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAlbums (20170711194021)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194021"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArtists (20170711194034)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194034"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBuses (20170711194055)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194055"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDrivers (20170711194113)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194113"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGardeners (20170711194130)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "name" character varying NOT NULL, "house_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_gardeners_on_house_id" ON "gardeners"  ("house_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194130"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlants (20170711194145)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194145"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoutes (20170711194240)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194240"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSeeds (20170711194259)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194259"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTracks (20170711194324)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194324"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateHouses (20170711194929)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "houses" ("id" bigserial primary key, "address" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170711194929"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3830754147492414975)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (9.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "albums" CASCADE[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35m (5.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists" CASCADE[0m
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "buses" CASCADE[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "drivers" CASCADE[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35m (6.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "gardeners" CASCADE[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "name" character varying NOT NULL, "house_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE  INDEX  "index_gardeners_on_house_id" ON "gardeners"  ("house_id")[0m
+  [1m[35m (5.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "houses" CASCADE[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "houses" ("id" bigserial primary key, "address" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants" CASCADE[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "routes" CASCADE[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "seeds" CASCADE[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "tracks" CASCADE[0m
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "albums" CASCADE[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists" CASCADE[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "buses" CASCADE[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "buses" ("id" bigserial primary key, "model" character varying NOT NULL, "route_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_buses_on_route_id" ON "buses"  ("route_id")[0m
+  [1m[35m (5.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "drivers" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying NOT NULL, "bus_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE  INDEX  "index_drivers_on_bus_id" ON "drivers"  ("bus_id")[0m
+  [1m[35m (6.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "gardeners" CASCADE[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "gardeners" ("id" bigserial primary key, "name" character varying NOT NULL, "house_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE  INDEX  "index_gardeners_on_house_id" ON "gardeners"  ("house_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "houses" CASCADE[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "houses" ("id" bigserial primary key, "address" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants" CASCADE[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "gardener_id" integer, "species" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_gardener_id" ON "plants"  ("gardener_id")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "routes" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "routes" ("id" bigserial primary key, "number" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "seeds" CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "seeds" ("id" bigserial primary key, "count" integer NOT NULL, "plant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE  INDEX  "index_seeds_on_plant_id" ON "seeds"  ("plant_id")[0m
+  [1m[35m (6.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "tracks" CASCADE[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "album_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170711194929)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Beyonce"], ["created_at", "2017-07-11 19:50:51.959713"], ["updated_at", "2017-07-11 19:50:51.959713"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nicki Minaj"], ["created_at", "2017-07-11 19:50:51.965171"], ["updated_at", "2017-07-11 19:50:51.965171"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ciara"], ["created_at", "2017-07-11 19:50:51.970105"], ["updated_at", "2017-07-11 19:50:51.970105"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lemonade"], ["artist_id", 1], ["created_at", "2017-07-11 19:50:51.995863"], ["updated_at", "2017-07-11 19:50:51.995863"]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I Am... Sasha Fierce"], ["artist_id", 1], ["created_at", "2017-07-11 19:50:52.002439"], ["updated_at", "2017-07-11 19:50:52.002439"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dangerously in Love"], ["artist_id", 1], ["created_at", "2017-07-11 19:50:52.008069"], ["updated_at", "2017-07-11 19:50:52.008069"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "B'Day"], ["artist_id", 1], ["created_at", "2017-07-11 19:50:52.013353"], ["updated_at", "2017-07-11 19:50:52.013353"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "4"], ["artist_id", 1], ["created_at", "2017-07-11 19:50:52.017982"], ["updated_at", "2017-07-11 19:50:52.017982"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Pinkprint"], ["artist_id", 2], ["created_at", "2017-07-11 19:50:52.022727"], ["updated_at", "2017-07-11 19:50:52.022727"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pink Friday"], ["artist_id", 2], ["created_at", "2017-07-11 19:50:52.027489"], ["updated_at", "2017-07-11 19:50:52.027489"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 1"], ["artist_id", 2], ["created_at", "2017-07-11 19:50:52.032347"], ["updated_at", "2017-07-11 19:50:52.032347"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 2"], ["artist_id", 2], ["created_at", "2017-07-11 19:50:52.045206"], ["updated_at", "2017-07-11 19:50:52.045206"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Goodies"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.049413"], ["updated_at", "2017-07-11 19:50:52.049413"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ciara"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.056347"], ["updated_at", "2017-07-11 19:50:52.056347"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 3"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.060994"], ["updated_at", "2017-07-11 19:50:52.060994"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 4"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.067072"], ["updated_at", "2017-07-11 19:50:52.067072"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 5"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.070107"], ["updated_at", "2017-07-11 19:50:52.070107"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 6"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.074700"], ["updated_at", "2017-07-11 19:50:52.074700"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Album 7"], ["artist_id", 3], ["created_at", "2017-07-11 19:50:52.079331"], ["updated_at", "2017-07-11 19:50:52.079331"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sorry"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.100405"], ["updated_at", "2017-07-11 19:50:52.100405"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pray You Catch Me"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.109226"], ["updated_at", "2017-07-11 19:50:52.109226"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Don't Hurt Yourself"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.115784"], ["updated_at", "2017-07-11 19:50:52.115784"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "6 Inch"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.119520"], ["updated_at", "2017-07-11 19:50:52.119520"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Daddy Lessons"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.123359"], ["updated_at", "2017-07-11 19:50:52.123359"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Love Drought"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.127515"], ["updated_at", "2017-07-11 19:50:52.127515"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Freedom"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.131279"], ["updated_at", "2017-07-11 19:50:52.131279"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Formation"], ["album_id", 1], ["created_at", "2017-07-11 19:50:52.135708"], ["updated_at", "2017-07-11 19:50:52.135708"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Halo"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.140321"], ["updated_at", "2017-07-11 19:50:52.140321"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Video Phone"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.145212"], ["updated_at", "2017-07-11 19:50:52.145212"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "If I Were A Boy"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.150986"], ["updated_at", "2017-07-11 19:50:52.150986"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Disappear"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.155408"], ["updated_at", "2017-07-11 19:50:52.155408"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Satellites"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.159728"], ["updated_at", "2017-07-11 19:50:52.159728"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Diva"], ["album_id", 2], ["created_at", "2017-07-11 19:50:52.164676"], ["updated_at", "2017-07-11 19:50:52.164676"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Baby Boy"], ["album_id", 3], ["created_at", "2017-07-11 19:50:52.169836"], ["updated_at", "2017-07-11 19:50:52.169836"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Be with You"], ["album_id", 3], ["created_at", "2017-07-11 19:50:52.174429"], ["updated_at", "2017-07-11 19:50:52.174429"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Yes"], ["album_id", 3], ["created_at", "2017-07-11 19:50:52.177997"], ["updated_at", "2017-07-11 19:50:52.177997"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ring the Alarm"], ["album_id", 4], ["created_at", "2017-07-11 19:50:52.182541"], ["updated_at", "2017-07-11 19:50:52.182541"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Green Light"], ["album_id", 4], ["created_at", "2017-07-11 19:50:52.186809"], ["updated_at", "2017-07-11 19:50:52.186809"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Irreplaceable"], ["album_id", 4], ["created_at", "2017-07-11 19:50:52.190848"], ["updated_at", "2017-07-11 19:50:52.190848"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Resentment"], ["album_id", 4], ["created_at", "2017-07-11 19:50:52.194774"], ["updated_at", "2017-07-11 19:50:52.194774"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Party"], ["album_id", 5], ["created_at", "2017-07-11 19:50:52.198989"], ["updated_at", "2017-07-11 19:50:52.198989"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Only"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.203315"], ["updated_at", "2017-07-11 19:50:52.203315"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Feeling Myself"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.207728"], ["updated_at", "2017-07-11 19:50:52.207728"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Want Some More"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.214816"], ["updated_at", "2017-07-11 19:50:52.214816"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Buy A Heart"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.219650"], ["updated_at", "2017-07-11 19:50:52.219650"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Win Again"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.223900"], ["updated_at", "2017-07-11 19:50:52.223900"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Grand Piano"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.228318"], ["updated_at", "2017-07-11 19:50:52.228318"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Favorite"], ["album_id", 6], ["created_at", "2017-07-11 19:50:52.233275"], ["updated_at", "2017-07-11 19:50:52.233275"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fly"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.238790"], ["updated_at", "2017-07-11 19:50:52.238790"]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Your Love"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.246004"], ["updated_at", "2017-07-11 19:50:52.246004"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dear Old Nicki"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.251470"], ["updated_at", "2017-07-11 19:50:52.251470"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I'm the Best"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.256713"], ["updated_at", "2017-07-11 19:50:52.256713"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Last Chance"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.262043"], ["updated_at", "2017-07-11 19:50:52.262043"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Here I Am"], ["album_id", 7], ["created_at", "2017-07-11 19:50:52.267812"], ["updated_at", "2017-07-11 19:50:52.267812"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 1"], ["album_id", 8], ["created_at", "2017-07-11 19:50:52.273464"], ["updated_at", "2017-07-11 19:50:52.273464"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 2"], ["album_id", 8], ["created_at", "2017-07-11 19:50:52.278277"], ["updated_at", "2017-07-11 19:50:52.278277"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 3"], ["album_id", 8], ["created_at", "2017-07-11 19:50:52.282856"], ["updated_at", "2017-07-11 19:50:52.282856"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 4"], ["album_id", 8], ["created_at", "2017-07-11 19:50:52.287720"], ["updated_at", "2017-07-11 19:50:52.287720"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 5"], ["album_id", 9], ["created_at", "2017-07-11 19:50:52.293006"], ["updated_at", "2017-07-11 19:50:52.293006"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 6"], ["album_id", 9], ["created_at", "2017-07-11 19:50:52.298661"], ["updated_at", "2017-07-11 19:50:52.298661"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 7"], ["album_id", 9], ["created_at", "2017-07-11 19:50:52.303881"], ["updated_at", "2017-07-11 19:50:52.303881"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "1, 2 Step"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.309320"], ["updated_at", "2017-07-11 19:50:52.309320"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pick Up the Phone"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.314670"], ["updated_at", "2017-07-11 19:50:52.314670"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ooh Baby"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.319852"], ["updated_at", "2017-07-11 19:50:52.319852"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Goodies"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.326365"], ["updated_at", "2017-07-11 19:50:52.326365"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "And I"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.335765"], ["updated_at", "2017-07-11 19:50:52.335765"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Hotline"], ["album_id", 10], ["created_at", "2017-07-11 19:50:52.340698"], ["updated_at", "2017-07-11 19:50:52.340698"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "I'm Out"], ["album_id", 11], ["created_at", "2017-07-11 19:50:52.346030"], ["updated_at", "2017-07-11 19:50:52.346030"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sophomore"], ["album_id", 11], ["created_at", "2017-07-11 19:50:52.351786"], ["updated_at", "2017-07-11 19:50:52.351786"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Keep On Lookin"], ["album_id", 11], ["created_at", "2017-07-11 19:50:52.357004"], ["updated_at", "2017-07-11 19:50:52.357004"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Livin' It Up"], ["album_id", 11], ["created_at", "2017-07-11 19:50:52.362256"], ["updated_at", "2017-07-11 19:50:52.362256"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Read My Lips"], ["album_id", 11], ["created_at", "2017-07-11 19:50:52.367737"], ["updated_at", "2017-07-11 19:50:52.367737"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 8"], ["album_id", 12], ["created_at", "2017-07-11 19:50:52.373070"], ["updated_at", "2017-07-11 19:50:52.373070"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 9"], ["album_id", 12], ["created_at", "2017-07-11 19:50:52.378951"], ["updated_at", "2017-07-11 19:50:52.378951"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 10"], ["album_id", 12], ["created_at", "2017-07-11 19:50:52.384344"], ["updated_at", "2017-07-11 19:50:52.384344"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 11"], ["album_id", 12], ["created_at", "2017-07-11 19:50:52.389525"], ["updated_at", "2017-07-11 19:50:52.389525"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 12"], ["album_id", 12], ["created_at", "2017-07-11 19:50:52.394775"], ["updated_at", "2017-07-11 19:50:52.394775"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 13"], ["album_id", 13], ["created_at", "2017-07-11 19:50:52.400220"], ["updated_at", "2017-07-11 19:50:52.400220"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 14"], ["album_id", 13], ["created_at", "2017-07-11 19:50:52.405722"], ["updated_at", "2017-07-11 19:50:52.405722"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 15"], ["album_id", 13], ["created_at", "2017-07-11 19:50:52.410876"], ["updated_at", "2017-07-11 19:50:52.410876"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Fake Track 16"], ["album_id", 13], ["created_at", "2017-07-11 19:50:52.416736"], ["updated_at", "2017-07-11 19:50:52.416736"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "houses" ("address", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["address", "10th and Madison"], ["created_at", "2017-07-11 19:50:52.436718"], ["updated_at", "2017-07-11 19:50:52.436718"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "houses" ("address", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["address", "Hopkins House"], ["created_at", "2017-07-11 19:50:52.441282"], ["updated_at", "2017-07-11 19:50:52.441282"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "houses" ("address", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["address", "2990 Mission St"], ["created_at", "2017-07-11 19:50:52.445638"], ["updated_at", "2017-07-11 19:50:52.445638"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "houses" ("address", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["address", "1458 11th Ave"], ["created_at", "2017-07-11 19:50:52.450223"], ["updated_at", "2017-07-11 19:50:52.450223"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Molly"], ["house_id", 1], ["created_at", "2017-07-11 19:50:52.467879"], ["updated_at", "2017-07-11 19:50:52.467879"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Scott"], ["house_id", 1], ["created_at", "2017-07-11 19:50:52.472499"], ["updated_at", "2017-07-11 19:50:52.472499"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Noemi"], ["house_id", 2], ["created_at", "2017-07-11 19:50:52.477406"], ["updated_at", "2017-07-11 19:50:52.477406"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Arthur"], ["house_id", 3], ["created_at", "2017-07-11 19:50:52.481963"], ["updated_at", "2017-07-11 19:50:52.481963"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Fred"], ["house_id", 4], ["created_at", "2017-07-11 19:50:52.486449"], ["updated_at", "2017-07-11 19:50:52.486449"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "gardeners" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sandy"], ["house_id", 4], ["created_at", "2017-07-11 19:50:52.490978"], ["updated_at", "2017-07-11 19:50:52.490978"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 1], ["species", "Maple Ash"], ["created_at", "2017-07-11 19:50:52.510030"], ["updated_at", "2017-07-11 19:50:52.510030"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 1], ["species", "Sweet Woodruff"], ["created_at", "2017-07-11 19:50:52.514627"], ["updated_at", "2017-07-11 19:50:52.514627"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 1], ["species", "Dandelion"], ["created_at", "2017-07-11 19:50:52.518970"], ["updated_at", "2017-07-11 19:50:52.518970"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 1], ["species", "Red Rose"], ["created_at", "2017-07-11 19:50:52.523509"], ["updated_at", "2017-07-11 19:50:52.523509"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 2], ["species", "Huckleberry"], ["created_at", "2017-07-11 19:50:52.528744"], ["updated_at", "2017-07-11 19:50:52.528744"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 2], ["species", "Flowering Dogwood"], ["created_at", "2017-07-11 19:50:52.533273"], ["updated_at", "2017-07-11 19:50:52.533273"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 2], ["species", "Lily"], ["created_at", "2017-07-11 19:50:52.537639"], ["updated_at", "2017-07-11 19:50:52.537639"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 2], ["species", "Snapdragon"], ["created_at", "2017-07-11 19:50:52.542424"], ["updated_at", "2017-07-11 19:50:52.542424"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 2], ["species", "Golden Barrel"], ["created_at", "2017-07-11 19:50:52.547819"], ["updated_at", "2017-07-11 19:50:52.547819"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 3], ["species", "Penny Hedge"], ["created_at", "2017-07-11 19:50:52.553235"], ["updated_at", "2017-07-11 19:50:52.553235"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 3], ["species", "Pregnant Onion"], ["created_at", "2017-07-11 19:50:52.558749"], ["updated_at", "2017-07-11 19:50:52.558749"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 3], ["species", "Moss"], ["created_at", "2017-07-11 19:50:52.563983"], ["updated_at", "2017-07-11 19:50:52.563983"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 3], ["species", "Parlor Palm"], ["created_at", "2017-07-11 19:50:52.569561"], ["updated_at", "2017-07-11 19:50:52.569561"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 3], ["species", "Sunflower"], ["created_at", "2017-07-11 19:50:52.574814"], ["updated_at", "2017-07-11 19:50:52.574814"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 4], ["species", "Yellow Fieldcress"], ["created_at", "2017-07-11 19:50:52.580007"], ["updated_at", "2017-07-11 19:50:52.580007"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 4], ["species", "Lamb's Ear"], ["created_at", "2017-07-11 19:50:52.586454"], ["updated_at", "2017-07-11 19:50:52.586454"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 4], ["species", "Yellow Fieldcress"], ["created_at", "2017-07-11 19:50:52.592579"], ["updated_at", "2017-07-11 19:50:52.592579"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 4], ["species", "Brown-eyed Susan"], ["created_at", "2017-07-11 19:50:52.597338"], ["updated_at", "2017-07-11 19:50:52.597338"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 5], ["species", "Collard"], ["created_at", "2017-07-11 19:50:52.601833"], ["updated_at", "2017-07-11 19:50:52.601833"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 5], ["species", "Purple Kale"], ["created_at", "2017-07-11 19:50:52.606472"], ["updated_at", "2017-07-11 19:50:52.606472"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 5], ["species", "Strawberries"], ["created_at", "2017-07-11 19:50:52.610919"], ["updated_at", "2017-07-11 19:50:52.610919"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 5], ["species", "Basil"], ["created_at", "2017-07-11 19:50:52.615358"], ["updated_at", "2017-07-11 19:50:52.615358"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 5], ["species", "Fennel"], ["created_at", "2017-07-11 19:50:52.619866"], ["updated_at", "2017-07-11 19:50:52.619866"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Rosemary"], ["created_at", "2017-07-11 19:50:52.627290"], ["updated_at", "2017-07-11 19:50:52.627290"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Chrysanthemum"], ["created_at", "2017-07-11 19:50:52.632202"], ["updated_at", "2017-07-11 19:50:52.632202"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Orchid"], ["created_at", "2017-07-11 19:50:52.637296"], ["updated_at", "2017-07-11 19:50:52.637296"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Daisy"], ["created_at", "2017-07-11 19:50:52.641728"], ["updated_at", "2017-07-11 19:50:52.641728"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Bird of Paradise"], ["created_at", "2017-07-11 19:50:52.646244"], ["updated_at", "2017-07-11 19:50:52.646244"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("gardener_id", "species", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["gardener_id", 6], ["species", "Green Cottonwood"], ["created_at", "2017-07-11 19:50:52.650844"], ["updated_at", "2017-07-11 19:50:52.650844"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 20], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.669253"], ["updated_at", "2017-07-11 19:50:52.669253"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 5], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.673881"], ["updated_at", "2017-07-11 19:50:52.673881"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 38], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.678041"], ["updated_at", "2017-07-11 19:50:52.678041"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 42], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.683060"], ["updated_at", "2017-07-11 19:50:52.683060"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 26], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.689388"], ["updated_at", "2017-07-11 19:50:52.689388"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 26], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.692375"], ["updated_at", "2017-07-11 19:50:52.692375"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 29], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.696367"], ["updated_at", "2017-07-11 19:50:52.696367"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 46], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.700582"], ["updated_at", "2017-07-11 19:50:52.700582"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 5], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.704962"], ["updated_at", "2017-07-11 19:50:52.704962"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 0], ["created_at", "2017-07-11 19:50:52.709445"], ["updated_at", "2017-07-11 19:50:52.709445"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 47], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.713969"], ["updated_at", "2017-07-11 19:50:52.713969"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 2], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.718765"], ["updated_at", "2017-07-11 19:50:52.718765"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 24], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.723295"], ["updated_at", "2017-07-11 19:50:52.723295"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.727828"], ["updated_at", "2017-07-11 19:50:52.727828"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 41], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.732434"], ["updated_at", "2017-07-11 19:50:52.732434"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 17], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.736918"], ["updated_at", "2017-07-11 19:50:52.736918"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 17], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.741362"], ["updated_at", "2017-07-11 19:50:52.741362"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 42], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.745645"], ["updated_at", "2017-07-11 19:50:52.745645"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 3], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.750442"], ["updated_at", "2017-07-11 19:50:52.750442"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 18], ["plant_id", 1], ["created_at", "2017-07-11 19:50:52.755634"], ["updated_at", "2017-07-11 19:50:52.755634"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 47], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.761439"], ["updated_at", "2017-07-11 19:50:52.761439"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 28], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.767923"], ["updated_at", "2017-07-11 19:50:52.767923"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 21], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.773006"], ["updated_at", "2017-07-11 19:50:52.773006"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 4], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.778202"], ["updated_at", "2017-07-11 19:50:52.778202"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 15], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.783765"], ["updated_at", "2017-07-11 19:50:52.783765"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 23], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.789725"], ["updated_at", "2017-07-11 19:50:52.789725"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 46], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.794871"], ["updated_at", "2017-07-11 19:50:52.794871"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 21], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.800277"], ["updated_at", "2017-07-11 19:50:52.800277"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 5], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.805576"], ["updated_at", "2017-07-11 19:50:52.805576"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 42], ["plant_id", 2], ["created_at", "2017-07-11 19:50:52.810877"], ["updated_at", "2017-07-11 19:50:52.810877"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 3], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.816299"], ["updated_at", "2017-07-11 19:50:52.816299"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 16], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.821622"], ["updated_at", "2017-07-11 19:50:52.821622"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.826885"], ["updated_at", "2017-07-11 19:50:52.826885"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 23], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.832506"], ["updated_at", "2017-07-11 19:50:52.832506"]]
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 16], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.839748"], ["updated_at", "2017-07-11 19:50:52.839748"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 50], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.845099"], ["updated_at", "2017-07-11 19:50:52.845099"]]
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 9], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.853968"], ["updated_at", "2017-07-11 19:50:52.853968"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 40], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.860807"], ["updated_at", "2017-07-11 19:50:52.860807"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 22], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.866553"], ["updated_at", "2017-07-11 19:50:52.866553"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 19], ["plant_id", 3], ["created_at", "2017-07-11 19:50:52.870311"], ["updated_at", "2017-07-11 19:50:52.870311"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 43], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.872642"], ["updated_at", "2017-07-11 19:50:52.872642"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.877812"], ["updated_at", "2017-07-11 19:50:52.877812"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 29], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.880771"], ["updated_at", "2017-07-11 19:50:52.880771"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 49], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.883660"], ["updated_at", "2017-07-11 19:50:52.883660"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 40], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.888200"], ["updated_at", "2017-07-11 19:50:52.888200"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 34], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.892813"], ["updated_at", "2017-07-11 19:50:52.892813"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 34], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.896604"], ["updated_at", "2017-07-11 19:50:52.896604"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 47], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.900792"], ["updated_at", "2017-07-11 19:50:52.900792"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 38], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.905245"], ["updated_at", "2017-07-11 19:50:52.905245"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 2], ["plant_id", 4], ["created_at", "2017-07-11 19:50:52.909782"], ["updated_at", "2017-07-11 19:50:52.909782"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 5], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.914405"], ["updated_at", "2017-07-11 19:50:52.914405"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 23], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.921834"], ["updated_at", "2017-07-11 19:50:52.921834"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 27], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.927028"], ["updated_at", "2017-07-11 19:50:52.927028"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 45], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.932542"], ["updated_at", "2017-07-11 19:50:52.932542"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 19], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.938353"], ["updated_at", "2017-07-11 19:50:52.938353"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 20], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.943518"], ["updated_at", "2017-07-11 19:50:52.943518"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 8], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.946958"], ["updated_at", "2017-07-11 19:50:52.946958"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 19], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.950799"], ["updated_at", "2017-07-11 19:50:52.950799"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 6], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.954846"], ["updated_at", "2017-07-11 19:50:52.954846"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 5], ["created_at", "2017-07-11 19:50:52.960793"], ["updated_at", "2017-07-11 19:50:52.960793"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 17], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.967701"], ["updated_at", "2017-07-11 19:50:52.967701"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 40], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.972419"], ["updated_at", "2017-07-11 19:50:52.972419"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 4], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.977012"], ["updated_at", "2017-07-11 19:50:52.977012"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 26], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.981621"], ["updated_at", "2017-07-11 19:50:52.981621"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 27], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.986254"], ["updated_at", "2017-07-11 19:50:52.986254"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 34], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.991526"], ["updated_at", "2017-07-11 19:50:52.991526"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 34], ["plant_id", 6], ["created_at", "2017-07-11 19:50:52.997981"], ["updated_at", "2017-07-11 19:50:52.997981"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 22], ["plant_id", 6], ["created_at", "2017-07-11 19:50:53.003223"], ["updated_at", "2017-07-11 19:50:53.003223"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 6], ["plant_id", 6], ["created_at", "2017-07-11 19:50:53.007764"], ["updated_at", "2017-07-11 19:50:53.007764"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 43], ["plant_id", 6], ["created_at", "2017-07-11 19:50:53.011843"], ["updated_at", "2017-07-11 19:50:53.011843"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 41], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.015813"], ["updated_at", "2017-07-11 19:50:53.015813"]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 21], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.022184"], ["updated_at", "2017-07-11 19:50:53.022184"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 7], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.024431"], ["updated_at", "2017-07-11 19:50:53.024431"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 13], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.028563"], ["updated_at", "2017-07-11 19:50:53.028563"]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.035084"], ["updated_at", "2017-07-11 19:50:53.035084"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 12], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.039275"], ["updated_at", "2017-07-11 19:50:53.039275"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.043716"], ["updated_at", "2017-07-11 19:50:53.043716"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 12], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.049137"], ["updated_at", "2017-07-11 19:50:53.049137"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 10], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.052540"], ["updated_at", "2017-07-11 19:50:53.052540"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 9], ["plant_id", 7], ["created_at", "2017-07-11 19:50:53.057837"], ["updated_at", "2017-07-11 19:50:53.057837"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 45], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.062554"], ["updated_at", "2017-07-11 19:50:53.062554"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 43], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.067719"], ["updated_at", "2017-07-11 19:50:53.067719"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.073167"], ["updated_at", "2017-07-11 19:50:53.073167"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.078735"], ["updated_at", "2017-07-11 19:50:53.078735"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 7], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.085061"], ["updated_at", "2017-07-11 19:50:53.085061"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 28], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.091991"], ["updated_at", "2017-07-11 19:50:53.091991"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 49], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.095364"], ["updated_at", "2017-07-11 19:50:53.095364"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 29], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.100323"], ["updated_at", "2017-07-11 19:50:53.100323"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 11], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.104664"], ["updated_at", "2017-07-11 19:50:53.104664"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 50], ["plant_id", 8], ["created_at", "2017-07-11 19:50:53.109222"], ["updated_at", "2017-07-11 19:50:53.109222"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 26], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.113697"], ["updated_at", "2017-07-11 19:50:53.113697"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 15], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.118395"], ["updated_at", "2017-07-11 19:50:53.118395"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 27], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.123318"], ["updated_at", "2017-07-11 19:50:53.123318"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 7], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.128166"], ["updated_at", "2017-07-11 19:50:53.128166"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.133501"], ["updated_at", "2017-07-11 19:50:53.133501"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 38], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.138948"], ["updated_at", "2017-07-11 19:50:53.138948"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.144390"], ["updated_at", "2017-07-11 19:50:53.144390"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 48], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.148561"], ["updated_at", "2017-07-11 19:50:53.148561"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 7], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.154163"], ["updated_at", "2017-07-11 19:50:53.154163"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 42], ["plant_id", 9], ["created_at", "2017-07-11 19:50:53.159717"], ["updated_at", "2017-07-11 19:50:53.159717"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 1], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.165063"], ["updated_at", "2017-07-11 19:50:53.165063"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.170374"], ["updated_at", "2017-07-11 19:50:53.170374"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 25], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.176434"], ["updated_at", "2017-07-11 19:50:53.176434"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 41], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.183227"], ["updated_at", "2017-07-11 19:50:53.183227"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 12], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.186775"], ["updated_at", "2017-07-11 19:50:53.186775"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 40], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.190418"], ["updated_at", "2017-07-11 19:50:53.190418"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 37], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.195491"], ["updated_at", "2017-07-11 19:50:53.195491"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 10], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.203716"], ["updated_at", "2017-07-11 19:50:53.203716"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 28], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.209003"], ["updated_at", "2017-07-11 19:50:53.209003"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 39], ["plant_id", 10], ["created_at", "2017-07-11 19:50:53.214327"], ["updated_at", "2017-07-11 19:50:53.214327"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 21], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.219678"], ["updated_at", "2017-07-11 19:50:53.219678"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 46], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.224893"], ["updated_at", "2017-07-11 19:50:53.224893"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 47], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.230028"], ["updated_at", "2017-07-11 19:50:53.230028"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 31], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.238063"], ["updated_at", "2017-07-11 19:50:53.238063"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 29], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.243557"], ["updated_at", "2017-07-11 19:50:53.243557"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 7], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.248897"], ["updated_at", "2017-07-11 19:50:53.248897"]]
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 36], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.255035"], ["updated_at", "2017-07-11 19:50:53.255035"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 24], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.260857"], ["updated_at", "2017-07-11 19:50:53.260857"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 33], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.266250"], ["updated_at", "2017-07-11 19:50:53.266250"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "seeds" ("count", "plant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["count", 36], ["plant_id", 11], ["created_at", "2017-07-11 19:50:53.271753"], ["updated_at", "2017-07-11 19:50:53.271753"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "routes" ("number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["number", 48], ["created_at", "2017-07-11 19:50:53.297541"], ["updated_at", "2017-07-11 19:50:53.297541"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "routes" ("number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["number", 24], ["created_at", "2017-07-11 19:50:53.303102"], ["updated_at", "2017-07-11 19:50:53.303102"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "routes" ("number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["number", 49], ["created_at", "2017-07-11 19:50:53.308456"], ["updated_at", "2017-07-11 19:50:53.308456"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "routes" ("number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["number", 28], ["created_at", "2017-07-11 19:50:53.312917"], ["updated_at", "2017-07-11 19:50:53.312917"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "routes" ("number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["number", 10], ["created_at", "2017-07-11 19:50:53.317284"], ["updated_at", "2017-07-11 19:50:53.317284"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "VW"], ["route_id", 1], ["created_at", "2017-07-11 19:50:53.340753"], ["updated_at", "2017-07-11 19:50:53.340753"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MK"], ["route_id", 1], ["created_at", "2017-07-11 19:50:53.345388"], ["updated_at", "2017-07-11 19:50:53.345388"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "JN"], ["route_id", 1], ["created_at", "2017-07-11 19:50:53.349765"], ["updated_at", "2017-07-11 19:50:53.349765"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "PL"], ["route_id", 1], ["created_at", "2017-07-11 19:50:53.354348"], ["updated_at", "2017-07-11 19:50:53.354348"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "EB"], ["route_id", 1], ["created_at", "2017-07-11 19:50:53.359948"], ["updated_at", "2017-07-11 19:50:53.359948"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniTour"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.365220"], ["updated_at", "2017-07-11 19:50:53.365220"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniRack"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.369644"], ["updated_at", "2017-07-11 19:50:53.369644"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniMagic"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.374207"], ["updated_at", "2017-07-11 19:50:53.374207"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniBus"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.378690"], ["updated_at", "2017-07-11 19:50:53.378690"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniVan"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.383432"], ["updated_at", "2017-07-11 19:50:53.383432"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "MiniSup"], ["route_id", 2], ["created_at", "2017-07-11 19:50:53.388265"], ["updated_at", "2017-07-11 19:50:53.388265"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Paragon"], ["route_id", 3], ["created_at", "2017-07-11 19:50:53.393057"], ["updated_at", "2017-07-11 19:50:53.393057"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Aero Town"], ["route_id", 3], ["created_at", "2017-07-11 19:50:53.397320"], ["updated_at", "2017-07-11 19:50:53.397320"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Wonder"], ["route_id", 3], ["created_at", "2017-07-11 19:50:53.401809"], ["updated_at", "2017-07-11 19:50:53.401809"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Break Speed"], ["route_id", 3], ["created_at", "2017-07-11 19:50:53.406792"], ["updated_at", "2017-07-11 19:50:53.406792"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Spectra"], ["route_id", 3], ["created_at", "2017-07-11 19:50:53.411296"], ["updated_at", "2017-07-11 19:50:53.411296"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "A"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.416185"], ["updated_at", "2017-07-11 19:50:53.416185"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "B"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.420761"], ["updated_at", "2017-07-11 19:50:53.420761"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "C"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.425324"], ["updated_at", "2017-07-11 19:50:53.425324"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "D"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.429762"], ["updated_at", "2017-07-11 19:50:53.429762"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "E"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.434529"], ["updated_at", "2017-07-11 19:50:53.434529"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "F"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.439038"], ["updated_at", "2017-07-11 19:50:53.439038"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "G"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.443620"], ["updated_at", "2017-07-11 19:50:53.443620"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "H"], ["route_id", 4], ["created_at", "2017-07-11 19:50:53.448183"], ["updated_at", "2017-07-11 19:50:53.448183"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Globus"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.452723"], ["updated_at", "2017-07-11 19:50:53.452723"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Versa"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.457374"], ["updated_at", "2017-07-11 19:50:53.457374"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Magic"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.462584"], ["updated_at", "2017-07-11 19:50:53.462584"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Avada"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.467980"], ["updated_at", "2017-07-11 19:50:53.467980"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Elm"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.472106"], ["updated_at", "2017-07-11 19:50:53.472106"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Wicker"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.476371"], ["updated_at", "2017-07-11 19:50:53.476371"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("model", "route_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model", "Rapid"], ["route_id", 5], ["created_at", "2017-07-11 19:50:53.480792"], ["updated_at", "2017-07-11 19:50:53.480792"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Joan Lee"], ["bus_id", 1], ["created_at", "2017-07-11 19:50:53.507846"], ["updated_at", "2017-07-11 19:50:53.507846"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Charlie McDonald"], ["bus_id", 1], ["created_at", "2017-07-11 19:50:53.512936"], ["updated_at", "2017-07-11 19:50:53.512936"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kevin Quashie"], ["bus_id", 1], ["created_at", "2017-07-11 19:50:53.517612"], ["updated_at", "2017-07-11 19:50:53.517612"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Michael Wallace"], ["bus_id", 1], ["created_at", "2017-07-11 19:50:53.522257"], ["updated_at", "2017-07-11 19:50:53.522257"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mia Mingus"], ["bus_id", 1], ["created_at", "2017-07-11 19:50:53.526781"], ["updated_at", "2017-07-11 19:50:53.526781"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ed Michaels"], ["bus_id", 2], ["created_at", "2017-07-11 19:50:53.531305"], ["updated_at", "2017-07-11 19:50:53.531305"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lisa Frank"], ["bus_id", 2], ["created_at", "2017-07-11 19:50:53.535862"], ["updated_at", "2017-07-11 19:50:53.535862"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Willy Wonka"], ["bus_id", 2], ["created_at", "2017-07-11 19:50:53.540405"], ["updated_at", "2017-07-11 19:50:53.540405"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rihanna"], ["bus_id", 2], ["created_at", "2017-07-11 19:50:53.545059"], ["updated_at", "2017-07-11 19:50:53.545059"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sharla Alegria"], ["bus_id", 2], ["created_at", "2017-07-11 19:50:53.549643"], ["updated_at", "2017-07-11 19:50:53.549643"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Roger Sanders"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.554566"], ["updated_at", "2017-07-11 19:50:53.554566"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tom Cathy"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.559992"], ["updated_at", "2017-07-11 19:50:53.559992"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kanye West"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.566541"], ["updated_at", "2017-07-11 19:50:53.566541"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Anderson Paak"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.570445"], ["updated_at", "2017-07-11 19:50:53.570445"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sarah Shahi"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.574886"], ["updated_at", "2017-07-11 19:50:53.574886"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tom Cathy"], ["bus_id", 3], ["created_at", "2017-07-11 19:50:53.579094"], ["updated_at", "2017-07-11 19:50:53.579094"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Harold Martin"], ["bus_id", 4], ["created_at", "2017-07-11 19:50:53.586388"], ["updated_at", "2017-07-11 19:50:53.586388"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Willow Smith"], ["bus_id", 4], ["created_at", "2017-07-11 19:50:53.591101"], ["updated_at", "2017-07-11 19:50:53.591101"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "DJ Mustard"], ["bus_id", 4], ["created_at", "2017-07-11 19:50:53.595847"], ["updated_at", "2017-07-11 19:50:53.595847"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Nia King"], ["bus_id", 4], ["created_at", "2017-07-11 19:50:53.600471"], ["updated_at", "2017-07-11 19:50:53.600471"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Alice Waters"], ["bus_id", 4], ["created_at", "2017-07-11 19:50:53.605482"], ["updated_at", "2017-07-11 19:50:53.605482"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Grace Lee Boggs"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.610914"], ["updated_at", "2017-07-11 19:50:53.610914"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dulce Rivera"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.617145"], ["updated_at", "2017-07-11 19:50:53.617145"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Michel Gerard"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.622619"], ["updated_at", "2017-07-11 19:50:53.622619"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Roger Larson"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.627834"], ["updated_at", "2017-07-11 19:50:53.627834"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Paul Ekman"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.633167"], ["updated_at", "2017-07-11 19:50:53.633167"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Richard Nesbitt"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.638819"], ["updated_at", "2017-07-11 19:50:53.638819"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Michael Li"], ["bus_id", 5], ["created_at", "2017-07-11 19:50:53.644055"], ["updated_at", "2017-07-11 19:50:53.644055"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Megan West"], ["bus_id", 6], ["created_at", "2017-07-11 19:50:53.649724"], ["updated_at", "2017-07-11 19:50:53.649724"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Katherine Key"], ["bus_id", 6], ["created_at", "2017-07-11 19:50:53.655094"], ["updated_at", "2017-07-11 19:50:53.655094"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Alfonso Cuaron"], ["bus_id", 6], ["created_at", "2017-07-11 19:50:53.660284"], ["updated_at", "2017-07-11 19:50:53.660284"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Emily Gilmore"], ["bus_id", 6], ["created_at", "2017-07-11 19:50:53.666185"], ["updated_at", "2017-07-11 19:50:53.666185"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ariana Grande"], ["bus_id", 6], ["created_at", "2017-07-11 19:50:53.672829"], ["updated_at", "2017-07-11 19:50:53.672829"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Maria Ahmed"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.677300"], ["updated_at", "2017-07-11 19:50:53.677300"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Charlie Simmons"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.681709"], ["updated_at", "2017-07-11 19:50:53.681709"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rage Newton"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.686544"], ["updated_at", "2017-07-11 19:50:53.686544"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Michael Hooton"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.691243"], ["updated_at", "2017-07-11 19:50:53.691243"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Jett Taylor"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.695980"], ["updated_at", "2017-07-11 19:50:53.695980"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "bus_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Shaleece Haas"], ["bus_id", 7], ["created_at", "2017-07-11 19:50:53.700560"], ["updated_at", "2017-07-11 19:50:53.700560"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" ORDER BY "artists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 1]]
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 2]]
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 3]]
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 4]]
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 5]]
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" ORDER BY "artists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mHouse Load (0.6ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" ORDER BY "houses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPlant Load (1.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" INNER JOIN "gardeners" ON "plants"."gardener_id" = "gardeners"."id" WHERE "gardeners"."house_id" = $1[0m  [["house_id", 1]]
+  [1m[36mSeed Load (0.6ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 1], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.5ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 2], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.4ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 3], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.4ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 4], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.5ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 5], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.4ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 6], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.3ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 7], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.3ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 8], ["LIMIT", 11]]
+  [1m[36mSeed Load (0.4ms)[0m  [1m[34mSELECT  "seeds".* FROM "seeds" WHERE "seeds"."plant_id" = $1 LIMIT $2[0m  [["plant_id", 9], ["LIMIT", 11]]
+  [1m[36mRoute Load (0.5ms)[0m  [1m[34mSELECT  "routes".* FROM "routes" ORDER BY "routes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRoute Load (0.3ms)[0m  [1m[34mSELECT  "routes".* FROM "routes" ORDER BY "routes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBus Load (0.5ms)[0m  [1m[34mSELECT "buses".* FROM "buses" WHERE "buses"."route_id" = $1[0m  [["route_id", 1]]
+  [1m[36mDriver Load (0.7ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" = $1[0m  [["bus_id", 1]]
+  [1m[36mDriver Load (0.4ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" = $1[0m  [["bus_id", 2]]
+  [1m[36mDriver Load (0.3ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" = $1[0m  [["bus_id", 3]]
+  [1m[36mDriver Load (0.4ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" = $1[0m  [["bus_id", 4]]
+  [1m[36mDriver Load (0.4ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" = $1[0m  [["bus_id", 5]]
