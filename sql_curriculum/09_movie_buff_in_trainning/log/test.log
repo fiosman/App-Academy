@@ -140,3 +140,7 @@ Migrating to CreateCastings (20170711165416)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mActor Load (2.7ms)[0m  [1m[34mSELECT actors.id, actors.name FROM "actors" INNER JOIN "castings" ON "castings"."actor_id" = "actors"."id" INNER JOIN "movies" ON "movies"."id" = "castings"."movie_id" WHERE (movies.title = 'Pulp Fiction')[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Load (3.5ms)[0m  [1m[34mSELECT movies.id, movies.title, movies.yr FROM "movies" INNER JOIN "castings" ON "castings"."movie_id" = "movies"."id" INNER JOIN "actors" ON "actors"."id" = "castings"."actor_id" WHERE (actors.name = 'Uma Thurman')[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m

@@ -76,5 +76,7 @@ def uma_movies
   # display the id, title, and year of movies Uma Thurman has acted in
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
-
+  Movie.joins(:actors)
+  .select('movies.id, movies.title, movies.yr')
+  .where('actors.name = ?', "Uma Thurman")
 end
