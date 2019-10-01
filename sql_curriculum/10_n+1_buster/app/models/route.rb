@@ -31,5 +31,18 @@ class Route < ApplicationRecord
 
   def better_drivers_query
     # TODO: your code here
+    buses = self.buses.includes(:drivers) 
+
+    each_bus_drivers = {}
+
+    buses.each do |bus| 
+      bus_drivers = []
+      bus.drivers.each do |bus_driver| 
+        bus_drivers << bus_driver.name
+      end
+      each_bus_drivers[bus.id] = bus_drivers
+    end
+    
+    each_bus_drivers
   end
 end

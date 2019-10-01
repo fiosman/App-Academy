@@ -2963,3 +2963,6 @@ Migrating to CreateHouses (20170711194929)
   [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" ORDER BY "houses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mPlant Load (1.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" INNER JOIN "gardeners" ON "plants"."gardener_id" = "gardeners"."id" WHERE "gardeners"."house_id" = $1[0m  [["house_id", 1]]
   [1m[36mSeed Load (0.7ms)[0m  [1m[34mSELECT "seeds".* FROM "seeds" WHERE "seeds"."plant_id" IN (1, 2, 3, 4, 5, 6, 7, 8, 9)[0m
+  [1m[36mRoute Load (0.6ms)[0m  [1m[34mSELECT  "routes".* FROM "routes" ORDER BY "routes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBus Load (0.8ms)[0m  [1m[34mSELECT "buses".* FROM "buses" WHERE "buses"."route_id" = $1[0m  [["route_id", 1]]
+  [1m[36mDriver Load (1.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."bus_id" IN (1, 2, 3, 4, 5)[0m
