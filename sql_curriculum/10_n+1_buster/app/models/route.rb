@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: routes
+#
+#  id         :bigint           not null, primary key
+#  number     :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Route < ApplicationRecord
   has_many :buses,
     class_name: 'Bus',
