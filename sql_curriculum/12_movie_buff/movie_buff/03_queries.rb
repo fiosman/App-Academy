@@ -21,6 +21,15 @@ def costars(name)
   # List the names of the actors that the named actor has ever
   # appeared with.
   # Hint: use a subquery
+  movies_subquery = Movie.select(:id).joins(:actors).where({ actors: { name: name } })
+
+  Actor 
+    .select(:name) 
+    .joins(:movies)
+    .where({ movies: { id: movies_subquery } })
+    .where.not({ actors: { name: name } })
+    .distinct
+    .pluck(:name)
 end
 
 def actor_out_of_work
