@@ -1,2 +1,0 @@
-class Response < ApplicationRecord 
-end
