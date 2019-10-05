@@ -49,6 +49,12 @@ def starring(whazzername)
   # ex. "Sylvester Stallone" is like "sylvester" and "lester stone" but
   # not like "stallone sylvester" or "zylvester ztallone"
 
+  letters = "%#{whazzername.split("").join('%')}%"
+
+  Movie 
+    .select(:id, :title)
+    .joins(:actors)
+    .where('LOWER(actors.name) LIKE LOWER(?)', letters)
 end
 
 def longest_career
