@@ -6,7 +6,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-  end
 
-  add_index :questions, :poll_id
+    add_index :questions, :poll_id
+  end
 end
