@@ -10,4 +10,5 @@
 #
 
 class AnswerChoice < ApplicationRecord 
+  validates :answer_choice, :question_id, presence: true
 end

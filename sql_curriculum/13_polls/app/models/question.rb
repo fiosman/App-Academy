@@ -10,4 +10,5 @@
 #
 
 class Question < ApplicationRecord 
+  validates :question, :poll_id, presence: true
 end
