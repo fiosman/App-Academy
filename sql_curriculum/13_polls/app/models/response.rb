@@ -11,6 +11,7 @@
 
 class Response < ApplicationRecord 
   validates :user_id, :answer_choice_id, presence: true
+  validate :respondent_already_answered?
 
   belongs_to :respondent, 
     primary_key: :id, 
@@ -29,4 +30,11 @@ class Response < ApplicationRecord
   def sibling_responses 
     self.question.responses.where.not(id: self.id)
   end
+
+  def respondent_already_answered?
+    if sibling_responses.any? { |sibiling| sibiling.user_id == self.user_id }
+      errors[:respondent] << 'has already provided a response!'
+    end
+  end
+
 end
