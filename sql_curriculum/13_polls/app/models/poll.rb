@@ -15,10 +15,10 @@ class Poll < ApplicationRecord
   belongs_to :author, 
     primary_key: :id, 
     foreign_key: :user_id, 
-    class: :User 
+    class_name: :User 
 
   has_many :questions, 
     primary_key: :id, 
     foreign_key: :question_id, 
-    class: :Question
+    class_name: :Question
 end
