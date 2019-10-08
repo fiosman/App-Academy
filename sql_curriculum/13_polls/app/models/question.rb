@@ -25,4 +25,16 @@ class Question < ApplicationRecord
   has_many :responses, 
     through: :answer_choices, 
     source: :responses
+
+  def results 
+   results = {}
+   answer_choices = self.answer_choices 
+
+    answer_choices.each do |answer_choice| 
+     results[answer_choice.answer_choice] = answer_choice.responses.count
+    end
+
+   results
+  end
+
 end
