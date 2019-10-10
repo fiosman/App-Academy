@@ -27,14 +27,14 @@ class Question < ApplicationRecord
     source: :responses
 
   def results 
-   results = {}
-   answer_choices = self.answer_choices 
+   poll_results = {}
+   answer_choices = self.answer_choices.includes(:responses)
 
     answer_choices.each do |answer_choice| 
-     results[answer_choice.answer_choice] = answer_choice.responses.count
+     poll_results[answer_choice.answer_choice] = answer_choice.responses.length
     end
 
-   results
+   poll_results
   end
 
 end
