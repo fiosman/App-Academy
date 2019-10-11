@@ -32,7 +32,7 @@ class Question < ApplicationRecord
     answer_choices 
       .left_outer_joins(:responses)
       .group('answer_choices.answer_choice')
-      .count
+      .count('responses.id')
 
       #not properly counting zero responses to an answer_choice..
   end
