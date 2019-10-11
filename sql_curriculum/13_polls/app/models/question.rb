@@ -30,9 +30,11 @@ class Question < ApplicationRecord
     answer_choices = self.answer_choices 
 
     answer_choices 
-      .joins(:responses)
+      .left_outer_joins(:responses)
       .group('answer_choices.answer_choice')
       .count
+
+      #not properly counting zero responses to an answer_choice..
   end
 
 end
