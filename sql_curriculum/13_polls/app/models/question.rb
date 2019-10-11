@@ -31,8 +31,8 @@ class Question < ApplicationRecord
 
     answer_choices 
       .joins(:responses)
-      .select('COUNT(responses.id)')
-      .group('answer_choices.id')
+      .group('answer_choices.answer_choice')
+      .count
   end
 
 end
