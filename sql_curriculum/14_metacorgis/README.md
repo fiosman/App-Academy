@@ -1,0 +1,3 @@
+# Metacorgis
+
+Practice metaprogramming.
