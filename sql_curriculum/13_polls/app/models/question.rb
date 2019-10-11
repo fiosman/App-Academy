@@ -27,14 +27,12 @@ class Question < ApplicationRecord
     source: :responses
 
   def results 
-   poll_results = {}
-   answer_choices = self.answer_choices.includes(:responses)
+    answer_choices = self.answer_choices 
 
-    answer_choices.each do |answer_choice| 
-     poll_results[answer_choice.answer_choice] = answer_choice.responses.length
-    end
-
-   poll_results
+    answer_choices 
+      .joins(:responses)
+      .select('COUNT(responses.id)')
+      .group('answer_choices.id')
   end
 
 end
