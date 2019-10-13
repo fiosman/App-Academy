@@ -84,10 +84,11 @@ class SQLObject
 
   def attribute_values
     # ...
+    self.class.columns.map { |column_name| self.send(column_name) }
   end
 
   def insert
-    # ...
+    
   end
 
   def update
