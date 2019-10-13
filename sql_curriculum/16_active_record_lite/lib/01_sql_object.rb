@@ -102,6 +102,15 @@ class SQLObject
 
   def update
     # ...
+    set = self.class.columns.drop(1).map { |column_name| "#{column_name} = ?" }.join(", ")
+    DBConnection.execute(<<-SQL, *attribute_values.drop(1), self.id) 
+      UPDATE 
+        #{self.class.table_name}
+      SET 
+        #{set}
+      WHERE 
+        id = ? 
+    SQL
   end
 
   def save
