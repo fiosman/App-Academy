@@ -12,11 +12,15 @@ class SQLObject
   end
 
   def self.table_name=(table_name)
-    # ...
+    @table_name = table_name
   end
 
   def self.table_name
-    # ...
+    if @table_name.nil? 
+      self.to_s.tableize 
+    else
+      @table_name
+    end
   end
 
   def self.all
