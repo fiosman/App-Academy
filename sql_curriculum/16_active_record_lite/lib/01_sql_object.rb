@@ -8,7 +8,7 @@ class SQLObject
   def self.columns
     return @columns unless @columns.nil? 
 
-    @columns = DBConnection.execute2(<<-SQL) 
+    @columns = DBConnection.execute2(<<-SQL)
       SELECT 
         * 
       FROM 
@@ -17,7 +17,7 @@ class SQLObject
         1
     SQL
 
-    @columns.first.map(&:to_sym)
+    @columns = @columns.first.map(&:to_sym)
   end
 
   def self.finalize!
@@ -60,7 +60,7 @@ class SQLObject
     params.each do |k, v| 
       attr_name = k.to_sym
       if !self.class.columns.include?(attr_name)
-        raise("unknown attribute '#{attr_name}'")
+        raise "unknown attribute '#{attr_name}'"
       else 
         self.send("#{attr_name}=", v)
       end
