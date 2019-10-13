@@ -17,18 +17,13 @@ class SQLObject
         1
     SQL
 
-    @columns = @columns.first.map(&:to_sym)
+    @columns = @columns.first.map!(&:to_sym)
   end
 
   def self.finalize!
-    self.columns.each do |column| 
-      define_method(column) do 
-        self.attributes[name]
-      end
-
-      define_method("#{column}=") do |value| 
-        self.attributes[column] = value
-      end
+    self.columns.each do |column_name| 
+      define_method(column_name) { attributes[column_name] }
+      define_method("#{column_name}=") { |value| attributes[column_name] = value }
     end
   end
 
@@ -45,11 +40,18 @@ class SQLObject
   end
 
   def self.all
-    # ...
+    res = DBConnection.execute(<<-SQL)
+      SELECT 
+        * 
+      FROM 
+        #{self.table_name}
+    SQL
+
+    self.parse_all(res)
   end
 
   def self.parse_all(results)
-    # ...
+    results.map { |record| self.new(record) }
   end
 
   def self.find(id)
