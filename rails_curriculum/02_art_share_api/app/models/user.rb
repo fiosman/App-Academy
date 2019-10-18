@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  username   :string
+#  username   :string           not null
 #
 
 class User < ApplicationRecord 
