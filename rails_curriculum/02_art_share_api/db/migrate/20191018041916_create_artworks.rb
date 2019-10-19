@@ -7,5 +7,7 @@ class CreateArtworks < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :artworks, [:title, :artist_id], unique: true
   end
 end

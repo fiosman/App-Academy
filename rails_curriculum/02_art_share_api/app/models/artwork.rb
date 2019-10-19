@@ -1,3 +1,4 @@
 class Artwork < ApplicationRecord 
-  validates :title, :image_url, :artist_id, presence: true
+  validates :title, :artist_id, presence: true, uniqueness: true
+  validates :image_url, presence: true
 end
