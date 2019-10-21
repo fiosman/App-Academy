@@ -13,4 +13,6 @@ class User < ApplicationRecord
 
   has_many :artworks, 
   foreign_key: :artist_id
+
+  
 end
