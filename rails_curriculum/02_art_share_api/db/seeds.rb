@@ -11,3 +11,12 @@ User.create!(username: 'Fares')
 User.create!(username: 'Andrew')
 User.create!(username: 'Chris')
 
+Artwork.create!(title: 'Mona Lisa', image_url: 'tinyurl.com/mona_lisa', artist_id: 2)
+Artwork.create!(title: 'Red Mars', image_url: 'imgur.com/red_mars', artist_id: 2)
+Artwork.create!(title: 'Earth', image_url: 'imgur.com/earth', artist_id: 1)
+Artwork.create!(title: 'Flying Cars', image_url: 'tinyurl.com/flying_cars', artist_id: 3)
+Artwork.create!(title: 'Houses', image_url: 'imgur.com/houses', artist_id: 4)
+
+ArtworkShare.create!()
+
+
