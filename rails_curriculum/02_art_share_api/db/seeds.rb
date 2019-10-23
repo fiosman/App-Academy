@@ -17,6 +17,10 @@ Artwork.create!(title: 'Earth', image_url: 'imgur.com/earth', artist_id: 1)
 Artwork.create!(title: 'Flying Cars', image_url: 'tinyurl.com/flying_cars', artist_id: 3)
 Artwork.create!(title: 'Houses', image_url: 'imgur.com/houses', artist_id: 4)
 
-ArtworkShare.create!()
+ArtworkShare.create!(artwork_id: 1, viewer_id: 2) 
+ArtworkShare.create!(artwork_id: 2, viewer_id: 1)
+ArtworkShare.create!(artwork_id: 3, viewer_id: 1)
+ArtworkShare.create!(artwork_id: 4, viewer_id: 4)
+ArtworkShare.create!(artwork_id: 5, viewer_id: 3)
 
 
