@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if user.destroy 
       render json: user
     else
-      render text: 'cannot destroy this object'
+     render json: user.errors.full_messages, status: :unprocessable_entity
     end
   end
 

@@ -9,7 +9,7 @@ class ArtworksController < ApplicationController
   end
   
   def create 
-    artwork = Artwork.new(artwork_params) 
+    artwork = Artwork.new(artworks_params) 
 
     if artwork.save 
       render json: artwork 
@@ -31,7 +31,7 @@ class ArtworksController < ApplicationController
   def update 
     artwork = Artwork.find(params[:id]) 
 
-    if artwork.update 
+    if artwork.update(artworks_params)
       render json: artwork 
     else
       render json: artwork.errors.full_messages, status: :unprocessable_entity
