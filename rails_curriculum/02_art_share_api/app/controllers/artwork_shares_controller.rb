@@ -13,7 +13,7 @@ class ArtworkSharesController < ApplicationController
     artwork_share = ArtworkShare.find(params[:id]) 
 
     if artwork_share.destroy 
-      render jeson: artwork_share
+      render json: artwork_share
     else
       render json: artwork_share.errors.full_messages, status: :unprocessable_entity
     end
