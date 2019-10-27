@@ -20,4 +20,6 @@ class User < ApplicationRecord
   has_many :shared_artworks, 
     through: :artwork_shares, 
     source: :artwork
+
+  has_many :comments, dependent: :destroy
 end
