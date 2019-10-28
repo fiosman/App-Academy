@@ -1,8 +1,8 @@
 class UsersController < ApplicationController 
   
   def index 
-    if params[:name] 
-      render json: User.where(username: params[:name])
+    if params[:username] 
+      render json: User.where(username: params[:username])
     else
       render json: User.all
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   private 
 
   def user_params 
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 
 end

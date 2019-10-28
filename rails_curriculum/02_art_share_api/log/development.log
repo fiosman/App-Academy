@@ -3217,3 +3217,105 @@ Processing by UsersController#index as */*
 Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 3.7ms)
 
 
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/users?user[name]=Joshua&user[email]=joshua.g@gmail.com" for ::1 at 2019-10-28 00:06:47 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Joshua", "email"=>"joshua.g@gmail.com"}}
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 5.8ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'name' for User.):
+  
+app/controllers/users_controller.rb:12:in `create'
+Started POST "/users?user[username]=Joshua&user[email]=joshua.g@gmail.com" for ::1 at 2019-10-28 00:07:22 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Joshua", "email"=>"joshua.g@gmail.com"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'email' for User.):
+  
+app/controllers/users_controller.rb:12:in `create'
+Started POST "/users?user[username]=Joshua" for ::1 at 2019-10-28 00:07:28 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Joshua"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 28ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users?user[username]=Joshua" for ::1 at 2019-10-28 00:07:34 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Joshua"}}
+Unpermitted parameter: :username
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users?user[username]=%27Andrew%27" for ::1 at 2019-10-28 00:07:46 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"'Andrew'"}}
+Unpermitted parameter: :username
+  [1m[35m (3.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (4.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 15ms (Views: 0.6ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/users?user[username]=%27Marcus" for ::1 at 2019-10-28 00:08:03 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"'Marcus"}}
+Unpermitted parameter: :username
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users?user[username]=%27Marcus%27" for ::1 at 2019-10-28 00:08:06 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"'Marcus'"}}
+Unpermitted parameter: :username
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (12.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 22ms (Views: 0.4ms | ActiveRecord: 17.4ms)
+
+
+Started POST "/users?user[username]=Marcus" for ::1 at 2019-10-28 00:08:11 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Marcus"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
