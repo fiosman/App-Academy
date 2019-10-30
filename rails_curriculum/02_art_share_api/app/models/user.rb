@@ -21,5 +21,20 @@ class User < ApplicationRecord
     through: :artwork_shares, 
     source: :artwork
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy 
+
+  has_many :likes, 
+    primary_key: :id, 
+    foreign_key: :user_id, 
+    class_name: :Like
+
+  has_many :liked_comments, 
+    through: :likes, 
+    source: :likeable,
+    source_type: 'Comment'
+  
+  has_many :liked_artworks, 
+    through: :likes, 
+    source: :likeable, 
+    source_type: 'Artwork'
 end

@@ -17,4 +17,10 @@ class Comment < ApplicationRecord
     class_name: :User
 
   belongs_to :artwork
+
+  has_many :likes, as: :likeable 
+
+  has_many :liked_users, 
+    through: :likes, 
+    source: :user
 end
