@@ -1,3 +1,3 @@
-class Like 
-  belongs_to :likeable, polymoprhic: true 
+class Like < ApplicationRecord
+  belongs_to :likeable, polymorphic: true 
 end
