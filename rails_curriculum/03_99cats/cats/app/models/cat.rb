@@ -13,7 +13,7 @@ class Cat < ApplicationRecord
     num_days = Date.today.day - self.birth_date.day 
 
     from_time = Time.now - num_years.years - num_months.months - num_days.days 
-    
+
     time_ago_in_words(from_time)
   end
 end
