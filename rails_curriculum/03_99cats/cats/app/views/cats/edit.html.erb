@@ -3,7 +3,7 @@
 <form action="<%=cat_url(@cat) %>" method="post">
   <input type="hidden" name="_method" value="PATCH">
   <label for="name">Name</label>
-  <input id="name" type="text" name="cat[name]">
+  <input id="name" type="text" name="cat[name]" value = "<%= @cat[:name] %>">
   
   <br>
 
@@ -14,7 +14,7 @@
   <br>
 
   <label for="color">Please select color</label>
-  <select name="cat[color]" id="color">
+  <select name="cat[color]" id="color" value = "<%= @cat[:color] %>">
     <option disabled selected>-- Please Select --</option>
     <%Cat::COLORS.each do |cat_color| %>
       <option value = "<%= cat_color %>"><%= cat_color %></option>
@@ -24,12 +24,12 @@
   <br>
 
   <label for="birthdate">Please select your birthday</label>
-  <input type="date" name="cat[birth_date]" id="birthdate">
+  <input type="date" name="cat[birth_date]" id="birthdate" value= "<%= @cat[:birth_date] %>">
   
   <br>
 
   <label for="textarea">Please type a description here</label><br> 
-  <textarea name="cat[description]" id="textarea"></textarea>
+  <textarea name="cat[description]" id="textarea"><%= @cat[:description] %></textarea>
   
   <br>
 
