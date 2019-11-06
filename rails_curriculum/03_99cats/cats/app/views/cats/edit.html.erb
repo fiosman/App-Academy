@@ -8,8 +8,8 @@
   <br>
 
   <label for="gender">Please select gender of cat</label>
-  <input type="radio" name="cat[sex]" id="gender" value="M" checked = "<%= @cat[:sex] == "M" %>">Male
-  <input type="radio" name="cat[sex]" id="gender" value="F" checked = "<%= @cat[:sex] == "F" %>">Female
+  <input type="radio" name="cat[sex]" id="gender" value="M" <%= @cat[:sex] == "M" ? "checked" : "" %>>Male 
+  <input type="radio" name="cat[sex]" id="gender" value="F" <%= @cat[:sex] == "F" ? "checked" : "" %>>Female
 
   <br>
 
