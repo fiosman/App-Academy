@@ -16,7 +16,7 @@
   <label for="color">Please select color</label>
   <select name="cat[color]" id="color">
     <option disabled selected>-- Please Select --</option>
-    <% @cat_colors.each do |cat_color| %>
+    <%Cat::COLORS.each do |cat_color| %>
       <option value = "<%= cat_color %>"><%= cat_color %></option>
     <% end %>
   </select>
