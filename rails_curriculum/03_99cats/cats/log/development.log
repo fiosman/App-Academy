@@ -2250,3 +2250,25 @@ Processing by CatsController#edit as HTML
 Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/cats/3/edit" for ::1 at 2019-11-05 23:40:30 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:34
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 186ms (Views: 149.4ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/cats/3/edit" for ::1 at 2019-11-05 23:41:03 -0500
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:34
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.5ms)
+
+
