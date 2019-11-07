@@ -1,9 +1,17 @@
-<%= render 'form', cat: @cat, action: :edit %>
+<h1>Edit a cat</h1>
 
-<!-- <h1>Edit a cat</h1>
+<% if action == :edit %>
+  <% action_url = cat_url(@cat) %> 
+<% else %> 
+  <%action_url = cats_url %>
 
-<form action="<%=cat_url(@cat) %>" method="post">
-  <input type="hidden" name="_method" value="PATCH">
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <% if action == :edit %> 
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+  
   <label for="name">Name</label>
   <input id="name" type="text" name="cat[name]" value = "<%= @cat[:name] %>">
   
@@ -36,4 +44,5 @@
   <br>
 
   <input type="submit" value="Update Cat">
-</form> -->
+</form> 
+
