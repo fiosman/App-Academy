@@ -1,13 +1,8 @@
-<% if action == :edit %>
-  <% action_url = cat_url(cat) %> 
-<% else %> 
-  <%action_url = cats_url %>
-<% end %>
+<% action = cat.persisted? ? cat_url(cat) : cats_url %> 
+<% method = cat.persisted? ? "PATCH" : "post" %>
 
-<form action="<%= action_url %>" method="post">
-  <% if action == :edit %> 
-    <input type="hidden" name="_method" value="PATCH">
-  <% end %>
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
 
   <label for="name">Name</label>
   <input id="name" type="text" name="cat[name]" value = "<%= cat[:name] %>">
@@ -42,5 +37,6 @@
 
   <input type="submit" value="<%= action == :edit ? "Update Cat" : "Create Cat" %>">
 </form> 
+
 
 
