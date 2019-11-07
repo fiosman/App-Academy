@@ -1,31 +1,28 @@
-<h1>Edit a cat</h1>
-
 <% if action == :edit %>
-  <% action_url = cat_url(@cat) %> 
+  <% action_url = cat_url(cat) %> 
 <% else %> 
   <%action_url = cats_url %>
-
 <% end %>
 
 <form action="<%= action_url %>" method="post">
   <% if action == :edit %> 
     <input type="hidden" name="_method" value="PATCH">
   <% end %>
-  
+
   <label for="name">Name</label>
-  <input id="name" type="text" name="cat[name]" value = "<%= @cat[:name] %>">
+  <input id="name" type="text" name="cat[name]" value = "<%= cat[:name] %>">
   
   <br>
 
   <label for="gender">Please select gender of cat</label>
-  <input type="radio" name="cat[sex]" id="gender" value="M" <%= @cat[:sex] == "M" ? "checked" : "" %>>Male 
-  <input type="radio" name="cat[sex]" id="gender" value="F" <%= @cat[:sex] == "F" ? "checked" : "" %>>Female
+  <input type="radio" name="cat[sex]" id="gender" value="M" <%= cat[:sex] == "M" ? "checked" : "" %>>Male 
+  <input type="radio" name="cat[sex]" id="gender" value="F" <%= cat[:sex] == "F" ? "checked" : "" %>>Female
 
   <br>
 
   <label for="color">Please select color</label>
-  <select name="cat[color]" id="color" value = "<%= @cat[:color] %>">
-    <option selected><%= @cat[:color] %></option>
+  <select name="cat[color]" id="color" value = "<%= cat[:color] %>">
+    <option selected><%= cat[:color] %></option>
     <%Cat::COLORS.each do |cat_color| %>
       <option value = "<%= cat_color %>"><%= cat_color %></option>
     <% end %>
@@ -34,15 +31,16 @@
   <br>
 
   <label for="birthdate">Please select your birthday</label>
-  <input type="date" name="cat[birth_date]" id="birthdate" value= "<%= @cat[:birth_date] %>">
+  <input type="date" name="cat[birth_date]" id="birthdate" value= "<%= cat[:birth_date] %>">
   
   <br>
 
   <label for="textarea">Please type a description here</label><br> 
-  <textarea name="cat[description]" id="textarea"><%= @cat[:description] %></textarea>
+  <textarea name="cat[description]" id="textarea"><%= cat[:description] %></textarea>
   
   <br>
 
-  <input type="submit" value="Update Cat">
+  <input type="submit" value="<%= action == :edit ? "Update Cat" : "Create Cat" %>">
 </form> 
+
 
