@@ -27,9 +27,13 @@ class CatRentalRequest < ApplicationRecord
   end
 
   def overlapping_approved_requests 
-    overlapping_requests.select { |request| request.status == 'APPROVED' }
+    overlapping_requests.where(status: 'APPROVED')
   end
 
   def does_not_overlap_approved_requests 
+    if !overlapping_approved_requests.empty? 
+      errors[:request] << 'cannot be processed as this cat cannot be rented'
+    end
   end
+
 end
