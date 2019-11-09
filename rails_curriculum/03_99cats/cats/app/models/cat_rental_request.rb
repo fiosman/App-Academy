@@ -14,11 +14,16 @@
 class CatRentalRequest < ApplicationRecord 
   validates :cat_id, :start_date, :end_date, presence: true
   validates :status, presence: true, inclusion: { in: %w(PENDING APPROVED DENIED) }
+  validate :overlapping_requests
 
   belongs_to :cat
 
   def overlapping_requests 
-    CatRentalRequest.where(id: 4)
+    CatRentalRequest. 
+      where.not(id: self.id).
+      where(cat_id: self.cat_id). 
+      where('start_date > :start_date AND end_date > :end_date', 
+           start_date: self.start_date, end_date: self.end_date)
   end
 end
 
