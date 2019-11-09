@@ -14,7 +14,7 @@
 class CatRentalRequest < ApplicationRecord 
   validates :cat_id, :start_date, :end_date, presence: true
   validates :status, presence: true, inclusion: { in: %w(PENDING APPROVED DENIED).freeze }
-  validate :overlapping_requests
+  validate :does_not_overlap_approved_requests
 
   belongs_to :cat
 
@@ -25,9 +25,11 @@ class CatRentalRequest < ApplicationRecord
       where('start_date > :start_date AND end_date > :end_date', 
            start_date: self.start_date, end_date: self.end_date)
   end
-end
 
-#A cat rental request starting on 02/25/17 and ending on 02/27/17.
-#There is a overlap if another cat rental also starts on the same day (02/25/17).
-#There is a overlap if another cat rental request starts on the return day (02/27/17).
-#There is a overlap if another cat rental request starts between the start and end dates (02/26/17).
+  def overlapping_approved_requests 
+    overlapping_requests.select { |request| request.status == 'APPROVED' }
+  end
+
+  def does_not_overlap_approved_requests 
+  end
+end
