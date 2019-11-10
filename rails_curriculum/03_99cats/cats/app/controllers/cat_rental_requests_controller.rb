@@ -1,16 +1,23 @@
 class CatRentalRequestsController < ApplicationController 
 
-  def index 
-  end 
-
-  def show 
-  end 
-
   def new
     @cats = Cat.all 
+    render :new
+  end
+
+  def show
+    @request = CatRentalRequest.find_by(id: params[:id])
+    render :show
   end
 
   def create
+    @request = CatRentalRequest.new(cat_rental_requests_params)
+
+    if @request.save 
+      redirect_to cat_rental_request_url(@request)
+    else 
+      render :new
+    end
   end
 
   private 

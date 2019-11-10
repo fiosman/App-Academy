@@ -4,6 +4,7 @@
 
 <label for="request">Select a cat</label>
 <select id="request" name="cat_rental_request[cat_id]">
+  <option disabled selected>-- Cat Name -- </option>
   <% @cats.each do |cat| %>
     <option value = "<%= cat.id %>"><%= cat.name %></option>
   <% end %>
@@ -16,7 +17,7 @@
 <br>
 
 <label for="end_date">Select a return date</label>
-<input type="date" name="cat_rental_request[end_date" id="end_date">
+<input type="date" name="cat_rental_request[end_date]" id="end_date">
 <br>
 
 <input type="submit" value="Submit request">
