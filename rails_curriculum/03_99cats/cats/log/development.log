@@ -4565,3 +4565,831 @@ Migrating to CreateCatRentalRequest (20191108045242)
   [1m[36mCatRentalRequest Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" IS NOT NULL AND "cat_rental_requests"."cat_id" = $1 AND (start_date > '2019-11-05' AND end_date > '2019-11-04') AND "cat_rental_requests"."status" = $2 LIMIT $3[0m  [["cat_id", 1], ["status", "PENDING"], ["LIMIT", 1]]
   [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/cats" for ::1 at 2019-11-09 20:59:45 -0500
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:3
+  Rendered cats/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 193ms (Views: 173.4ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-11-09 20:59:45 -0500
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 20:59:57 -0500
+Processing by CatRentalRequestsController#new as HTML
+Completed 406 Not Acceptable in 135ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - CatRentalRequestsController#new is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/b669f4f28a1a37b0/variables" for ::1 at 2019-11-09 20:59:57 -0500
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:00:11 -0500
+Processing by CatRentalRequestsController#new as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:11:37 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered cat_rental_requests/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for ::1 at 2019-11-09 21:11:58 -0500
+
+PG::Error - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+:
+
+Started POST "/__better_errors/4bf96f78aec8ba7e/variables" for ::1 at 2019-11-09 21:11:58 -0500
+Started GET "/cats" for ::1 at 2019-11-09 21:12:06 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:3
+  Rendered cats/index.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 53ms (Views: 24.2ms | ActiveRecord: 23.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:19:39 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered cat_rental_requests/new.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 38ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:23 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (3.1ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (30.1ms)
+Completed 200 OK in 42ms (Views: 28.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:33 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:34 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:34 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:43 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:20:44 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:25:47 -0500
+Processing by CatRentalRequestsController#new as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant CatRentalRequestsController::CatRequestRental:
+  app/controllers/cat_rental_requests_controller.rb:10:in `new'
+
+Started POST "/__better_errors/92260ed58517efff/variables" for ::1 at 2019-11-09 21:25:48 -0500
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:26:00 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.0ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 35ms (Views: 18.4ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:26:00 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:26:01 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:26:01 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 13ms (Views: 9.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:28:49 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:2
+  Rendered cat_rental_requests/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 39ms (Views: 21.4ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:37:14 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:37:39 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (399.9ms)
+Completed 500 Internal Server Error in 409ms (ActiveRecord: 0.5ms)
+
+
+
+NameError - undefined local variable or method `penis' for #<#<Class:0x00007fac68eb7730>:0x00007fac689cfec0>:
+  app/views/cat_rental_requests/new.html.erb:7:in `block in _app_views_cat_rental_requests_new_html_erb__1237886937500513425_70189233125540'
+  app/views/cat_rental_requests/new.html.erb:6:in `_app_views_cat_rental_requests_new_html_erb__1237886937500513425_70189233125540'
+
+Started POST "/__better_errors/6b1590fb8508caed/variables" for ::1 at 2019-11-09 21:37:40 -0500
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:37:50 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:37:56 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:38:30 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:38:30 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:38:47 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:38:57 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:39:04 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:39:13 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:40:09 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:40:10 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:40:10 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:40:10 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:02 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 36ms (Views: 19.9ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:03 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:04 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:04 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:04 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:11 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:12 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:12 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:12 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:12 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:13 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 21:59:45 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (477.9ms)
+Completed 500 Internal Server Error in 489ms (ActiveRecord: 0.4ms)
+
+
+
+NameError - undefined local variable or method `action' for #<#<Class:0x00007fac6a308a18>:0x00007fac6b22bc98>
+Did you mean?  action_name:
+  app/views/cat_rental_requests/new.html.erb:10:in `_app_views_cat_rental_requests_new_html_erb__1237886937500513425_70189248447420'
+
+Started POST "/__better_errors/06eab6dd11c50f53/variables" for ::1 at 2019-11-09 21:59:46 -0500
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:00:00 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:00:01 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:00:54 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:6
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:19:03 -0500
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 197ms (Views: 173.0ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/cat_rental_requests/cat_rental_requests_url" for ::1 at 2019-11-09 22:19:05 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/cat_rental_requests_url"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/cat_rental_requests/cat_rental_requests_url" for ::1 at 2019-11-09 22:19:53 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/cat_rental_requests_url"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:21:19 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 204ms (Views: 183.3ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:21:21 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"1"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 116ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:21:22 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"1"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 115ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:21:38 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"2"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 120ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:22:17 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered cat_rental_requests/new.html.erb within layouts/application (16.6ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"show", :controller=>"cat_rental_requests"}, missing required keys: [:id]:
+  app/views/cat_rental_requests/new.html.erb:3:in `_app_views_cat_rental_requests_new_html_erb__2965767593987392379_70229898725120'
+
+Started POST "/__better_errors/1ba5fd88b91af73b/variables" for ::1 at 2019-11-09 22:22:17 -0500
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:22:19 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered cat_rental_requests/new.html.erb within layouts/application (7.4ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"show", :controller=>"cat_rental_requests"}, missing required keys: [:id]:
+  app/views/cat_rental_requests/new.html.erb:3:in `_app_views_cat_rental_requests_new_html_erb__2965767593987392379_70229912376660'
+
+Started POST "/__better_errors/0004e1aed341706d/variables" for ::1 at 2019-11-09 22:22:19 -0500
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:23:51 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 175ms (Views: 155.4ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/cat_rental_requests/new" for ::1 at 2019-11-09 22:23:53 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/new"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/cat_rental_requests/new" for ::1 at 2019-11-09 22:24:39 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/new"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/cat_rental_requests/new" for ::1 at 2019-11-09 22:24:42 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/new"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/cat_rental_requests/new" for ::1 at 2019-11-09 22:25:43 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/cat_rental_requests/new"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:25:46 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 22ms (Views: 17.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:25:47 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 21ms (Views: 17.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:25:49 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"5"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 124ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:25:50 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"5"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 116ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:31:20 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:31:27 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:31:37 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:32:31 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 19ms (Views: 14.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:46:53 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-09 22:46:53 -0500
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:7
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/cat_rental_requests" for ::1 at 2019-11-09 22:47:06 -0500
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"1", "start_date"=>"2019-11-06", "end_date"=>"2019-11-12"}}
+No template found for CatRentalRequestsController#create, rendering head :no_content
+Completed 204 No Content in 116ms (ActiveRecord: 0.0ms)
+
+
