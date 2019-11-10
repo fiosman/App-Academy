@@ -36,4 +36,8 @@ class CatRentalRequest < ApplicationRecord
     end
   end
 
+  def overlapping_pending_requests 
+    overlapping_requests.where(status: 'PENDING')
+  end
+
 end
