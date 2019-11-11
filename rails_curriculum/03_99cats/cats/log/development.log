@@ -7137,3 +7137,23 @@ Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.6ms)
   [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" ORDER BY "cats"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mCatRentalRequest Load (0.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1[0m  [["cat_id", 1]]
   [1m[36mCat Load (2.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE (id < 3)[0m
+  [1m[36mCatRentalRequest Load (4.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" ORDER BY "cat_rental_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatRentalRequest Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND (start_date > '2019-10-05' AND end_date > '2019-11-05') AND "cat_rental_requests"."status" = $3 LIMIT $4[0m  [["id", 1], ["cat_id", 1], ["status", "APPROVED"], ["LIMIT", 1]]
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Update (5.0ms)[0m  [1m[33mUPDATE "cat_rental_requests" SET "status" = $1, "updated_at" = $2 WHERE "cat_rental_requests"."id" = $3[0m  [["status", "APPROVED"], ["updated_at", "2019-11-10 23:30:23.796592"], ["id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCatRentalRequest Load (0.8ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  [1m[36mCatRentalRequest Load (0.7ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Load (0.8ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" ORDER BY "cat_rental_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCatRentalRequest Load (0.8ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  [1m[36mCatRentalRequest Load (0.7ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatRentalRequest Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND (start_date > '2019-10-05' AND end_date > '2019-11-04') AND "cat_rental_requests"."status" = $3 LIMIT $4[0m  [["id", 3], ["cat_id", 1], ["status", "APPROVED"], ["LIMIT", 1]]
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Update (0.7ms)[0m  [1m[33mUPDATE "cat_rental_requests" SET "status" = $1, "updated_at" = $2 WHERE "cat_rental_requests"."id" = $3[0m  [["status", "APPROVED"], ["updated_at", "2019-11-10 23:47:06.251860"], ["id", 3]]
+  [1m[36mCatRentalRequest Load (0.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND (start_date > '2019-10-05' AND end_date > '2019-11-04') AND "cat_rental_requests"."status" = $3[0m  [["id", 3], ["cat_id", 1], ["status", "PENDING"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCatRentalRequest Load (1.0ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
