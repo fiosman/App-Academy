@@ -56,4 +56,9 @@ class CatRentalRequest < ApplicationRecord
     self.status = 'DENIED' 
     self.save!
   end
+
+  def pending? 
+    self.status == 'PENDING' 
+  end
+  
 end

@@ -7167,3 +7167,68 @@ Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.6ms)
   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mCatRentalRequest Load (0.7ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests"[0m
   [1m[36mCatRentalRequest Load (0.3ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started GET "/cats" for ::1 at 2019-11-10 20:32:26 -0500
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:3
+  Rendered cats/index.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 192ms (Views: 172.7ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/cats/4" for ::1 at 2019-11-10 20:32:29 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCat Load (0.9ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:9
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/cats" for ::1 at 2019-11-10 20:32:29 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:3
+  Rendered cats/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/cats/3" for ::1 at 2019-11-10 20:32:32 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:9
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 3]]
+  ↳ app/views/cats/show.html.erb:21
+  Rendered cats/show.html.erb within layouts/application (49.4ms)
+Completed 200 OK in 63ms (Views: 51.1ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/cats/3" for ::1 at 2019-11-10 20:37:55 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:9
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 3]]
+  ↳ app/views/cats/show.html.erb:21
+  Rendered cats/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/cats/3" for ::1 at 2019-11-10 20:38:31 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:9
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.8ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 3]]
+  ↳ app/views/cats/show.html.erb:21
+  Rendered cats/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 19ms (Views: 14.6ms | ActiveRecord: 2.3ms)
+
+
