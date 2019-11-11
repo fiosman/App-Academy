@@ -20,7 +20,9 @@
 <% ordered_cats = @cat.rental_requests.order(:start_date) %>
 <% ordered_cats.each do |request| %>
   <li>Start Date: <%= request.start_date %>, End Date: <%= request.end_date %></li>
-  <input type="button" value="Approve">
-  <input type="button" value="Deny">
+  <% if request.pending? %>
+    <input type="button" value="Approve">
+    <input type="button" value="Deny">
+  <% end %>
 <% end %>
 </ul>
