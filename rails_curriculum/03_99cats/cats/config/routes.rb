@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  resources :cats, :cat_rental_requests
+  resources :cats
+  resources :cat_rental_requests, only: [:create, :new] do 
+    member do 
+      patch :approve
+      patch :deny
+    end
 end
