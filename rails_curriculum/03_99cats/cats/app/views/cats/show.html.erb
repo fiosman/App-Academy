@@ -21,8 +21,8 @@
 <% ordered_cats.each do |request| %>
   <li>Start Date: <%= request.start_date %>, End Date: <%= request.end_date %></li>
   <% if request.pending? %>
-    <%= button_to "Approve", approve_cat_rental_request_url(request), method: 'put' %>
-    <%= button_to "Deny", deny_cat_rental_request_url(request), method: 'put' %>
+    <%= button_to "Approve", approve_cat_rental_request_url(request), method: 'patch' %>
+    <%= button_to "Deny", deny_cat_rental_request_url(request), method: 'patch' %>
   <% end %>
 <% end %>
 </ul>
