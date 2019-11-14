@@ -22,7 +22,7 @@ class CatRentalRequest < ApplicationRecord
     CatRentalRequest. 
       where.not(id: self.id).
       where(cat_id: self.cat_id). 
-      where('start_date > :start_date AND end_date > :end_date', 
+      where.not('start_date > :end_date OR end_date < :start_date', 
            start_date: self.start_date, end_date: self.end_date)
   end
 
@@ -41,7 +41,7 @@ class CatRentalRequest < ApplicationRecord
   end
 
   def approve!
-    CatRentalRequest.transaction do 
+    transaction do 
       self.status = 'APPROVED'
       self.save!
 
