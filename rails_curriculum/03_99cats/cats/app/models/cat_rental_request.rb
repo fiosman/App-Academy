@@ -14,7 +14,7 @@
 class CatRentalRequest < ApplicationRecord 
   validates :cat_id, :start_date, :end_date, presence: true
   validates :status, presence: true, inclusion: { in: %w(PENDING APPROVED DENIED).freeze }
-  validate :does_not_overlap_approved_requests, unless: -> { status == 'DENIED' }
+  validate :does_not_overlap_approved_requests
 
   belongs_to :cat
 
@@ -32,7 +32,7 @@ class CatRentalRequest < ApplicationRecord
 
   def does_not_overlap_approved_requests 
     return if self.status == 'DENIED'
-    
+
     if overlapping_approved_requests.any?
       errors[:cat] << "request cannot be processed"
     end
