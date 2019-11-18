@@ -1,10 +1,11 @@
 class User < ApplicationRecord
 
   attr_reader :password 
-  
+
   validates :username, :session_token, presence: true 
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
+  before_validation :ensure_session_token 
 
   def self.find_by_credentials 
   end
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   def reset_session_token! 
   end
 
-  def ensure_session_end 
+  def ensure_session_token
   end
 
   def password= 
