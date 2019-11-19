@@ -7,7 +7,9 @@ class User < ApplicationRecord
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   before_validation :ensure_session_token 
 
-  def self.find_by_credentials 
+  def self.find_by_credentials(username, password)
+    password_digest = BCrypt::Password.create(password)
+    User.find_by(username: username, password_digest: password_digest)
   end
 
   def self.generate_session_token 
