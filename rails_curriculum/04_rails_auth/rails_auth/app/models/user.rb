@@ -13,6 +13,7 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token 
+    SecureRandom::urlsafe_base64
   end
 
   def reset_session_token! 
