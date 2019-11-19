@@ -8,8 +8,8 @@ class User < ApplicationRecord
   before_validation :ensure_session_token 
 
   def self.find_by_credentials(username, password)
-    password_digest = BCrypt::Password.create(password)
-    User.find_by(username: username, password_digest: password_digest)
+    user = User.find_by(username: username) 
+    return user if user && BCrypt::Password.new(user.password_digest).is_password?(password)
   end
 
   def self.generate_session_token 
