@@ -26,6 +26,8 @@ class User < ApplicationRecord
     self.session_token = User.generate_session_token if self.session_token.nil? 
   end
 
-  def password= 
+  def password=(password)
+    @password = password 
+    self.password_digest = BCrypt::Password.create(password)
   end
 end
