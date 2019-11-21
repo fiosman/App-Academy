@@ -11,6 +11,8 @@
 #
 
 class User < ApplicationRecord
+  attr_reader :password 
+
   validates :user_name, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: { minimum: 6, allow_nil: true } 
@@ -29,6 +31,11 @@ class User < ApplicationRecord
   def find_by_credentials(user_name, password) 
     user = User.find_by(user_name: user_name) 
     return user if user && is_password?(password)
+  end
+
+  def password=(password) 
+    @password = password 
+    self.password_digest = BCrypt::Password.create(@password)
   end
 
   private 
