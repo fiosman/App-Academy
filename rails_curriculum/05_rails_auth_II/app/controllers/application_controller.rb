@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user 
-  #looks up user with the current session token 
 
   private 
 
