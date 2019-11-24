@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     User.find_by(session_token: session[:session_token])
   end
 
+  def login_user!(user)
+    user.session_token = User.generate_session_token 
+    session[:session_token] = user.session_token
+  end
+
 end
