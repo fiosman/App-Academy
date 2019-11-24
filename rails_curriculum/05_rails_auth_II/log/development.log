@@ -790,3 +790,73 @@ Processing by UsersController#create as HTML
 Completed 200 OK in 477ms (Views: 197.8ms | ActiveRecord: 7.5ms)
 
 
+Started POST "/users" for ::1 at 2019-11-24 00:55:25 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"+m+nYlt2eqjTa/f/zGRA/YR9P9v2BRq1jzgqjDcBgTgoSz2VtEplQ3zIaUrTi1MORwmrrS2TrfWH0GbcQPbq5A==", "user"=>{"user_name"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m4KhtHeMi0zDZlouLB2o2w"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.4ms)
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 466ms (Views: 191.5ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/users" for ::1 at 2019-11-24 00:55:35 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"HS4x3yjwse08WZ0e8ySp7JOoWq10IJ3WuH2aCSdZQ2rPCqsox8yuBpP6A6vsy7ofUNzO26+2KpawldZZUK4otg==", "user"=>{"user_name"=>"asdasdadasd", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "asdasdadasd"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9QWPfdiikp5Uz6-5lrLD5w"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.3ms)
+  Rendered users/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 278ms (Views: 15.8ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users" for ::1 at 2019-11-24 00:56:20 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"HS4x3yjwse08WZ0e8ySp7JOoWq10IJ3WuH2aCSdZQ2rPCqsox8yuBpP6A6vsy7ofUNzO26+2KpawldZZUK4otg==", "user"=>{"user_name"=>"asdasdadasd", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "asdasdadasd"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gWuMFFhJ_MvYUnm06dtHrw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.2ms)
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 274ms (Views: 15.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for ::1 at 2019-11-24 00:57:21 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"HS4x3yjwse08WZ0e8ySp7JOoWq10IJ3WuH2aCSdZQ2rPCqsox8yuBpP6A6vsy7ofUNzO26+2KpawldZZUK4otg==", "user"=>{"user_name"=>"asdasdadasd", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "asdasdadasd"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2imyq-gvBYtHsKyMiJdtOg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.2ms)
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 271ms (Views: 16.0ms | ActiveRecord: 1.1ms)
+
+
