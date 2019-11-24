@@ -860,3 +860,137 @@ Processing by UsersController#create as HTML
 Completed 200 OK in 271ms (Views: 16.0ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/cat_rental_requests/new" for ::1 at 2019-11-24 18:04:09 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (12.5ms)
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:10
+  Rendered cat_rental_requests/new.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 282ms (Views: 251.8ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/users/new" for ::1 at 2019-11-24 18:04:14 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (1.4ms)
+  Rendered users/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 45ms (Views: 29.7ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/session/new" for ::1 at 2019-11-24 18:04:20 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-11-24 18:04:21 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for ::1 at 2019-11-24 18:04:25 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 25ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-11-24 18:04:26 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (1.7ms)
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for ::1 at 2019-11-24 18:04:28 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 24ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-11-24 18:04:30 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.8ms)
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-11-24 18:04:56 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"95cH8zXIhpx7j4g0EgKv6hFB3AVNaIoPA3vZjJK9bMQls50E2vSZd9QsFoEN7bwZ0jVIc5b+PU8Lk5Xc5UoHGA==", "user"=>{"user_name"=>"Christopher", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Christopher"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "YcUY8VWR5gCAbjkPAPpLVA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_errors.html.erb (0.3ms)
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 278ms (Views: 16.9ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users" for ::1 at 2019-11-24 18:05:02 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"autenticity_token"=>"59svp+qzKVEpH+Tb8mSrOBwwgzLmhJ2Ovvuq85skGyk1/7VQBY82uoa8em7ti7jL30QXRD0SKs62E+aj7NNw9Q==", "user"=>{"user_name"=>"Christopher", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Christopher"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZHnELCtuXSrZwSYJiC0Uow"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Create (8.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "Christopher"], ["password_digest", "$2a$12$NvKo9yP7lOTQGC0VeFpHCegTrvEM2.rTouYE8EeXW3zoAIwezwmpm"], ["session_token", "ZHnELCtuXSrZwSYJiC0Uow"], ["created_at", "2019-11-24 23:05:02.479096"], ["updated_at", "2019-11-24 23:05:02.479096"]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:4
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 268ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/cats" for ::1 at 2019-11-24 18:05:02 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/session/new" for ::1 at 2019-11-24 18:05:26 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 234ms (Views: 233.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for ::1 at 2019-11-24 18:05:32 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"xssbtCbguXSYxUqcKfznuBAIPkCGQ2z2X9/Kqyhe9MgU74FDydymnzdm1Ck2E/RL03yqNl3V27ZXN4b7X6mfFA==", "user"=>{"username"=>"Christopher", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Christopher"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 9.1ms)
+
+
+
+NoMethodError - undefined method `is_password?' for #<Class:0x00007fd0ae4e8640>:
+  app/models/user.rb:33:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Started POST "/__better_errors/357b9ae077112a4f/variables" for ::1 at 2019-11-24 18:05:32 -0500
+Started POST "/__better_errors/357b9ae077112a4f/variables" for ::1 at 2019-11-24 18:05:42 -0500
+Started POST "/__better_errors/357b9ae077112a4f/eval" for ::1 at 2019-11-24 18:06:08 -0500
