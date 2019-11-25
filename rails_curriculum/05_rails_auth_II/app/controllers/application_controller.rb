@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     session[:session_token] = nil
   end
 
+  def already_signed_in
+    #redirect user to cats index if they try to visit login/create pages when already signed in
+    redirect_to cats_url if current_user
+  end
 end

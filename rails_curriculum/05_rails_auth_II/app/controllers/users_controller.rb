@@ -1,4 +1,7 @@
 class UsersController < ApplicationController 
+
+  before_action :already_signed_in 
+  
   def create 
     @user = User.new(user_params) 
     if @user.save 
