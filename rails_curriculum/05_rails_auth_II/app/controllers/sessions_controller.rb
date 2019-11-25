@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_credentials(params[:user][:user_name], params[:user][:password])
 
     if !user 
-      flash.now[:errors] = 'Incorrect password/username entered'
+      flash.now[:errors] = ['Incorrect password/username entered']
       render :new 
     else 
       login_user!(user)
