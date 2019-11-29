@@ -38,7 +38,9 @@ class CatRentalRequestsController < ApplicationController
   end
 
   def only_owner 
-    
+    if current_cat.owner != current_user 
+      redirect_to cat_url(current_cat.id) 
+    end
   end
 
   def cat_rental_request_params
