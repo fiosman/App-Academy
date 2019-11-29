@@ -1,4 +1,7 @@
 class CatRentalRequestsController < ApplicationController
+
+  before_action :only_owner, only: [:approve, :deny] 
+
   def approve
     current_cat_rental_request.approve!
     redirect_to cat_url(current_cat)
@@ -32,6 +35,10 @@ class CatRentalRequestsController < ApplicationController
 
   def current_cat
     current_cat_rental_request.cat
+  end
+
+  def only_owner 
+    
   end
 
   def cat_rental_request_params
