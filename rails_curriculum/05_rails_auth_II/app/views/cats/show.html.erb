@@ -23,6 +23,6 @@
     <th>Status</th>
   </tr>
   <% @cat.rental_requests.order('start_date').each do |req| %>
-    <%= render 'req_tr', req: req %>
+    <%= render 'req_tr', req: req, cat: @cat %>
   <% end %>
 </table>
