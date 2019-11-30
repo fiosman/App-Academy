@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   has_many :cats
 
+  has_many :cat_rental_requests
+
   def is_password?(password) 
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
