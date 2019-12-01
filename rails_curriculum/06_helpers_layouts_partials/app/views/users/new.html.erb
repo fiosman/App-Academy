@@ -5,10 +5,7 @@
     <%= render 'shared/errors' %>
 
     <form action="<%= users_url %>" method="post">
-      <input
-        type="hidden"
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
+      <%= auth_token %>
 
       <label for="user_username">User Name</label>
       <input type="text"
