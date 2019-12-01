@@ -2633,3 +2633,230 @@ Completed 200 OK in 953ms (Views: 946.5ms | ActiveRecord: 5.9ms)
   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
   [1m[36mCatRentalRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_rental_requests" ("cat_id", "end_date", "start_date", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["cat_id", 10], ["end_date", "2018-01-28"], ["start_date", "2018-01-01"], ["status", "APPROVED"], ["created_at", "2019-12-01 04:39:35.489068"], ["updated_at", "2019-12-01 04:39:35.489068"], ["user_id", 10]]
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2019-12-01 15:30:47 -0500
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cats" for ::1 at 2019-12-01 15:30:47 -0500
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+      type="hidden" 
+            ^~~~~~
+/Users/techreset/Desktop/App-Academy/rails_curriculum/06_helpers_layouts_partials/app/helpers/application_helper.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+      name="authenticity_token"
+            ^~~~~~~~~~~~~~~~~~
+/Users/techreset/Desktop/App-Academy/rails_curriculum/06_helpers_layouts_partials/app/helpers/application_helper.rb:10: unterminated string meets end of file
+/Users/techreset/Desktop/App-Academy/rails_curriculum/06_helpers_layouts_partials/app/helpers/application_helper.rb:10: syntax error, unexpected end-of-input, expecting keyword_end:
+  app/helpers/application_helper.rb:5:in `'
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/cats_controller.rb:1:in `<top (required)>'
+
+Started POST "/__better_errors/28ec0e8bd6dd8f62/variables" for ::1 at 2019-12-01 15:30:47 -0500
+Started GET "/cats" for ::1 at 2019-12-01 15:36:43 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (3.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 374ms (Views: 344.0ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:36:53 -0500
+Processing by CatsController#new as HTML
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for ::1 at 2019-12-01 15:36:53 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered sessions/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for ::1 at 2019-12-01 15:36:55 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"oo92EOMBq3qBb/OTInekSaDL5fS0PhHN68QgN/rW38zwqqtVleuV4qBwLxvSXjGbrEyOQsCQnjjuRz8MvUG4gA==", "user"=>{"username"=>"Christopher", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Christopher"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 39ms (Views: 19.5ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/users/new" for ::1 at 2019-12-01 15:37:06 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 39ms (Views: 22.9ms | ActiveRecord: 7.8ms)
+
+
+Started POST "/users" for ::1 at 2019-12-01 15:37:10 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"zqdKTWWMowVSkrj1WwJyGoT+MEJ+6vMLvKz0DssS2ducgpcIE2adnXONZH2rK+fIiHlb9ApEfP65L+s1jIW+lw==", "user"=>{"username"=>"Christopher", "password"=>"[FILTERED]"}}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Christopher"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gBi3SsxXzcZXZQ-9JRCfHw"], ["LIMIT", 1]]
+  [1m[36mUser Create (7.1ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "session_token", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["password_digest", "$2a$12$swYTTYL8qGM3BZycK/VXs.kQZChFV3ZDuxsbzlA6sJDdWScnogcKC"], ["session_token", "gBi3SsxXzcZXZQ-9JRCfHw"], ["username", "Christopher"], ["created_at", "2019-12-01 20:37:10.782827"], ["updated_at", "2019-12-01 20:37:10.782827"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Christopher"], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["updated_at", "2019-12-01 20:37:10.794309"], ["id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 268ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/cats" for ::1 at 2019-12-01 15:37:10 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:37:13 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered cats/_form.html.erb (0.9ms)
+  Rendered cats/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 52ms (Views: 48.4ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/cats" for ::1 at 2019-12-01 15:37:29 -0500
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"dxitCJ+k7k6KCaijkzORo58M+hKzNK4ah0AzPoInsf0lPXBN6U7Q1qsWdCtjGgRxk4uRpMeaIe+CwywFxbDWsQ==", "cat"=>{"name"=>"Henrique", "birth_date"=>"2019-12-18", "color"=>"white", "sex"=>"M", "description"=>"HiHiHi"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 1032ms (Views: 22.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/cats" for ::1 at 2019-12-01 15:37:44 -0500
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"b/51g3Vz+GyQDGSa7nx0UvFTBZNj9z5CdizfyIAVt14926jGA5nG9LETuBIeVeGA/dRuJRdZsbdzr8Dzx4LQEg==", "cat"=>{"name"=>"Henrique", "birth_date"=>"2019-11-06", "color"=>"white", "sex"=>"M", "description"=>"HiHiHi"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCat Create (0.8ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["birth_date", "2019-11-06"], ["color", "white"], ["name", "Henrique"], ["sex", "M"], ["description", "HiHiHi"], ["created_at", "2019-12-01 20:37:44.370356"], ["updated_at", "2019-12-01 20:37:44.370356"], ["user_id", 11]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/cats/11
+Completed 302 Found in 12ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/cats/11" for ::1 at 2019-12-01 15:37:44 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 LIMIT $2[0m  [["cat_id", 11], ["LIMIT", 1]]
+  Rendered cats/show.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 48ms (Views: 42.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/cats/1" for ::1 at 2019-12-01 15:38:06 -0500
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Load (0.9ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cats/_req_tr.html.erb (3.6ms)
+  Rendered cats/show.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 64ms (Views: 55.7ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:38:07 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:38:23 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 54ms (Views: 23.8ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:38:43 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered cats/_form.html.erb (0.7ms)
+  Rendered cats/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 57ms (Views: 23.8ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:38:51 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered cats/_form.html.erb (0.7ms)
+  Rendered cats/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 51ms (Views: 22.4ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:43:32 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered cats/_form.html.erb (0.7ms)
+  Rendered cats/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 49ms (Views: 21.2ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:43:33 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered cats/_form.html.erb (1.6ms)
+  Rendered cats/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:46:01 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered cats/_form.html.erb (1.1ms)
+  Rendered cats/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 70ms (Views: 29.2ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/cats/new" for ::1 at 2019-12-01 15:46:02 -0500
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered cats/_form.html.erb (1.2ms)
+  Rendered cats/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 42ms (Views: 40.2ms | ActiveRecord: 0.3ms)
+
+
