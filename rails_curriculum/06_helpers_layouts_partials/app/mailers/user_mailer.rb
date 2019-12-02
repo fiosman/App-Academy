@@ -4,6 +4,6 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user 
     
-    mail(to: @user.user_name, suject: "Welcome to 99 Cats!")
+    mail(to: @user.username, suject: "Welcome to 99 Cats!")
   end
 end
