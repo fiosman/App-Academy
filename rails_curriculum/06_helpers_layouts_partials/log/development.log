@@ -3230,3 +3230,134 @@ Completed 200 OK in 61ms (Views: 57.6ms | ActiveRecord: 2.7ms)
 
   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started DELETE "/session" for ::1 at 2019-12-01 20:15:26 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"isgduedOc0vezRTY5hYCMM9617ZXJwxNcSdB1eg1rLzY7cD8kaRN0//SyFAWP5fiw/28ACOJg7h0pF7ur6LL8A=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z_kvC5IkA0uCG3qvyoXNnA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Christopher"], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "T7VcgXKTLQ16MO-WokmNww"], ["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "T7VcgXKTLQ16MO-WokmNww"], ["updated_at", "2019-12-02 01:15:27.077420"], ["id", 11]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 43ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/session/new" for ::1 at 2019-12-01 20:15:27 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 177ms (Views: 175.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-12-01 20:15:29 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-12-01 20:15:33 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"DPRM+OiUaRz8nxgOChIsU62NQCd97Dc/rb8OaTf/vfNe0ZG9nn5XhN2AxIb6O7mBoQorkQlCuMqoPBFScGjavw==", "user"=>{"username"=>"idiot", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "idiot"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rCKLcOAoef3_49PYe7RMjA"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered users/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 1197ms (Views: 21.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users" for ::1 at 2019-12-01 20:15:39 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"zivHYFTlhlClmaRh8303ZzoSCyuK1j+fgUIRcCsienOcDholIg+4yISGeOkDVKK1NpVgnf54sGqEwQ5LbLUdPw==", "user"=>{"username"=>"idiot", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "idiot"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1Jbjdl5O_rUPTzW_610OaA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "session_token", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["password_digest", "$2a$12$AGq4kJ9hvnTsy7jv5jZnBO7265v0/s7b78RMv8qHG7j0y7hdg3oAK"], ["session_token", "1Jbjdl5O_rUPTzW_610OaA"], ["username", "idiot"], ["created_at", "2019-12-02 01:15:39.519955"], ["updated_at", "2019-12-02 01:15:39.519955"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "idiot"], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "275hwrJSWKM-rHy5nT_ZxQ"], ["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "275hwrJSWKM-rHy5nT_ZxQ"], ["updated_at", "2019-12-02 01:15:39.527561"], ["id", 12]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (0.4ms)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (0.6ms)
+UserMailer#welcome_email: processed outbound mail in 230.8ms
+Sent mail to idiot (43.1ms)
+Date: Sun, 01 Dec 2019 20:15:40 -0500
+From: everyone@appacademy.io
+To: idiot
+Message-ID: <5de465bcb94e_78183fdef50fd17410978@Fares-MacBook-Pro.local.mail>
+Subject: Welcome email
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5de465bc96ab_78183fdef50fd17410817";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+suject: Welcome to 99 Cats!
+
+
+----==_mimepart_5de465bc96ab_78183fdef50fd17410817
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to 99 Cats!
+
+Hi idiot Hope you enjoy your visit :) 
+
+----==_mimepart_5de465bc96ab_78183fdef50fd17410817
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>99 Cats Registeration</title>
+</head>
+<body>
+  <h1>Welcome to 99 Cats!</h1> 
+
+  <p> Hi idiot! Hope you enjoy your visit :) </p>
+</body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5de465bc96ab_78183fdef50fd17410817--
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 819ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/cats" for ::1 at 2019-12-01 20:15:40 -0500
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (28.1ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "275hwrJSWKM-rHy5nT_ZxQ"], ["LIMIT", 1]]
+Completed 200 OK in 134ms (Views: 112.2ms | ActiveRecord: 9.9ms)
+
+
