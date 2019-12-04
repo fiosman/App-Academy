@@ -12,6 +12,7 @@ class User < ApplicationRecord
   end 
 
   def self.find_by_credentials(email, password) 
+
   end
 
   def reset_session_token! 
@@ -21,6 +22,8 @@ class User < ApplicationRecord
   end 
 
   def password=(password)
+    @password = password 
+    self.password_digest = BCrypt::Password.create(password)
   end 
 
   def is_password?(password)
