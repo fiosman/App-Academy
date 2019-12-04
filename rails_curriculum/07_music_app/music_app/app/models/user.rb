@@ -8,6 +8,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   def self.generate_session_token 
+    SecureRandom::urlsafe_base64(16)
   end 
 
   def self.find_by_credentials(email, password) 
