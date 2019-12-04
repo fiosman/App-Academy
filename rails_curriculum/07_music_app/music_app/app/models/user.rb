@@ -12,7 +12,9 @@ class User < ApplicationRecord
   end 
 
   def self.find_by_credentials(email, password) 
-
+    user = User.find_by(email: email) 
+    return nil if !user 
+    return user if user.is_password?(password)
   end
 
   def reset_session_token! 
