@@ -1,1 +1,21 @@
-<h1>This is a test</h1>
+<h1>Sign up!</h1>
+<form action="<%= users_url %>" method="POST">
+
+<input type="hidden" 
+       name="authenticity_token" 
+       value = "form_authenticity_token">
+
+<label for="user_email">Email</label>
+<input type="text" 
+       name="user[email]" 
+       id="user_email"
+       value="<%= @user.email %>">
+
+<label for="user_password">Password</label>
+<input type="password" 
+       name="user[password]" 
+       id="user_password"
+       value="<%= @user.password %>">
+
+<input type="submit" value="Submit">
+</form>

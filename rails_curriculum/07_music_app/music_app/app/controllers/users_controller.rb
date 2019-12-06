@@ -1,10 +1,11 @@
 class UsersController < ApplicationController 
 
   def create
-    @user = User.create(user_params) 
+    @user = User.new(user_params) 
 
     if @user.save 
-      redirect_to user_url(params[:id]) 
+      log_in_user!(@user)
+      redirect_to user_url(@user)
     else 
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end 
 
   def show
+    @user = User.find(params[:id])
     render :show
   end 
 
