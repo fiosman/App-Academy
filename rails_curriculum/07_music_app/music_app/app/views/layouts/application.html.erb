@@ -10,8 +10,9 @@
   </head>
 
   <body>
+  <h1>Music App</h1>
   <% if logged_in? %> 
-    <%= button_to "Sign out", session_url, method: :delete %> 
+    <%= button_to "Sign out", session_url, method: :delete, class: 'button' %> 
   <% else %>
     <%= link_to "Sign up", new_user_url %>
     <%= link_to "Sign in", new_session_url %>
