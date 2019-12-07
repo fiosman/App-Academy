@@ -1,8 +1,9 @@
 <h2>Sign in!</h2>
-<form action="<%= session_url %>" method="post">
+
+<form action="<%= session_url %>" method="post" class="form">
   <input type="hidden" 
          name="authenticity_token"
-         value="<% form_authenticity_token %>">
+         value="<%= form_authenticity_token %>">
   
   <label for="user_email">Email</label>
   <input type="text" name="user[email]" id="user_email">
