@@ -6665,3 +6665,22 @@ Processing by BandsController#edit as HTML
 Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/bands/new" for ::1 at 2019-12-07 22:45:34 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by BandsController#new as HTML
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 241ms (Views: 225.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/bands/1/edit" for ::1 at 2019-12-07 22:45:59 -0500
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (1.5ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:28
+  Rendering bands/edit.html.erb within layouts/application
+  Rendered bands/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 40ms (Views: 31.4ms | ActiveRecord: 1.7ms)
+
+
