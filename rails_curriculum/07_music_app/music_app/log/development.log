@@ -6560,3 +6560,86 @@ Processing by BandsController#index as HTML
 Completed 200 OK in 34ms (Views: 33.4ms | ActiveRecord: 0.4ms)
 
 
+Started POST "/bands" for ::1 at 2019-12-07 21:49:32 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"rQIupPZoxdNZetw16Y28+6JhscbQoipelOEiL2ze4qse7TusQ+BZ8VlXywkTI7mlfLXOkLQbadXhTS2funlAvQ==", "band"=>{"name"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/bands_controller.rb:5
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 220ms (Views: 198.7ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/bands" for ::1 at 2019-12-07 21:49:36 -0500
+Processing by BandsController#create as HTML
+  Parameters: {"band"=>{"name"=>"asdasdd"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/fdfd1ccd4a0aafbb/variables" for ::1 at 2019-12-07 21:49:36 -0500
+Started GET "/bands" for ::1 at 2019-12-07 21:49:38 -0500
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.7ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:3
+  Rendered bands/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bands" for ::1 at 2019-12-07 21:49:42 -0500
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:3
+  Rendered bands/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bands/new" for ::1 at 2019-12-07 21:49:47 -0500
+Processing by BandsController#new as HTML
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 30ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/bands" for ::1 at 2019-12-07 21:49:50 -0500
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"8db8W6jiSVS0OQUUFxJnbmHcgB5cNax2mdj2A0aYu01COelTHWrVdrQUEijtvGIwvwj/SDiM7/3sdPmzkD8ZWw==", "band"=>{"name"=>"Pen"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:5
+  [1m[36mBand Create (1.9ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Pen"], ["created_at", "2019-12-08 02:49:50.723817"], ["updated_at", "2019-12-08 02:49:50.723817"]]
+  ↳ app/controllers/bands_controller.rb:5
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:5
+Redirected to http://localhost:3000/bands/3
+Completed 302 Found in 8ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/bands/3" for ::1 at 2019-12-07 21:49:50 -0500
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:38
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 44ms (Views: 38.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bands/3" for ::1 at 2019-12-07 21:50:25 -0500
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:38
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.4ms)
+
+
