@@ -6,6 +6,13 @@ class AlbumsController < ApplicationController
   end 
 
   def create 
+    @album = Album.new(album_params) 
+
+    if @album.save 
+      redirect_to album_url(@album) 
+    else
+      render :new
+    end
   end 
 
   def edit 
@@ -22,7 +29,8 @@ class AlbumsController < ApplicationController
   end 
 
   def new 
-    @album = Album.new 
+    @album = Album.new(band_id: params[:band_id])
+    @band = Band.find(params[:band_id])
     render :new
   end 
 
