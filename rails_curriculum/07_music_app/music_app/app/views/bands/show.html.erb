@@ -1,1 +1,9 @@
-<h2>The amazing <%= @band.name %> </h2>
+<h2>The amazing <%= @band.name %> </h2> 
+
+<ul>
+  <% @band.albums.each do |album| %>
+    <li><%= link_to album.title, album_url(album) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Album', new_band_album_url(@band) %>
