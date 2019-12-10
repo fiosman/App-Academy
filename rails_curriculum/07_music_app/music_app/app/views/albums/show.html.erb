@@ -1,1 +1,5 @@
 <h2>Welcome to <%= @album.band.name %>'s <%= @album.title %> album</h2>
+
+<%= link_to @album.band.name, band_url(@album.band_id) %>
+<%= button_to 'Edit Album', edit_album_url(@album), method: :patch %>
+<%= button_to 'Delete Album', album_url(@album), method: :delete %>
