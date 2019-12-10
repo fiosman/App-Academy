@@ -7629,3 +7629,150 @@ DETAIL:  Key (band_id, title)=(1, Earthquake) already exists.
   app/controllers/albums_controller.rb:11:in `create'
 
 Started POST "/__better_errors/205af8d767a9ba58/variables" for ::1 at 2019-12-09 00:13:54 -0500
+Started POST "/albums" for ::1 at 2019-12-09 20:52:33 -0500
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by AlbumsController#create as HTML
+  Parameters: {"authenticity_token"=>"bkoqe3Kl4et+ZaPeBKSR6rhrp1iTMbWf3kGqWfHndaXdpT9zxy19yX5ItOL+CpS0Zr/YDveI9hSr7aXpJ0DXsw==", "album"=>{"title"=>"Earthquake", "band_id"=>"2", "year"=>"2009", "live"=>"true"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mBand Load (1.1ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mAlbum Create (17.8ms)[0m  [1m[32mINSERT INTO "albums" ("title", "year", "band_id", "live", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Earthquake"], ["year", 2009], ["band_id", 2], ["live", true], ["created_at", "2019-12-10 01:52:34.269693"], ["updated_at", "2019-12-10 01:52:34.269693"]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/albums_controller.rb:11
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 37.2ms)
+
+
+
+PG::UniqueViolation - ERROR:  duplicate key value violates unique constraint "index_albums_on_band_id_and_title"
+DETAIL:  Key (band_id, title)=(2, Earthquake) already exists.
+:
+  app/controllers/albums_controller.rb:11:in `create'
+
+Started POST "/__better_errors/95da87cceb3f7487/variables" for ::1 at 2019-12-09 20:52:34 -0500
+Started POST "/albums" for ::1 at 2019-12-09 20:52:38 -0500
+Processing by AlbumsController#create as HTML
+  Parameters: {"authenticity_token"=>"bkoqe3Kl4et+ZaPeBKSR6rhrp1iTMbWf3kGqWfHndaXdpT9zxy19yX5ItOL+CpS0Zr/YDveI9hSr7aXpJ0DXsw==", "album"=>{"title"=>"Earthquake", "band_id"=>"2", "year"=>"2006", "live"=>"true"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mAlbum Create (1.3ms)[0m  [1m[32mINSERT INTO "albums" ("title", "year", "band_id", "live", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Earthquake"], ["year", 2006], ["band_id", 2], ["live", true], ["created_at", "2019-12-10 01:52:38.835685"], ["updated_at", "2019-12-10 01:52:38.835685"]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/albums_controller.rb:11
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 2.0ms)
+
+
+
+PG::UniqueViolation - ERROR:  duplicate key value violates unique constraint "index_albums_on_band_id_and_title"
+DETAIL:  Key (band_id, title)=(2, Earthquake) already exists.
+:
+  app/controllers/albums_controller.rb:11:in `create'
+
+Started POST "/__better_errors/7599a60274332b63/variables" for ::1 at 2019-12-09 20:52:38 -0500
+Started POST "/albums" for ::1 at 2019-12-09 20:52:48 -0500
+Processing by AlbumsController#create as HTML
+  Parameters: {"authenticity_token"=>"bkoqe3Kl4et+ZaPeBKSR6rhrp1iTMbWf3kGqWfHndaXdpT9zxy19yX5ItOL+CpS0Zr/YDveI9hSr7aXpJ0DXsw==", "album"=>{"title"=>"Earthquakex", "band_id"=>"2", "year"=>"2006", "live"=>"true"}}
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mBand Load (0.7ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[36mAlbum Create (0.5ms)[0m  [1m[32mINSERT INTO "albums" ("title", "year", "band_id", "live", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Earthquakex"], ["year", 2006], ["band_id", 2], ["live", true], ["created_at", "2019-12-10 01:52:48.900989"], ["updated_at", "2019-12-10 01:52:48.900989"]]
+  ↳ app/controllers/albums_controller.rb:11
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:11
+Redirected to http://localhost:3000/albums/11
+Completed 302 Found in 13ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:52:48 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 291ms (Views: 288.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:53:28 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 33ms (Views: 30.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:53:36 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:53:46 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:55:06 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:55:16 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:55:22 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/11" for ::1 at 2019-12-09 20:55:45 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.5ms)
+
+
