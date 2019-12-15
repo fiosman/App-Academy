@@ -19886,3 +19886,174 @@ Migrating to CreateNotes (20191215171833)
   [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" ORDER BY "notes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" ORDER BY "notes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started GET "/users/new" for ::1 at 2019-12-15 16:41:36 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered users/new.html.erb within layouts/application (4.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 299ms (Views: 273.2ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/tracks/1/" for ::1 at 2019-12-15 16:41:41 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+Completed 404 Not Found in 18ms (ActiveRecord: 7.9ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Track with 'id'=1:
+  app/controllers/tracks_controller.rb:45:in `show'
+
+Started POST "/__better_errors/7daf7f5e65cfe876/variables" for ::1 at 2019-12-15 16:41:41 -0500
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:41:43 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/show.html.erb within layouts/application (40.1ms)
+Completed 200 OK in 78ms (Views: 55.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:43:37 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 102ms (Views: 98.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:46:10 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (2.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/_note.html.erb (0.4ms)
+  Rendered tracks/show.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 56ms (Views: 49.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:46:39 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/_note.html.erb (0.3ms)
+  Rendered tracks/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 54ms (Views: 44.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:58:07 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (1.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/tracks/_note.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tracks/_note.html.erb:3
+  Rendered tracks/_note.html.erb (77.2ms)
+  Rendered tracks/show.html.erb within layouts/application (86.9ms)
+Completed 200 OK in 119ms (Views: 102.7ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:58:28 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/tracks/_note.html.erb:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tracks/_note.html.erb:3
+  Rendered tracks/_note.html.erb (4.8ms)
+  Rendered tracks/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 35ms (Views: 30.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:58:39 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/tracks/_note.html.erb:1
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tracks/_note.html.erb:3
+  Rendered tracks/_note.html.erb (6.9ms)
+  Rendered tracks/show.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 36ms (Views: 30.7ms | ActiveRecord: 2.5ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO "notes" ("note", "user_id", "track_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["note", "this is cool"], ["user_id", 20], ["track_id", 4], ["created_at", "2019-12-15 21:59:34.906100"], ["updated_at", "2019-12-15 21:59:34.906100"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/tracks/4/" for ::1 at 2019-12-15 16:59:44 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/tracks/_note.html.erb:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tracks/_note.html.erb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/tracks/_note.html.erb:3
+  Rendered tracks/_note.html.erb (31.6ms)
+  Rendered tracks/show.html.erb within layouts/application (71.9ms)
+Completed 200 OK in 363ms (Views: 287.2ms | ActiveRecord: 31.5ms)
+
+

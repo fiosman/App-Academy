@@ -2,4 +2,10 @@
 
 <%= link_to @track.album.title, album_url(@track.album_id), class: 'band-link' %>
 <%= button_to 'Edit Track', edit_track_url(@track), method: :get, class: 'album-button' %>
-<%= button_to 'Delete Track', track_url(@track), method: :delete, class: 'album-button' %>
+<%= button_to 'Delete Track', track_url(@track), method: :delete, class: 'album-button' %> 
+
+<div class="info-list">
+<h2>User notes for <%= @track.title %></h2>
+
+<%= render 'note', track: @track %>
+</div>
