@@ -1,0 +1,5 @@
+<h2><%= @track.album.title %>'s <%= @track.title %></h2>
+
+<%= link_to @track.album.title, album_url(@track.album_id), class: 'band-link' %>
+<%= button_to 'Edit Track', edit_track_url(@track), method: :get, class: 'album-button' %>
+<%= button_to 'Delete Track', track_url(@track), method: :delete, class: 'album-button' %>

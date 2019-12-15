@@ -13,22 +13,36 @@ class TracksController < ApplicationController
   def new 
     @album = Album.find(params[:album_id])
     @band = Band.find(@album.band_id)
-    @track = Track.new
+    @track = Track.new(album_id: params[:album_id])
     render :new
   end 
 
   def edit 
+    @track = Track.find(params[:id])
+    render :edit 
   end 
 
   def update 
+    @track = Track.find(params[:id])
+
+    if @track.update_attributes(track_params)
+      redirect_to track_url(track)
+    else 
+      render :edit
+    end
   end 
 
   def destroy
   end 
 
+  def show 
+    @track = Track.find(params[:id])
+    render :show
+  end
+
   private 
 
-  def track_prams
+  def track_params
     params.require(:track).permit(:title, :ord, :lyrics, :album_id, :bonus) 
   end 
 
