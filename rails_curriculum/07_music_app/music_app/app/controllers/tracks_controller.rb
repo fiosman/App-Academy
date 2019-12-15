@@ -1,5 +1,7 @@
 class TracksController < ApplicationController 
 
+  before_action :require_log_in
+
   def create 
     @track = Track.new(track_params) 
 
@@ -48,6 +50,12 @@ class TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(:title, :ord, :lyrics, :album_id, :bonus) 
+  end 
+
+  def require_log_in 
+    if !logged_in? 
+      redirect_to new_session_url
+    end
   end 
 
 end

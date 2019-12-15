@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController 
 
+  before_action :require_log_in
+
   def show 
     @album = Album.find(params[:id]) 
     render :show 
@@ -42,7 +44,15 @@ class AlbumsController < ApplicationController
     render :new
   end 
 
+  private
+
   def album_params 
     params.require(:album).permit(:title, :year, :band_id, :live)
+  end 
+
+  def require_log_in 
+    if !logged_in? 
+      redirect_to new_session_url 
+    end
   end 
 end 
