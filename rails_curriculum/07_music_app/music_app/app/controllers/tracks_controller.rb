@@ -26,13 +26,17 @@ class TracksController < ApplicationController
     @track = Track.find(params[:id])
 
     if @track.update_attributes(track_params)
-      redirect_to track_url(track)
+      redirect_to track_url(@track)
     else 
       render :edit
     end
   end 
 
   def destroy
+    @track = Track.find(params[:id]) 
+    @track.destroy 
+
+    redirect_to album_url(@track.album_id)
   end 
 
   def show 

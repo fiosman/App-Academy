@@ -16594,3 +16594,133 @@ Processing by TracksController#edit as HTML
 Completed 200 OK in 34ms (Views: 29.9ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/tracks/2/" for ::1 at 2019-12-14 21:22:38 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:43
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/show.html.erb within layouts/application (38.6ms)
+Completed 200 OK in 274ms (Views: 221.2ms | ActiveRecord: 15.7ms)
+
+
+Started DELETE "/tracks/2" for ::1 at 2019-12-14 21:22:40 -0500
+Processing by TracksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1I8QuVy4MVaMmEa4RxbJuZStfq/C9iG91tAdYh2uzrJnYAWx6TCtdIy1UYS9uMznSnkB+aZPYjajfBLSywlspA==", "id"=>"2"}
+  [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Destroy (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+Redirected to http://localhost:3000/tracks/2
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/tracks/2" for ::1 at 2019-12-14 21:22:40 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:43
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Track with 'id'=2:
+  app/controllers/tracks_controller.rb:43:in `show'
+
+Started POST "/__better_errors/2eb520cb9d073695/variables" for ::1 at 2019-12-14 21:22:40 -0500
+Started GET "/tracks/2" for ::1 at 2019-12-14 21:24:21 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:43
+Completed 404 Not Found in 33ms (ActiveRecord: 10.3ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Track with 'id'=2:
+  app/controllers/tracks_controller.rb:43:in `show'
+
+Started POST "/__better_errors/e027894a07c0cba1/variables" for ::1 at 2019-12-14 21:24:21 -0500
+Started GET "/albums/1/tracks/new" for ::1 at 2019-12-14 21:24:31 -0500
+Processing by TracksController#new as HTML
+  Parameters: {"album_id"=>"1"}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:14
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:15
+  Rendering tracks/new.html.erb within layouts/application
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/tracks/_form.html.erb:42
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/_form.html.erb:43
+  Rendered tracks/_form.html.erb (17.5ms)
+  Rendered tracks/new.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 319ms (Views: 257.8ms | ActiveRecord: 18.1ms)
+
+
+Started POST "/tracks" for ::1 at 2019-12-14 21:24:40 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"authenticity_token"=>"9oQqeCAk5lid5gGafdloqru3eaYFXMVxk4Yp+wknM4FFaz9wlax6ep3LFqaHd230ZWMG8GHlhvrmKiZL34CRlw==", "track"=>{"title"=>"Spielhur", "bonus"=>"f", "ord"=>"2", "album_id"=>"1", "lyrics"=>"HAH"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:6
+  [1m[36mTrack Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."ord" = $1 AND "tracks"."album_id" = $2 LIMIT $3[0m  [["ord", 2], ["album_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:6
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:6
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "ord", "lyrics", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Spielhur"], ["ord", 2], ["lyrics", "HAH"], ["album_id", 1], ["created_at", "2019-12-15 02:24:40.960302"], ["updated_at", "2019-12-15 02:24:40.960302"]]
+  ↳ app/controllers/tracks_controller.rb:6
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:6
+Redirected to http://localhost:3000/tracks/3
+Completed 302 Found in 9ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/tracks/3" for ::1 at 2019-12-14 21:24:40 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:43
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  Rendered tracks/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 32ms (Views: 29.6ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/tracks/3" for ::1 at 2019-12-14 21:24:45 -0500
+Processing by TracksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QaRdRXL0XFk1dCMM7FNX7vganPPJ8gJa1wXa7NKeiB3yS0hNx3zAezVZNDAW/VKwJs7jpa1LQdGiqdVcBDkqCw==", "id"=>"3"}
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Destroy (0.7ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+Redirected to http://localhost:3000/albums/1
+Completed 302 Found in 11ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/albums/1" for ::1 at 2019-12-14 21:24:45 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.9ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 37ms (Views: 34.4ms | ActiveRecord: 1.2ms)
+
+
