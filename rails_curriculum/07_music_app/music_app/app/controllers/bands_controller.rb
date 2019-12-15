@@ -1,7 +1,7 @@
 class BandsController < ApplicationController 
 
-  before_action :require_log_in 
-  
+  before_action :require_log_in!
+
   def create 
     @band = Band.new(band_params) 
 
@@ -48,9 +48,4 @@ class BandsController < ApplicationController
     params.require(:band).permit(:name)
   end 
 
-  def require_log_in 
-    if !logged_in? 
-      redirect_to new_session_url
-    end
-  end 
 end
