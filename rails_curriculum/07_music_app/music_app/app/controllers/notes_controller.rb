@@ -1,7 +1,7 @@
 class NotesController < ApplicationController 
 
   before_action :require_log_in
-  
+
   def create
     note = Note.new(note_params) 
     
@@ -27,7 +27,7 @@ class NotesController < ApplicationController
   private 
 
   def note_params 
-    params.require(;note).permit(:user_id, :track_id, :note)
+    params.require(:note).permit(:user_id, :track_id, :note)
   end
 end 
 
