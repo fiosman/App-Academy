@@ -21,7 +21,7 @@ class NotesController < ApplicationController
       note.destroy  
       redirect_to track_url(note.track_id)
     else 
-      render text: '403 FORBIDDEN' 
+      render json: '403 FORBIDDEN' 
     end
   end
 
