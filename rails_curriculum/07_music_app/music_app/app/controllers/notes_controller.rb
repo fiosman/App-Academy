@@ -1,9 +1,9 @@
 class NotesController < ApplicationController 
 
-  before_action :require_log_in
+  before_action :require_log_in!
 
   def create
-    note = Note.new(note_params) 
+    note = current_user.notes.new(note_params) 
     
     if note.save! 
       flash[:notice] = "Note created!"
@@ -21,13 +21,14 @@ class NotesController < ApplicationController
       note.destroy  
       redirect_to track_url(note.track_id)
     else 
-      render text: '403 FORBIDDEN'
+      render text: '403 FORBIDDEN' 
+    end
   end
 
   private 
 
   def note_params 
-    params.require(:note).permit(:user_id, :track_id, :note)
+    params.require(:note).permit(:track_id, :note)
   end
 end 
 

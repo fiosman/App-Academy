@@ -20697,3 +20697,151 @@ Processing by TracksController#show as HTML
 Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/tracks/4/" for ::1 at 2019-12-15 20:39:55 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/notes/_note.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  Rendered notes/_note.html.erb (38.6ms)
+  Rendered notes/_form.html.erb (1.2ms)
+  Rendered tracks/show.html.erb within layouts/application (85.2ms)
+Completed 200 OK in 402ms (Views: 322.5ms | ActiveRecord: 30.2ms)
+
+
+Started POST "/notes" for ::1 at 2019-12-15 20:40:37 -0500
+
+SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end:
+  app/controllers/notes_controller.rb:33:in `'
+
+Started POST "/__better_errors/9abfa82414ad3ebd/variables" for ::1 at 2019-12-15 20:40:37 -0500
+Started POST "/notes" for ::1 at 2019-12-15 20:41:09 -0500
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"oYZA75dFihpeHcSlM7bj5iDXHyCjaIo08kynstOq2woSaVXnIs0WOF4w05nJGOa4/gNgdsfRyb+H4KgCBQ15HA==", "note"=>{"track_id"=>"4", "note"=>"hello lol"}}
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `require_log_in' for #<NotesController:0x00007fc6b737a390>
+Did you mean?  require_log_in!:
+
+Started POST "/__better_errors/001fe30e2173e26a/variables" for ::1 at 2019-12-15 20:41:10 -0500
+Started POST "/notes" for ::1 at 2019-12-15 20:41:17 -0500
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"oYZA75dFihpeHcSlM7bj5iDXHyCjaIo08kynstOq2woSaVXnIs0WOF4w05nJGOa4/gNgdsfRyb+H4KgCBQ15HA==", "note"=>{"track_id"=>"4", "note"=>"hello lol"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:8
+Completed 422 Unprocessable Entity in 63ms (ActiveRecord: 20.4ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: User can't be blank, User must exist:
+  app/controllers/notes_controller.rb:8:in `create'
+
+Started POST "/__better_errors/a702929404a2e023/variables" for ::1 at 2019-12-15 20:41:17 -0500
+Started POST "/notes" for ::1 at 2019-12-15 20:56:07 -0500
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"oYZA75dFihpeHcSlM7bj5iDXHyCjaIo08kynstOq2woSaVXnIs0WOF4w05nJGOa4/gNgdsfRyb+H4KgCBQ15HA==", "note"=>{"track_id"=>"4", "note"=>"hello lol"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO "notes" ("note", "user_id", "track_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["note", "hello lol"], ["user_id", 18], ["track_id", 4], ["created_at", "2019-12-16 01:56:08.023952"], ["updated_at", "2019-12-16 01:56:08.023952"]]
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:8
+Redirected to http://localhost:3000/tracks/4
+Completed 302 Found in 68ms (ActiveRecord: 28.8ms)
+
+
+Started GET "/tracks/4" for ::1 at 2019-12-15 20:56:08 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/notes/_note.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  Rendered notes/_note.html.erb (7.2ms)
+  Rendered notes/_form.html.erb (0.6ms)
+  Rendered tracks/show.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 59ms (Views: 41.8ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/notes" for ::1 at 2019-12-15 20:56:29 -0500
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"xbddYNZSucSXKp85IXD105/T25fu7lrP6/cQaKpQg612WEhoY9ol5pcHiAXb3vCNQQekwYpXGUSeWx/YfPchuw==", "note"=>{"track_id"=>"4", "note"=>"harharhahar"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO "notes" ("note", "user_id", "track_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["note", "harharhahar"], ["user_id", 18], ["track_id", 4], ["created_at", "2019-12-16 01:56:29.920032"], ["updated_at", "2019-12-16 01:56:29.920032"]]
+  ↳ app/controllers/notes_controller.rb:8
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:8
+Redirected to http://localhost:3000/tracks/4
+Completed 302 Found in 12ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/tracks/4" for ::1 at 2019-12-15 20:56:29 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uMjokpbDzZZ0izxd008snA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:45
+  Rendering tracks/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tracks/show.html.erb:1
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."track_id" = $1[0m  [["track_id", 4]]
+  ↳ app/views/notes/_note.html.erb:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/notes/_note.html.erb:3
+  Rendered notes/_note.html.erb (15.6ms)
+  Rendered notes/_form.html.erb (0.7ms)
+  Rendered tracks/show.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 64ms (Views: 56.5ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 20]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
