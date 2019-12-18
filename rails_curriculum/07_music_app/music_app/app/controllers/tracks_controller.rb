@@ -8,6 +8,7 @@ class TracksController < ApplicationController
     if @track.save! 
       redirect_to track_url(@track) 
     else 
+      flash.now[:errors] = @track.errors.full_messages
       render :new
     end
   end 

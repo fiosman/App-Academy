@@ -2,6 +2,8 @@
 <% form_method = track.persisted? ? :patch : :post %>
 <% submit_value = track.persisted? ? 'Edit Track' : 'Create Track' %>
 
+<%= render 'shared/errors' %>
+
 <form action="<%= action_url %>" method="POST">
 <input type="hidden" 
        name="_method"
