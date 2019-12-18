@@ -2,6 +2,8 @@
 <% form_method = album.persisted? ? :patch : :post %>
 <% submit_value = album.persisted? ? 'Edit album' : 'Create album'%> 
 
+<%= render 'shared/errors' %>
+
 <form action="<%= action_url %>" method="POST"> 
   <input type="hidden" 
          name="_method"
