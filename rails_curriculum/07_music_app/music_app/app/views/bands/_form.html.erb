@@ -2,7 +2,7 @@
 <% form_method = (band.persisted? ? :patch : :post) %>
 <% submit_value = (band.persisted? ? 'Edit Band' : 'Create Band') %>
 
-<%= render 'shared/errors' %>
+<%= render partial: "shared/errors" %>
 
 <form action="<%= action_url %>" method="post"> 
 <input type="hidden" name="_method" value="<%= form_method %>">
