@@ -9,7 +9,7 @@ class NotesController < ApplicationController
       flash[:notice] = "Note created!"
       redirect_to track_url(note.track_id) 
     else 
-      flash.now[:errors] = note.errors.full_messages
+      flash[:errors] = note.errors.full_messages
       redirect_to track_url(note.track_id)
     end
   end 
