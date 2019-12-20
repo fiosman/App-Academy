@@ -1,0 +1,19 @@
+<h2>Welcome to <%= @album.band.name %>'s <%= @album.title %> album</h2>
+
+<%= link_to @album.band.name, band_url(@album.band_id), class: 'band-link' %>
+<%= button_to 'Edit Album', edit_album_url(@album.id), method: :get, class: 'album-button' %>
+<%= button_to 'Delete Album', album_url(@album), method: :delete, class: 'album-button' %>
+
+<div class='info-list'>
+  <h2>Tracks Available</h2>
+  <% if @album.tracks.length > 0 %>
+  <ul>
+    <% @album.tracks.each do |track| %>
+      <%= link_to track.title, track_url(track), class: 'band-link' %>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>This album has no tracks... yet!</p> 
+  <% end %>
+  <%= button_to 'New Track', new_album_track_url(@album), method: :get, class: 'album-button' %>
+</div>

@@ -1,0 +1,25 @@
+<div class='notes'>
+<h2> Write a note </h2>
+
+<%= render "shared/errors" %>
+
+<form action="<%= notes_url %>" method="POST">
+
+<input type="hidden" 
+       name="authenticity_token"
+       value="<%= form_authenticity_token %>">
+
+<input type="hidden" 
+       name="note[track_id]"
+       value="<%= track.id %>">
+
+<label for="note_content"></label>
+<textarea name="note[note]" 
+          id="note_content" 
+          cols="30" 
+          rows="10">
+</textarea>
+
+<input type="submit" value="Submit Note" class="note-button">
+</form>
+</div>
