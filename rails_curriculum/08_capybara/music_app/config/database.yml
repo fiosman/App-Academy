@@ -56,8 +56,10 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: music_app_test
+  adapter: postgresql
+  database: music_db_test
+  pool: 5
+  timeout: 5000
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
