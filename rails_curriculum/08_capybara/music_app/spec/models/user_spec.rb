@@ -6,4 +6,18 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:password_digest) } 
     it { should validate_length_of(:password).is_at_least(6) }
   end
+
+  describe '#is_password?' do   
+    let(:user) { User.new(email: 'blah@gmail.com', password: 12345678 )}
+    context 'when password matches' do 
+      it 'returns true' do   
+        expect(user.is_password?(12345678)).to be_truthy
+      end
+    end
+    context 'when password doesn\'t match' do   
+      it 'returns false' do    
+        expect(user.is_password?('1234124122141')).to be_falsy 
+      end
+    end
+  end
 end
