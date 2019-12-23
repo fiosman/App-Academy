@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  subject(:user) { User.new(email: 'blah@gmail.com', password: 12345678) }
+  
   describe 'validations' do   
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password_digest) } 
@@ -8,7 +10,6 @@ RSpec.describe User, type: :model do
   end
 
   describe '#is_password?' do   
-    let(:user) { User.new(email: 'blah@gmail.com', password: 12345678 )}
     context 'when password matches' do 
       it 'returns true' do   
         expect(user.is_password?(12345678)).to be_truthy
