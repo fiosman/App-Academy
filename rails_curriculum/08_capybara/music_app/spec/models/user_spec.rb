@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject(:user) { User.new(email: 'blah@gmail.com', password: 12345678) }
-  
+
   describe 'validations' do   
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password_digest) } 
@@ -19,6 +19,14 @@ RSpec.describe User, type: :model do
       it 'returns false' do    
         expect(user.is_password?('1234124122141')).to be_falsy 
       end
+    end
+  end
+
+  describe '#reset_session_token!' do 
+    it 'resets the user\'s session token' do   
+      old_token = user.session_token 
+      new_token = user.reset_session_token!  
+      expect(old_token).not_to eq(new_token)
     end
   end
 end
