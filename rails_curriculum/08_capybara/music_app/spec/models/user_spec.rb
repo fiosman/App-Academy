@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(email: 'blah@gmail.com', password: 12345678) }
+  subject(:user) { User.new(email: "blah@gmail.com", password: '12345678') }
 
   describe 'validations' do   
     it { should validate_presence_of(:email) }
@@ -27,6 +27,19 @@ RSpec.describe User, type: :model do
       old_token = user.session_token 
       new_token = user.reset_session_token!  
       expect(old_token).not_to eq(new_token)
+    end
+  end
+
+  describe '::find_by_credentials' do    
+    context 'when given valid credentials' do    
+      it 'returns the corresponding user' do 
+        expect(User.find_by_credentials("blah@gmail.com", '12345678')).to eq(user)
+      end
+    end 
+    context 'when given invalid credentials' do   
+      it 'returns nil' do    
+        expect(User.find_by_credentials("wrong@gmail.com", 'bbq')).to be_nil 
+      end
     end
   end
 end
