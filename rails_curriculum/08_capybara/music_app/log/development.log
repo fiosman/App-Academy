@@ -32310,3 +32310,74 @@ Completed 200 OK in 60ms (Views: 47.5ms | ActiveRecord: 9.1ms)
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "12345"], ["LIMIT", 1]]
   [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HXlIKpQZKF3Lpf_O2fsKcQ"], ["LIMIT", 1]]
+Started GET "/users/new" for ::1 at 2019-12-23 15:02:03 -0500
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (2.1ms)
+  Rendered users/new.html.erb within layouts/application (7.2ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Nxd-5G626t2P76shOOe_yg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 272ms (Views: 244.4ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/users/100" for ::1 at 2019-12-23 15:02:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 404 Not Found in 16ms (ActiveRecord: 1.2ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=100:
+  app/controllers/users_controller.rb:21:in `show'
+
+Started POST "/__better_errors/1f86e27a9455e636/variables" for ::1 at 2019-12-23 15:02:04 -0500
+Started GET "/users" for ::1 at 2019-12-23 15:05:57 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/100" for ::1 at 2019-12-23 15:06:00 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 404 Not Found in 35ms (ActiveRecord: 10.7ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=100:
+  app/controllers/users_controller.rb:21:in `show'
+
+Started POST "/__better_errors/f42a2481be8ca3a4/variables" for ::1 at 2019-12-23 15:06:01 -0500
