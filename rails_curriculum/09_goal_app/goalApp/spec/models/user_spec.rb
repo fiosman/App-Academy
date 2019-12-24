@@ -25,4 +25,17 @@ RSpec.describe User, type: :model do
       expect(User.generate_session_token.bytesize).to eq(22)
     end
   end
+
+  describe '#is_password?' do    
+    context 'when password matches to password digest' do   
+      it 'returns true'  do   
+        expect(user.is_password?('123456')).to eq(true)  
+      end
+    end
+    context 'when password does not match to password digest' do   
+      it 'returns false' do    
+        expect(user.is_password?('')).to eq(false)
+      end
+    end
+  end
 end
