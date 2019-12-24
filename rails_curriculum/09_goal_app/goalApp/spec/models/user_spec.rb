@@ -14,4 +14,15 @@ RSpec.describe User, type: :model do
   it 'creates a password digest' do   
     expect(user.password_digest).to_not be_nil 
   end
+
+  it 'ensures a session token is assigned' do   
+    expect(user.session_token).to_not be nil   
+    expect(user.valid?).to be_truthy
+  end 
+
+  describe '::generate_session_token' do   
+    it 'creates a session token' do   
+      expect(User.generate_session_token.bytesize).to eq(22)
+    end
+  end
 end

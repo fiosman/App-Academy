@@ -4,11 +4,14 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true } 
 
   attr_reader :password
+  
+  after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
   end
 
   def self.generate_session_token 
+    SecureRandom::urlsafe_base64
   end 
 
   def reset_session_token 
@@ -25,6 +28,7 @@ class User < ApplicationRecord
   private 
 
   def ensure_session_token 
+    self.session_token ||= User.generate_session_token
   end 
 
 end
