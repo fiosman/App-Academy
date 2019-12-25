@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(username: 'fares', password: '123456') }
+  subject(:user) { User.create!(username: "marcus", password: "marcus123") }
 
   describe 'validations' do  
     it { should validate_presence_of(:username) }  
@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
   describe '#is_password?' do    
     context 'when password matches to password digest' do   
       it 'returns true'  do   
-        expect(user.is_password?('123456')).to eq(true)  
+        expect(user.is_password?('marcus123')).to eq(true)  
       end
     end
     context 'when password does not match to password digest' do   
@@ -51,6 +51,19 @@ RSpec.describe User, type: :model do
     end 
     it 'should return the new session token' do    
       expect(user.reset_session_token!).to eq(user.session_token)
+    end
+  end
+
+  describe '::find_by_credentials' do    
+    context 'when valid credentials are provided' do   
+      it 'returns the corresponding user' do    
+        expect(User.find_by_credentials("marcus", "marcus123")).to eq(user) 
+      end 
+    end
+    context 'when invalid credentials are provided' do    
+      it 'returns nil' do    
+        expect(User.find_by_credentials("", "")).to be_nil
+      end
     end
   end
 end
