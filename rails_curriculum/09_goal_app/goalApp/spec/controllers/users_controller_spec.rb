@@ -24,4 +24,24 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template(:new)
     end
   end
+
+  describe "GET #show" do    
+    context 'if the user exists' do 
+      it 'renders the user\'s show template' do 
+        user = User.create!(username: 'Christopher', password: 'god12345') 
+        get :show, params: { id: User.last.id } 
+        expect(response).to render_template(:show)
+      end
+    end
+    context 'if the user doesn\'t exist' do    
+      it 'does not render the show template' do    
+        begin
+          get :show, params: { id: -1 }
+        rescue => exception 
+          ActiveRecord::RecordNotFound
+        end
+        expect(response).not_to render_template(:show)
+      end
+    end
+  end
 end
