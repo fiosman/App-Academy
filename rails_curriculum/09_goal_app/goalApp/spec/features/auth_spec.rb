@@ -19,5 +19,19 @@ RSpec.feature "User Auth", type: :feature do
         expect(page).to have_content('fiosman')
       end
     end
+
+    feature 'logging in' do     
+      before(:each) do    
+        build(:user) 
+        visit new_session_url  
+        fill_in 'Username', with: "#{user.username}"
+        fill_in 'Password', with: "#{user.password}" 
+        click_on 'Login' 
+      end
+      scenario 'shows username on homepage after login' do   
+        expect(page).to have_content("#{user.username}")
+        expect(page).to have_current_path("/users/#{User.find_by(username: user.username).id}")
+      end
+    end
   end 
 end
