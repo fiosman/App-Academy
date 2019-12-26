@@ -82,3 +82,39 @@ Migrating to CreateUsers (20191224200639)
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "marcus"], ["LIMIT", 1]]
 DEPRECATION WARNING: Passing the environment's name as a regular argument is deprecated and will be removed in the next Rails version. Please, use the -e option instead. (called from <top (required)> at /Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/bin/rails:9)
   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/users/new" for ::1 at 2019-12-25 21:18:41 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 381ms (Views: 349.2ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/users" for ::1 at 2019-12-25 21:18:49 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"qMysce5Ope2c2Aj+tzU53bnaK7jp1jdV8auZfIrhI4pt2m1qF+BS43ZM9kTdLuPAMPhT6CIAKo52FGS4KLyKvA==", "user"=>{"username"=>"lmfao124", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "lmfao124"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "v3eFq91k8xKW0spSPyEflw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Create (6.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "lmfao124"], ["session_token", "v3eFq91k8xKW0spSPyEflw"], ["password_digest", "$2a$12$GiiOMwbDG80Lr8rHemIA6eGKczew/UIAoVBN8sNweI8E1DbqXA3M."], ["created_at", "2019-12-26 02:18:49.505224"], ["updated_at", "2019-12-26 02:18:49.505224"]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:6
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 278ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/users/4" for ::1 at 2019-12-25 21:18:49 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 0.6ms)
+
+
