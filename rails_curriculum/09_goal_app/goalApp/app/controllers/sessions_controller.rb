@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     )  
 
     if user   
-      log_in!(user) 
+      log_in_user!(user) 
       redirect_to user_url(user) 
     else
       flash.now[:errors] = ['Invalid username/password']
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   end 
 
   def destroy 
-    
+
   end 
 
 end
