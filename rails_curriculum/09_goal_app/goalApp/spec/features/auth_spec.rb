@@ -36,7 +36,11 @@ RSpec.feature "User Auth", type: :feature do
       end 
 
       scenario "does not show the username on the homepage after logout" do 
+        login_as(test_user) 
+        click_on 'Log out' 
+        expect(page).not_to have_content("#{test_user.username}")
+        expect(page).to have_current_path("/users/new")
       end
     end
   end 
-end
+end 
