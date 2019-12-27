@@ -28,8 +28,11 @@ RSpec.feature "User Auth", type: :feature do
       end
     end
 
-    feature 'logging out' do    
-      scenario 'begins with a logged out state' do   
+    feature 'logging out' do
+      given(:test_user) { create(:user) } 
+      scenario 'begins with a logged out state' do 
+        expect(page).not_to have_content("#{test_user.username}") 
+        expect(test_user.logged_in?).to be_falsy  
       end 
 
       scenario "does not show the username on the homepage after logout" do 
