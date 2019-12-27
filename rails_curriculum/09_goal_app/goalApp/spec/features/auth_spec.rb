@@ -27,5 +27,13 @@ RSpec.feature "User Auth", type: :feature do
         expect(page).to have_current_path("/users/#{User.find_by(username: test_user.username).id}")
       end
     end
+
+    feature 'logging out' do    
+      scenario 'begins with a logged out state' do   
+      end 
+
+      scenario "does not show the username on the homepage after logout" do 
+      end
+    end
   end 
 end
