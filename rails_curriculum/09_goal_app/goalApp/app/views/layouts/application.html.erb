@@ -10,11 +10,12 @@
   </head>
 
   <body>
+  <h1>Goal App</h1>
     <% if logged_in? %>
       <%= button_to "Sign out", session_url, method: :delete, class: 'sign-out-button' %>
     <% else %> 
-      <li><%= link_to "Sign up", new_user_url %></li>
-      <li><%= link_to "Sign in", new_session_url %></li>
+      <%= link_to "Sign up", new_user_url %>
+      <%= link_to "Sign in", new_session_url %>
     <% end %>
     <main>
     <%= yield %>
