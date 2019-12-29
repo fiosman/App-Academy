@@ -17,6 +17,25 @@ RSpec.describe GoalsController, type: :controller do
   end
 
   describe 'GET #show' do   
+    context 'when the goal exists' do   
+      let(:goal) { Goal.create!(title: 'blah blah', details: 'haha haha', 
+                                visible: 'true', completed: 'false', user_id: 1
+                               )}  
+      it 'renders the show template for that goal' do   
+        get :show, params: { id: goal.id } 
+        expect(response).to render_template(:show)
+      end
+    end
+    context 'when the goal does not exist' do    
+      it 'does not render the show template' do      
+        begin
+          get :show, params: { id: -1 }
+        rescue => exception
+          ActiveRecord::RecordNotFound
+        end
+        expect(response).not_to render_template(:show)
+      end
+    end
   end
 
   describe 'GET #edit' do     
