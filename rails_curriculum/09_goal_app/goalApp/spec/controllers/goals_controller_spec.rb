@@ -10,7 +10,10 @@ RSpec.describe GoalsController, type: :controller do
   end
 
   describe 'GET #index' do 
-    it 'renders the index template' do    
+    before do    
+      allow(controller).to receive(:current_user) { test_user }
+    end
+    it 'renders the index template' do 
       get :index, params: {} 
       expect(response).to render_template(:index)
     end
@@ -37,6 +40,9 @@ RSpec.describe GoalsController, type: :controller do
   end
 
   describe 'GET #edit' do     
+    it 'renders the edit template' do    
+      expect(response).to render_template(:edit)
+    end
   end
 
   describe 'POST #create' do    
