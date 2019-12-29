@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   def index 
     @users = User.all
-    render :indx 
+    render :index 
   end 
 
   def create

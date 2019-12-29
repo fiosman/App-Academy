@@ -18,6 +18,13 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #index" do     
+    it 'renders the index template' do    
+      get :index, params: {} 
+      expect(response).to render_template(:index)
+    end
+  end
+
   describe "GET #new" do    
     it "renders the new template" do   
       get :new, params: {}
