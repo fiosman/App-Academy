@@ -1552,3 +1552,30 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2413117985181871065)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGoals (20191229011715)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "goals" ("id" bigserial primary key, "title" character varying NOT NULL, "details" character varying NOT NULL, "visible" boolean DEFAULT TRUE NOT NULL, "user_id" integer NOT NULL, "completed" boolean DEFAULT TRUE NOT NULL, "cheers" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191229011715_create_goals.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_goals_on_user_id" ON "goals"  ("user_id")[0m
+  ↳ db/migrate/20191229011715_create_goals.rb:14
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_goals_on_title" ON "goals"  ("title")[0m
+  ↳ db/migrate/20191229011715_create_goals.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191229011715"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2413117985181871065)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
