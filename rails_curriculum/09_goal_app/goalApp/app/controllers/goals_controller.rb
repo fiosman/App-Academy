@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   end
 
   def index 
-    @goals = Goal.all 
+    @goals = current_user.goals 
     render :index
   end
 
@@ -22,7 +22,7 @@ class GoalsController < ApplicationController
 
   def update
   end 
-  
+
   private 
 
   def goal_params 
