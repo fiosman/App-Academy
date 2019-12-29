@@ -61,7 +61,36 @@ RSpec.describe GoalsController, type: :controller do
     end
   end
 
-  describe 'POST #create' do    
+  describe 'POST #create' do   
+
+    context 'when logged out' do     
+      before do     
+        allow(controller).to receive(:current_user) { nil }
+      end
+      it 'redirects to the login page' do   
+        post :create, params: { goal: {} }
+        expect(response).to redirect_to(new_session_url)
+      end
+    end
+    context 'when logged in' do  
+      before do    
+        allow(controller).to receive(:current_user) { test_user } 
+      end
+      context 'with valid params' do  
+        it 'redirects to goal show page' do    
+          post :create, params: { goal: { title: 'valid title', 
+                                details: 'valid details' } }
+          expect(response).to redirect_to(goal_url(Goal.last))
+        end
+      end 
+      context 'with invalid params' do     
+        it 'redirects to new goal page' do     
+          post :create, params: { goal: { title: nil, details: 'hi'} }
+          expect(response).to render_template(:new)
+          expect(flash[:errors]).to be_present
+        end
+      end
+    end
   end
 
   describe 'DELETE #destroy' do    
