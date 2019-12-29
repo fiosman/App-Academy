@@ -9,7 +9,11 @@ RSpec.describe GoalsController, type: :controller do
     end
   end
 
-  describe 'GET #index' do    
+  describe 'GET #index' do 
+    it 'renders the index template' do    
+      get :index, params: {} 
+      expect(response).to render_template(:index)
+    end
   end
 
   describe 'GET #show' do   

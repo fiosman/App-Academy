@@ -5,6 +5,11 @@ class GoalsController < ApplicationController
     render :new
   end
 
+  def index 
+    @goals = Goal.all 
+    render :index
+  end
+
   private 
 
   def goal_params 
