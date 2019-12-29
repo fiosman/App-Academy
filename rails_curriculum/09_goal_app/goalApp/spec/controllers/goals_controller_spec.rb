@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe GoalsController, type: :controller do
   let(:test_user) { create(:user) }
+  subject(:test_goal) { Goal.create!(title: 'blah blah', 
+                                     details: 'haha haha', 
+                                     user_id: test_user.id
+                                     )}
   describe 'GET #new' do 
     it 'renders the new template' do     
       get :new, params: {} 
@@ -21,9 +25,8 @@ RSpec.describe GoalsController, type: :controller do
 
   describe 'GET #show' do   
     context 'when the goal exists' do   
-      let(:goal) { Goal.create!(title: 'blah blah', details: 'haha haha', user_id: test_user.id) }  
       it 'renders the show template for that goal' do   
-        get :show, params: { id: goal.id } 
+        get :show, params: { id: test_goal.id } 
         expect(response).to render_template(:show)
       end
     end
@@ -40,8 +43,21 @@ RSpec.describe GoalsController, type: :controller do
   end
 
   describe 'GET #edit' do     
-    it 'renders the edit template' do    
-      expect(response).to render_template(:edit)
+    context 'when the exists' do    
+      it 'renders the edit template' do    
+        get :edit, params: { id: test_goal.id } 
+        expect(response).to render_template(:edit)
+      end
+    end
+    context 'when the goal does not exist' do    
+      it 'does not render the edit template' do    
+        begin
+          get :edit, params: { id: -1 } 
+        rescue => exception      
+          ActiveRecord::RecordNotFound 
+        end
+        expect(response).not_to render_template(:edit)
+      end
     end
   end
 
