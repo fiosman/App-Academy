@@ -23,6 +23,11 @@ class GoalsController < ApplicationController
   def update
   end 
 
+  def show 
+    @goal = Goal.find(params[:id])
+    render :show
+  end
+
   private 
 
   def goal_params 

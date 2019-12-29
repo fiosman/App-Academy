@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GoalsController, type: :controller do
-  
+  let(:test_user) { create(:user) }
   describe 'GET #new' do 
     it 'renders the new template' do     
       get :new, params: {} 
@@ -18,7 +18,7 @@ RSpec.describe GoalsController, type: :controller do
 
   describe 'GET #show' do   
     context 'when the goal exists' do   
-      let(:goal) { Goal.create!(title: 'blah blah', details: 'haha haha' }  
+      let(:goal) { Goal.create!(title: 'blah blah', details: 'haha haha', user_id: test_user.id) }  
       it 'renders the show template for that goal' do   
         get :show, params: { id: goal.id } 
         expect(response).to render_template(:show)
