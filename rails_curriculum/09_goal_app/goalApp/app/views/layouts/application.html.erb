@@ -11,6 +11,11 @@
 
   <body>
   <h1>Goal App</h1>
+    <% if flash[:notices] %>
+      <% flash[:notices].each do |msg| %>
+        <p><b><%= msg %></b></p>
+      <% end %>
+    <% end %>
     <% if logged_in? %>
       <%= button_to "Sign out", session_url, method: :delete, class: 'sign-out-button' %>
     <% else %> 
