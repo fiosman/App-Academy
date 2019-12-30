@@ -28,9 +28,20 @@ class GoalsController < ApplicationController
   end 
 
   def destroy
+    @goal = Goal.find(params[:id]) 
+    @goal.destroy 
+    redirect_to goals_url
   end 
 
   def update
+    @goal = Goal.find(params[:id]) 
+
+    if @goal.update_attributes(goal_params) 
+      redirect_to goal_url(@goal)
+    else
+      flash.now[:errors] = @goal.errors.full_messages
+      render :edit
+    end
   end 
 
   def show 

@@ -5,7 +5,7 @@ RSpec.describe GoalsController, type: :controller do
   subject(:test_goal) { Goal.create!(title: 'blah blah', 
                                      details: 'haha haha', 
                                      user_id: test_user.id
-                                     )}
+                                     )} 
   describe 'GET #new' do 
     it 'renders the new template' do     
       get :new, params: {} 
@@ -93,10 +93,32 @@ RSpec.describe GoalsController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do    
+  describe 'DELETE #destroy' do
+    let(:goal) { Goal.create!(title: 'harharhaha', details: 'wahahaha', 
+                              user_id: test_user.id
+                             )}
+    it 'redirects to index template after deletion' do   
+      delete :destroy, params: { id: goal.id }
+      expect(response).to redirect_to(goals_url)
+    end
   end
 
-  describe 'PATCH #update' do    
+  describe 'PATCH #update' do 
+    context 'when valid params are provided' do    
+      it 'modifies an attribute and updates it' do  
+        patch :update, params: { goal: { id: test_goal.id, title: 'newtitle', details: 'newdetails' } }
+        expect(test_goal.title == 'newtitle').to eq(true)
+        expect(test_goal.details == 'newdetails').to eq(true)
+        expect(response).to redirect_to(goals_url)
+      end
+    end
+    context 'when params are invalid' do    
+      it 'renders the edit template' do    
+        patch :update, params: { goal: { id: test_goal.id } 
+        expect(response).to render_template(:edit)
+        expect(flash.now[:errors]).to be_present
+      end
+    end 
   end
 
 end

@@ -4361,3 +4361,944 @@ Processing by GoalsController#create as HTML
   Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
 Completed 200 OK in 262ms (Views: 6.6ms | ActiveRecord: 1.5ms)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoal Load (0.9ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."title" = $1 LIMIT $2[0m  [["title", "harharhaha"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "pattie_hand"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Xu_70YYzpH8E9qx7WGR8EA"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "pattie_hand"], ["session_token", "Xu_70YYzpH8E9qx7WGR8EA"], ["password_digest", "$2a$12$4m.T7C3Knb07W8Ec1l7EBOla.wlDG2zeon5v8oAyciMFu8N1g6rFm"], ["created_at", "2019-12-30 00:53:03.671251"], ["updated_at", "2019-12-30 00:53:03.671251"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 33], ["created_at", "2019-12-30 00:53:03.693630"], ["updated_at", "2019-12-30 00:53:03.693630"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"19"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "macie_white"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "RPo68u1pql49eV4oawQKgg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "macie_white"], ["session_token", "RPo68u1pql49eV4oawQKgg"], ["password_digest", "$2a$12$EzseP/BkUTfNGyYiysZCcOohobwBq42lSyQ01xbcnpXULOxM9S7b."], ["created_at", "2019-12-30 00:54:59.269040"], ["updated_at", "2019-12-30 00:54:59.269040"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 34], ["created_at", "2019-12-30 00:54:59.285864"], ["updated_at", "2019-12-30 00:54:59.285864"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"20"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "marlon.klein"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Ne4jguHyh-yEAZrMRZ7U8Q"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "marlon.klein"], ["session_token", "Ne4jguHyh-yEAZrMRZ7U8Q"], ["password_digest", "$2a$12$zxhvYlw3XV7aGf0AFH3jKefxqKpE9z/tLlI5L/z/SlMBodFXJOzm2"], ["created_at", "2019-12-30 01:04:07.529775"], ["updated_at", "2019-12-30 01:04:07.529775"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dorsey"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "zli3rVZvfcBHysARVNFByw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "dorsey"], ["session_token", "zli3rVZvfcBHysARVNFByw"], ["password_digest", "$2a$12$RKJBVOVhkfTDMN3FhUbpVuhDOYG9kIbCtQJxBlvR0ra433JWG/XZy"], ["created_at", "2019-12-30 01:06:32.508758"], ["updated_at", "2019-12-30 01:06:32.508758"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 355ms (Views: 8.9ms | ActiveRecord: 7.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dorian"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "yV-JUY9aaOWRan-W2-xsNw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "dorian"], ["session_token", "yV-JUY9aaOWRan-W2-xsNw"], ["password_digest", "$2a$12$X0OS3Vabsqp4cx4Of2M5du7U1TgpzHPt0RabFeOIjNeEhX3qjkzLi"], ["created_at", "2019-12-30 01:06:32.773000"], ["updated_at", "2019-12-30 01:06:32.773000"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 37], ["created_at", "2019-12-30 01:06:32.789479"], ["updated_at", "2019-12-30 01:06:32.789479"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"21"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "madalyn"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "z2T3rlb3nsksU0bEMqNj-w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "madalyn"], ["session_token", "z2T3rlb3nsksU0bEMqNj-w"], ["password_digest", "$2a$12$LWwjuIgJRzm3cLqvnn48MOnoU4g5aJcjAGTCSZbHjtfjGp5KYcbNu"], ["created_at", "2019-12-30 01:06:33.044008"], ["updated_at", "2019-12-30 01:06:33.044008"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 38], ["created_at", "2019-12-30 01:06:33.046273"], ["updated_at", "2019-12-30 01:06:33.046273"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"22"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeanice"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QvaS3xJ0to_El98D-xb06Q"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeanice"], ["session_token", "QvaS3xJ0to_El98D-xb06Q"], ["password_digest", "$2a$12$AlJhx6OTGuXfWddeI8xiK.sRQjE3qtZstcRAF/eVef9k/1XsK1Lx6"], ["created_at", "2019-12-30 01:06:33.304329"], ["updated_at", "2019-12-30 01:06:33.304329"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 39], ["created_at", "2019-12-30 01:06:33.306663"], ["updated_at", "2019-12-30 01:06:33.306663"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/23
+Completed 302 Found in 248ms (ActiveRecord: 2.0ms)
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "joie"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5tr3s_xtZ7ckjMvCOxET-w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "joie"], ["session_token", "5tr3s_xtZ7ckjMvCOxET-w"], ["password_digest", "$2a$12$drfuueT42JPfukXHvvESJuWO1LXdRVOBmQU01kuV5h3diw8pgXoea"], ["created_at", "2019-12-30 01:06:33.560696"], ["updated_at", "2019-12-30 01:06:33.560696"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 254ms (Views: 2.2ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cinderella"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JfwdtS-H_GgTi7zZh6oX5w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "cinderella"], ["session_token", "JfwdtS-H_GgTi7zZh6oX5w"], ["password_digest", "$2a$12$dGQiTqDcFdPiMK20Nqp0O.sD2yNOQI.S59rUksDhGZ7T0vFkZsJQe"], ["created_at", "2019-12-30 01:06:33.807818"], ["updated_at", "2019-12-30 01:06:33.807818"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 41], ["created_at", "2019-12-30 01:06:33.810199"], ["updated_at", "2019-12-30 01:06:33.810199"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"24"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dewey_hettinger"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MD_APN8LRDbG0U27kk4TMQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "dewey_hettinger"], ["session_token", "MD_APN8LRDbG0U27kk4TMQ"], ["password_digest", "$2a$12$gES5tK71aRlY9CKqe0ZwJuHiJvLpmHvzEsZ27m3gKwUYorDDqGDeu"], ["created_at", "2019-12-30 01:14:45.765530"], ["updated_at", "2019-12-30 01:14:45.765530"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 350ms (Views: 6.4ms | ActiveRecord: 7.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "carey_stracke"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wyGbuKVsgvircu4CQMCIOQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "carey_stracke"], ["session_token", "wyGbuKVsgvircu4CQMCIOQ"], ["password_digest", "$2a$12$nWlDSBW4J8no0Cl9XDOETeL4yDxRJ7t8BcuTYg4iKw92ny0AcwZmm"], ["created_at", "2019-12-30 01:14:46.030635"], ["updated_at", "2019-12-30 01:14:46.030635"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 43], ["created_at", "2019-12-30 01:14:46.049613"], ["updated_at", "2019-12-30 01:14:46.049613"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"25"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "odis"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nVES7hm2pqrLh087OuBBXw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "odis"], ["session_token", "nVES7hm2pqrLh087OuBBXw"], ["password_digest", "$2a$12$FDScMHL8ZHzSyCWYxH2O6.KIYxT9a0AARTg91UiOO123bNfP2GJb."], ["created_at", "2019-12-30 01:14:46.310763"], ["updated_at", "2019-12-30 01:14:46.310763"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 44], ["created_at", "2019-12-30 01:14:46.313078"], ["updated_at", "2019-12-30 01:14:46.313078"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"26"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "ivory_beer"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vbf0j5RITSfB2bErTJcQqw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "ivory_beer"], ["session_token", "vbf0j5RITSfB2bErTJcQqw"], ["password_digest", "$2a$12$npCer.gjWP4s4aU3knMrFuTxy6v5SQ22hpLRp39ZSzKeEjmMWQcge"], ["created_at", "2019-12-30 01:14:46.584733"], ["updated_at", "2019-12-30 01:14:46.584733"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 45], ["created_at", "2019-12-30 01:14:46.587065"], ["updated_at", "2019-12-30 01:14:46.587065"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/27
+Completed 302 Found in 259ms (ActiveRecord: 2.1ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "damien"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_--F0ABsd_qFEZHCFAFAfA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "damien"], ["session_token", "_--F0ABsd_qFEZHCFAFAfA"], ["password_digest", "$2a$12$EnXGFQPLTy/4puu29uuYN.clmm9vO3Smnbc4UTW4snciVeaeY.o8u"], ["created_at", "2019-12-30 01:14:46.830358"], ["updated_at", "2019-12-30 01:14:46.830358"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 244ms (Views: 2.2ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "abel"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Si_DeVOGVtlfMbyixLl8BQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "abel"], ["session_token", "Si_DeVOGVtlfMbyixLl8BQ"], ["password_digest", "$2a$12$hy01Q5iOBd/b5lhfSWU7oeKG3SUZrOOfEIEMqE1NLBaWFlZmlqls."], ["created_at", "2019-12-30 01:14:47.085517"], ["updated_at", "2019-12-30 01:14:47.085517"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 47], ["created_at", "2019-12-30 01:14:47.087802"], ["updated_at", "2019-12-30 01:14:47.087802"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"28"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cathern_maggio"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "E6xwm6dH5sG2pr9hCCU76Q"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "cathern_maggio"], ["session_token", "E6xwm6dH5sG2pr9hCCU76Q"], ["password_digest", "$2a$12$Rba3/aCS4fnzHaqromHOo.V1GnNgJfSrLr7vTD07kR/ZTO2sxRCU6"], ["created_at", "2019-12-30 01:18:26.214739"], ["updated_at", "2019-12-30 01:18:26.214739"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 351ms (Views: 7.8ms | ActiveRecord: 7.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "lauryn.koelpin"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_lPXoYQeJ_jrgvTm5AvRRw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "lauryn.koelpin"], ["session_token", "_lPXoYQeJ_jrgvTm5AvRRw"], ["password_digest", "$2a$12$h2piyc0X9CIp/S/n.U5GIOELR9pz0NUj9U7M1KmCKgdiKMIAibSGW"], ["created_at", "2019-12-30 01:18:26.482441"], ["updated_at", "2019-12-30 01:18:26.482441"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 49], ["created_at", "2019-12-30 01:18:26.498753"], ["updated_at", "2019-12-30 01:18:26.498753"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"29"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "ouida_turner"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "umlrEJ9d-XZ0TIMACRj6ZA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "ouida_turner"], ["session_token", "umlrEJ9d-XZ0TIMACRj6ZA"], ["password_digest", "$2a$12$f09tmrpSvtRFGk3TtKIrx.Imps4eD3FY.8xbi5ltEECtqsYg81vxi"], ["created_at", "2019-12-30 01:18:26.753517"], ["updated_at", "2019-12-30 01:18:26.753517"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 50], ["created_at", "2019-12-30 01:18:26.756015"], ["updated_at", "2019-12-30 01:18:26.756015"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"30"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "lou"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "3hBzwj9OTtNHdvFfaZzdlg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "lou"], ["session_token", "3hBzwj9OTtNHdvFfaZzdlg"], ["password_digest", "$2a$12$ad6dAgiEf/2V/rMzvBfOxeg0ipBPgcDVE8KxC2KWHqh0iBuRveo7a"], ["created_at", "2019-12-30 01:18:27.016315"], ["updated_at", "2019-12-30 01:18:27.016315"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 51], ["created_at", "2019-12-30 01:18:27.018726"], ["updated_at", "2019-12-30 01:18:27.018726"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/31
+Completed 302 Found in 249ms (ActiveRecord: 2.1ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "laverne.stracke"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Uue0mYHeFEeX7Dx9GjvA1Q"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "laverne.stracke"], ["session_token", "Uue0mYHeFEeX7Dx9GjvA1Q"], ["password_digest", "$2a$12$6WH7sdd0/foRh.n17ZpUq.fVPJQqF8YB/Q38p9leedNTXcr7Mj6tq"], ["created_at", "2019-12-30 01:18:27.273698"], ["updated_at", "2019-12-30 01:18:27.273698"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 256ms (Views: 2.5ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "michel"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fhy2-ANgrde6yqdcg7HFfA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "michel"], ["session_token", "Fhy2-ANgrde6yqdcg7HFfA"], ["password_digest", "$2a$12$aB/AK0RT/LSvzMoRZJbIV.R3baX7aBpm0mAzgvtVVGpS2YvLp8QMG"], ["created_at", "2019-12-30 01:18:27.528981"], ["updated_at", "2019-12-30 01:18:27.528981"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 53], ["created_at", "2019-12-30 01:18:27.531379"], ["updated_at", "2019-12-30 01:18:27.531379"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"32"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "misha_raynor"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wtUKWQzw9Cd1eT6-z3ke-A"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "misha_raynor"], ["session_token", "wtUKWQzw9Cd1eT6-z3ke-A"], ["password_digest", "$2a$12$orHnjVSFLECaKiavFkwQ/OR9eSpaQ.SoQDo7zMJMkj17oQHlYMSEe"], ["created_at", "2019-12-30 01:18:27.786260"], ["updated_at", "2019-12-30 01:18:27.786260"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 54], ["created_at", "2019-12-30 01:18:27.788585"], ["updated_at", "2019-12-30 01:18:27.788585"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "te_schmidt"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "6bYAA3L3oobGV7VQYUzA1w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "te_schmidt"], ["session_token", "6bYAA3L3oobGV7VQYUzA1w"], ["password_digest", "$2a$12$yUITA1baig.peLZfigYRcen84TSjiLUfQNgFwp10DWH7rSIbDqXXW"], ["created_at", "2019-12-30 01:22:46.299629"], ["updated_at", "2019-12-30 01:22:46.299629"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 350ms (Views: 6.3ms | ActiveRecord: 7.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "hien.kreiger"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "qof2Ltl4U2oYXytu4jDZQg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "hien.kreiger"], ["session_token", "qof2Ltl4U2oYXytu4jDZQg"], ["password_digest", "$2a$12$FTc.6M9mXEExOu6vr1W7SuWCrrN9bLrC4P5L3xyrsduJREVtg3fZS"], ["created_at", "2019-12-30 01:22:46.554441"], ["updated_at", "2019-12-30 01:22:46.554441"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[36mGoal Create (1.1ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 56], ["created_at", "2019-12-30 01:22:46.572451"], ["updated_at", "2019-12-30 01:22:46.572451"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"34"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "shelli_lowe"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8dHQpE1bJC3naQL8PSZvlA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "shelli_lowe"], ["session_token", "8dHQpE1bJC3naQL8PSZvlA"], ["password_digest", "$2a$12$PWeA.DhsUWNcttndQt3spuqlrrygmbtIfzyk47mRUoM.QkCCo5k/G"], ["created_at", "2019-12-30 01:22:46.821537"], ["updated_at", "2019-12-30 01:22:46.821537"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 57], ["created_at", "2019-12-30 01:22:46.823962"], ["updated_at", "2019-12-30 01:22:46.823962"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"35"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gerri.schowalter"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "mGZeflQV68RB2MJwcRQyxA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "gerri.schowalter"], ["session_token", "mGZeflQV68RB2MJwcRQyxA"], ["password_digest", "$2a$12$1G3BEKvEztg.yuzw5CK0TO5E.NTIHKqZvr1qN1KsT3hoHVbmjLXRa"], ["created_at", "2019-12-30 01:22:47.078961"], ["updated_at", "2019-12-30 01:22:47.078961"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 58], ["created_at", "2019-12-30 01:22:47.081292"], ["updated_at", "2019-12-30 01:22:47.081292"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/36
+Completed 302 Found in 245ms (ActiveRecord: 2.0ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "bobby"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZlhV7APB4Rf-DynaX-_xTw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "bobby"], ["session_token", "ZlhV7APB4Rf-DynaX-_xTw"], ["password_digest", "$2a$12$UuSHDhOpH7Irv/hDVvNcfOCsmczJySiBLz8Jj4.gv6eLcZxsO3Ci."], ["created_at", "2019-12-30 01:22:47.325408"], ["updated_at", "2019-12-30 01:22:47.325408"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 245ms (Views: 2.1ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "johnathan.franecki"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gU_bxJ7BXTrdZEpPv02rgQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "johnathan.franecki"], ["session_token", "gU_bxJ7BXTrdZEpPv02rgQ"], ["password_digest", "$2a$12$WANtmpGDz9hMSGV7qrBNwOWfPXA3QOaulQ19iLvrJOlPdLOb7Qfla"], ["created_at", "2019-12-30 01:22:47.576206"], ["updated_at", "2019-12-30 01:22:47.576206"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 60], ["created_at", "2019-12-30 01:22:47.579168"], ["updated_at", "2019-12-30 01:22:47.579168"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "liette.keler"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "aTFBV8PVOQLluqhJZx6NwQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "liette.keler"], ["session_token", "aTFBV8PVOQLluqhJZx6NwQ"], ["password_digest", "$2a$12$cLcMhcRp.Nrx.VsaK0ZAc.QpP/fc2INStj9Od0xenJUFvtQWyqLj6"], ["created_at", "2019-12-30 01:22:47.827983"], ["updated_at", "2019-12-30 01:22:47.827983"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 61], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 61], ["created_at", "2019-12-30 01:22:47.830303"], ["updated_at", "2019-12-30 01:22:47.830303"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "donovan_hayes"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4apYRgQROYOh9UfwhA4aIg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "donovan_hayes"], ["session_token", "4apYRgQROYOh9UfwhA4aIg"], ["password_digest", "$2a$12$NQDNznrjY7PFaW2gClvS/uzrmwnDFgP9oQJv0FXRitChMXO6Fao9K"], ["created_at", "2019-12-30 01:26:56.377718"], ["updated_at", "2019-12-30 01:26:56.377718"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 375ms (Views: 6.3ms | ActiveRecord: 7.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tyesha.botsford"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1JPDtGdNk9eYnH8qQa0rVg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tyesha.botsford"], ["session_token", "1JPDtGdNk9eYnH8qQa0rVg"], ["password_digest", "$2a$12$GhYlTL5P.2vEPT3u0UMuaee.NTQXt4z0g6UHLityTSY9as7hZeGOW"], ["created_at", "2019-12-30 01:26:56.641463"], ["updated_at", "2019-12-30 01:26:56.641463"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 63], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 63], ["created_at", "2019-12-30 01:26:56.658194"], ["updated_at", "2019-12-30 01:26:56.658194"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"39"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "marhta"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Jm5oL8tYHAeNHEMnEXSHyg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "marhta"], ["session_token", "Jm5oL8tYHAeNHEMnEXSHyg"], ["password_digest", "$2a$12$998N/rkKj/QhAJ.J8kcw6Op5xlKjRZotSQ4783ytIBKAv6luzu.Fe"], ["created_at", "2019-12-30 01:26:56.915512"], ["updated_at", "2019-12-30 01:26:56.915512"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 64], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 64], ["created_at", "2019-12-30 01:26:56.917891"], ["updated_at", "2019-12-30 01:26:56.917891"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"40"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "muriel_rutherford"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nbvfJ5AXbD2W6tkMWD5a3A"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "muriel_rutherford"], ["session_token", "nbvfJ5AXbD2W6tkMWD5a3A"], ["password_digest", "$2a$12$dYTEqz9e4tBWEETBG0GdNecGXJ9loXwFd/aIvzKq4Rfhl6DCLdCLe"], ["created_at", "2019-12-30 01:26:57.179033"], ["updated_at", "2019-12-30 01:26:57.179033"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 65], ["created_at", "2019-12-30 01:26:57.181365"], ["updated_at", "2019-12-30 01:26:57.181365"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/41
+Completed 302 Found in 251ms (ActiveRecord: 1.9ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asia"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-7_oxyKTjEaZ9Y_apmgkqQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "asia"], ["session_token", "-7_oxyKTjEaZ9Y_apmgkqQ"], ["password_digest", "$2a$12$CW.0NJgeC/UdL/XqmlrzD.SYfD4vUMI83sSB6JFT0tkDPtlgSd/gi"], ["created_at", "2019-12-30 01:26:57.431867"], ["updated_at", "2019-12-30 01:26:57.431867"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 250ms (Views: 2.1ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "priscilla.heller"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0T8OZEdSZTPmRJ-YaSMYcw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "priscilla.heller"], ["session_token", "0T8OZEdSZTPmRJ-YaSMYcw"], ["password_digest", "$2a$12$TCc4oLpNTPetjgO59njOW.2oDRwN0rThBF1hwGCU/G1P.Rww8TTza"], ["created_at", "2019-12-30 01:26:57.684889"], ["updated_at", "2019-12-30 01:26:57.684889"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 67], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 67], ["created_at", "2019-12-30 01:26:57.687302"], ["updated_at", "2019-12-30 01:26:57.687302"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"42"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "vince"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uufqucIsgS2CBPq09dhsyA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "vince"], ["session_token", "uufqucIsgS2CBPq09dhsyA"], ["password_digest", "$2a$12$fpXiJn9oIvP51wXw0xFNAO0lrEZZNVDqN1HWXXlYmXd2eAgjqwvm."], ["created_at", "2019-12-30 01:26:57.945845"], ["updated_at", "2019-12-30 01:26:57.945845"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 68], ["created_at", "2019-12-30 01:26:57.948068"], ["updated_at", "2019-12-30 01:26:57.948068"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "antone_jast"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g2B6LFpYkBgFAY_VNm5wUg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "antone_jast"], ["session_token", "g2B6LFpYkBgFAY_VNm5wUg"], ["password_digest", "$2a$12$qv9viIKbyMJkWfTWUXWUyO2irFRH7/aRuZmLZAY4Z.b2XTLymj9GG"], ["created_at", "2019-12-30 01:27:19.121087"], ["updated_at", "2019-12-30 01:27:19.121087"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 344ms (Views: 6.4ms | ActiveRecord: 7.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felix"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "V0bjDTP6D0617obKsj6O4A"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "felix"], ["session_token", "V0bjDTP6D0617obKsj6O4A"], ["password_digest", "$2a$12$1DoMHNlSqbQpJoC9nJlZaOAl1pyPPNhBwZfBXNDQcOAR1ZbguTTme"], ["created_at", "2019-12-30 01:27:19.372472"], ["updated_at", "2019-12-30 01:27:19.372472"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 70], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 70], ["created_at", "2019-12-30 01:27:19.388799"], ["updated_at", "2019-12-30 01:27:19.388799"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"44"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "owen.raynor"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5ge1hv7V6JCG7gS1i2q4QA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "owen.raynor"], ["session_token", "5ge1hv7V6JCG7gS1i2q4QA"], ["password_digest", "$2a$12$7PTEsn.b1C3u.5H00ZRy8OCmgbFK5WzVqUltZlI.9KiK9cHF3vWIa"], ["created_at", "2019-12-30 01:27:19.642939"], ["updated_at", "2019-12-30 01:27:19.642939"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 71], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 71], ["created_at", "2019-12-30 01:27:19.645457"], ["updated_at", "2019-12-30 01:27:19.645457"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"45"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "aida"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vbX4VZ1s2kg9Tl3wY09PHQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "aida"], ["session_token", "vbX4VZ1s2kg9Tl3wY09PHQ"], ["password_digest", "$2a$12$4Z1eZsQNoINWnMbpz1ODKujlzh4jLjTrtypCDOhWKjpq/a/i4V1b."], ["created_at", "2019-12-30 01:27:19.907268"], ["updated_at", "2019-12-30 01:27:19.907268"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 72], ["created_at", "2019-12-30 01:27:19.910909"], ["updated_at", "2019-12-30 01:27:19.910909"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/46
+Completed 302 Found in 254ms (ActiveRecord: 3.0ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "julius"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MQvfGNLexJ4Rai49s-pBLg"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "julius"], ["session_token", "MQvfGNLexJ4Rai49s-pBLg"], ["password_digest", "$2a$12$a4.1Zh2EU19Yznqrum6WyeL8yt8uHhjpcDB9Aty1lI20zopn6XnI6"], ["created_at", "2019-12-30 01:27:20.163710"], ["updated_at", "2019-12-30 01:27:20.163710"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 252ms (Views: 2.2ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "noel_reilly"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9qt1MwkkWYN20BZXRpBlEA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "noel_reilly"], ["session_token", "9qt1MwkkWYN20BZXRpBlEA"], ["password_digest", "$2a$12$m1w.yUl5kEItHdeqe3SiSeYRZ0tgGXjotT.o7IqGh.ylcT6g.KnM2"], ["created_at", "2019-12-30 01:27:20.412386"], ["updated_at", "2019-12-30 01:27:20.412386"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 74], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 74], ["created_at", "2019-12-30 01:27:20.415646"], ["updated_at", "2019-12-30 01:27:20.415646"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"47"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "isaiah_beier"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QbQsF9GmBhlfAo9Vn-qTQQ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "isaiah_beier"], ["session_token", "QbQsF9GmBhlfAo9Vn-qTQQ"], ["password_digest", "$2a$12$7dpbYf5kgkR6NilvLtNyrOTVzW5zNW13INUwukhe/acxF4UmBiY7a"], ["created_at", "2019-12-30 01:27:20.662084"], ["updated_at", "2019-12-30 01:27:20.662084"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 75], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 75], ["created_at", "2019-12-30 01:27:20.664402"], ["updated_at", "2019-12-30 01:27:20.664402"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#new as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "danille"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OB0qrWOMOTEbJucE0bPAag"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "danille"], ["session_token", "OB0qrWOMOTEbJucE0bPAag"], ["password_digest", "$2a$12$QVh0Cl9vldkAjZGx7ZBDzehzt83fxx7IHXreFy/7/D2HB8t2z9dma"], ["created_at", "2019-12-30 01:29:07.749667"], ["updated_at", "2019-12-30 01:29:07.749667"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering goals/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/index.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 346ms (Views: 6.4ms | ActiveRecord: 7.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tommie.christiansen"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "yZTT5r5fyL4bINvJLqan2w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tommie.christiansen"], ["session_token", "yZTT5r5fyL4bINvJLqan2w"], ["password_digest", "$2a$12$zDqI60lhNAG0jeM3joRd3O5kp3J0q.BgXXQjLdQcgFBxG1zZDmsTG"], ["created_at", "2019-12-30 01:29:08.003308"], ["updated_at", "2019-12-30 01:29:08.003308"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 77], ["created_at", "2019-12-30 01:29:08.019354"], ["updated_at", "2019-12-30 01:29:08.019354"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"49"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "ellsworth"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8L7PnnsM7MGvKjx9iSsTsw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "ellsworth"], ["session_token", "8L7PnnsM7MGvKjx9iSsTsw"], ["password_digest", "$2a$12$kHc23t6sSHiqC0AkJfVuOOJl/ms8EUSifcfpwavMfIl2YgzqUAaxa"], ["created_at", "2019-12-30 01:29:08.269925"], ["updated_at", "2019-12-30 01:29:08.269925"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 78], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 78], ["created_at", "2019-12-30 01:29:08.272202"], ["updated_at", "2019-12-30 01:29:08.272202"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"50"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"-1"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"valid details", "title"=>"valid title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "shannon"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbTs8eG2AdSG5p63k1Rp6w"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "shannon"], ["session_token", "xbTs8eG2AdSG5p63k1Rp6w"], ["password_digest", "$2a$12$rN5SY5IKmS8h8UWYOGkHcuO7UcsTfz4LPqWWClmI0twMAh4bBu18e"], ["created_at", "2019-12-30 01:29:08.524122"], ["updated_at", "2019-12-30 01:29:08.524122"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "valid title"], ["details", "valid details"], ["user_id", 79], ["created_at", "2019-12-30 01:29:08.526442"], ["updated_at", "2019-12-30 01:29:08.526442"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/goals/51
+Completed 302 Found in 242ms (ActiveRecord: 2.0ms)
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by GoalsController#create as HTML
+  Parameters: {"goal"=>{"details"=>"hi", "title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "al.willms"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MkjSx669ywKbasY17JmVXw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "al.willms"], ["session_token", "MkjSx669ywKbasY17JmVXw"], ["password_digest", "$2a$12$4.llfpXEOlREkSp2wK1SD.BSffl1nVaHSLepFtS4FIs3SGoSdZLsK"], ["created_at", "2019-12-30 01:29:08.776809"], ["updated_at", "2019-12-30 01:29:08.776809"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering goals/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered goals/new.html.erb within layouts/application (0.2ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 251ms (Views: 2.2ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kellie"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rfFHboFeOMaoqk5SOheQBA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "kellie"], ["session_token", "rfFHboFeOMaoqk5SOheQBA"], ["password_digest", "$2a$12$XGdPo1KkFa0RFaaKXKpKKe52HzbDHycFPiKNFD0JdmMqYgzsyLcPa"], ["created_at", "2019-12-30 01:29:09.024386"], ["updated_at", "2019-12-30 01:29:09.024386"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 81], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harharhaha"], ["details", "wahahaha"], ["user_id", 81], ["created_at", "2019-12-30 01:29:09.026863"], ["updated_at", "2019-12-30 01:29:09.026863"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by GoalsController#destroy as HTML
+  Parameters: {"id"=>"52"}
+Redirected to http://test.host/session/new
+Filter chain halted as :require_log_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "elvin.weinat"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "srejnyusPRJ--DfMNPGKCw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "elvin.weinat"], ["session_token", "srejnyusPRJ--DfMNPGKCw"], ["password_digest", "$2a$12$/Oy4Tgq8YmP5aTMP5QwSKO5270YZFVmlqc8n0iPqI2OmXZxMwBzhS"], ["created_at", "2019-12-30 01:29:09.270971"], ["updated_at", "2019-12-30 01:29:09.270971"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 82], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "blah blah"], ["details", "haha haha"], ["user_id", 82], ["created_at", "2019-12-30 01:29:09.273262"], ["updated_at", "2019-12-30 01:29:09.273262"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
