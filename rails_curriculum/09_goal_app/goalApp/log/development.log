@@ -2020,3 +2020,323 @@ Processing by UsersController#create as HTML
 Completed 200 OK in 273ms (Views: 19.9ms | ActiveRecord: 1.3ms)
 
 
+Started GET "/session" for ::1 at 2019-12-29 23:21:11 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/method_override.rb:22:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/session/new" for ::1 at 2019-12-29 23:21:14 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 223ms (Views: 221.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  [1m[36mGoal Load (1.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoal Create (1.0ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "RUN RUN RUN RUN"], ["details", "IM RUNNING IM RUNNING"], ["user_id", 6], ["created_at", "2019-12-30 04:23:10.454031"], ["updated_at", "2019-12-30 04:23:10.454031"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+Started GET "/session" for ::1 at 2019-12-29 23:24:06 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/method_override.rb:22:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/session/new" for ::1 at 2019-12-29 23:24:09 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (2.2ms)
+  Rendered sessions/new.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 249ms (Views: 248.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for ::1 at 2019-12-29 23:24:13 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"CfntVJKs24GVObFanvKQrRyWvGlQ1CQEC+oi4Zk0+GzM7yxPawIsj3+tT+D06UqwlbTEOZsCOd+MVd8lO2lRWg==", "user"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["updated_at", "2019-12-30 04:24:13.925608"], ["id", 6]]
+  ↳ app/models/user.rb:24
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 281ms (ActiveRecord: 11.7ms)
+
+
+Started GET "/users/6" for ::1 at 2019-12-29 23:24:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/goals" for ::1 at 2019-12-29 23:24:18 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (2.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (0.9ms)
+  Rendered goals/index.html.erb within layouts/application (37.1ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 11.2ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/shared/_goals_with_buttons.html.erb:10: syntax error, unexpected tIVAR, expecting ':'
+@output_buffer.safe_append='
+^~~~~~~~~~~~~~):
+  
+app/views/shared/_goals_with_buttons.html.erb:10: syntax error, unexpected tIVAR, expecting ':'
+app/views/goals/index.html.erb:4:in `block in _app_views_goals_index_html_erb__851981522503059823_70334655926960'
+app/views/goals/index.html.erb:3:in `_app_views_goals_index_html_erb__851981522503059823_70334655926960'
+app/controllers/goals_controller.rb:11:in `index'
+Started GET "/goals" for ::1 at 2019-12-29 23:25:00 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (1.0ms)
+  Rendered goals/index.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.9ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/shared/_goals_with_buttons.html.erb:10: syntax error, unexpected tIVAR, expecting ':'
+@output_buffer.safe_append='
+^~~~~~~~~~~~~~):
+  
+app/views/shared/_goals_with_buttons.html.erb:10: syntax error, unexpected tIVAR, expecting ':'
+app/views/goals/index.html.erb:4:in `block in _app_views_goals_index_html_erb__851981522503059823_70334708521100'
+app/views/goals/index.html.erb:3:in `_app_views_goals_index_html_erb__851981522503059823_70334708521100'
+app/controllers/goals_controller.rb:11:in `index'
+Started GET "/goals" for ::1 at 2019-12-29 23:25:25 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (1.0ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (1.8ms)
+  Rendered goals/index.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.6ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/shared/_goals_with_buttons.html.erb:3: syntax error, unexpected tIVAR, expecting ':'
+@output_buffer.safe_append='
+^~~~~~~~~~~~~~):
+  
+app/views/shared/_goals_with_buttons.html.erb:3: syntax error, unexpected tIVAR, expecting ':'
+app/views/goals/index.html.erb:4:in `block in _app_views_goals_index_html_erb__851981522503059823_70334655412520'
+app/views/goals/index.html.erb:3:in `_app_views_goals_index_html_erb__851981522503059823_70334655412520'
+app/controllers/goals_controller.rb:11:in `index'
+Started GET "/goals" for ::1 at 2019-12-29 23:39:02 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (10.4ms)
+  Rendered goals/index.html.erb within layouts/application (14.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `complete' for #<Goal:0x00007ff025160fb8>
+Did you mean?  completed
+               completed=
+               completed?):
+     5:   <li>
+     6:     <%= link_to goal.title , goal_url(goal) %>
+     7:     <p><i> <%= goal.visible? ? 'Public' : 'Private' %></i></p> 
+     8:     <p><i> <%= goal.complete ? 'Completed' : 'Ongoing' %></i></p>
+     9:     <%= button_to 'Delete Goal', goal_url(goal), method: :delete %>
+    10:     <form action="<%= goal_url(goal)%>" method="post">
+    11:       <input type="hidden" name="_method" value='PATCH'> 
+  
+app/views/shared/_goals_with_buttons.html.erb:8:in `_app_views_shared__goals_with_buttons_html_erb___847665207920323753_70334699462060'
+app/views/goals/index.html.erb:4:in `block in _app_views_goals_index_html_erb__851981522503059823_70334686211900'
+app/views/goals/index.html.erb:3:in `_app_views_goals_index_html_erb__851981522503059823_70334686211900'
+app/controllers/goals_controller.rb:11:in `index'
+Started GET "/goals" for ::1 at 2019-12-29 23:39:39 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (8.1ms)
+  Rendered goals/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 41ms (Views: 37.6ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/goals/1" for ::1 at 2019-12-29 23:39:46 -0500
+Processing by GoalsController#update as HTML
+  Parameters: {"authenticity_token"=>"nY/xL1Pvpf1sFc95Pfah9MA2/VEQZp0PBD8wcLdn3ZZYmTA0qkFS84aBMcNX7XvpSRSFAduwgNSDgM20FTp0oA==", "goal"=>{"completed"=>"true"}, "id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (1.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[36mGoal Update (1.5ms)[0m  [1m[33mUPDATE "goals" SET "completed" = $1, "updated_at" = $2 WHERE "goals"."id" = $3[0m  [["completed", true], ["updated_at", "2019-12-30 04:39:46.834809"], ["id", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:40
+Redirected to http://localhost:3000/goals/1
+Completed 302 Found in 18ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/goals/1" for ::1 at 2019-12-29 23:39:46 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:49
+  Rendering goals/show.html.erb within layouts/application
+  Rendered goals/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 30ms (Views: 25.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/goals/" for ::1 at 2019-12-29 23:40:11 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (2.0ms)
+  Rendered goals/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 57ms (Views: 53.7ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/goals/1" for ::1 at 2019-12-29 23:40:13 -0500
+Processing by GoalsController#update as HTML
+  Parameters: {"authenticity_token"=>"qdQc2lLFosAZ4iDN0ccBnRJ0+1yxIJQsuIHBn+i05/Vswt3Bq2tVzvN23ne73NuAm1aDDHr2ifc/PjxbSulOww==", "goal"=>{"completed"=>"false"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:38
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[36mGoal Update (0.5ms)[0m  [1m[33mUPDATE "goals" SET "completed" = $1, "updated_at" = $2 WHERE "goals"."id" = $3[0m  [["completed", false], ["updated_at", "2019-12-30 04:40:13.496535"], ["id", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:40
+Redirected to http://localhost:3000/goals/1
+Completed 302 Found in 14ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/goals/1" for ::1 at 2019-12-29 23:40:13 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:49
+  Rendering goals/show.html.erb within layouts/application
+  Rendered goals/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/goals/" for ::1 at 2019-12-29 23:40:17 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goals_with_buttons.html.erb (1.0ms)
+  Rendered goals/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 44ms (Views: 40.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/goals/1" for ::1 at 2019-12-29 23:40:31 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TYJhd_27V22lCURyvBp83w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (2.8ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:49
+  Rendering goals/show.html.erb within layouts/application
+  Rendered goals/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 60ms (Views: 50.7ms | ActiveRecord: 5.4ms)
+
+
