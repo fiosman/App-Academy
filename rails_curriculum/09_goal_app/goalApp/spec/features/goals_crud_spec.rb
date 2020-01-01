@@ -31,7 +31,12 @@ RSpec.feature "GoalsCrud", type: :feature do
     end
   end
 
-  feature 'updating goals' do    
+  feature 'updating goals' do 
+    scenario 'show allow user to update a goal' do      
+    end
+
+    scenario 'should display the updated goal on the show page' do   
+    end
   end
 
   feature 'deleting goals' do  
