@@ -15,7 +15,7 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.new(goal_params) 
 
     if @goal.save 
-      flash[:notices] = ['Goal saved!']
+      flash[:notices] = ['Goal created!']
       redirect_to goal_url(@goal) 
     else
       flash.now[:errors] = @goal.errors.full_messages 
@@ -38,6 +38,7 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id]) 
 
     if @goal.update_attributes(goal_params) 
+      flash[:notices] = ['Goal updated!']
       redirect_to goal_url(@goal)
     else
       flash.now[:errors] = @goal.errors.full_messages
