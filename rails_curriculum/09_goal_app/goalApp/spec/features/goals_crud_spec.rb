@@ -27,6 +27,8 @@ RSpec.feature "GoalsCrud", type: :feature do
   end
 
   feature 'reading goals' do    
+    scenario "shows a user's goals on the index page" do   
+    end
   end
 
   feature 'updating goals' do    
