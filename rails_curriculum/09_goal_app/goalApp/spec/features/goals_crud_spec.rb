@@ -40,5 +40,10 @@ RSpec.feature "GoalsCrud", type: :feature do
   end
 
   feature 'deleting goals' do  
+    scenario 'allow a user to delete a goal' do   
+    end 
+    
+    scenario 'display the remaining goals on index page' do    
+    end
   end 
 end
