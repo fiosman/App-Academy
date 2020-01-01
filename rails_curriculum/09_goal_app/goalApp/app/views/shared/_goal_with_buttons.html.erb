@@ -5,17 +5,9 @@
   <li>
     <%= link_to goal.title , goal_url(goal) %>
     <p><i> <%= goal.visible? ? 'Public' : 'Private' %></i></p> 
-    <p><i> <%= goal.completed ? 'Completed' : 'Ongoing' %></i></p>
+    <p><i> <%= goal.completed? ? 'Completed' : 'Ongoing' %></i></p>
     <%= button_to 'Delete Goal', goal_url(goal), method: :delete %>
-    <form action="<%= goal_url(goal)%>" method="post">
-      <input type="hidden" name="_method" value='PATCH'> 
-      <input type="hidden" 
-             name="authenticity_token"
-             value="<%= form_authenticity_token %>"> 
-      <input type="hidden" name="goal[completed]" value="<%= completed_input_value%>">
-      
-      <input type="submit" value="<%= submit_button_value%>">
-    </form>
+    <%= render 'shared/goal_complete_button', goal: goal %>
   </li>
 </ul>
 

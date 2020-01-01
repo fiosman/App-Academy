@@ -1,0 +1,18 @@
+<% submit_button_value = goal.completed? ? 'Oops! Did not complete' : 'Complete'%>
+<% complete_value = goal.completed? ? 'false' : 'true' %>
+
+<form action="<%= goal_url(goal)%>" method='POST'>
+<input type="hidden" 
+       name="_method"
+       value='PATCH'>
+
+<input type="hidden" 
+       name="authenticity_token"
+       value="<%= form_authenticity_token %>">
+
+<input type="hidden" 
+       name="goal[completed]"
+       value="<%= complete_value %>">
+
+<input type="submit" value="<%= submit_button_value %>">
+</form>

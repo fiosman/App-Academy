@@ -39,7 +39,11 @@ class GoalsController < ApplicationController
 
     if @goal.update_attributes(goal_params) 
       flash[:notices] = ['Goal updated!']
-      redirect_to goal_url(@goal)
+      if request.referer == edit_goal_url(@goal) 
+        redirect_to goal_url(@goal)
+      else
+        redirect_to request.referer
+      end
     else
       flash.now[:errors] = @goal.errors.full_messages
       render :edit
