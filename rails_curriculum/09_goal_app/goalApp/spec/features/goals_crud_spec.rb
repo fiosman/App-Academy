@@ -28,6 +28,11 @@ RSpec.feature "GoalsCrud", type: :feature do
 
   feature 'reading goals' do    
     scenario "shows a user's goals on the index page" do   
+      create_goal('Test Title', 'Test Details')
+      visit goals_url 
+      expect(page).to have_content('Test Title') 
+      click_link('Test Title') 
+      expect(page).to have_current_path(goal_url(Goal.find_by(title: 'Test Title').id))
     end
   end
 
