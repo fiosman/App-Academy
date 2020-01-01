@@ -17,11 +17,11 @@ RSpec.feature "GoalsCrud", type: :feature do
     scenario 'successful creation of a goal shows goal show page' do    
       fill_in 'Title', with: 'Weightloss Program' 
       fill_in 'Details', with: 'Lose 20 lbs by mid 2020'
-      uncheck 'Private?' 
+      uncheck 'Public?' 
       check 'Completed?'
-      click_on 'New Goal' 
+      click_on 'Create Goal' 
       expect(page).to have_current_path(goal_url(Goal.last.id))
-      expect(page).to have_content('Finished?')
+      expect(page).to have_content('Status')
       expect(page).to have_content('Visibility')
     end
   end

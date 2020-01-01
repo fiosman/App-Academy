@@ -1,1 +1,30 @@
 <h2>Goal:</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Title:</th>
+        <td><%= @goal.title %></td>
+    </tr>
+    <tr>
+      <th>Details:</th>
+        <td><%= @goal.details %></td>
+    </tr>
+    <tr>
+      <th>Visibility:</th>
+        <td><%= @goal.visible? ? 'Public' : 'Private' %></td>
+    </tr>
+    <tr>
+      <th>Status:</th>
+        <td><%= @goal.completed? ? 'Completed' : 'Ongoing' %></td>
+    </tr>
+    <tr>
+      <th>Cheers</th> 
+        <td><%= @goal.cheers %></td>
+    </tr>
+    <tr>
+      <th>Completed?</th>
+        <td><%= render '/shared/goal_complete_button', goal: @goal %></td>
+    </tr>
+  </tbody>
+</table>
