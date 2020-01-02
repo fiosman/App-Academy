@@ -37,15 +37,25 @@ RSpec.feature "GoalsCrud", type: :feature do
   end
 
   feature 'updating goals' do 
-    scenario 'show allow user to update a goal' do      
+    given(:goal) { create(:goal, user_id: test_user.id)}
+    scenario 'should have a page for updating a goal' do      
+      visit edit_goal_url(goal)
+      expect(find_field('Title').value).to eq(goal.title)
     end
 
-    scenario 'should display the updated goal on the show page' do   
+    scenario 'should display the updated goal on the show page after success' do
+      visit edit_goal_url(goal)
+      fill_in 'Title', with: 'Updated Goal!' 
+      click_on 'Update Goal' 
+      expect(page).to have_current_path(goal_url(goal)) 
+      expect(page).to have_content('Goal updated!')
+      expect(page).to have_content('Updated Goal!')
     end
   end
-
+  
   feature 'deleting goals' do  
     scenario 'allow a user to delete a goal' do   
+      
     end 
     
     scenario 'display the remaining goals on index page' do    
