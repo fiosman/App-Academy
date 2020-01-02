@@ -23,8 +23,10 @@
         <td><%= @goal.cheers %></td>
     </tr>
     <tr>
-      <th>Completed?</th>
-        <td><%= render '/shared/goal_complete_button', goal: @goal %></td>
+      <% if @goal.user == current_user %>
+        <th>Completed?</th>
+          <td><%= render '/shared/goal_complete_button', goal: @goal %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>
