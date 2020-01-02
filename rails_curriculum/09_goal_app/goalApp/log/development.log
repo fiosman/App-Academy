@@ -9075,3 +9075,588 @@ Processing by GoalsController#index as HTML
 Completed 200 OK in 72ms (Views: 68.0ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/goals/" for ::1 at 2020-01-01 20:04:28 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P1_VUyndgwcmacOMl4CWIw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (0.8ms)
+  Rendered shared/_goal_with_buttons.html.erb (4.5ms)
+  Rendered shared/_goal_complete_button.html.erb (1.0ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.4ms)
+  Rendered shared/_goal_complete_button.html.erb (0.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.3ms)
+  Rendered goals/index.html.erb within layouts/application (43.5ms)
+Completed 200 OK in 287ms (Views: 236.0ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/goals/" for ::1 at 2020-01-01 20:04:30 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P1_VUyndgwcmacOMl4CWIw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (0.5ms)
+  Rendered shared/_goal_with_buttons.html.erb (4.1ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.7ms)
+  Rendered shared/_goal_complete_button.html.erb (0.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.6ms)
+  Rendered goals/index.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/session" for ::1 at 2020-01-01 20:04:35 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"OfADh1hJcCPwsuKsB+xMCx2C4ZNaUKV1tT17zPWal8b85sKcoeeHLRomHBZt95YWlKCZw5GGuK4ygoYIV8c+8A=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P1_VUyndgwcmacOMl4CWIw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "wFIDs-faXQxn8NabSUKNHw"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "wFIDs-faXQxn8NabSUKNHw"], ["updated_at", "2020-01-02 01:04:35.223307"], ["id", 6]]
+  ↳ app/models/user.rb:24
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 12ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/session/new" for ::1 at 2020-01-01 20:04:35 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.8ms)
+  Rendered sessions/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 26ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for ::1 at 2020-01-01 20:04:36 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 28ms (Views: 27.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2020-01-01 20:04:37 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-01-01 20:04:44 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"dXGffJ4LEnSHTh/aD1UiWWqyQOnfEXjNllK8y7NsNkawZ15nZ6Xlem3a4WBlTvhE45A4uRTHZRYR7UEPETGfcA==", "user"=>{"username"=>"nigg", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nigg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1zh1K9eHj5TlryoL18WHZA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "nigg"], ["session_token", "1zh1K9eHj5TlryoL18WHZA"], ["password_digest", "$2a$12$HOe70Dhv2Q2dBwvYIUMAF.hNZvdGKdsNEsTS0P.lNVY2X/w9DSDA2"], ["created_at", "2020-01-02 01:04:44.643576"], ["updated_at", "2020-01-02 01:04:44.643576"]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "nigg"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["updated_at", "2020-01-02 01:04:44.650797"], ["id", 12]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/12
+Completed 302 Found in 265ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/users/12" for ::1 at 2020-01-01 20:04:44 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/goals/new" for ::1 at 2020-01-01 20:04:52 -0500
+Processing by GoalsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/_form.html.erb (0.8ms)
+  Rendered goals/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/goals" for ::1 at 2020-01-01 20:05:03 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"LhxUYYGmOP0gzlwl+ITiASvSkMBA9FuxLGv4FR4LZKTrCpV6eAjP88paop+SnzgcovDokIsiRmqr1AXRvFbNkg==", "goal"=>{"title"=>"jellasdl", "details"=>"laskdlakdlakd ", "visible"=>"false", "completed"=>"false"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:17
+  [1m[36mGoal Create (1.0ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "jellasdl"], ["details", "laskdlakdlakd "], ["user_id", 12], ["created_at", "2020-01-02 01:05:03.517069"], ["updated_at", "2020-01-02 01:05:03.517069"]]
+  ↳ app/controllers/goals_controller.rb:17
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:17
+Redirected to http://localhost:3000/goals/7
+Completed 302 Found in 13ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/goals/7" for ::1 at 2020-01-01 20:05:03 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.7ms)
+  Rendered goals/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 27ms (Views: 23.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/goals/" for ::1 at 2020-01-01 20:05:08 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (1.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (1.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (7.0ms)
+  Rendered goals/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 45ms (Views: 40.7ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/goals/7" for ::1 at 2020-01-01 20:05:09 -0500
+Processing by GoalsController#update as HTML
+  Parameters: {"authenticity_token"=>"Du8axuHaHaqXdFxnjPz+gfi2Vz5vHr010zXLCbHUyjrL+dvdGHTqpH3got3m5ySccZQvbqTIoO5UijbNE4ljDA==", "goal"=>{"completed"=>"true"}, "id"=>"7"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mGoal Update (1.2ms)[0m  [1m[33mUPDATE "goals" SET "completed" = $1, "updated_at" = $2 WHERE "goals"."id" = $3[0m  [["completed", true], ["updated_at", "2020-01-02 01:05:09.830492"], ["id", 7]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:42
+Redirected to http://localhost:3000/goals/
+Completed 302 Found in 14ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/goals/" for ::1 at 2020-01-01 20:05:09 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (0.9ms)
+  Rendered shared/_goal_with_buttons.html.erb (4.0ms)
+  Rendered goals/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/goals/7" for ::1 at 2020-01-01 20:05:12 -0500
+Processing by GoalsController#update as HTML
+  Parameters: {"authenticity_token"=>"dsj6X/TeQ88pqJlzz5c9J1xvXRlTyS5+7+tZdITWR+6z3jtEDXC0wcM8Z8mljOc61U0lSZgfM6VoVKSwJovu2A==", "goal"=>{"completed"=>"false"}, "id"=>"7"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mGoal Update (1.0ms)[0m  [1m[33mUPDATE "goals" SET "completed" = $1, "updated_at" = $2 WHERE "goals"."id" = $3[0m  [["completed", false], ["updated_at", "2020-01-02 01:05:12.498454"], ["id", 7]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:42
+Redirected to http://localhost:3000/goals/
+Completed 302 Found in 15ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/goals/" for ::1 at 2020-01-01 20:05:12 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (1.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (5.4ms)
+  Rendered goals/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/goals/7" for ::1 at 2020-01-01 20:05:14 -0500
+Processing by GoalsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4oMwLUrk5bn+Vymd4wwNQVbpwyeW+Jk0r9zx7jwQyQEnlfE2s0oStxTD1yeJF9dc38u7d10uhO8oYwwqnk1gNw==", "id"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:32
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:33
+  [1m[36mGoal Destroy (0.4ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/goals_controller.rb:33
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:33
+Redirected to http://localhost:3000/goals
+Completed 302 Found in 9ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/goals" for ::1 at 2020-01-01 20:05:14 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered goals/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 25ms (Views: 22.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/goals" for ::1 at 2020-01-01 20:05:16 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered goals/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/goals/new" for ::1 at 2020-01-01 20:05:19 -0500
+Processing by GoalsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/_form.html.erb (0.8ms)
+  Rendered goals/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 25ms (Views: 23.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/goals" for ::1 at 2020-01-01 20:05:25 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"+LiAPyxDPa02djOWe1/fQfEfUsm+NlbD64WTAti5OBU9rkEk1e3Ko9zizSwRRAVceD0qmXXgSxhsOm7GeuSRIw==", "goal"=>{"title"=>"askdakdladk", "details"=>"aslkdalkdlaskdlaksd ", "visible"=>"true", "completed"=>"true"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:17
+  [1m[36mGoal Create (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("title", "details", "visible", "user_id", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "askdakdladk"], ["details", "aslkdalkdlaskdlaksd "], ["visible", true], ["user_id", 12], ["completed", true], ["created_at", "2020-01-02 01:05:25.704924"], ["updated_at", "2020-01-02 01:05:25.704924"]]
+  ↳ app/controllers/goals_controller.rb:17
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:17
+Redirected to http://localhost:3000/goals/8
+Completed 302 Found in 10ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/goals/8" for ::1 at 2020-01-01 20:05:25 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.5ms)
+  Rendered goals/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 28ms (Views: 24.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/goals/8/edit" for ::1 at 2020-01-01 20:05:30 -0500
+Processing by GoalsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:27
+  Rendering goals/edit.html.erb within layouts/application
+  Rendered goals/_form.html.erb (0.9ms)
+  Rendered goals/edit.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 32ms (Views: 27.0ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/goals/8" for ::1 at 2020-01-01 20:05:36 -0500
+Processing by GoalsController#update as HTML
+  Parameters: {"authenticity_token"=>"3/fHaxzvf/igiV1XwVL3eUGHqybabv261Chl4v0lT1ka4QZw5UGI9kodo+2rSS1kyKXTdhG44GFTl5gmX3jmbw==", "goal"=>{"title"=>"askdakdladk", "details"=>"ediadkisjdalsdald", "visible"=>"true", "completed"=>"true"}, "id"=>"8"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[36mGoal Update (0.7ms)[0m  [1m[33mUPDATE "goals" SET "details" = $1, "updated_at" = $2 WHERE "goals"."id" = $3[0m  [["details", "ediadkisjdalsdald"], ["updated_at", "2020-01-02 01:05:36.262401"], ["id", 8]]
+  ↳ app/controllers/goals_controller.rb:42
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:42
+Redirected to http://localhost:3000/goals/8
+Completed 302 Found in 15ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/goals/8" for ::1 at 2020-01-01 20:05:36 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.6ms)
+  Rendered goals/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/goals/" for ::1 at 2020-01-01 20:05:38 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (1.0ms)
+  Rendered shared/_goal_with_buttons.html.erb (4.7ms)
+  Rendered goals/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/goals/8" for ::1 at 2020-01-01 20:05:40 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.8ms)
+  Rendered goals/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 34ms (Views: 28.8ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/goals/8" for ::1 at 2020-01-01 20:05:43 -0500
+Processing by GoalsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ioxPyRe+DnZLk7hj4Rm8nA+HpsDMbGFFRvws3nd58KxPmo7S7hD5eKEHRtmLAmaBhqXekAe6fJ7BQ9Ea1SRZmg==", "id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:32
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:33
+  [1m[36mGoal Destroy (0.4ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/goals_controller.rb:33
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:33
+Redirected to http://localhost:3000/goals
+Completed 302 Found in 8ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/goals" for ::1 at 2020-01-01 20:05:43 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered goals/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/goals" for ::1 at 2020-01-01 20:24:58 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered goals/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 30ms (Views: 23.9ms | ActiveRecord: 2.7ms)
+
+
+Started DELETE "/session" for ::1 at 2020-01-01 20:24:59 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rd1gWAAqTDPbqYs4T2NeoHWi4gnY9Evb45BELOlgE0Joy6FD+YS7PTE9dYIleIS9/ICaWRMiVgBkL7noSz26dA=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s1ofDhbg7WHCBlxXpKNt6g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "nigg"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "9aG87FvGc8RGikGfB5pSpA"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "9aG87FvGc8RGikGfB5pSpA"], ["updated_at", "2020-01-02 01:24:59.437682"], ["id", 12]]
+  ↳ app/models/user.rb:24
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 15ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/session/new" for ::1 at 2020-01-01 20:24:59 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 26ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for ::1 at 2020-01-01 20:32:50 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"87IoySAmC/YfyTGIJgKjmily1TnJAE57MgtP1JdUj8c2pOnS2Yj8+PVdzzJMGXmHoFCtaQLWU6C1tLIQNQkm8Q==", "user"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "WeQn9IbsKkyDmAZYJ219jg"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "WeQn9IbsKkyDmAZYJ219jg"], ["updated_at", "2020-01-02 01:32:50.895998"], ["id", 6]]
+  ↳ app/models/user.rb:24
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 269ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-01 20:32:50 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/session" for ::1 at 2020-01-01 21:05:51 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ArK6QgY1h6mC5v9TvetWABtaasICdfzlZQk0siARJQTHpHtZ/5twp2hyAenX8IwdkngSksmj4T7itsl2gkyMMg=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WeQn9IbsKkyDmAZYJ219jg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "AWevznfwQB1gnYk5EApf_w"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "AWevznfwQB1gnYk5EApf_w"], ["updated_at", "2020-01-02 02:05:51.868010"], ["id", 6]]
+  ↳ app/models/user.rb:24
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 12ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/session/new" for ::1 at 2020-01-01 21:05:51 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 26ms (Views: 25.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for ::1 at 2020-01-01 21:05:54 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Ft9jOb2Zp2lnUti5QdPaylFguq4NO52lgv9hXhcl99DTyaIiRDdQZ43GJgMryADX2ELC/sbtgH4FQJyatXhe5g==", "user"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "4s83SV3k5NbHILWnoJ5SsA"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "4s83SV3k5NbHILWnoJ5SsA"], ["updated_at", "2020-01-02 02:05:54.988599"], ["id", 6]]
+  ↳ app/models/user.rb:24
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 262ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-01 21:05:54 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-01 21:07:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 29ms (Views: 26.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-01 21:10:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 38ms (Views: 35.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/goals" for ::1 at 2020-01-01 21:12:15 -0500
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4s83SV3k5NbHILWnoJ5SsA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  Rendering goals/index.html.erb within layouts/application
+  [1m[36mGoal Load (1.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/goals/index.html.erb:3
+  Rendered shared/_goal_complete_button.html.erb (0.9ms)
+  Rendered shared/_goal_with_buttons.html.erb (6.6ms)
+  Rendered shared/_goal_complete_button.html.erb (0.3ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.4ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.6ms)
+  Rendered goals/index.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 61ms (Views: 55.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-01 21:13:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/show.html.erb:5
+  Rendered shared/_goal_complete_button.html.erb (0.7ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.7ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.6ms)
+  Rendered users/show.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 1.2ms)
+
+
