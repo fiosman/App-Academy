@@ -3,11 +3,14 @@
 <h2><%= @user.username %>'s Goals</h2>
 
 <% if @user.username == current_user.username %>
-  <%= link_to 'New Goal', new_goal_url %>
-<% end %>
-
-<% @user.goals.each do |goal| %>
-  <%= render 'shared/goal_with_buttons', goal: goal %>
+  <%= link_to 'New Goal', new_goal_url %> 
+  <% @user.goals.each do |goal| %>
+    <%= render 'shared/goal_with_buttons', goal: goal %>
+  <% end %> 
+<% else %> 
+  <% @user.public_goals.each do |goal| %> 
+    <%= render 'shared/goal_with_buttons', goal: goal %> 
+  <%end %>
 <% end %>
 
 <%= link_to 'All Users', users_url %>

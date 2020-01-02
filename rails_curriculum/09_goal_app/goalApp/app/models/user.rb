@@ -25,6 +25,10 @@ class User < ApplicationRecord
     self.session_token 
   end 
 
+  def public_goals 
+    self.goals.where(visible: true)
+  end
+
   def password=(password) 
     @password = password 
     self.password_digest = BCrypt::Password.create(password)

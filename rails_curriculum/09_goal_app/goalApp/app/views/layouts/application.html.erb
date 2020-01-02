@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
     <% if logged_in? %>
-      Welcome <%=current_user.username %> 
+      Welcome <%=current_user.username %><br><br>
       <%= button_to "Sign out", session_url, method: :delete, class: 'sign-out-button' %>
     <% else %> 
       <%= link_to "Sign up", new_user_url %>
