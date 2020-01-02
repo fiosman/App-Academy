@@ -12665,3 +12665,83 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 50ms (Views: 46.6ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/users/6" for ::1 at 2020-01-01 23:48:50 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X4Ef9nc5LTu5D-EWF5qN5g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/show.html.erb:7
+  Rendered shared/_goal_complete_button.html.erb (0.5ms)
+  Rendered shared/_goal_with_buttons.html.erb (4.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (3.1ms)
+  Rendered users/show.html.erb within layouts/application (63.6ms)
+Completed 200 OK in 286ms (Views: 241.1ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/goals/9" for ::1 at 2020-01-01 23:48:57 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X4Ef9nc5LTu5D-EWF5qN5g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:26
+  Rendered shared/_goal_complete_button.html.erb (1.0ms)
+  Rendered goals/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 41ms (Views: 30.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users" for ::1 at 2020-01-01 23:49:00 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X4Ef9nc5LTu5D-EWF5qN5g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+Completed 200 OK in 37ms (Views: 34.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/13" for ::1 at 2020-01-01 23:49:03 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X4Ef9nc5LTu5D-EWF5qN5g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 13], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered shared/_goal_with_buttons.html.erb (0.9ms)
+  Rendered shared/_goal_with_buttons.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 44ms (Views: 37.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/goals/12" for ::1 at 2020-01-01 23:49:05 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X4Ef9nc5LTu5D-EWF5qN5g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:56
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:26
+  Rendered goals/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 34ms (Views: 29.9ms | ActiveRecord: 1.2ms)
+
+

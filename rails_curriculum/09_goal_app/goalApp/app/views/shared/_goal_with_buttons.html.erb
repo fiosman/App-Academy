@@ -6,7 +6,7 @@
     <%= link_to goal.title , goal_url(goal) %>
     <p><i> <%= goal.visible? ? 'Public' : 'Private' %></i></p> 
     <p><i> <%= goal.completed? ? 'Completed' : 'Ongoing' %></i></p>
-    <% if current_user.username == @user.username %>
+    <% if current_user == goal.user %>
       <%= button_to "Delete #{goal.title}", goal_url(goal), method: :delete %>
       <%= render 'shared/goal_complete_button', goal: goal %>
     <% end %>
