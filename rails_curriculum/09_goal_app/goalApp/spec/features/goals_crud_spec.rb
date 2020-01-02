@@ -27,9 +27,9 @@ RSpec.feature "GoalsCrud", type: :feature do
   end
 
   feature 'reading goals' do    
+    given(:goal) { create(:goal, title: 'Test Title', user_id: test_user.id) }
     scenario "shows a user's goals on the index page" do   
-      create_goal('Test Title', 'Test Details')
-      visit goals_url 
+      visit goals_url(goal)
       expect(page).to have_content('Test Title') 
       click_link('Test Title') 
       expect(page).to have_current_path(goal_url(Goal.find_by(title: 'Test Title').id))
@@ -37,7 +37,7 @@ RSpec.feature "GoalsCrud", type: :feature do
   end
 
   feature 'updating goals' do 
-    given(:goal) { create(:goal, user_id: test_user.id)}
+    given(:goal) { create(:goal, user_id: test_user.id) }
     scenario 'should have a page for updating a goal' do      
       visit edit_goal_url(goal)
       expect(find_field('Title').value).to eq(goal.title)
@@ -53,12 +53,13 @@ RSpec.feature "GoalsCrud", type: :feature do
     end
   end
   
-  feature 'deleting goals' do  
+  feature 'deleting goals' do
+    given(:goal) { create(:goal, user_id: test_user.id) }   
     scenario 'allow a user to delete a goal' do   
-      
+      visit goals_url(goal)
+      click_on "Delete #{goal.title}" 
+      expect(page).not_to have_content(goal.title) 
+      expect(page).to have_content('Goal deleted!')
     end 
-    
-    scenario 'display the remaining goals on index page' do    
-    end
   end 
 end

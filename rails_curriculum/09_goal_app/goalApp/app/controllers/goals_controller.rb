@@ -30,7 +30,9 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal = Goal.find(params[:id]) 
-    @goal.destroy 
+    if @goal.destroy 
+      flash[:notices] = ['Goal deleted!']
+    end
     redirect_to goals_url
   end 
 
