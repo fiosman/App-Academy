@@ -17,5 +17,10 @@ RSpec.feature "GoalCompletion", type: :feature do
     scenario "on another user's show page" do   
     end 
 
+    scenario "on the logged in user's edit page" do   
+    end 
+
+    scenario "on another user's logged in edit page" do   
+    end 
   end
 end
