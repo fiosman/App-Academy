@@ -55,20 +55,30 @@ RSpec.feature "GoalCompletion", type: :feature do
         visit goal_url(test_goal) 
         click_on 'Complete'
         expect(page).to have_content('Completed') 
-        expect(page).to have_content ('Goal updated!')
+        expect(page).to have_content('Goal updated!')
       end
     end
 
-    feature "unable to complete other users' goals" do   
+    feature "unable to complete other users' public goals" do  
+      background(:each) do    
+        log_out 
+        login_as(alt_user)
+      end
       scenario "on the goal's show page" do  
-        logout
+        visit goal_url(test_goal) 
+        expect(page).not_to have_selector(:link_or_button, 'Complete')
       end 
 
-      scenario "on the user's show page" do   
+      scenario "on the user's show page" do 
+        visit user_url(main_user) 
+        expect(page).not_to have_selector(:link_or_button, 'Complete')
       end
 
     feature "unable to edit another user's goal on the goal's edit page" 
-      scenario "generates a permission error when visiting edit page" do  
+      scenario "generates a permission error when visiting edit page" do 
+        visit edit_goal_url(test_goal) 
+        expect(page).to have_content('Not your goal to edit!')
+        expect(page).to have_current_path("/goals/#{test_goal.id}")
       end
     end
   end
