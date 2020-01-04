@@ -23,24 +23,58 @@ RSpec.feature "GoalCompletion", type: :feature do
         visit edit_goal_url(test_goal) 
         expect(page).to have_unchecked_field('goal_completed')
       end
+      scenario "on the goal's show page" do  
+        visit goal_url(test_goal) 
+        expect(page).to have_content('Ongoing') 
+      end
     end
 
-    scenario "on the logged in user's goals show page" do   
+    feature 'completing a goal' do   
+      scenario 'on the goals index page' do  
+        visit goals_url 
+        click_on 'Complete' 
+        expect(page).to have_content('Completed')
+        expect(page).to have_content('Goal updated!')
+      end
+      scenario "on the logged in user's show page" do   
+        visit user_url(main_user) 
+        click_on 'Complete'
+        expect(page).to have_content('Completed') 
+        expect(page).to have_content('Goal updated!')
+      end
+      scenario "on the logged in user's edit goal page" do 
+        visit edit_goal_url(test_goal) 
+        check 'Completed?'
+        click_on 'Update Goal' 
+        expect(page).to have_content('Goal updated!') 
+        expect(page).to have_content('Completed')
+        expect(page).to have_current_path("/goals/#{test_goal.id}")
+      end
+
+      scenario "on the goal's show page" do    
+        visit goal_url(test_goal) 
+        click_on 'Complete'
+        expect(page).to have_content('Completed') 
+        expect(page).to have_content ('Goal updated!')
+      end
     end
 
-    scenario "on another user's goals show page" do   
-    end 
+    # scenario "on the logged in user's goals show page" do   
+    # end
 
-    scenario "on the logged in user's show page" do    
-    end
+    # scenario "on another user's goals show page" do   
+    # end 
+
+    # scenario "on the logged in user's show page" do    
+    # end
     
-    scenario "on another user's show page" do   
-    end 
+    # scenario "on another user's show page" do   
+    # end 
 
-    scenario "on the logged in user's edit page" do   
-    end 
+    # scenario "on the logged in user's edit page" do   
+    # end 
 
-    scenario "on another user's logged in edit page" do   
-    end 
+    # scenario "on another user's logged in edit page" do   
+    # end 
   end
 end
