@@ -58,8 +58,13 @@ class GoalsController < ApplicationController
   end 
 
   def show 
-    @goal = Goal.find(params[:id])
-    render :show
+    @goal = Goal.find(params[:id]) 
+    if current_user == @goal.user 
+      render :show
+    else
+      flash[:notices] = ["Cannot view another user's private goals!"]
+      redirect_to user_url(@goal.user) 
+    end
   end
 
   private 
