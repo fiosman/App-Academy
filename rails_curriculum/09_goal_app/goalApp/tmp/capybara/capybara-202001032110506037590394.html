@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoalApp</title>
+    
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-fb3492bce71fe057214afa0aa9d4e88f82d0b8246a13551d25e0e47ba9638d92.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+  <h1>Goal App</h1>
+      Welcome myung_little<br><br>
+      <form class="button_to" method="post" action="http://www.example.com/session"><input type="hidden" name="_method" value="delete" /><input class="sign-out-button" type="submit" value="Sign out" /></form>
+    <main>
+    <h2>Edit Goal</h2> 
+
+
+<form action="http://www.example.com/goals/200" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type="hidden" name="authenticity_token" value=0mCXzSbTtcuqLfCCp/P8xniG7hO2XDYhDTFZiBspZPzGJpgmVKjkQITDEh6SFZ7VJgrKXHbLE/gI346LVHpbQQ==>
+
+<label for="goal_title">Title:</label>
+<input type="text" name="goal[title]" id="goal_title" value = laudantium>
+<br>
+
+<label for="goal_details">Details:</label>
+<textarea name="goal[details]" id="goal_details"> Aut distinctio qui quos.</textarea>
+<br>
+
+<label for="goal_visible">Public?</label>
+<input type="hidden" name="goal[visible]" value='false'>
+<input type="checkbox" name="goal[visible]" 
+                       id="goal_visible"
+                       value='true' 
+                       >
+<br>
+
+<label for="goal_completed">Completed?</label>
+<input type="hidden" name="goal[completed]" value='false'>
+<input type="checkbox" name="goal[completed]" 
+                       id="goal_completed"
+                       value='true'
+                       >
+<br>
+
+<input type="submit" value="Update Goal">
+</form>
+
+
+    </main>
+  </body>
+</html>
