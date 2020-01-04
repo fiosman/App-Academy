@@ -12,4 +12,9 @@ module AuthFeaturesHelper
     fill_in "Password", with: user.password
     click_on "Login"
   end
+
+  def log_out 
+    click_on 'Sign out' 
+  end 
+  
 end

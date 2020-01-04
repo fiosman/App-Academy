@@ -14648,3 +14648,33 @@ Processing by GoalsController#show as HTML
 Completed 200 OK in 43ms (Views: 29.9ms | ActiveRecord: 2.9ms)
 
 
+Started GET "/goals/10" for ::1 at 2020-01-04 01:01:58 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "E0Q9A4cAyLSHmwcWBvyMnA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (1.0ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:61
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:26
+  Rendered goals/show.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 261ms (Views: 211.4ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/goals/10" for ::1 at 2020-01-04 01:02:10 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "E0Q9A4cAyLSHmwcWBvyMnA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:61
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:26
+  Rendered goals/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 46ms (Views: 37.2ms | ActiveRecord: 2.0ms)
+
+

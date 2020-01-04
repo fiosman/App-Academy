@@ -61,6 +61,7 @@ RSpec.feature "GoalCompletion", type: :feature do
 
     feature "unable to complete other users' goals" do   
       scenario "on the goal's show page" do  
+        logout
       end 
 
       scenario "on the user's show page" do   
