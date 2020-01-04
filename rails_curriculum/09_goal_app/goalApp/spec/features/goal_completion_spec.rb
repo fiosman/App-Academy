@@ -59,22 +59,16 @@ RSpec.feature "GoalCompletion", type: :feature do
       end
     end
 
-    # scenario "on the logged in user's goals show page" do   
-    # end
+    feature "unable to complete other users' goals" do   
+      scenario "on the goal's show page" do  
+      end 
 
-    # scenario "on another user's goals show page" do   
-    # end 
+      scenario "on the user's show page" do   
+      end
 
-    # scenario "on the logged in user's show page" do    
-    # end
-    
-    # scenario "on another user's show page" do   
-    # end 
-
-    # scenario "on the logged in user's edit page" do   
-    # end 
-
-    # scenario "on another user's logged in edit page" do   
-    # end 
+    feature "unable to edit another user's goal on the goal's edit page" 
+      scenario "generates a permission error when visiting edit page" do  
+      end
+    end
   end
 end

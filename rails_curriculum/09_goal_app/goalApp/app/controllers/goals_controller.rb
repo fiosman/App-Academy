@@ -25,7 +25,12 @@ class GoalsController < ApplicationController
 
   def edit 
     @goal = Goal.find(params[:id]) 
-    render :edit
+      if current_user == @goal.user 
+        render :edit 
+      else 
+        flash[:notices] = ['Not your goal to edit!']
+        redirect_to goal_url(@goal)
+      end
   end 
 
   def destroy
