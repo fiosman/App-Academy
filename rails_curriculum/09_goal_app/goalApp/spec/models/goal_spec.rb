@@ -7,6 +7,7 @@ RSpec.describe Goal, type: :model do
   end
 
   describe 'associations do' do 
-    it { should belong_to(:user) }
+    it { should belong_to(:user) } 
+    it { should have_many(:comments) }
   end
 end
