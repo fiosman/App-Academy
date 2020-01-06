@@ -13,4 +13,12 @@
   <%end %>
 <% end %>
 
+<h2>Comments</h2> 
+
+<% @user.comments.each do |comment| %> 
+  <p><%= comment.comment %></p>
+<% end %> 
+
+<%= render 'shared/comment_form', commentable_id: @user.id, commentable_type: 'User' %>
+
 <%= link_to 'All Users', users_url %>

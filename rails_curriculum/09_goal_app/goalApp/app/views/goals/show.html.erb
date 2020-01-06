@@ -29,4 +29,12 @@
       <% end %>
     </tr>
   </tbody>
-</table>
+</table> 
+
+<h2>Comments</h2> 
+
+<% @goal.comments.each do |comment| %> 
+  <p><%= comment.comment %></p>
+<% end %>
+
+<%= render 'shared/comment_form', commentable_id: @goal.id, commentable_type: 'Goal' %>

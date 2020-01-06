@@ -16266,3 +16266,577 @@ Migrating to CreateComments (20200105224657)
   [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "author_id", "commentable_type", "commentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["comment", "hello"], ["author_id", 3], ["commentable_type", "Goal"], ["commentable_id", 15], ["created_at", "2020-01-06 04:26:31.991290"], ["updated_at", "2020-01-06 04:26:31.991290"]]
   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGoal Load (1.0ms)[0m  [1m[34mSELECT "goals".* FROM "goals"[0m
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 2], ["commentable_type", "Goal"]]
+Started GET "/users" for ::1 at 2020-01-06 00:14:49 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (22.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+Completed 200 OK in 423ms (Views: 395.7ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/users/2" for ::1 at 2020-01-06 00:14:53 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 2], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 2], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered users/show.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 77ms (Views: 53.1ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/users" for ::1 at 2020-01-06 00:23:41 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:23:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.2ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/users/show.html.erb:22: syntax error, unexpected ')'
+...render 'shared/comment_form', );@output_buffer.safe_append='
+...                              ^
+/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/users/show.html.erb:26: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/techreset/Desktop/App-Academy/rails_curriculum/09_goal_app/goalApp/app/views/users/show.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/users/show.html.erb:22: syntax error, unexpected ')'
+app/views/users/show.html.erb:26: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/users/show.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/3" for ::1 at 2020-01-06 00:24:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (4.0ms)
+  Rendered users/show.html.erb within layouts/application (13.3ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `comment' for nil:NilClass):
+     6:          value="<%= form_authenticity_token %>">
+     7:   
+     8:   <label for="comment_body">Comment</label>
+     9:   <textarea name="comment[comment]" id="comment_body"><%= @comment.comment %></textarea>
+    10: 
+    11:   <input type="submit" value="Save comment">
+    12: </form>
+  
+app/views/shared/_comment_form.html.erb:9:in `_app_views_shared__comment_form_html_erb__1462546890436836703_70275792934960'
+app/views/users/show.html.erb:22:in `_app_views_users_show_html_erb___1169832184473991691_70275826907160'
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/3" for ::1 at 2020-01-06 00:24:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 56ms (Views: 50.0ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:24:43 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"HdPQHoGIxSihpA6KQuvDbf+eCF4KR5PF2l6e2uhqcR7YxREFeCYyJksw8DAo8BlwdrxwDsGRjh5d4WMeSjfYKA==", "comment"=>{"comment"=>"asad"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 138ms (ActiveRecord: 8.6ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:24:44 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"HdPQHoGIxSihpA6KQuvDbf+eCF4KR5PF2l6e2uhqcR7YxREFeCYyJksw8DAo8BlwdrxwDsGRjh5d4WMeSjfYKA==", "comment"=>{"comment"=>"asad"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 107ms (ActiveRecord: 1.7ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:24:45 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"HdPQHoGIxSihpA6KQuvDbf+eCF4KR5PF2l6e2uhqcR7YxREFeCYyJksw8DAo8BlwdrxwDsGRjh5d4WMeSjfYKA==", "comment"=>{"comment"=>"asad"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 123ms (ActiveRecord: 1.7ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:24:45 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"HdPQHoGIxSihpA6KQuvDbf+eCF4KR5PF2l6e2uhqcR7YxREFeCYyJksw8DAo8BlwdrxwDsGRjh5d4WMeSjfYKA==", "comment"=>{"comment"=>"asad"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 119ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:38:33 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (284.3ms)
+  Rendered users/show.html.erb within layouts/application (296.1ms)
+Completed 500 Internal Server Error in 308ms (ActiveRecord: 3.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `commentable_id' for #<#<Class:0x00007fd4b5c5c1a0>:0x00007fd4baa48af8>
+Did you mean?  comments_url):
+     6:          value="<%= form_authenticity_token %>">
+     7:   
+     8:   <label for="comment_body">Comment</label>
+     9:   <input type="hidden" name="comment[commentable_type]" value= <%= commentable_id %>> 
+    10:   <input type="hidden" name="comment[commentable_id]" value= <%= commentable_type %>>
+    11:   <textarea name="comment[comment]" id="comment_body"></textarea>
+    12: 
+  
+app/views/shared/_comment_form.html.erb:9:in `_app_views_shared__comment_form_html_erb__1462546890436836703_70275824588120'
+app/views/users/show.html.erb:22:in `_app_views_users_show_html_erb___1169832184473991691_70275820507060'
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/3" for ::1 at 2020-01-06 00:39:02 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (246.4ms)
+  Rendered users/show.html.erb within layouts/application (253.0ms)
+Completed 500 Internal Server Error in 262ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `commentable_id' for #<#<Class:0x00007fd4b5c5c1a0>:0x00007fd4bab5dbc8>
+Did you mean?  comments_url):
+     6:          value="<%= form_authenticity_token %>">
+     7:   
+     8:   <label for="comment_body">Comment</label>
+     9:   <input type="hidden" name="comment[commentable_type]" value= "<%= commentable_id %>"> 
+    10:   <input type="hidden" name="comment[commentable_id]" value= "<%= commentable_type %>">
+    11:   <textarea name="comment[comment]" id="comment_body"></textarea>
+    12: 
+  
+app/views/shared/_comment_form.html.erb:9:in `_app_views_shared__comment_form_html_erb__1462546890436836703_70275824811640'
+app/views/users/show.html.erb:22:in `_app_views_users_show_html_erb___1169832184473991691_70275821134940'
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/3" for ::1 at 2020-01-06 00:43:22 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (265.7ms)
+  Rendered users/show.html.erb within layouts/application (274.0ms)
+Completed 500 Internal Server Error in 285ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007fd4b5c5c1a0>:0x00007fd4bace58b0>
+Did you mean?  comments_url):
+     6:          value="<%= form_authenticity_token %>">
+     7:   
+     8:   <label for="comment_body">Comment</label>
+     9:   <input type="hidden" name="comment[commentable_type]" value= "<%= comment.commentable_id %>"> 
+    10:   <input type="hidden" name="comment[commentable_id]" value= "<%= comment.commentable_type %>">
+    11:   <textarea name="comment[comment]" id="comment_body"></textarea>
+    12: 
+  
+app/views/shared/_comment_form.html.erb:9:in `_app_views_shared__comment_form_html_erb__1462546890436836703_70275832873700'
+app/views/users/show.html.erb:22:in `_app_views_users_show_html_erb___1169832184473991691_70275821937360'
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/3" for ::1 at 2020-01-06 00:44:00 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 40ms (Views: 36.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:44:05 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"PGXqiM/jYulDKg9vpycJdpRXQY2PhEYD7KP/W0Jj4+v5cyuTNk2V56m+8dXNPNNrHXU53URSW9hrHAKf4D5K3Q==", "comment"=>{"commentable_type"=>"User", "commentable_id"=>"3", "comment"=>"testing"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "author_id", "commentable_type", "commentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["comment", "testing"], ["author_id", 6], ["commentable_type", "User"], ["commentable_id", 3], ["created_at", "2020-01-06 05:44:05.537256"], ["updated_at", "2020-01-06 05:44:05.537256"]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 109ms (ActiveRecord: 5.3ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:44:07 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"PGXqiM/jYulDKg9vpycJdpRXQY2PhEYD7KP/W0Jj4+v5cyuTNk2V56m+8dXNPNNrHXU53URSW9hrHAKf4D5K3Q==", "comment"=>{"commentable_type"=>"User", "commentable_id"=>"3", "comment"=>"testing"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "author_id", "commentable_type", "commentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["comment", "testing"], ["author_id", 6], ["commentable_type", "User"], ["commentable_id", 3], ["created_at", "2020-01-06 05:44:07.704718"], ["updated_at", "2020-01-06 05:44:07.704718"]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:8
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 106ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:44:08 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.9ms)
+  Rendered users/show.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 43ms (Views: 40.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:44:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (1.4ms)
+  Rendered users/show.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 48ms (Views: 43.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:45:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:45:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.5ms)
+  Rendered users/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 28ms (Views: 25.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:45:54 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 62ms (Views: 34.8ms | ActiveRecord: 17.1ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:45:59 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"8UZTc9QtZO2mbxeoy9KZfllXztaAMIFOzf2GtWwZ4cE0UJJoLYOT40z76RKhyUNj0HW2hkvmnJVKQntxzkRI9w==", "comment"=>{"commentable_type"=>"User", "commentable_id"=>"3", "comment"=>"osad"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "author_id", "commentable_type", "commentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["comment", "osad"], ["author_id", 6], ["commentable_type", "User"], ["commentable_id", 3], ["created_at", "2020-01-06 05:45:59.978887"], ["updated_at", "2020-01-06 05:45:59.978887"]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:8
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 10ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/3" for ::1 at 2020-01-06 00:45:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 3], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 3], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 29ms (Views: 25.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for ::1 at 2020-01-06 00:46:06 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/11" for ::1 at 2020-01-06 00:46:10 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 11], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 11], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 42ms (Views: 37.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/11" for ::1 at 2020-01-06 00:46:18 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 11], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 11], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.9ms)
+  Rendered users/show.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 52ms (Views: 46.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/13" for ::1 at 2020-01-06 00:46:22 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1 AND "goals"."visible" = $2[0m  [["user_id", 13], ["visible", true]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 13], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/6" for ::1 at 2020-01-06 00:46:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/show.html.erb:7
+  Rendered shared/_goal_complete_button.html.erb (1.2ms)
+  Rendered shared/_goal_with_buttons.html.erb (6.5ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.4ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.2ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.1ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (2.1ms)
+  Rendered shared/_goal_complete_button.html.erb (0.1ms)
+  Rendered shared/_goal_with_buttons.html.erb (1.9ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 6], ["commentable_type", "User"]]
+  ↳ app/views/users/show.html.erb:18
+  Rendered shared/_comment_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (54.1ms)
+Completed 200 OK in 80ms (Views: 73.3ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/goals/2" for ::1 at 2020-01-06 00:46:27 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:61
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:62
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 2], ["commentable_type", "Goal"]]
+  ↳ app/views/goals/show.html.erb:36
+  Rendered shared/_comment_form.html.erb (0.5ms)
+  Rendered goals/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 36ms (Views: 31.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/comments" for ::1 at 2020-01-06 00:46:30 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"vWYHBnYyeDBwzdlmn3MW9ukh1KqsxVRtimTEIvVHy5t4cMYdj5yPPppZJ9z1aMzrYAOs+mcTSbYN2znmVxpirQ==", "comment"=>{"commentable_type"=>"Goal", "commentable_id"=>"2", "comment"=>"fuck off"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "author_id", "commentable_type", "commentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["comment", "fuck off"], ["author_id", 6], ["commentable_type", "Goal"], ["commentable_id", 2], ["created_at", "2020-01-06 05:46:30.525667"], ["updated_at", "2020-01-06 05:46:30.525667"]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:8
+Redirected to http://localhost:3000/goals/2
+Completed 302 Found in 10ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/goals/2" for ::1 at 2020-01-06 00:46:30 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZgDeir7B_GNbFtBG91HlNQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:61
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:62
+  Rendering goals/show.html.erb within layouts/application
+  Rendered shared/_goal_complete_button.html.erb (0.6ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 2], ["commentable_type", "Goal"]]
+  ↳ app/views/goals/show.html.erb:36
+  Rendered shared/_comment_form.html.erb (0.7ms)
+  Rendered goals/show.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 28ms (Views: 23.8ms | ActiveRecord: 1.1ms)
+
+

@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     
     if @comment.save 
       flash[:notices] = ['Comment saved'] 
+      redirect_to request.referrer
     else 
       flash[:errors] = @comment.errors.full_messages
     end
