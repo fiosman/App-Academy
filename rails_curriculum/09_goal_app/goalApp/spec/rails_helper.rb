@@ -36,6 +36,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.include AuthFeaturesHelper, type: :feature
   config.include GoalFeaturesHelper, type: :feature 
+  config.include CommentFeaturesHelper, type: :feature 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
