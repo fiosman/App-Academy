@@ -109,10 +109,49 @@ label {
     display: block;
 }
 
+.hamburger-dropdown {
+  display: none;
+}
+
 /* Media Queries! */
 @media all and (max-width: 900px) { 
   .col { 
-    min-width: 500px;
+    min-width: 500px; 
+  } 
+  
+  nav > ul { 
+    display: none;
+  }
+
+  .hamburger-dropdown { 
+    display: block;
+  }
+
+  .hamburger-dropdown > li {
+    background: url(./hamburger.png);
+    width: 50px; 
+    height: 50px; 
+    background-size: 50px 50px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hamburger-dropdown ul {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+
+  .hamburger-dropdown:hover ul {
+    display: block;
   }
 }
+
+
+
+
 
