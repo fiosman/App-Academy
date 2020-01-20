@@ -1,0 +1,2 @@
+class Corgi < ApplicationRecord
+end
