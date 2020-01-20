@@ -1,0 +1,70 @@
+.search-modal.expand {
+  max-height: 300px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid $light-gray;
+  border-top: 1px solid $light-gray;
+}
+
+.search-modal {
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: max-height 500ms;
+  margin-top: -1px;
+}
+
+.search-modal .input-wrapper {
+  max-width: 40%;
+  min-width: 300px;
+  margin: 25px auto;
+}
+
+.search-modal input {
+  border: 1px solid $light-gray;
+  box-shadow: inset 2px 3px 3px rgba(0, 0, 0, 0.07);
+  border-radius: 3px;
+}
+
+.search-modal .input-wrapper button {
+  margin-left: 10px;
+  background: white;
+  font-weight: normal;
+  color: $gray;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+}
+
+button.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: $light-gray;
+  transition: background 0.5s;
+  border-radius: 50%;
+  padding: 3px 5px;
+}
+
+button.close:hover {
+  background: $gray;
+}
+
+/*
+	Background Overlay
+*/
+
+.main-content {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+}
