@@ -8,6 +8,8 @@ class User < ApplicationRecord
   attr_reader :password  
   
   def self.find_by_credentials(username, password) 
+    user = User.find_by(username: username) 
+    user && user.is_password?(password) ? user : nil 
   end   
   
   def self.generate_session_token 
@@ -25,7 +27,7 @@ class User < ApplicationRecord
   end 
 
   def is_password?(password) 
-    self.password_digest.is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end 
 
   private 
