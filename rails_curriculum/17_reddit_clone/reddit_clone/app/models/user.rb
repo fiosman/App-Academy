@@ -28,6 +28,11 @@ class User < ApplicationRecord
     primary_key: :id, 
     foreign_key: :author_id, 
     class_name: :Sub     
+
+  has_many :posts, dependent: :destroy, 
+    primary_key: :id,    
+    foreign_key: :author_id, 
+    class_name: :Post
   
   def self.find_by_credentials(username, password) 
     user = User.find_by(username: username) 
