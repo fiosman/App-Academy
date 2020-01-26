@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   attr_reader :password  
 
-  has_many :subs, 
+  has_many :subs, dependent: :destroy
     primary_key: :id, 
     foreign_key: :author_id, 
     class_name: :Sub     
