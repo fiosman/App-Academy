@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     )
 
     if user
-      log_in_user 
+      log_in_user!(user)
       redirect_to user_url(user)
       flash[:notices] = ["Sign in successful"]
     else 
