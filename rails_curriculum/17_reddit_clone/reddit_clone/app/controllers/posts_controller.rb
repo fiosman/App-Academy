@@ -61,7 +61,7 @@ class Post < ApplicationController
     post = Post.find(params[:id]) 
     if current_user != post.author 
       flash[:notices] = ['Cannot edit a post that is not your own!']
-      redirect_to edit_post_url(post)
+      redirect_to request.referer
     end
   end 
 
