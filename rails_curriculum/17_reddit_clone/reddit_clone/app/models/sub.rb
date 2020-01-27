@@ -11,7 +11,7 @@
 #
 # Indexes
 #
-#  index_subs_on_author_id  (author_id) UNIQUE
+#  index_subs_on_author_id  (author_id)
 #  index_subs_on_title      (title) UNIQUE
 #
 
