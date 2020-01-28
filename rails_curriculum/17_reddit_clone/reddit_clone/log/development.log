@@ -2673,3 +2673,12 @@ Migrating to AddAuthorIdIndexSubs (20200127013635)
   [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
   [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" ORDER BY "subs"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/subs/new" for ::1 at 2020-01-27 23:53:55 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by SubsController#new as HTML
+  Rendering subs/new.html.erb within layouts/application
+  Rendered subs/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 293ms (Views: 253.4ms | ActiveRecord: 9.6ms)
+
+
