@@ -20,6 +20,8 @@
 
     <% if logged_in? %> 
       <h3><b>Currently signed in as: <%= current_user.username %></b></h3>
+      <%= link_to 'Create a sub', new_sub_url %><br/>
+      <%= link_to 'All the subs', subs_url %><br/><br/>
       <%= button_to 'Sign out', session_url, method: :delete %> 
     <% else %> 
       <%= link_to 'Sign in', new_session_url %> 
