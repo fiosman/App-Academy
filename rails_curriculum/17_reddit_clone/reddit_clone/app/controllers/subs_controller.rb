@@ -16,8 +16,8 @@ class SubsController < ApplicationController
     @sub = current_user.subs.new(sub_params) 
 
     if @sub.save 
-      redirect_to sub_url(@sub) 
       flash[:notices] = ['Sub successfully created!']
+      redirect_to sub_url(@sub) 
     else 
       flash.now[:errors] = @sub.errors.full_messages
       render :new
@@ -37,9 +37,9 @@ class SubsController < ApplicationController
   def update 
     @sub = Sub.find(params[:id]) 
     
-    if @sub.update_attributes(sub_params) 
+    if @sub.update_attributes(sub_params)
+      flash[:notices] = ['Sub successfully updated']  
       redirect_to sub_url(@sub)  
-      flash[:notices] = ['Sub successfully updated'] 
     else 
       flash.now[:errors] = @sub.errors.full_messages 
       render :edit 
