@@ -1,0 +1,34 @@
+<% action_url = post.persisted? ? posts_url(post) : posts_url %>
+<% form_method = post.persisted? ? 'PATCH' : 'POST' %>
+<% submit_button_value = post.persisted? ? 'Edit Post' : 'Create Post' %> 
+
+<%= render 'shared/errors' %>
+
+<form action="<%= action_url %>" method="POST">
+
+  <input type="hidden" 
+         name="_method" 
+         value="<%= form_method %>">
+
+  <input type="hidden" 
+         name="authenticity_token" 
+         value="<%= form_authenticity_token%>">
+
+  <label for="post_title">Title</label>
+  <input type="text" name="post[title]" id="post_title">
+
+  <label for="post_url">URL</label>
+  <input type="text" name="post[url]" id="post_url">
+
+  <label for="post_content">Content</label>
+  <input type="text" name="post[content]" id="post_content">
+
+  <br>
+
+  <% Sub.all.each do |sub| %>
+    <input type="checkbox" name="post[sub_id]" value="<%= sub.id %>"> <%= sub.title %> <br/>
+  <% end %>
+
+  <input type="submit" value="<%= submit_button_value %>">
+
+</form>

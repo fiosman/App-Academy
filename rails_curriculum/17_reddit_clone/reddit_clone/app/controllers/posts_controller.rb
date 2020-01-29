@@ -1,4 +1,4 @@
-class Post < ApplicationController 
+class PostsController < ApplicationController 
 
   before_action :verify_author, only: [:edit, :update]
 
