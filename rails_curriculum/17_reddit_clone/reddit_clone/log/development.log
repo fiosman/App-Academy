@@ -4359,3 +4359,363 @@ Processing by SubsController#show as HTML
 Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.6ms)
 
 
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/subs/1" for ::1 at 2020-01-28 23:31:57 -0500
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (2.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 287ms (Views: 231.5ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/subs" for ::1 at 2020-01-28 23:32:01 -0500
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:3
+  Rendered subs/index.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/subs/3" for ::1 at 2020-01-28 23:32:02 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 39ms (Views: 36.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/subs/3/edit" for ::1 at 2020-01-28 23:32:04 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+Redirected to http://localhost:3000/subs/3
+Filter chain halted as :verify_moderator rendered or redirected
+Completed 302 Found in 24ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/subs/3" for ::1 at 2020-01-28 23:32:04 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/new" for ::1 at 2020-01-28 23:32:07 -0500
+
+LoadError - Unable to autoload constant PostsController, expected /Users/techreset/Desktop/App-Academy/rails_curriculum/17_reddit_clone/reddit_clone/app/controllers/posts_controller.rb to define it:
+
+Started POST "/__better_errors/9e9dda111a9fa33d/variables" for ::1 at 2020-01-28 23:32:07 -0500
+Started GET "/subs/3" for ::1 at 2020-01-28 23:32:09 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/subs/new" for ::1 at 2020-01-28 23:32:12 -0500
+Processing by SubsController#new as HTML
+  Rendering subs/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered subs/_form.html.erb (0.7ms)
+  Rendered subs/new.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 38ms (Views: 36.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/subs" for ::1 at 2020-01-28 23:32:17 -0500
+Processing by SubsController#create as HTML
+  Parameters: {"authenticity_token"=>"2JdkzfXg9S3z7m33RRXN5BeLHZWjn6PzCzYqW4e7qABonkTYtQ3LDdGAYLlkdGkP0nNIavwcrihr3o6mJBd8nA==", "sub"=>{"title"=>"harhar", "description"=>"lmfao"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subs_controller.rb:18
+  [1m[36mSub Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "subs" WHERE "subs"."title" = $1 LIMIT $2[0m  [["title", "harhar"], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:18
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:18
+  [1m[36mSub Create (11.6ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "harhar"], ["description", "lmfao"], ["author_id", 8], ["created_at", "2020-01-29 04:32:17.920897"], ["updated_at", "2020-01-29 04:32:17.920897"]]
+  ↳ app/controllers/subs_controller.rb:18
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subs_controller.rb:18
+Redirected to http://localhost:3000/subs/10
+Completed 302 Found in 41ms (ActiveRecord: 17.2ms)
+
+
+Started GET "/subs/10" for ::1 at 2020-01-28 23:32:17 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/subs" for ::1 at 2020-01-28 23:32:21 -0500
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:3
+  Rendered subs/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/subs/10" for ::1 at 2020-01-28 23:32:22 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 36ms (Views: 33.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/subs/10/edit" for ::1 at 2020-01-28 23:32:27 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+  [1m[36mCACHE Sub Load (0.0ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:33
+  Rendering subs/edit.html.erb within layouts/application
+  Rendered subs/_form.html.erb (0.8ms)
+  Rendered subs/edit.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 43ms (Views: 33.1ms | ActiveRecord: 2.8ms)
+
+
+Started PATCH "/subs/10" for ::1 at 2020-01-28 23:32:33 -0500
+Processing by SubsController#update as HTML
+  Parameters: {"authenticity_token"=>"tI3nadyONKUgMbNQlMXokedZpngJ7LUnhjlEhVybkd0EhMd8nGMKhQJfvh61pEx6IqHzh1ZvuPzm0eB4/zdFQQ==", "sub"=>{"title"=>"harhar", "description"=>"xxlmfao"}, "id"=>"10"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+  [1m[36mCACHE Sub Load (0.0ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:38
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subs_controller.rb:40
+  [1m[36mSub Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "subs" WHERE "subs"."title" = $1 AND "subs"."id" != $2 LIMIT $3[0m  [["title", "harhar"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:40
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:40
+  [1m[36mSub Update (3.5ms)[0m  [1m[33mUPDATE "subs" SET "description" = $1, "updated_at" = $2 WHERE "subs"."id" = $3[0m  [["description", "xxlmfao"], ["updated_at", "2020-01-29 04:32:33.432951"], ["id", 10]]
+  ↳ app/controllers/subs_controller.rb:40
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subs_controller.rb:40
+Redirected to http://localhost:3000/subs/10
+Completed 302 Found in 21ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/subs/10" for ::1 at 2020-01-28 23:32:33 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 26ms (Views: 22.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/subs" for ::1 at 2020-01-28 23:32:36 -0500
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:3
+  Rendered subs/index.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/subs/7" for ::1 at 2020-01-28 23:32:40 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 49ms (Views: 46.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/subs/7/edit" for ::1 at 2020-01-28 23:32:42 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+  [1m[36mCACHE Sub Load (0.1ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:33
+  Rendering subs/edit.html.erb within layouts/application
+  Rendered subs/_form.html.erb (0.8ms)
+  Rendered subs/edit.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 43ms (Views: 31.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/subs/4" for ::1 at 2020-01-28 23:32:46 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/subs/4/edit" for ::1 at 2020-01-28 23:32:47 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+  [1m[36mCACHE Sub Load (0.0ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:33
+  Rendering subs/edit.html.erb within layouts/application
+  Rendered subs/_form.html.erb (1.4ms)
+  Rendered subs/edit.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 40ms (Views: 29.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/subs/1" for ::1 at 2020-01-28 23:32:51 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 33ms (Views: 30.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/subs/1/edit" for ::1 at 2020-01-28 23:32:52 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+Redirected to http://localhost:3000/subs/1
+Filter chain halted as :verify_moderator rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/subs/1" for ::1 at 2020-01-28 23:32:52 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/subs/1/edit" for ::1 at 2020-01-28 23:32:56 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (1.4ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+Redirected to http://localhost:3000/subs/1
+Filter chain halted as :verify_moderator rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/subs/1" for ::1 at 2020-01-28 23:32:56 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/subs/1/edit" for ::1 at 2020-01-28 23:33:00 -0500
+Processing by SubsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:56
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:58
+Redirected to http://localhost:3000/subs/1
+Filter chain halted as :verify_moderator rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/subs/1" for ::1 at 2020-01-28 23:33:00 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lE6a6BHDXY4GPZ4eaHs33g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.9ms)
+
+

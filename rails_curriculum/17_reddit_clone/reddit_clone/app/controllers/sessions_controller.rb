@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
 
     if user
       log_in_user!(user)
-      redirect_to user_url(user)
       flash[:notices] = ["Sign in successful"]
+      redirect_to user_url(user)
     else 
       flash.now[:errors] = ["Incorrect credentials!"] 
       render :new

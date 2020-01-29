@@ -33,8 +33,8 @@ class Post < ApplicationController
     @post = Post.find(params[:id]) 
 
     if @post.update_attributes(post_params)
-      redirect_to post_url(@post)  
       flash[:notices] = ['Post successfully updated'] 
+      redirect_to post_url(@post)  
     else 
       flash.now[:errors] = @post.errors.full_messages 
       render :edit 
@@ -42,12 +42,10 @@ class Post < ApplicationController
   end 
 
   def destroy 
-    @post = Post.find(params[:id]) 
-    
+    @post = Post.find(params[:id])  
     if @post.destroy 
       flash[:notices] = ['Post deleted!']
     end 
-
     redirect_to subs_url
   end
 
