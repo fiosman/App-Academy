@@ -13,7 +13,7 @@
 
 class Post < ApplicationRecord
   validates :title, :author_id, presence: true
-  validates :subs, presence: { message: 'must have minimum 1 sub'} 
+  validates :subs, presence: { message: 'must be atleast 1'} 
   
   has_many :post_subs, dependent: :destroy
 
