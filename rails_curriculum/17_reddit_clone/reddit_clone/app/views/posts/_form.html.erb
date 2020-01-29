@@ -15,14 +15,15 @@
          value="<%= form_authenticity_token%>">
 
   <label for="post_title">Title</label>
-  <input type="text" name="post[title]" id="post_title">
+  <input type="text" name="post[title]" id="post_title" value="<%= post.title %>">
 
   <label for="post_url">URL</label>
-  <input type="text" name="post[url]" id="post_url">
+  <input type="text" name="post[url]" id="post_url" value="<%= post.url %>">
 
   <label for="post_content">Content</label>
-  <input type="text" name="post[content]" id="post_content">
 
+  <textarea id="post_content" name="post[content]" > <%= post.content %></textarea>
+  
   <br>
 
   <input type="hidden" name="post[sub_ids][]" value="">
