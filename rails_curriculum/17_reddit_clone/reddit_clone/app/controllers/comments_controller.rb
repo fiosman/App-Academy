@@ -1,7 +1,15 @@
 class CommentsController < ApplicationController 
 
   def create 
-    @comment = current_user.comments.
+    @comment = current_user.comments.new(comment_params) 
+
+    if @comment.save 
+      flash[:notices] = ['Comment successfully posted!'] 
+      redirect_to post_url(@comment.post_id) 
+    else 
+      flash.now[:errors] = @comment.errors.full_messages 
+      render :new
+    end
   end
 
   def new 
