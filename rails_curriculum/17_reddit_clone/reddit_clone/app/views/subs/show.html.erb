@@ -2,5 +2,9 @@
 <p><strong>Description</p></strong> 
 <p><%= @sub.description %></p>
 
-<%= link_to 'Make New Post!', new_post_url %> 
-<%= link_to 'Edit', edit_sub_url(@sub) %>
+<%= link_to 'Make New Post!', new_post_url %><br><br>
+<% @sub.posts.each do |post| %> 
+  <li><%= link_to "#{post.title}", post_url(post) %></li>
+<% end %>
+<br>
+<%= link_to 'Edit Sub', edit_sub_url(@sub) %>
