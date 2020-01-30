@@ -1,0 +1,13 @@
+<h1><%= @post.title %> by <%= User.find(@post.author_id).username %></h1>
+
+<h3>Content</h3>
+<p><%= @post.content %></p> 
+
+<h3>Subs</h3>
+<% @post.subs.each do |sub| %>
+  <li><%= link_to "#{sub.title}", sub_url(sub) %></li>
+<% end %>
+
+<br >
+
+<%= link_to "Edit Post", edit_post_url(@post) %>
