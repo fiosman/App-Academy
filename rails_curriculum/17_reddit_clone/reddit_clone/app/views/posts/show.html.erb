@@ -9,9 +9,10 @@
 <% end %>
 
 <h3>Comments</h3>
-<%= link_to 'Comment on this post!', new_post_comment_url(@post) %>
-<% @post.comments.where(parent_comment_id: nil) do |comment| %>
-  <li> <%= link_to "#{comment.content}", path %></li>
+<%= link_to 'Comment on this post!', new_post_comment_url(@post) %><br><br>
+
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <li> <%= link_to "#{comment.content}", comment_url(comment) %></li>
 <% end %><br><br>
 
 <%= link_to "Edit Post", edit_post_url(@post) %>
