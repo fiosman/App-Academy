@@ -1,0 +1,11 @@
+<h1>New Comment</h1>
+
+<form action="<%= comments_url %>" method="POST">
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<label for="comment_content">Body</label>
+<textarea name="comment[content]" id="comment_content" ><%= comment.content %></textarea>
+
+<input type="submit" value="Create comment">
+</form>
