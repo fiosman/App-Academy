@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def new 
-    @comment = Comment.new 
+    @comment = Comment.new(post_id: params[:post_id])
     render :new
   end 
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id]) 
     render :show 
   end
-  
+
   private 
 
   def comment_params 
