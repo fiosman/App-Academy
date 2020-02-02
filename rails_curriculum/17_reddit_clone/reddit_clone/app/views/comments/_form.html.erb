@@ -1,6 +1,6 @@
 <form action="<%= comments_url %>" method="POST">
   <%= render '/shared/errors' %>
-  
+
   <input type="hidden" 
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -10,7 +10,9 @@
 
   <label for="comment_content"></label>
   <textarea name="comment[content]" id="comment_content" ><%= comment.content %></textarea>
-
-  <input type="submit" value="Submit Post">
+  
+  <br><br>
+  
+  <input type="submit" value="Submit">
 
 </form>

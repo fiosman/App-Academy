@@ -11947,3 +11947,1486 @@ Completed 200 OK in 32ms (Views: 28.6ms | ActiveRecord: 1.9ms)
 
 
   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mComment Load (3.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 1]]
+Started GET "/posts/10" for ::1 at 2020-02-02 12:14:45 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (135.4ms)
+Completed 500 Internal Server Error in 191ms (ActiveRecord: 30.9ms)
+
+
+
+ActionView::MissingTemplate - Missing partial posts/_comment, application/_comment with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/techreset/Desktop/App-Academy/rails_curriculum/17_reddit_clone/reddit_clone/app/views"
+:
+  app/views/posts/show.html.erb:15:in `block in _app_views_posts_show_html_erb___2940485674195312492_70108443710740'
+  app/views/posts/show.html.erb:14:in `_app_views_posts_show_html_erb___2940485674195312492_70108443710740'
+  app/controllers/posts_controller.rb:24:in `show'
+
+Started POST "/__better_errors/394fe3f0210d74fd/variables" for ::1 at 2020-02-02 12:14:45 -0500
+Started GET "/posts/10" for ::1 at 2020-02-02 12:15:05 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (3.4ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (3.0ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (25.2ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 209ms (Views: 202.5ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/posts/10/comments/new" for ::1 at 2020-02-02 12:21:54 -0500
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"10"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered comments/new.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:23:45 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (2.4ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.7ms)
+  Rendered posts/show.html.erb within layouts/application (22.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 52ms (Views: 45.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:23:46 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (5.3ms)
+  Rendered comments/show.html.erb within layouts/application (9.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 43ms (Views: 35.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/comments/18" for ::1 at 2020-02-02 12:23:49 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered comments/_form.html.erb (2.8ms)
+  Rendered comments/show.html.erb within layouts/application (5.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 37ms (Views: 29.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:23:52 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (3.6ms)
+  Rendered comments/show.html.erb within layouts/application (6.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 59ms (Views: 55.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/comments/22" for ::1 at 2020-02-02 12:23:54 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.8ms)
+  Rendered comments/show.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 42ms (Views: 33.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/comments/19" for ::1 at 2020-02-02 12:23:57 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (5.4ms)
+  Rendered comments/show.html.erb within layouts/application (9.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 44ms (Views: 37.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/comments/21" for ::1 at 2020-02-02 12:24:01 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (6.2ms)
+  Rendered comments/show.html.erb within layouts/application (9.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 48ms (Views: 43.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:24:22 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (4.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (2.2ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (26.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 53ms (Views: 46.7ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:24:23 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (5.8ms)
+  Rendered comments/show.html.erb within layouts/application (8.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 44ms (Views: 38.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:24:41 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.0ms)
+  Rendered comments/_form.html.erb (4.4ms)
+  Rendered comments/show.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 47ms (Views: 42.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:24:42 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (4.2ms)
+  Rendered comments/show.html.erb within layouts/application (7.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 46ms (Views: 43.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:24:48 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (3.7ms)
+  Rendered comments/show.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 33ms (Views: 31.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:24:55 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (2.3ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (2.6ms)
+  Rendered posts/show.html.erb within layouts/application (20.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 47ms (Views: 41.9ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/comments/20" for ::1 at 2020-02-02 12:24:56 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.7ms)
+  Rendered comments/show.html.erb within layouts/application (6.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 43ms (Views: 37.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:54:01 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.2ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.1ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (25.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 48ms (Views: 40.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:54:02 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.3ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.8ms)
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (3.7ms)
+  Rendered posts/show.html.erb within layouts/application (23.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 51ms (Views: 44.1ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:54:02 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (3.5ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.3ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.1ms)
+  Rendered posts/show.html.erb within layouts/application (18.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 42ms (Views: 37.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:54:02 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.7ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.4ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (17.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 42ms (Views: 36.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/comments/17" for ::1 at 2020-02-02 12:54:03 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.4ms)
+  Rendered comments/show.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 45ms (Views: 38.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/comments/18" for ::1 at 2020-02-02 12:54:06 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (3.9ms)
+  Rendered comments/show.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 40ms (Views: 35.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/subs" for ::1 at 2020-02-02 12:54:08 -0500
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:3
+  Rendered subs/index.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/subs/6" for ::1 at 2020-02-02 12:54:09 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 6]]
+  ↳ app/views/subs/show.html.erb:6
+  Rendered subs/show.html.erb within layouts/application (11.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 43ms (Views: 37.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/subs/12" for ::1 at 2020-02-02 12:54:12 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 12]]
+  ↳ app/views/subs/show.html.erb:6
+  Rendered subs/show.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 50ms (Views: 45.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/subs/11" for ::1 at 2020-02-02 12:54:18 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mSub Load (1.7ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 11]]
+  ↳ app/views/subs/show.html.erb:6
+  Rendered subs/show.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/subs/1" for ::1 at 2020-02-02 12:54:20 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (2.0ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 1]]
+  ↳ app/views/subs/show.html.erb:6
+  Rendered subs/show.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/10" for ::1 at 2020-02-02 12:54:23 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 10]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 17]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.6ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 19]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.9ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 23]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (3.0ms)
+  Rendered posts/show.html.erb within layouts/application (27.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 58ms (Views: 51.3ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/subs/12" for ::1 at 2020-02-02 12:54:32 -0500
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mSub Load (1.8ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:11
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 12]]
+  ↳ app/views/subs/show.html.erb:6
+  Rendered subs/show.html.erb within layouts/application (4.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/posts/new" for ::1 at 2020-02-02 12:54:35 -0500
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.9ms)
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/posts/_form.html.erb:31
+  Rendered posts/_form.html.erb (10.0ms)
+  Rendered posts/new.html.erb within layouts/application (14.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 50ms (Views: 47.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/posts" for ::1 at 2020-02-02 12:54:56 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"NZrQGWGdU+qqOLUrlAsFrYnS7GFVmWYpPdJUnOIOtpSFk/AMIXBtyohWuGW1aqFGTCq5ngoaa/JdOvBhQaJiCA==", "post"=>{"title"=>"THE REAL TEST", "url"=>"", "content"=>" harhar", "sub_ids"=>["", "1", "12"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" IN ($1, $2)[0m  [["id", 1], ["id", 12]]
+  ↳ app/controllers/posts_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mSub Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "subs" WHERE "subs"."title" = $1 AND "subs"."id" != $2 LIMIT $3[0m  [["title", "Test sub"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mSub Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "subs" WHERE "subs"."title" = $1 AND "subs"."id" != $2 LIMIT $3[0m  [["title", "FUCK OFF SUB"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mPost Create (6.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "url", "content", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "THE REAL TEST"], ["url", ""], ["content", " harhar"], ["author_id", 8], ["created_at", "2020-02-02 17:54:56.094636"], ["updated_at", "2020-02-02 17:54:56.094636"]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mPostSub Create (0.6ms)[0m  [1m[32mINSERT INTO "post_subs" ("sub_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["sub_id", 1], ["post_id", 11], ["created_at", "2020-02-02 17:54:56.103302"], ["updated_at", "2020-02-02 17:54:56.103302"]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[36mPostSub Create (0.4ms)[0m  [1m[32mINSERT INTO "post_subs" ("sub_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["sub_id", 12], ["post_id", 11], ["created_at", "2020-02-02 17:54:56.105249"], ["updated_at", "2020-02-02 17:54:56.105249"]]
+  ↳ app/controllers/posts_controller.rb:8
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:8
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 48ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 12:54:56 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/11/comments/new" for ::1 at 2020-02-02 12:55:00 -0500
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"11"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (4.6ms)
+  Rendered comments/new.html.erb within layouts/application (8.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 45ms (Views: 42.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 12:55:11 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"LDOCJrekp/1Fwbv5RqOjX5Bta4gHpZ6VXpFhHqd6i7qcOqIz90mZ3Wevtrdnwge0VZU+d1gmk04+ecXjBNZfJg==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"", "content"=>"I'm the first post"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "I'm the first post"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 17:55:11.035892"], ["updated_at", "2020-02-02 17:55:11.035892"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 18ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 12:55:11 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/comments/25" for ::1 at 2020-02-02 12:55:12 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered comments/show.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 38ms (Views: 33.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 12:55:17 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"+90a8u41JddUTydkrzZyaoVtJ/uPLHE/rXVXWzn5NcJL1Drnrtgb93YhKiqOV9aBQJVyBNCvfOTNnfOmmlXhXg==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"25", "content"=>"I'm the second post"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (0.8ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at", "parent_comment_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "I'm the second post"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 17:55:17.369678"], ["updated_at", "2020-02-02 17:55:17.369678"], ["parent_comment_id", 25]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 14ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 12:55:17 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.6ms)
+  Rendered posts/show.html.erb within layouts/application (10.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 31ms (Views: 26.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/comments/26" for ::1 at 2020-02-02 12:55:18 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.1ms)
+  Rendered comments/_form.html.erb (6.8ms)
+  Rendered comments/show.html.erb within layouts/application (11.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 46ms (Views: 43.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 12:55:22 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"7wd72Z5qT7fe8IMP8dq/FXJzCfpGC1xSY7E2fc8/b2xfDlvM3odxl/yejkHQuxv+t4tcBRmIUYkDWZKAbJO78A==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"26", "content"=>"I'm the third post"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at", "parent_comment_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "I'm the third post"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 17:55:22.747419"], ["updated_at", "2020-02-02 17:55:22.747419"], ["parent_comment_id", 26]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 10ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 12:55:22 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (8.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 32ms (Views: 28.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 13:22:47 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (2.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.1ms)
+  Rendered posts/show.html.erb within layouts/application (15.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 41ms (Views: 33.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 13:22:48 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:1
+  Rendered comments/_comment.html.erb (2.3ms)
+  Rendered posts/show.html.erb within layouts/application (14.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 38ms (Views: 32.7ms | ActiveRecord: 3.3ms)
+
+
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Started GET "/posts/11" for ::1 at 2020-02-02 13:39:19 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (8.8ms)
+  Rendered posts/show.html.erb within layouts/application (135.7ms)
+Completed 500 Internal Server Error in 207ms (ActiveRecord: 33.9ms)
+
+
+
+NoMethodError - undefined method `keys' for "http://localhost:3000/comments/26":String:
+  app/views/comments/_comment.html.erb:4:in `block in _app_views_comments__comment_html_erb__1264592679936964666_70137699239680'
+  app/views/comments/_comment.html.erb:3:in `_app_views_comments__comment_html_erb__1264592679936964666_70137699239680'
+  app/views/posts/show.html.erb:15:in `block in _app_views_posts_show_html_erb___2483035880865203445_70137687235960'
+  app/views/posts/show.html.erb:14:in `_app_views_posts_show_html_erb___2483035880865203445_70137687235960'
+  app/controllers/posts_controller.rb:24:in `show'
+
+Started POST "/__better_errors/78025e52d750fb2f/variables" for ::1 at 2020-02-02 13:39:20 -0500
+Started POST "/__better_errors/78025e52d750fb2f/variables" for ::1 at 2020-02-02 13:40:14 -0500
+Started POST "/__better_errors/78025e52d750fb2f/variables" for ::1 at 2020-02-02 13:40:24 -0500
+Started POST "/__better_errors/78025e52d750fb2f/variables" for ::1 at 2020-02-02 14:11:31 -0500
+Started GET "/posts/11" for ::1 at 2020-02-02 14:12:04 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (7.5ms)
+  Rendered posts/show.html.erb within layouts/application (22.3ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 4.3ms)
+
+
+
+NoMethodError - undefined method `keys' for "http://localhost:3000/comments/26":String:
+  app/views/comments/_comment.html.erb:4:in `block in _app_views_comments__comment_html_erb__1264592679936964666_70137698937800'
+  app/views/comments/_comment.html.erb:3:in `_app_views_comments__comment_html_erb__1264592679936964666_70137698937800'
+  app/views/posts/show.html.erb:15:in `block in _app_views_posts_show_html_erb___2483035880865203445_70137685637740'
+  app/views/posts/show.html.erb:14:in `_app_views_posts_show_html_erb___2483035880865203445_70137685637740'
+  app/controllers/posts_controller.rb:24:in `show'
+
+Started POST "/__better_errors/c8aaab3876a48bbd/variables" for ::1 at 2020-02-02 14:12:04 -0500
+Started GET "/posts/11" for ::1 at 2020-02-02 14:12:06 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (9.4ms)
+  Rendered posts/show.html.erb within layouts/application (23.9ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 3.8ms)
+
+
+
+NoMethodError - undefined method `keys' for "http://localhost:3000/comments/26":String:
+  app/views/comments/_comment.html.erb:4:in `block in _app_views_comments__comment_html_erb__1264592679936964666_70137699343360'
+  app/views/comments/_comment.html.erb:3:in `_app_views_comments__comment_html_erb__1264592679936964666_70137699343360'
+  app/views/posts/show.html.erb:15:in `block in _app_views_posts_show_html_erb___2483035880865203445_70137699403280'
+  app/views/posts/show.html.erb:14:in `_app_views_posts_show_html_erb___2483035880865203445_70137699403280'
+  app/controllers/posts_controller.rb:24:in `show'
+
+Started POST "/__better_errors/9d16c33b7f528801/variables" for ::1 at 2020-02-02 14:12:06 -0500
+Started POST "/__better_errors/9d16c33b7f528801/variables" for ::1 at 2020-02-02 14:12:09 -0500
+Started GET "/posts/11" for ::1 at 2020-02-02 14:26:02 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (8.9ms)
+  Rendered posts/show.html.erb within layouts/application (21.1ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 4.0ms)
+
+
+
+ActionView::MissingTemplate - Missing partial posts/_comment, application/_comment with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/techreset/Desktop/App-Academy/rails_curriculum/17_reddit_clone/reddit_clone/app/views"
+:
+  app/views/comments/_comment.html.erb:4:in `block in _app_views_comments__comment_html_erb__1264592679936964666_70137694980460'
+  app/views/comments/_comment.html.erb:3:in `_app_views_comments__comment_html_erb__1264592679936964666_70137694980460'
+  app/views/posts/show.html.erb:15:in `block in _app_views_posts_show_html_erb___2483035880865203445_70137687524640'
+  app/views/posts/show.html.erb:14:in `_app_views_posts_show_html_erb___2483035880865203445_70137687524640'
+  app/controllers/posts_controller.rb:24:in `show'
+
+Started POST "/__better_errors/a50037cf2887a801/variables" for ::1 at 2020-02-02 14:26:02 -0500
+Started POST "/__better_errors/a50037cf2887a801/variables" for ::1 at 2020-02-02 14:26:37 -0500
+Started GET "/posts/11" for ::1 at 2020-02-02 14:29:35 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.6ms)
+  Rendered comments/_comment.html.erb (7.0ms)
+  Rendered comments/_comment.html.erb (11.7ms)
+  Rendered posts/show.html.erb within layouts/application (22.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 226ms (Views: 216.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/comments/25" for ::1 at 2020-02-02 14:29:43 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered comments/show.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 32ms (Views: 27.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments/27" for ::1 at 2020-02-02 14:29:45 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered comments/show.html.erb within layouts/application (6.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 39ms (Views: 35.0ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 14:29:51 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"Vn5UKl83dILhRD29+Vl1j2J4zSzrOZHJxspkwRGpwJ/md3Q/H9pKosMqMPPYONFkp4CY07S6nBKmIsA8sgUUAw==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"27", "content"=>"I'm the fourth post"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (3.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at", "parent_comment_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "I'm the fourth post"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 19:29:51.616955"], ["updated_at", "2020-02-02 19:29:51.616955"], ["parent_comment_id", 27]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 19ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:29:51 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_comment.html.erb (4.7ms)
+  Rendered comments/_comment.html.erb (8.5ms)
+  Rendered comments/_comment.html.erb (12.2ms)
+  Rendered posts/show.html.erb within layouts/application (19.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 38ms (Views: 32.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:23 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.3ms)
+  Rendered comments/_comment.html.erb (4.8ms)
+  Rendered comments/_comment.html.erb (10.9ms)
+  Rendered comments/_comment.html.erb (14.6ms)
+  Rendered posts/show.html.erb within layouts/application (23.9ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 50ms (Views: 43.0ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:36 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.0ms)
+  Rendered comments/_comment.html.erb (6.5ms)
+  Rendered comments/_comment.html.erb (9.6ms)
+  Rendered comments/_comment.html.erb (13.3ms)
+  Rendered posts/show.html.erb within layouts/application (24.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 50ms (Views: 42.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:37 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.7ms)
+  Rendered comments/_comment.html.erb (6.0ms)
+  Rendered comments/_comment.html.erb (9.8ms)
+  Rendered comments/_comment.html.erb (14.3ms)
+  Rendered posts/show.html.erb within layouts/application (24.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 46ms (Views: 40.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:37 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.5ms)
+  Rendered comments/_comment.html.erb (4.7ms)
+  Rendered comments/_comment.html.erb (8.7ms)
+  Rendered comments/_comment.html.erb (14.1ms)
+  Rendered posts/show.html.erb within layouts/application (21.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 44ms (Views: 39.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:38 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (2.4ms)
+  Rendered comments/_comment.html.erb (5.2ms)
+  Rendered comments/_comment.html.erb (8.1ms)
+  Rendered comments/_comment.html.erb (11.9ms)
+  Rendered posts/show.html.erb within layouts/application (22.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 40ms (Views: 35.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:30:56 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (1.0ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.7ms)
+  Rendered comments/_comment.html.erb (6.5ms)
+  Rendered comments/_comment.html.erb (10.1ms)
+  Rendered comments/_comment.html.erb (14.5ms)
+  Rendered posts/show.html.erb within layouts/application (24.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 47ms (Views: 40.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:32:25 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.3ms)
+  Rendered comments/_comment.html.erb (5.3ms)
+  Rendered comments/_comment.html.erb (9.0ms)
+  Rendered comments/_comment.html.erb (13.0ms)
+  Rendered posts/show.html.erb within layouts/application (22.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 49ms (Views: 44.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:32:26 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_comment.html.erb (4.6ms)
+  Rendered comments/_comment.html.erb (9.7ms)
+  Rendered comments/_comment.html.erb (13.8ms)
+  Rendered posts/show.html.erb within layouts/application (21.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 45ms (Views: 40.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/11/comments/new" for ::1 at 2020-02-02 14:37:00 -0500
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"11"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (5.4ms)
+  Rendered comments/new.html.erb within layouts/application (9.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 41ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 14:37:11 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"oH6fnRyescz+aGB0r7hPyK3TfPUbznTncVFmJyjEDxgQd7+IXHOP7NwGbTqO2esjaCspCkRNeTwRucLai2jbhA==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"", "content"=>"MAIZN"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "MAIZN"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 19:37:11.061765"], ["updated_at", "2020-02-02 19:37:11.061765"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 14ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:37:11 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_comment.html.erb (5.9ms)
+  Rendered comments/_comment.html.erb (9.5ms)
+  Rendered comments/_comment.html.erb (12.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 29]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (21.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 44ms (Views: 38.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/comments/29" for ::1 at 2020-02-02 14:37:13 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (3.4ms)
+  Rendered comments/show.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 36ms (Views: 33.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 14:37:16 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"NoDOdInnkJSzDlSH8J4aGT4ikWsWz/SZEperMTjWbN6Gie5hyQqutJFgWcnR/77y+9rElElM+UJyfw/Mm3q4Qg==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"29", "content"=>"harhar"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at", "parent_comment_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "harhar"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 19:37:16.884603"], ["updated_at", "2020-02-02 19:37:16.884603"], ["parent_comment_id", 29]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 15ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:37:16 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.9ms)
+  Rendered comments/_comment.html.erb (7.8ms)
+  Rendered comments/_comment.html.erb (11.2ms)
+  Rendered comments/_comment.html.erb (15.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 29]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 30]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.1ms)
+  Rendered comments/_comment.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (34.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 56ms (Views: 50.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/comments/30" for ::1 at 2020-02-02 14:37:25 -0500
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  Rendering comments/show.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered comments/show.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 42ms (Views: 35.9ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/comments" for ::1 at 2020-02-02 14:37:28 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"2PCYrkWcWnejZV8rdB+LaKmQDuUqOvM9Py6uATGnID1o+bi7BXFkV4ELUmVVfi+DbGhbGnW5/uZfxgr8kgv0oQ==", "comment"=>{"post_id"=>"11", "parent_comment_id"=>"30", "content"=>"ahh"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "author_id", "post_id", "created_at", "updated_at", "parent_comment_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "ahh"], ["author_id", 8], ["post_id", 11], ["created_at", "2020-02-02 19:37:28.388312"], ["updated_at", "2020-02-02 19:37:28.388312"], ["parent_comment_id", 30]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/posts/11
+Completed 302 Found in 12ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/11" for ::1 at 2020-02-02 14:37:28 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:1
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 11]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 25]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 26]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 27]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 28]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.0ms)
+  Rendered comments/_comment.html.erb (4.1ms)
+  Rendered comments/_comment.html.erb (8.6ms)
+  Rendered comments/_comment.html.erb (12.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 29]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 30]]
+  ↳ app/views/comments/_comment.html.erb:3
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 31]]
+  ↳ app/views/comments/_comment.html.erb:3
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_comment.html.erb (4.4ms)
+  Rendered comments/_comment.html.erb (7.2ms)
+  Rendered posts/show.html.erb within layouts/application (27.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "92fiOTX4I_c0hAk5snzrqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 50ms (Views: 45.3ms | ActiveRecord: 3.1ms)
+
+
