@@ -1,7 +1,10 @@
 <%= link_to "#{comment.content}", comment_url(comment) %>
+(Posted by <%= comment.author.username %> on <%= comment.created_at %> )
 
-<% comment.child_comments.each do |child_comment| %>
-  <ul>
-    <li><%= render '/comments/comment', comment: child_comment %></li>
+<% @all_comments.each do |child_comment| %>
+  <ul> 
+    <% if child_comment.parent_comment_id == comment.id %> 
+      <li><%= render '/comments/comment', comment: child_comment %></li> 
+    <% end %>
   </ul>
 <% end %>
