@@ -25,4 +25,14 @@ class Post < ApplicationRecord
     class_name: :User 
   
   has_many :comments
+
+  def comments_by_parent_id 
+    comment_ids = {} 
+
+    self.comments.each do |comment| 
+      comment_ids[comment.parent_comment_id] = self.comments.where(parent_comment_id: comment.parent_comment_id)
+    end
+
+    comment_ids
+  end
 end 
