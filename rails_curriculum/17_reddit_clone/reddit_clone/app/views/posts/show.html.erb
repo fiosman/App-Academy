@@ -11,7 +11,7 @@
 <h3>Comments</h3>
 <%= link_to 'Comment on this post!', new_post_comment_url(@post) %><br><br>
 
-<% @all_comments.where(parent_comment_id: nil).each do |parent_comment| %> 
+<% @comments_by_parent[nil].each do |parent_comment| %> 
     <li><%= render '/comments/comment', comment: parent_comment %></li>
 <% end %><br><br>
 
