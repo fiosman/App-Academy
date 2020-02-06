@@ -15,18 +15,24 @@ class ControllerBase
 
   # Helper method to alias @already_built_response
   def already_built_response?
+    @already_built_response == @res 
   end
 
   # Set the response status code and header
   def redirect_to(url)
+    raise 'Cannot redirect twice' if already_built_response?
+    @res.location = url 
+    @res.status = 302 
+
+    @already_built_response = @res 
   end
 
   # Populate the response with content.
   # Set the response's content type to the given type.
   # Raise an error if the developer tries to double render.
   def render_content(content, content_type)
-    raise 'Cannot render content twice' if @already_built_response == @res 
-    @res['Body'] = content 
+    raise 'Cannot render content twice' if already_built_response?
+    @res.write(content)
     @res['Content-Type'] = content_type 
 
     @already_built_response = @res 
