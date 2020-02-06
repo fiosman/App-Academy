@@ -2,12 +2,15 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
 require_relative './session'
+require 'rack'
 
 class ControllerBase
   attr_reader :req, :res, :params
 
   # Setup the controller
   def initialize(req, res)
+    @req = Rack::Request.new 
+    @res = Rack::Response.new
   end
 
   # Helper method to alias @already_built_response
