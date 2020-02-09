@@ -23,5 +23,9 @@ class Session
   # serialize the hash into json and save in a cookie
   # add to the responses cookies
   def store_session(res)
+    @cookie_data = res.set_cookie(
+      '_rails_lite_app', 
+      { path: '/', value: @cookie_data.to_json }
+    )
   end
 end
