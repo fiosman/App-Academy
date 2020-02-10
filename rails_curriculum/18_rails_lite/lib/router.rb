@@ -41,6 +41,9 @@ class Router
   # make each of these methods that
   # when called add route
   [:get, :post, :put, :delete].each do |http_method|
+    define_method(http_method) do |pattern, controller_class, action_name| 
+      add_route(pattern, http_method, controller_class, action_name) 
+    end
   end
 
   # should return the route that matches this request
