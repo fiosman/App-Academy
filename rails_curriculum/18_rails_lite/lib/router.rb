@@ -59,5 +59,13 @@ class Router
 
   # either throw 404 or call run on a matched route
   def run(req, res)
+    matching_route = match(req) 
+
+    if !matching_route 
+      res.status = 404 
+      raise 'No matching route was found!' 
+    else 
+      matching_route.run(req, res)
+    end
   end
 end
