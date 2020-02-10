@@ -18,6 +18,8 @@ class Route
   # use pattern to pull out route params (save for later?)
   # instantiate controller and call controller action
   def run(req, res)
+    @controller_class = ControllerBase.new(req, res)
+    @controller_class.invoke_action(@action_name)
   end
 end
 
