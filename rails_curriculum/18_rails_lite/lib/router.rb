@@ -48,7 +48,7 @@ class Router
 
   # should return the route that matches this request
   def match(req)
-    @routes.any? do |route| 
+    @routes.each do |route| 
       if route.matches?(req) 
         return route
       end
