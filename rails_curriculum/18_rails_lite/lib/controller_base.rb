@@ -9,10 +9,10 @@ class ControllerBase
   attr_reader :req, :res, :params
 
   # Setup the controller
-  def initialize(req, res, params={})
+  def initialize(req, res, route_params={})
     @req = req 
     @res = res 
-    @params = params
+    @params = route_params.merge(req.params)
   end
 
   # Helper method to alias @already_built_response
