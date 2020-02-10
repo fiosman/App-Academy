@@ -63,7 +63,6 @@ class Router
 
     if !matching_route 
       res.status = 404 
-      raise 'No matching route was found!' 
     else 
       matching_route.run(req, res)
     end
