@@ -48,6 +48,11 @@ class Router
 
   # should return the route that matches this request
   def match(req)
+    @routes.any? do |route| 
+      if route.matches?(req) 
+        return route
+      end
+    end
   end
 
   # either throw 404 or call run on a matched route
