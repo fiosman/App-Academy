@@ -10,6 +10,9 @@ class Route
 
   # checks if pattern matches path and method matches request method
   def matches?(req)
+    #here we use !! so we can return a boolean.. =~ returns an integer
+    #which represents the index at which the first pattern match occurs in the string
+    !!(@pattern =~ req.path) && @http_method == req.request_method.downcase.to_sym
   end
 
   # use pattern to pull out route params (save for later?)
