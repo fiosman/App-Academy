@@ -22,11 +22,12 @@ class Route
 
     route_params = {}
     match_data.names.each do |name| 
-      route_params[name] = match_data[:name]
+      route_params[name] = match_data[name]
     end
 
-    @controller_class = ControllerBase.new(req, res, route_params)
-    @controller_class.invoke_action(@action_name)
+    controller = @controller_class
+                .new(req, res, route_params)
+                .invoke_action(@action_name)
   end
 end
 
@@ -59,10 +60,10 @@ class Router
   # should return the route that matches this request
   def match(req)
     @routes.each do |route| 
-      if route.matches?(req) 
-        return route
-      end
-    end
+      return route if route.matches?(req)
+    end    
+
+    nil
   end
 
   # either throw 404 or call run on a matched route
