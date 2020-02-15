@@ -10,14 +10,15 @@ class ShowExceptions
   def call(env) 
     begin
       app.call(env)
-    rescue => exception
+    rescue Exception => e
       render_exception(e)
     end   
   end
 
   private
 
-  def render_exception(e)
+  def render_exception(e) 
+
   end
 
 end
