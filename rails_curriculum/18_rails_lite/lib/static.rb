@@ -9,11 +9,16 @@ class Static
     req = Rack::Request.new(env) 
     res = Rack::Response.new 
 
-    path = '/public/hello.txt'
-    if req.path == path    
-      res.write(File.read('./public/hello.txt'))
-      res.finish
+    file_path = (File.join(File.dirname(__FILE__), '..', "#{req.path}")) 
+
+    begin 
+      file_content = File.read(file_path)
+    rescue SystemCallError => e         
+      res.status = 404 
+    else 
+      res.write(file_content) 
     end
+    res.finish
   end
-  
+
 end
