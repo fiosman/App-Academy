@@ -1,3 +1,3 @@
 # JavaScript Curriculum 
 
-The funadmentals of front-end development. 
+The fundamentals of front-end development. 
