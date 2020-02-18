@@ -15,6 +15,23 @@ class ControllerBase
     @params = route_params.merge(req.params)
   end
 
+  def self.protect_from_forgery 
+  end 
+
+  def form_authenticity_token 
+    @token ||= generate_authenticity_token
+
+    @res.set_cookie(
+      'authenticity_token', 
+      value: @token, 
+      path: "/" )
+
+    @token
+  end 
+
+  def check_authenticity_token 
+  end 
+
   # Helper method to alias @already_built_response
   def already_built_response?
     @already_built_response == @res 
@@ -64,5 +81,11 @@ class ControllerBase
     self.send(name) 
     
     render(name) unless already_built_response?
+  end
+
+  private 
+
+  def generate_authenticity_token 
+    SecureRandom::urlsafe_base64(16)
   end
 end
