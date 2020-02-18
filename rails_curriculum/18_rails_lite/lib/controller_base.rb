@@ -13,23 +13,23 @@ class ControllerBase
     @req = req 
     @res = res 
     @params = route_params.merge(req.params)
+    @protect_from_forgery ||= false 
   end
-
-  def self.protect_from_forgery 
-  end 
 
   def form_authenticity_token 
     @token ||= generate_authenticity_token
 
     @res.set_cookie(
       'authenticity_token', 
-      value: @token, 
-      path: "/" )
+       value: @token, 
+       path: "/" )
 
     @token
   end 
 
   def check_authenticity_token 
+    cookie = @req.cookies['authenticity_token'] 
+    raise "Invalid authenticity token" unless cookie && cookie == @params['authenticity_token']
   end 
 
   # Helper method to alias @already_built_response
@@ -78,10 +78,22 @@ class ControllerBase
 
   # use this with the router to call action_name (:index, :show, :create...)
   def invoke_action(name)
+    if @req.request_method != "GET" && @protect_from_forgery 
+      check_authenticity_token
+    else 
+      form_authenticity_token
+    end
+
     self.send(name) 
     
     render(name) unless already_built_response?
   end
+
+  protected 
+
+  def self.protect_from_forgery 
+    @protect_from_forgery = true 
+  end 
 
   private 
 
