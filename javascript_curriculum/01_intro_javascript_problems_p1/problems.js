@@ -82,15 +82,18 @@ const isPrime = number => {
 
 const sumOfNPrimes = n => { 
     let sum = 0; 
-    let primes = [];
+    let countPrimes = 0;
     let i = 2; 
 
-    while (primes.length < n) { 
+    while (countPrimes < n) { 
         if (isPrime(i)) { 
-            primes.push(i);
+            countPrimes+= 1;
             sum+= i;
         }    
         i++; 
     }
     return sum;
 }
+
+
+
