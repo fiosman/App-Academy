@@ -53,3 +53,19 @@ const madLib = (verb, adjective, noun) => {
 const isSubstring = (searchString, subString) => { 
     return searchString.includes(subString);
 }
+
+// Phase II 
+
+const fizzBuzz = (array) => {  
+    divisible = [];
+    for (i = 0; i < array.length; i++) { 
+        if (array[i] % 3 === 0 && array[i] % 5 === 0) { 
+            continue; 
+        } else if (array[i] % 3 === 0 || array[i] % 5 === 0) { 
+            divisible.push(array[i]); 
+        }
+    }
+
+    return divisible;
+}
+
