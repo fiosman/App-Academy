@@ -92,10 +92,5 @@ const sumOfNPrimes = n => {
         }    
         i++; 
     }
-
     return sum;
 }
-
-console.log(sumOfNPrimes(0))
-console.log(sumOfNPrimes(1)) 
-console.log(sumOfNPrimes(4))
