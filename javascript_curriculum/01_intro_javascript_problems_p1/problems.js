@@ -69,6 +69,9 @@ const fizzBuzz = array => {
 }
 
 const isPrime = number => {  
+    if (number === 2) { 
+        return true; 
+    }
     for (i = 2; i < number; i++) { 
         if (number % i == 0) { 
             return false;
@@ -77,3 +80,22 @@ const isPrime = number => {
     return true;
 }
 
+const sumOfNPrimes = n => { 
+    let sum = 0; 
+    let primes = [];
+    let i = 2; 
+
+    while (primes.length < n) { 
+        if (isPrime(i)) { 
+            primes.push(i);
+            sum+= i;
+        }    
+        i++; 
+    }
+
+    return sum;
+}
+
+console.log(sumOfNPrimes(0))
+console.log(sumOfNPrimes(1)) 
+console.log(sumOfNPrimes(4))
