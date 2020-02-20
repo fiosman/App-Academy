@@ -56,7 +56,7 @@ const isSubstring = (searchString, subString) => {
 
 // Phase II 
 
-const fizzBuzz = (array) => {  
+const fizzBuzz = array => {  
     divisible = [];
     for (i = 0; i < array.length; i++) { 
         if (array[i] % 3 === 0 && array[i] % 5 === 0) { 
@@ -65,7 +65,15 @@ const fizzBuzz = (array) => {
             divisible.push(array[i]); 
         }
     }
-
     return divisible;
+}
+
+const isPrime = number => {  
+    for (i = 2; i < number; i++) { 
+        if (number % i == 0) { 
+            return false;
+        }
+    }
+    return true;
 }
 
