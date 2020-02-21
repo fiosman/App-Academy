@@ -17,7 +17,18 @@ function Elephant(name, height, tricks) {
   this.tricks = tricks;
 }
 
-Elephant.prototype.trumpet = () => `${this.name} the elephant goes phrRRRRRRRRRRR!!!!!!!`;
-Elephant.prototype.grow = () => this.height += 12; 
-Elephant.prototype.addTrick = (trick) => this.tricks.push(trick); 
-Elephant.prototype.play = () => `${this.name} is ${this.tricks[Math.floor(Math.random() * this.tricks.length)]}`
+Elephant.prototype.trumpet = function() { 
+  console.log(`${this.name} the elephant goes phrRRRRRRRRRRR!!!!!!!`);
+}
+
+Elephant.prototype.grow = function() { 
+  this.height += 12;
+}
+
+Elephant.prototype.addTrick = function(trick) { 
+  this.tricks.push(trick);
+} 
+
+Elephant.prototype.play = function() { 
+  console.log(`${this.name} is ${this.tricks[Math.floor(Math.random() * this.tricks.length)]}`);
+}
