@@ -51,9 +51,9 @@ herd.forEach(Elephant.paradeHelper)
 // Phase IV
 
 function dinerBreakfast() { 
-  order = "I'd like cheesy scrambled eggs and bacon" 
+  order = "I'd like cheesy scrambled eggs and bacon";
   function addToDiner(item) { 
-    order = `${order} and ${item}`
+    order = `${order} and ${item}`;
     console.log(order + ' please');
   }
   return addToDiner;
