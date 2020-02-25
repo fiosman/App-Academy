@@ -12,3 +12,23 @@ Array.prototype.uniq = function() {
   })
   return uniqArr;
 }
+
+Array.prototype.twoSum = function() { 
+  let arrayKeys = {}; 
+  let zeroPairs = []; 
+
+  for (let i = 0; i < this.array.length; i++) { 
+    const currentEle = this.array[i];
+    const targetVal = arrayKeys[0 - currentEle];
+
+    if (arrayKeys[currentEle] === true) { 
+      continue;
+    }
+    if (targetVal === true) {
+      zeroPairs.push([0 - currentEle, currentEle]); 
+    }
+     arrayKeys[currentEle] = true; 
+    }
+
+  return zeroPairs; 
+}
