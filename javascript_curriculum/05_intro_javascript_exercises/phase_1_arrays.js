@@ -32,3 +32,18 @@ Array.prototype.twoSum = function() {
 
   return zeroPairs; 
 }
+
+Array.prototype.transpose = function() { 
+  let transposedArr = []; 
+  let newRows = [];
+
+  for (let i = 0; i < this.array.length; i++) { 
+    for (let j = 0; j < this.array[i].length; j++) { 
+      newRows.push(this.array[j][i]);
+    }
+    transposedArr.push(newRows);
+    newRows = [];
+  }
+
+  return transposedArr;
+}
