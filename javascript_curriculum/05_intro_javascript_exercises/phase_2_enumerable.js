@@ -7,3 +7,19 @@ Array.prototype.myEach = function(callback) {
     callback(this.array[i]); 
   }
 }
+
+Array.prototype.myMap = function(callback) { 
+  let newArr = []; 
+
+  this.array.myEach(function(ele) { 
+    newArr.push(callback(ele)); 
+  })
+
+  return newArr; 
+}
+
+arr = new Array(['i', 'hate', 'you']) 
+
+console.log(arr.myMap(function(ele) { 
+  return ele.upcase; 
+}))
