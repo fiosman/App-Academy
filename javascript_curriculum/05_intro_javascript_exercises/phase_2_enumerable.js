@@ -15,12 +15,14 @@ Array.prototype.myMap = function(callback) {
 }
 
 Array.prototype.myReduce = function(cb, initialValue) { 
-  let remainingArr = this; 
+  let arr = this; 
 
   if (initialValue === undefined) { 
-    initialValue = remainingArr[0];
-    remainingArr = remainingArr.slice(1);  
+    initialValue = this[0]; 
+    arr = this.slice(1);
   }
 
+  let res = initialValue; 
+  arr.myEach(ele => res = cb(res, ele)); 
+  return res;
 }
-
