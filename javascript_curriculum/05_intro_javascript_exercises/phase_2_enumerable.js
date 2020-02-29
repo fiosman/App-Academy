@@ -13,3 +13,14 @@ Array.prototype.myMap = function(callback) {
 
   return newArr;
 }
+
+Array.prototype.myReduce = function(cb, initialValue) { 
+  let remainingArr = this; 
+
+  if (initialValue === undefined) { 
+    initialValue = remainingArr[0];
+    remainingArr = remainingArr.slice(1);  
+  }
+
+}
+
