@@ -81,3 +81,41 @@ const bsearch = (arr, target) => {
   }
 }
 
+const mergeSort = arr => { 
+  if (arr.length === 1) { 
+    return arr;
+  }
+  const mid = Math.floor(arr.length/2); 
+  const left = mergeSort(arr.slice(0, mid)) 
+  const right = mergeSort(arr.slice(mid))
+
+  return merge(left, right); 
+}
+
+const merge = (left, right) => { 
+  const merged = []; 
+
+  let leftArrIdx = 0; 
+  let rightArrIdx = 0; 
+  while (leftArrIdx < left.length && rightArrIdx < right.length) { 
+    if (left[leftArrIdx] < right[rightArrIdx]) {
+      merged.push(left[leftArrIdx]); 
+      leftArrIdx++;
+    } else { 
+      merged.push(right[rightArrIdx]); 
+      rightArrIdx++;
+    }
+  }
+
+  while (leftArrIdx < left.length) { 
+    merged.push(left[leftArrIdx]); 
+    leftArrIdx++; 
+  }
+
+  while (rightArrIdx < right.length) {
+    merged.push(right[rightArrIdx]);
+    rightArrIdx++;
+  }
+
+  return merged;
+}
