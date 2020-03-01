@@ -5,3 +5,10 @@ const sumRec = arr => {
   }
   return first + sumRec(rest); 
 }
+
+const exponent = (base, exp) => { 
+  if (exp === 0) { 
+    return 1;
+  } 
+  return base * exponent(base, exp-1);
+} 
