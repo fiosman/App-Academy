@@ -12,3 +12,17 @@ const exponent = (base, exp) => {
   } 
   return base * exponent(base, exp-1);
 } 
+
+const secondExponent = (base, exp) => { 
+  if (exp === 0) { 
+    return 1; 
+  } else if (exp === 1) { 
+    return base;
+  } 
+
+  if (exp % 2 === 0) { 
+    return secondExponent(base, exp / 2) * secondExponent(base, exp /2);
+  } else { 
+    return base * (secondExponent(base, (exp-1) / 2)) * (secondExponent(base, (exp-1) / 2));
+  }
+}
