@@ -26,3 +26,14 @@ const secondExponent = (base, exp) => {
     return base * (secondExponent(base, (exp-1) / 2)) * (secondExponent(base, (exp-1) / 2));
   }
 }
+
+const fibonacci = n => { 
+  fibonacciNums = [0,1];
+
+  if (n < 3) { 
+    return fibonacciNums.slice(0,n);
+  }
+  let fib = fibonacci(n-1); 
+  fibonacciNums.push(fib[fibonacciNums.length-1] + fib[fibonacciNums.length-2]); 
+  return fibonacciNums;
+}
