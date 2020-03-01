@@ -62,4 +62,21 @@ const deepDup = arr => {
 return duped;
 }
 
+const bsearch = (arr, target) => { 
+  if (arr.length <= 1 && arr[0] != target) { 
+    return -1;
+  }
 
+  let midIdx = Math.floor(arr.length / 2);
+
+  if (arr[midIdx] === target) { 
+    return midIdx; 
+  } else if (arr[midIdx] > target) { 
+    lowerArr = arr.slice(0, midIdx); 
+    return bsearch(lowerArr, target); 
+  } else { 
+    upperArr = arr.slice(midIdx + 1);
+    upperbSearch = bsearch(upperArr, target);
+    return upperbSearch === -1 ? -1 : upperbSearch + (midIdx + 1);
+  }
+}
