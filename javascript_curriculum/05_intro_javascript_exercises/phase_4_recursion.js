@@ -37,3 +37,14 @@ const fibonacci = n => {
   fibonacciNums.push(fib[fibonacciNums.length-1] + fib[fibonacciNums.length-2]); 
   return fibonacciNums;
 }
+
+const range = (start, end) => { 
+  if (start === end) { 
+    return [start];
+  }
+
+  arr = range(start, end-1) 
+  arr.push(end);
+  return arr;
+  
+}
