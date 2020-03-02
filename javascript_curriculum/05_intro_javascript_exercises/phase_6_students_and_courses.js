@@ -43,12 +43,6 @@ Student.prototype.courseLoad = function () {
   return courseLoad;
 }
 
-student = new Student('Fares', 'Osman')
-math = new Course('Calculus III', 'Mathematics', 2, ['mon', 'tues', 'wed'], 1);
-physics = new Course('Physics', 'Science', 3, ['fri'], 1);
-history = new Course('History', 'Arts', 1, ['wed', 'fri'], 1); 
-geography = new Course('Geography', 'Arts', 3, ['mon', 'fri'], 3)
-
 function Course(name, department, credits, days, block) { 
   this.name = name; 
   this.department = department; 
@@ -71,18 +65,3 @@ Course.prototype.conflictsWith = function (secondCourse) {
   }
   return false;
 };
-
-console.log(student.enroll(math));
-console.log(student.enroll(math))
-console.log(student.enroll(history))
-console.log(student.enroll(geography))
-console.log(student.courses)
-
-
-// console.log(student.enroll(math))
-// student.enroll(physics)
-// student.enroll(geography)
-// student.enroll
-// console.log(student.courseLoad());
-// console.log(history.conflictsWith(math));
-// console.log(physics.conflictsWith(math));
