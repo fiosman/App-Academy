@@ -119,3 +119,14 @@ const merge = (left, right) => {
 
   return merged;
 }
+
+const subSets = arr => {  
+  if (arr.length === 0) { 
+    return [[]]; 
+  }
+
+  const subSetsWithoutFirst = subSets(arr.slice(1)); 
+  const subSetsWithFirst = subSetsWithoutFirst.map(ele => [arr[0]].concat(ele)); 
+  return subSetsWithFirst.concat(subSetsWithoutFirst)
+}
+
