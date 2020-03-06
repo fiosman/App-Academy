@@ -37,6 +37,14 @@ Board.DIRS = [
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+const row = pos[0]; 
+const val = pos[1];
+
+  if (!(this.isValidPos)) { 
+    throw "Not valid pos!";
+  } else { 
+    return this.grid[row][val];
+  }
 };
 
 /**
