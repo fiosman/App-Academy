@@ -10,7 +10,7 @@ function _makeGrid () {
   for (let i=0; i < 8; i++) { 
     arr[i] = new Array(8);
   }
-  
+
   arr[3][4] = new Piece('black');
   arr[4][3] = new Piece('black');
   arr[3][3] = new Piece('white');
@@ -69,6 +69,14 @@ Board.prototype.isOver = function () {
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  const row = pos[0]; 
+  const val = pos[1]; 
+
+  if ((row > 7 || val > 7) || (row < 0 || val < 0)) { 
+    return false;
+  } else { 
+    return true;
+  }
 };
 
 /**
