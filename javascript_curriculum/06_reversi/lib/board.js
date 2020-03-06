@@ -37,13 +37,12 @@ Board.DIRS = [
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
-const row = pos[0]; 
-const val = pos[1];
+  const [row, col] = pos;
 
   if (!(this.isValidPos)) { 
     throw "Not valid pos!";
   } else { 
-    return this.grid[row][val];
+    return this.grid[row][col];
   }
 };
 
@@ -58,16 +57,20 @@ Board.prototype.hasMove = function (color) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  if (this.isOccupied(pos)) { 
+    return this.getPiece(pos).color === color;
+  } else { 
+    return false;
+  }
 };
 
 /**
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
-  const row = pos[0]; 
-  const val = pos[1];
+  const [row, col] = pos;
 
-  return this.grid[row][val] instanceof Piece;
+  return this.grid[row][col] instanceof Piece;
 };
 
 /**
@@ -81,10 +84,9 @@ Board.prototype.isOver = function () {
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
-  const row = pos[0]; 
-  const val = pos[1]; 
+  const [row, col] = pos;
 
-  if ((row > 7 || val > 7) || (row < 0 || val < 0)) { 
+  if ((row > 7 || col > 7) || (row < 0 || col < 0)) { 
     return false;
   } else { 
     return true;
