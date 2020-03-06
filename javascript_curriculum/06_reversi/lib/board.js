@@ -64,6 +64,10 @@ Board.prototype.isMine = function (pos, color) {
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  const row = pos[0]; 
+  const val = pos[1];
+
+  return this.grid[row][val] instanceof Piece;
 };
 
 /**
