@@ -137,6 +137,7 @@ function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  
 };
 
 /**
@@ -151,6 +152,17 @@ Board.prototype.print = function () {
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  if (this.isOccupied(pos)) { 
+    return false; 
+  }
+
+  for (let i = 0; i < Board.DIRS.length; i++) { 
+    if (_positionsToFlip(this, pos, color, Board.DIRS[i])) { 
+      return true; 
+    }
+  }
+  
+  return false;
 };
 
 /**
