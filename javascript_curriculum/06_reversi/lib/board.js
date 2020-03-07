@@ -107,6 +107,27 @@ Board.prototype.isValidPos = function (pos) {
  * Returns null if no pieces of the opposite color are found.
  */
 function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
+
+  if (!piecesToFlip) { 
+    piecesToFlip = [];
+  } else { 
+    piecesToFlip.push(pos); 
+  }
+
+  const [startingRow, startingCol] = pos;
+  const [endingRow, endingCol] = dir;
+
+  let newPos = [startingRow + endingRow, startingCol + endingCol];  
+
+  if (!board.isValidPos(newPos)) { 
+    return null; 
+  } else if (!board.isOccupied(newPos)) { 
+    return null;
+  } else if (board.isMine(newPos, color)) { 
+    return piecesToFlip.length === 0 ? null : piecesToFlip; 
+  } else { 
+   return _positionsToFlip(board, newPos, color, dir, piecesToFlip);
+  }
 }
 
 /**
