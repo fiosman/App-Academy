@@ -50,6 +50,9 @@ Board.prototype.getPiece = function (pos) {
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+  const validMoves = this.validMoves(color); 
+
+  return validMoves.length === 0 ? false : true;
 };
 
 /**
