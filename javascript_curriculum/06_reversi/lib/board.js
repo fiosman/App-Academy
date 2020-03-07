@@ -161,7 +161,7 @@ Board.prototype.validMove = function (pos, color) {
       return true; 
     }
   }
-  
+
   return false;
 };
 
@@ -170,6 +170,18 @@ Board.prototype.validMove = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let validPositions = []; 
+
+  for (let i =0; i < 8; i++) { 
+    for (let j =0; j < 8; j++) { 
+      let potentialPos = [i,j];
+      if (this.validMove(potentialPos, color)) { 
+        validPositions.push(potentialPos);
+      }
+    }
+  }
+
+return validPositions;
 };
 
 module.exports = Board;
