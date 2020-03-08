@@ -161,16 +161,6 @@ Board.prototype.placePiece = function (pos, color) {
   }
 };
 
-// ("should allow a player to make a valid move", function(){
-// testBoard.placePiece([2, 3], "black");
-// assert.equal(testBoard.grid[2][3].color, "black");
-// });
-
-// it("should flip captured pieces", function () {
-//   testBoard.placePiece([2, 3], "black");
-//   assert.equal(testBoard.grid[3][3].color, "black");
-// });
-
 /**
  * Prints a string representation of the Board to the console.
  */
