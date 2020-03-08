@@ -39,8 +39,8 @@ Board.DIRS = [
 Board.prototype.getPiece = function (pos) {
   const [row, col] = pos;
 
-  if (!(this.isValidPos)) { 
-    throw "Not valid pos!";
+  if (!this.isValidPos(pos)) { 
+    throw Error("Not valid pos!");
   } else { 
     return this.grid[row][col];
   }
@@ -140,10 +140,36 @@ function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
-  if (!this.validMove(pos, color)) { 
-    throw new Error('Invalid Move'); 
+  const [row, col] = pos;
+  let positionsToFlip = [];
+  
+  if (!this.validMove(pos, color)) {
+    throw new Error('Invalid move!');
+  } else { 
+    this.grid[row][col] = new Piece(color);
+  }
+
+  for (let i = 0; i < Board.DIRS.length; i++) {
+
+    positionsToFlip = positionsToFlip.concat(
+      _positionsToFlip(this, pos, color, Board.DIRS[i]) || []
+    );
+  }
+
+  for (let i = 0; i < positionsToFlip.length; i++) {
+    this.getPiece(positionsToFlip[i]).flip();
   }
 };
+
+// ("should allow a player to make a valid move", function(){
+// testBoard.placePiece([2, 3], "black");
+// assert.equal(testBoard.grid[2][3].color, "black");
+// });
+
+// it("should flip captured pieces", function () {
+//   testBoard.placePiece([2, 3], "black");
+//   assert.equal(testBoard.grid[3][3].color, "black");
+// });
 
 /**
  * Prints a string representation of the Board to the console.
