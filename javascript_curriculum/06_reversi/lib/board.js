@@ -81,6 +81,14 @@ Board.prototype.isOccupied = function (pos) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  const blackMoves = this.validMoves('black'); 
+  const whiteMoves = this.validMoves('white'); 
+
+  if (blackMoves.length === 0 && whiteMoves.length === 0) { 
+    return true;
+  } else { 
+    return false;
+  }
 };
 
 /**
