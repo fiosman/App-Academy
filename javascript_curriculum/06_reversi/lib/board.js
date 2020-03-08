@@ -173,10 +173,10 @@ Board.prototype.placePiece = function (pos, color) {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
-  console.log(`${"  "}01234567`)
+  console.log(`${"  "}01234567`);
 
    for (let i = 0; i < 8; i++) {
-     let row= i + " ";
+     let row = i + " ";
 
      for (let j = 0; j < 8; j++) {
        let pos = [i, j];
