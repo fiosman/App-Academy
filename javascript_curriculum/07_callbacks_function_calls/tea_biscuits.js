@@ -7,19 +7,20 @@ const reader = readline.createInterface({
 
 function teaAndBiscuits() { 
   let teaAns, biscuitAns; 
-  reader.question('Would you like some tea?', res => { 
-    teaAns = res; 
+  reader.question('Would you like some tea?', teaRes => { 
+    teaAns = teaRes; 
     console.log(`You replied ${teaAns}`);
-  });
-  reader.question('Would you like some biscuits?', res => { 
-    biscuitAns = res;
+  reader.question('Would you like some biscuits?', biscuitRes => { 
+    biscuitAns = biscuitRes;
     console.log(`You replied ${biscuitAns}`);
-  });
-
-  let biscuitOrder = biscuitAns === 'yes' ? 'do' : 'don\'t';
-  let teaOrder = teaAns === 'yes' ? 'do' : 'don\'t';
-  console.log(`So you ${teaOrder} want some tea and you ${biscuitOrder} want biscuits.`)
+  const biscuitOrder = biscuitAns === 'yes' ? 'do' : 'don\'t';
+  const teaOrder = teaAns === 'yes' ? 'do' : 'don\'t';
+  console.log(`So you ${teaOrder} want some tea and you ${biscuitOrder} want biscuits.`); 
   reader.close();
+  });
+});
+  
+
 }
 
 teaAndBiscuits();
