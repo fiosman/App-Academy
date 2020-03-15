@@ -17,17 +17,6 @@ class Clock {
   }
 
   _tick() { 
-    // if (this.seconds === 60) { 
-    //   if (this.minutes === 60) { 
-    //     this.hours += 1;
-    //     this.seconds = 0; 
-    //     this.minutes = 0;
-    //   } else { 
-    //     this.minutes += 1;
-    //     this.seconds = 0;
-    //   }
-    // }
-
     if (this.seconds === 60) { 
       this.minutes += 1;  
       this.seconds = 0; 
@@ -41,7 +30,7 @@ class Clock {
     if (this.hours === 24) { 
       this.hours = 0;
     }
-    
+
     this.seconds += 1;
     this.printTime();
   }
