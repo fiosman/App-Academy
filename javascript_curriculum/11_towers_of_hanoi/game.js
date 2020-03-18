@@ -21,4 +21,8 @@ class Game {
       });
     });
   }
+
+  print() { 
+    console.log(JSON.stringify(this.towers));
+  }
 }
