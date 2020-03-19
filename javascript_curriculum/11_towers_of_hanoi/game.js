@@ -22,7 +22,23 @@ class Game {
     });
   }
 
+  isValidMove(startTowerIdx, endTowerIdx) { 
+    const startArrLength = this.towers[startTowerIdx].length;
+    const endArrLength = this.towers[endTowerIdx].length;
+    const removedStartTowerDisc = this.towers[startTowerIdx][startArrLength - 1]; 
+    const lastEndTowerDisc = this.towers[endTowerIdx][endArrLength - 1]; 
+
+    if (this.towers[endTowerIdx].length === 0) { 
+      return true; 
+    } else if (removedStartTowerDisc < lastEndTowerDisc) { 
+      return true;
+    } else { 
+      return false;
+    }
+  }
+
   print() { 
     console.log(JSON.stringify(this.towers));
   }
 }
+
