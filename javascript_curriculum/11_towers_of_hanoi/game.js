@@ -28,7 +28,8 @@ class Game {
     const removedStartTowerDisc = this.towers[startTowerIdx][startArrLength - 1]; 
     const lastEndTowerDisc = this.towers[endTowerIdx][endArrLength - 1]; 
 
-    if (this.towers[endTowerIdx].length === 0) { 
+    if (this.towers[endTowerIdx].length === 0 
+      && this.towers[startTowerIdx].length != 0) { 
       return true; 
     } else if (removedStartTowerDisc < lastEndTowerDisc) { 
       return true;
@@ -37,8 +38,20 @@ class Game {
     }
   }
 
+  move(startTowerIdx, endTowerIdx) { 
+    if (this.isValidMove(startTowerIdx, endTowerIdx)) { 
+      const movedDisc = this.towers[startTowerIdx].pop();
+      this.towers[endTowerIdx].push(movedDisc);
+      console.log(this.towers);
+      return true;
+    }
+    console.log(this.towers);
+    return false;
+  }
+ 
   print() { 
     console.log(JSON.stringify(this.towers));
   }
 }
+
 
