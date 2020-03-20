@@ -52,6 +52,15 @@ class Game {
   print() { 
     console.log(JSON.stringify(this.towers));
   }
+
+  isWon() { 
+    for (let i = 1; i < this.towers.length; i++) { 
+      if (this.towers[i].length === 3) { 
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 
