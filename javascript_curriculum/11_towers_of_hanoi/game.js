@@ -42,10 +42,10 @@ class Game {
     if (this.isValidMove(startTowerIdx, endTowerIdx)) { 
       const movedDisc = this.towers[startTowerIdx].pop();
       this.towers[endTowerIdx].push(movedDisc);
-      console.log(this.towers);
+      this.print();
       return true;
     }
-    console.log(this.towers);
+    this.print();
     return false;
   }
  
@@ -60,6 +60,9 @@ class Game {
       }
     }
     return false;
+  }
+
+  run() { 
   }
 }
 
