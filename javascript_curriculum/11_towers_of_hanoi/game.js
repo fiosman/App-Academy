@@ -1,10 +1,10 @@
 // This is for playScript.js
-/* const readline = require('readline'); 
+const readline = require('readline'); 
 const reader = readline.createInterface({ 
   input: process.stdin, 
   output: process.stdout
 }); 
- */
+
 
 class Game { 
   constructor() { 
@@ -28,13 +28,12 @@ class Game {
     const removedStartTowerDisc = this.towers[startTowerIdx][startArrLength - 1]; 
     const lastEndTowerDisc = this.towers[endTowerIdx][endArrLength - 1]; 
 
-    if (this.towers[endTowerIdx].length === 0 
-      && this.towers[startTowerIdx].length != 0) { 
-      return true; 
+    if (this.towers[startTowerIdx].length === 0) {
+      return false; 
+    } else if (this.towers[endTowerIdx].length === 0) { 
+      return true;
     } else if (removedStartTowerDisc < lastEndTowerDisc) { 
       return true;
-    } else { 
-      return false;
     }
   }
 
@@ -62,11 +61,19 @@ class Game {
     return false;
   }
 
-  run(completionCallBack) { 
-    //promoteMove from the user 
-    // In callback, try to perform move, if it fails print error
-    // If game is not won, call run again 
-    // Otherwise, log that the user has won, then call completionBack 
+  run(reader, completionCallBack) { 
+    this.promptMove(reader, (startTowerIdx, endTowerIdx) => { 
+      if (!this.move(startTowerIdx, endTowerIdx)) { 
+        console.log('Invalid Move'); 
+      }
+      if (!this.isWon()) { 
+        this.run(reader, completionCallBack);
+      } else { 
+        this.print();
+        console.log('Congratulations you have won!'); 
+        completionCallBack();
+      }
+    })
   }
 }
 
