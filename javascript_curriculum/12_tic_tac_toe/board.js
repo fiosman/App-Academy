@@ -4,19 +4,23 @@ class Board {
   }
 
   static makeGrid() { 
-    let arr = []; 
+    let grid = []; 
     for (let i = 0; i < 3; i++) { 
-      arr.push([]);
+      grid.push([]);
       for (let j = 0; j < 3; j++) { 
-        arr[i].push('_'); 
+        grid[i].push("*"); 
       }
     }
-    return arr;
+    return grid;
   }
 
   printGrid() { 
-    this.board.forEach(function(ele) { 
-      console.log(ele);
+    this.board.forEach(function(row) { 
+      console.log(row.join("   "));
     })
   }
+
 }
+
+board = new Board(); 
+board.printGrid();
