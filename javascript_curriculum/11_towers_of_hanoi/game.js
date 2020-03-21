@@ -62,7 +62,11 @@ class Game {
     return false;
   }
 
-  run() { 
+  run(completionCallBack) { 
+    //promoteMove from the user 
+    // In callback, try to perform move, if it fails print error
+    // If game is not won, call run again 
+    // Otherwise, log that the user has won, then call completionBack 
   }
 }
 
