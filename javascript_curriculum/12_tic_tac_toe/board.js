@@ -19,7 +19,7 @@ class Board {
   }
 
   winner() { 
-    //check horizontal win 
+    //check horizontal win
     for (let row = 0; row < 3; row++) { 
       if (this.board[row][0] === this.board[row][1] && 
         this.board[row][1] === this.board[row][2]) { 
@@ -27,30 +27,31 @@ class Board {
         }
       }
     //check vertical win 
-    for (let col = 0; col < 2; col++) { 
+    for (let col = 0; col < 3; col++) { 
       if (this.board[0][col] === this.board[1][col] && 
-        this.board[1][col] === this.board[2][col])
-        return this.board[0][col]; 
-    }
-    //check diagonal win 
-    if ((this.board[0][0] === this.board[1][1] && 
-      this.board[2][2] === this.board[0][0]) || 
-      (this.board[2][0] === this.board[1][1] && 
-      this.board[0][2] === this.board[2][0])) { 
-        return this.board[0][0];
+        this.board[1][col] === this.board[2][col]) { 
+          return this.board[0][col]; 
+        }
       }
-
+    //check diagonal win 
+    if (this.board[0][0] === this.board[1][1] && 
+      this.board[2][2] === this.board[0][0]) { 
+        return this.board[0][0];
+      } else if (this.board[2][0] === this.board[1][1] && 
+        this.board[0][2] === this.board[2][0]) { 
+          return this.board[2][0];
+      }
       return null;
   }
 
   isOver() { 
-    if (this.winner()) { 
+    if (this.winner() != null) { 
       return true; 
     }
 
     for (let row = 0; row < 3; row++) { 
       for (let col = 0; col < 3; col++) { 
-        if (this.grid[row][col].empty()) { 
+        if (this.empty([row, col])) { 
           return false;
         }
       }
