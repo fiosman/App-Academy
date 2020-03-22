@@ -12,7 +12,7 @@ class Game {
   }
 
   announceWinner() { 
-
+    return `The winner of this game is ${this.board.winner()}`;
   }
 
   promptMove() { 
@@ -20,7 +20,7 @@ class Game {
   }
 
   swapTurns() { 
-    this.currentPlayer === 'X' ? this.currentPlayer = 'O' : this.currentPlayer = 'X'
+    this.currentPlayer === 'X' ? this.currentPlayer = 'O' : this.currentPlayer = 'X';
   }
 
   playMove(pos) { 
