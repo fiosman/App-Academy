@@ -19,12 +19,13 @@ class Game {
 
   }
 
-  swapTurns() { 
+  swapTurn() { 
     this.currentPlayer === 'X' ? this.currentPlayer = 'O' : this.currentPlayer = 'X';
   }
 
   playMove(pos) { 
-
+    this.board.placeMark(pos, this.currentPlayer); 
+    this.swapTurn();
   }
 
   gameOver() { 
