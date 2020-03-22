@@ -20,7 +20,7 @@ class Game {
   }
 
   swapTurns() { 
-
+    this.currentPlayer === 'X' ? this.currentPlayer = 'O' : this.currentPlayer = 'X'
   }
 
   playMove(pos) { 
