@@ -78,7 +78,4 @@ class Board {
   }
 }
 
-board = new Board();
-board.printGrid();
-board.placeMark([1,2], 'X');
-board.printGrid();
+module.exports = Board;
