@@ -8,7 +8,7 @@ const reader = readline.createInterface({
 let game = new Game();
 game.run(reader, playAgain);
 
-const playAgain = function() {
+ function playAgain() {
   reader.question("Play again? y : n", ans => {
     if (ans === "y") {
       game = new Game();

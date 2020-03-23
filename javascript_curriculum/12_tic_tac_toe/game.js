@@ -1,14 +1,13 @@
 const Board = require('./board')
 
 class Game { 
-  constructor(reader) { 
-   this.reader = reader; 
+  constructor() { 
    this.currentPlayer = 'X'; 
    this.board = new Board();
   }
 
   run(reader, completionCallback) {
-    this.promptMove(move => { 
+    this.promptMove(reader, move => { 
       this.playMove(move); 
 
       if (this.gameOver()) { 
@@ -29,15 +28,15 @@ class Game {
     return `The winner of this game is ${this.board.winner()}`;
   }
 
-  promptMove(callback) { 
+  promptMove(reader, callback) { 
     this.board.printGrid(); 
     console.log(`Current turn is ${this.currentPlayer}`);
 
-    this.reader.question('Please enter a row index (0,1,2):', rowAns => { 
+    reader.question('Please enter a row index (0,1,2):', rowAns => { 
       const rowIdx = parseInt(rowAns); 
-        this.reader.question('Please etner a column index (0,1,2):', colAns => { 
-          const colIdx = parseInt(colAns); 
-          callback([rowIdx, colIdx]); 
+      reader.question('Please etner a column index (0,1,2):', colAns => { 
+        const colIdx = parseInt(colAns); 
+        callback([rowIdx, colIdx]); 
         }); 
     }); 
   }
