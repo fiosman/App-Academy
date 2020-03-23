@@ -8,7 +8,21 @@ class Game {
   }
 
   run(reader, completionCallback) {
+    this.promptMove(move => { 
+      this.playMove(move); 
 
+      if (this.gameOver()) { 
+        this.board.printGrid(); 
+        if (this.board.winner()) { 
+          this.announceWinner(); 
+        } else { 
+          console.log('It is a draw'); 
+        }
+        completionCallback(); 
+      } else { 
+        this.run(reader, completionCallback);
+      }
+    });
   }
 
   announceWinner() { 
