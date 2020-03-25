@@ -21,7 +21,7 @@ function sumRest(...args) {
 }
 
 //Solution using arguments keyword
-Function.prototype.myBind = function(context) { 
+Function.prototype.myBind1 = function(context) { 
   const bindArgs = Array.from(arguments).slice(1); 
   return () => { 
     const callArgs = Array.from(arguments); 
@@ -30,7 +30,7 @@ Function.prototype.myBind = function(context) {
 }
 
 //Solution using ... rest operator  
-Function.prototype.myBind = function(context, ...bindArgs) {
+Function.prototype.myBind2 = function(context, ...bindArgs) {
   return (...callArgs) => { 
     this.apply(context, bindArgs.concat(callArgs)); 
   }
