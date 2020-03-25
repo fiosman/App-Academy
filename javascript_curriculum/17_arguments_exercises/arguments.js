@@ -50,3 +50,20 @@ function curriedSum(numArgs) {
   }
   return _curriedSum; 
 }
+
+//Using apply
+Function.prototype.curry1 = function(numArgs) { 
+  let args = []; 
+  self = this; 
+  
+  function _curry1(arg) { 
+    args.push(arg); 
+    if (args.length === numArgs) { 
+      self.apply(null, args); 
+    } else { 
+      return _curry1; 
+    }
+  }
+
+  return _curry1; 
+}
