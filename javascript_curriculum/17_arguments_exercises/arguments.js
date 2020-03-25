@@ -19,3 +19,19 @@ function sumRest(...args) {
 
   return totalSum; 
 }
+
+//Solution using arguments keyword
+Function.prototype.myBind = function(context) { 
+  const bindArgs = Array.from(arguments).slice(1); 
+  return () => { 
+    const callArgs = Array.from(arguments); 
+    return this.apply(context, bindArgs.concat(callArgs)); 
+  }
+}
+
+//Solution using ... rest operator  
+Function.prototype.myBind = function(context, ...bindArgs) {
+  return (...callArgs) => { 
+    this.apply(context, bindArgs.concat(callArgs)); 
+  }
+};
