@@ -35,3 +35,18 @@ Function.prototype.myBind2 = function(context, ...bindArgs) {
     this.apply(context, bindArgs.concat(callArgs)); 
   }
 };
+
+function curriedSum(numArgs) { 
+  let numbers = []; 
+
+  function _curriedSum(num) { 
+    numbers.push(num); 
+
+    if (numbers.length === numArgs) { 
+      return sum(...numbers); 
+    } else { 
+      return _curriedSum; 
+    }
+  }
+  return _curriedSum; 
+}
