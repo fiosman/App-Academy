@@ -9,3 +9,13 @@ function sum() {
   return totalSum;
 }
 
+//Solution using ...rest operator 
+function sumRest(...args) { 
+  let totalSum = 0; 
+
+  args.forEach(num => { 
+    return totalSum += num; 
+  })
+
+  return totalSum; 
+}
