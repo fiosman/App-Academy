@@ -59,11 +59,26 @@ Function.prototype.curry1 = function(numArgs) {
   function _curry1(arg) { 
     args.push(arg); 
     if (args.length === numArgs) { 
-      self.apply(null, args); 
+      return self.apply(null, args); 
     } else { 
       return _curry1; 
     }
   }
 
   return _curry1; 
+}
+
+Function.prototype.curry2 = function(numArgs) { 
+  let args = []; 
+
+  const _curry2 = (arg) => { 
+    args.push(arg); 
+    if (args.length === numArgs) { 
+      return this(...args); 
+    } else { 
+      return _curry2; 
+    }
+  }
+
+  return _curry2;
 }
