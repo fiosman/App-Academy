@@ -104,7 +104,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject(options) { \n  this.pos = options['pos']; \n  this.vel = options['vel']; \n  this.radius = options['radius']; \n  this.color = options['color']; \n}\n\nMovingObject.prototype.draw = function(ctx) { \n  ctx.beginPath(); \n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, true); \n  ctx.fillStyle = this.color; \n  ctx.fill();\n}\n\nmodule.exports = MovingObject; \n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject(options) { \n  this.pos = options['pos']; \n  this.vel = options['vel']; \n  this.radius = options['radius']; \n  this.color = options['color']; \n}\n\nMovingObject.prototype.draw = function(ctx) { \n  ctx.beginPath(); \n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, true); \n  ctx.fillStyle = this.color; \n  ctx.fill();\n}\n\nMovingObject.prototype.move = function() { \n  this.pos[0] += this.vel[0];  \n  this.pos[1] += this.vel[1]; \n}\n\nmodule.exports = MovingObject; \n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 
