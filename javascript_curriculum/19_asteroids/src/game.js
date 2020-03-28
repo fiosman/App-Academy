@@ -28,4 +28,7 @@ Game.prototype.draw = function(ctx) {
 }
 
 Game.prototype.moveObjects = function() { 
+  this.asteroids.forEach(function(asteroid) { 
+    asteroid.move(); 
+  }); 
 }
