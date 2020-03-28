@@ -2,18 +2,18 @@ const Asteroid = require("./asteroid.js");
 const MovingObject = require("./moving_object.js");
 
 function Game() { 
-  this.asteroids = addAsteroids(); 
+  this.asteroids = []; 
+  
+  this.addAsteroids(); 
 }
 
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
-Game.NUM_ASTEROIDS = 50;
+Game.NUM_ASTEROIDS = 20;
 
-Game.prototype.addAsteroids = function() {
-  let asteroids = [];  
-
+Game.prototype.addAsteroids = function() { 
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
-    asteroids.push(new Asteroid({pos: this.randomPosition()})); 
+    this.asteroids.push(new Asteroid({pos: this.randomPosition()})); 
   }
 }
 
@@ -36,3 +36,5 @@ Game.prototype.moveObjects = function() {
     asteroid.move(); 
   }); 
 }
+
+module.exports = Game;
