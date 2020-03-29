@@ -1,10 +1,10 @@
-const MovingObject = require('./moving_object'); 
+const MovingObject = require('./moving_object.js'); 
 const Bullet = require('./bullet.js');
 const Util = require('./util.js');
 
 const DEFAULTS = {
   COLOR: "blue",
-  RADIUS: 10
+  RADIUS: 15
 }; 
 
 function Ship(options) { 
@@ -30,12 +30,24 @@ Ship.prototype.power = function(impulse) {
 }
 
 Ship.prototype.fireBullet = function() { 
+  const vectorLength = Util.norm(this.vel); 
+  
+  if (vectorLength === 0) { 
+    return; 
+  }
+
+  const relativeVel = Util.scale(Util.dir(this.vel), Bullet.SPEED);
+  
+  const bulletVel = [relativeVel[0] + this.vel[0], relativeVel[1] + this.vel[1]];
+
   let bullet = new Bullet({ 
-    vel: this.vel, 
+    vel: bulletVel, 
     game: this.game, 
     pos: this.pos
-  }) 
-  this.game.bullets.push(bullet); 
+  }); 
+
+  this.game.addBullets(bullet); 
+  console.log(this.game.bullets); 
 }
 
 module.exports = Ship; 

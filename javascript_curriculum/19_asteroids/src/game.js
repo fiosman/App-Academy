@@ -3,24 +3,28 @@ const MovingObject = require("./moving_object.js");
 const Ship = require("./ship.js"); 
 const Bullet = require("./bullet.js"); 
 
-function Game() { 
-  this.asteroids = []; 
-  this.addAsteroids(); 
-  this.ship = new Ship({ 
-    pos: this.randomPosition(), 
-    game: this
-  }); 
-  this.bullets = []; 
-}
-
 Game.DIM_X = 1200;
 Game.DIM_Y = 800;
 Game.NUM_ASTEROIDS = 10;
 
-Game.prototype.addAsteroids = function() { 
+function Game() { 
+  this.asteroids = []; 
+  this.bullets = []; 
+  this.ship = new Ship({ 
+    pos: this.randomPosition(), 
+    game: this
+  }); 
+  this.addAsteroids(); 
+}
+
+Game.prototype.addAsteroids = function(obj) { 
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
     this.asteroids.push(new Asteroid({pos: this.randomPosition(), game: this})); 
   }
+}
+
+Game.prototype.addBullets = function(bullet) { 
+  this.bullets.push(bullet); 
 }
 
 Game.prototype.randomPosition = function() { 
@@ -78,13 +82,18 @@ Game.prototype.step = function() {
   this.checkCollisions(); 
 }
 
-Game.prototype.remove = function(asteroid) { 
+Game.prototype.removeAsteroid = function(asteroid) { 
   const indexOfAsteroid = this.asteroids.indexOf(asteroid); 
   this.asteroids.splice(indexOfAsteroid, 1); 
 }
 
+Game.prototype.removeBullet = function(bullet) { 
+  const indexOfBullet = this.bullets.indexOf(bullet); 
+  this.bullets.splice(indexOfBullet, 1); 
+}
+
 Game.prototype.allObjects = function() { 
-  return this.asteroids.concat(this.ship); 
+  return this.asteroids.concat(this.ship, this.bullets); 
 }
 
 module.exports = Game;

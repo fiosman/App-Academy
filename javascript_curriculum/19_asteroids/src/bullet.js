@@ -1,8 +1,9 @@
 const MovingObject = require('./moving_object.js'); 
+const Util = require('./util.js'); 
 
 const DEFAULTS = { 
-  COLOR: 'orange', 
-  RADIUS: 3 
+  COLOR: 'red', 
+  RADIUS: 5
 }; 
 
 function Bullet(options) { 
@@ -14,5 +15,9 @@ function Bullet(options) {
     game: options.game
   }); 
 }
+
+Bullet.SPEED = 1; 
+
+Util.inherits(Bullet, MovingObject); 
 
 module.exports = Bullet; 
