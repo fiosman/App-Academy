@@ -148,7 +148,7 @@ eval("const Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\")\n\nfu
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\"); \nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\nconst DEFAULTS = {\n  COLOR: \"blue\",\n  RADIUS: 10\n}; \n\nfunction Ship(options) { \n  MovingObject.call(this, { \n    pos: options.pos, \n    game: options.game, \n    color: DEFAULTS.COLOR, \n    radius: DEFAULTS.RADIUS, \n    vel: [0,0]\n  }); \n}\n\nUtil.inherits(Ship, MovingObject);\n\nShip.prototype.relocate = function() { \n  this.pos = this.game.randomPosition(); \n  this.vel = [0,0]; \n}\n\nmodule.exports = Ship; \n\n//# sourceURL=webpack:///./src/ship.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\"); \nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\nconst DEFAULTS = {\n  COLOR: \"blue\",\n  RADIUS: 10\n}; \n\nfunction Ship(options) { \n  MovingObject.call(this, { \n    pos: options.pos, \n    game: options.game, \n    color: DEFAULTS.COLOR, \n    radius: DEFAULTS.RADIUS, \n    vel: [0,0]\n  }); \n}\n\nUtil.inherits(Ship, MovingObject);\n\nShip.prototype.relocate = function() { \n  this.pos = this.game.randomPosition(); \n  this.vel = [0,0]; \n}\n\nShip.prototype.power = function(impulse) { \n  this.vel[0] += impulse[0]; \n  this.vel[1] += impulse[1]; \n}\n\nmodule.exports = Ship; \n\n//# sourceURL=webpack:///./src/ship.js?");
 
 /***/ }),
 
