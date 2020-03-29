@@ -9,7 +9,16 @@ const Util = {
   }, 
   scale: function(vec, m) { 
     return [vec[0] * m, vec[1] * m];
+  }, 
+  distanceBetweenPoints: function(firstObjXY, secondObjXY) { 
+    const [x1, y1] = firstObjXY; 
+    const [x2, y2] = secondObjXY; 
+
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2); 
   }
 }; 
 
 module.exports = Util;
+
+
+

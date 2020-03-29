@@ -148,7 +148,7 @@ eval("function MovingObject(options) {\n  this.pos = options[\"pos\"];\n  this.v
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("const Util = { \n  inherits: function(childClass, parentClass) { \n    childClass.prototype = Object.create(parentClass.prototype); \n    childClass.prototype.constructor = childClass; \n  }, \n  randomVec: function(length) { \n    const deg = 2 * Math.PI * Math.random(); \n    return Util.scale([Math.sin(deg), Math.cos(deg)], length); \n  }, \n  scale: function(vec, m) { \n    return [vec[0] * m, vec[1] * m];\n  }\n}; \n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/util.js?");
+eval("const Util = { \n  inherits: function(childClass, parentClass) { \n    childClass.prototype = Object.create(parentClass.prototype); \n    childClass.prototype.constructor = childClass; \n  }, \n  randomVec: function(length) { \n    const deg = 2 * Math.PI * Math.random(); \n    return Util.scale([Math.sin(deg), Math.cos(deg)], length); \n  }, \n  scale: function(vec, m) { \n    return [vec[0] * m, vec[1] * m];\n  }, \n  distanceBetweenPoints: function(firstObjXY, secondObjXY) { \n    const [x1, y1] = firstObjXY; \n    const [x2, y2] = secondObjXY; \n\n    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2); \n  }\n}; \n\nmodule.exports = Util;\n\n\n\n\n\n//# sourceURL=webpack:///./src/util.js?");
 
 /***/ })
 
