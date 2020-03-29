@@ -13,7 +13,7 @@ Game.NUM_ASTEROIDS = 50;
 
 Game.prototype.addAsteroids = function() { 
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
-    this.asteroids.push(new Asteroid({pos: this.randomPosition()})); 
+    this.asteroids.push(new Asteroid({pos: this.randomPosition(), game: this})); 
   }
 }
 
@@ -38,7 +38,7 @@ Game.prototype.moveObjects = function() {
 }
 
 Game.prototype.wrap = function(pos) { 
-  const [posX, posY] = pos; 
+  let [posX, posY] = pos; 
 
   if (posX < 0) { 
     posX = Game.DIM_X; 

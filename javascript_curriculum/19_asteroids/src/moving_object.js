@@ -3,6 +3,7 @@ function MovingObject(options) {
   this.vel = options["vel"];
   this.radius = options["radius"];
   this.color = options["color"];
+  this.game = options["game"];
 }
 
 MovingObject.prototype.draw = function(ctx) {
@@ -16,18 +17,8 @@ MovingObject.prototype.move = function() {
   const [velX, velY] = this.vel;
   this.pos[0] += velX;
   this.pos[1] += velY;
-};
 
-MovingObject.prototype.isOutOfBounds = function(relativePosX, relativePosY) {
-  const objectPosX = this.pos[0];
-  const objectPosY = this.pos[1];
-  if (objectPosX > relativePosX || objectPosX < relativePosX) {
-    return objectPosX; 
-  } else if (objectPosY > relativePosY || objectPosY < relativePosY) {
-    return objectPosY; 
-  } else {
-    return false;
-  }
+  this.pos = this.game.wrap(this.pos);
 };
 
 module.exports = MovingObject; 

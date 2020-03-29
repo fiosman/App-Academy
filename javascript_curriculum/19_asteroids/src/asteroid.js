@@ -12,7 +12,8 @@ function Asteroid(options) {
     pos: options['pos'], 
     vel: Util.randomVec(DEFAULTS['SPEED']), 
     color: DEFAULTS['COLOR'], 
-    radius: DEFAULTS['RADIUS']
+    radius: DEFAULTS['RADIUS'],
+    game: options['game']
   })
 }
 
