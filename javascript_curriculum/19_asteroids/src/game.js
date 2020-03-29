@@ -96,6 +96,18 @@ Game.prototype.allObjects = function() {
   return this.asteroids.concat(this.ship, this.bullets); 
 }
 
+Game.prototype.isOutOfBounds = function(pos) { 
+  const [posX, posY] = pos; 
+
+  if (posX < 0 || posX > Game.DIM_X) { 
+    return true; 
+  } else if (posY < 0 || posY > Game.DIM_Y) { 
+    return true; 
+  } else { 
+    return false; 
+  }
+}
+
 module.exports = Game;
 
 
