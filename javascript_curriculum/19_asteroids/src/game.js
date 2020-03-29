@@ -1,6 +1,7 @@
 const Asteroid = require("./asteroid.js"); 
 const MovingObject = require("./moving_object.js");
 const Ship = require("./ship.js"); 
+const Bullet = require("./bullet.js"); 
 
 function Game() { 
   this.asteroids = []; 
@@ -9,6 +10,7 @@ function Game() {
     pos: this.randomPosition(), 
     game: this
   }); 
+  this.bullets = []; 
 }
 
 Game.DIM_X = 1200;

@@ -1,4 +1,5 @@
 const MovingObject = require('./moving_object'); 
+const Bullet = require('./bullet.js');
 const Util = require('./util.js');
 
 const DEFAULTS = {
@@ -26,6 +27,15 @@ Ship.prototype.relocate = function() {
 Ship.prototype.power = function(impulse) { 
   this.vel[0] += impulse[0]; 
   this.vel[1] += impulse[1]; 
+}
+
+Ship.prototype.fireBullet = function() { 
+  let bullet = new Bullet({ 
+    vel: this.vel, 
+    game: this.game, 
+    pos: this.pos
+  }) 
+  this.game.bullets.push(bullet); 
 }
 
 module.exports = Ship; 
