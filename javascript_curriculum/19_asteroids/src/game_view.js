@@ -16,10 +16,10 @@ GameView.prototype.start = function() {
 
 GameView.prototype.bindKeyHandlers = function() { 
   const impulseKeys = { 
-    'w': [0, -0.08], 
-    's': [0, 0.08], 
-    'a': [-0.08, 0], 
-    'd': [0.08, 0]
+    w: [0, -0.08], 
+    s: [0, 0.08], 
+    a: [-0.08, 0], 
+    d: [0.08, 0]
   }; 
 
   if (key.isPressed('w')) { 
