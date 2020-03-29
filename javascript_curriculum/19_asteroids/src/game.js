@@ -37,18 +37,6 @@ Game.prototype.moveObjects = function() {
   }); 
 }
 
-Game.prototype.outOfBounds = function(movingObject) { 
-  const objectPosX = movingObject.pos[0]; 
-  const objectPosY = movingObject.pos[1]; 
-  if (objectPosX > Game.DIM_X || objectPosX < Game.DIM_X) { 
-    return true; 
-  } else if (objectPosY > Game.DIM_Y || objectPosY < Game.DIM_Y) { 
-    return true; 
-  } else { 
-    return false; 
-  }
-}
-
 Game.prototype.wrap = function(pos) { 
 }
 

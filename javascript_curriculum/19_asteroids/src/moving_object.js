@@ -18,6 +18,18 @@ MovingObject.prototype.move = function() {
   this.pos[1] += velY;
 };
 
+MovingObject.prototype.isOutOfBounds = function(movingObject, relativePosX, relativePosY) {
+  const objectPosX = movingObject.pos[0];
+  const objectPosY = movingObject.pos[1];
+  if (objectPosX > relativePosX || objectPosX < relativePosX) {
+    return true;
+  } else if (objectPosY > relativePosY || objectPosY < relativePosY) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 module.exports = MovingObject; 
 
 
