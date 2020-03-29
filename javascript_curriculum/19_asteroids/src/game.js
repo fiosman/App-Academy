@@ -9,7 +9,7 @@ function Game() {
 
 Game.DIM_X = 1200;
 Game.DIM_Y = 800;
-Game.NUM_ASTEROIDS = 50;
+Game.NUM_ASTEROIDS = 10;
 
 Game.prototype.addAsteroids = function() { 
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
@@ -53,6 +53,28 @@ Game.prototype.wrap = function(pos) {
   }
 
   return [posX, posY]; 
+}
+
+Game.prototype.checkCollisions = function() { 
+  for (let i = 0; i < this.asteroids.length; i++) { 
+    for (let j = i + 1; j < this.asteroids.length; j++) { 
+      let firstObj = this.asteroids[i]; 
+      let secondObj = this.asteroids[j]; 
+      if (firstObj.isCollidedWith(secondObj)) { 
+        firstObj.collideWith(secondObj); 
+      }
+    }
+  } 
+}
+
+Game.prototype.step = function() { 
+  this.moveObjects(); 
+  this.checkCollisions(); 
+}
+
+Game.prototype.remove = function(asteroid) { 
+  const indexOfAsteroid = this.asteroids.indexOf(asteroid); 
+  this.asteroids.splice(indexOfAsteroid, 1); 
 }
 
 module.exports = Game;
