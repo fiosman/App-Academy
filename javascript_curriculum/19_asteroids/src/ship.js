@@ -1,4 +1,5 @@
 const MovingObject = require('./moving_object'); 
+const Util = require('./util.js');
 
 const DEFAULTS = {
   COLOR: "blue",
@@ -14,3 +15,12 @@ function Ship(options) {
     vel: [0,0]
   }); 
 }
+
+Util.inherits(Ship, MovingObject);
+
+Ship.prototype.relocate = function() { 
+  this.pos = this.game.randomPosition(); 
+  this.vel = [0,0]; 
+}
+
+module.exports = Ship; 

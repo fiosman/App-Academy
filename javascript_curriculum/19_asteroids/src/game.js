@@ -30,14 +30,14 @@ Game.prototype.randomPosition = function() {
 
 Game.prototype.draw = function(ctx) { 
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y); 
-  this.asteroids.forEach(function(asteroid) { 
-    asteroid.draw(ctx); 
+  this.allObjects().forEach(function(object) { 
+    object.draw(ctx); 
   }); 
 }
 
 Game.prototype.moveObjects = function() { 
-  this.asteroids.forEach(function(asteroid) { 
-    asteroid.move(); 
+  this.allObjects().forEach(function(object) { 
+    object.move(); 
   }); 
 }
 
@@ -60,10 +60,10 @@ Game.prototype.wrap = function(pos) {
 }
 
 Game.prototype.checkCollisions = function() { 
-  for (let i = 0; i < this.asteroids.length; i++) { 
-    for (let j = i + 1; j < this.asteroids.length; j++) { 
-      let firstObj = this.asteroids[i]; 
-      let secondObj = this.asteroids[j]; 
+  for (let i = 0; i < this.allObjects().length; i++) { 
+    for (let j = i + 1; j < this.allObjects().length; j++) { 
+      const firstObj = this.allObjects()[i]; 
+      const secondObj = this.allObjects()[j]; 
       if (firstObj.isCollidedWith(secondObj)) { 
         firstObj.collideWith(secondObj); 
       }
@@ -79,6 +79,10 @@ Game.prototype.step = function() {
 Game.prototype.remove = function(asteroid) { 
   const indexOfAsteroid = this.asteroids.indexOf(asteroid); 
   this.asteroids.splice(indexOfAsteroid, 1); 
+}
+
+Game.prototype.allObjects = function() { 
+  return this.asteroids.concat(this.ship); 
 }
 
 module.exports = Game;
