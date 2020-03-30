@@ -1,5 +1,4 @@
 const Asteroid = require("./asteroid.js"); 
-const MovingObject = require("./moving_object.js");
 const Ship = require("./ship.js"); 
 const Bullet = require("./bullet.js"); 
 
