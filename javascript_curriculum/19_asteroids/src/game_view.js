@@ -14,7 +14,7 @@ GameView.prototype.start = function() {
   }, 20)
   setInterval(function() { 
     self.bindFireHandler(); 
-  }, 200)
+  }, 300)
 }
 
 GameView.prototype.bindKeyHandlers = function() { 

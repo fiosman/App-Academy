@@ -3,7 +3,7 @@ const Util = require('./util.js');
 
 const DEFAULTS = { 
   COLOR: 'red', 
-  RADIUS: 2
+  RADIUS: 5
 }; 
 
 function Bullet(options) { 
@@ -16,7 +16,7 @@ function Bullet(options) {
   }); 
 }
 
-Bullet.SPEED = 1;
+Bullet.SPEED = 5;
 
 Util.inherits(Bullet, MovingObject);
 

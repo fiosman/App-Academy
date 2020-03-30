@@ -4,7 +4,7 @@ const Util = require('./util.js');
 
 const DEFAULTS = {
   COLOR: "blue",
-  RADIUS: 10
+  RADIUS: 15
 }; 
 
 function Ship(options) { 
@@ -46,8 +46,7 @@ Ship.prototype.fireBullet = function() {
     pos: this.pos
   }); 
 
-  this.game.addBullets(bullet); 
-  console.log(this.game.bullets); 
+  this.game.addBullets(bullet);  
 }
 
 module.exports = Ship; 

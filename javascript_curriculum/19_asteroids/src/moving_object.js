@@ -29,10 +29,6 @@ MovingObject.prototype.move = function() {
   this.pos = this.game.wrap(this.pos); 
 }
 
-// MovingObject.prototype.remove = function() { 
-//   this.game.remove(this); 
-// }
-
 MovingObject.prototype.isCollidedWith = function(otherObject) { 
   const radiiSum = this.radius + otherObject.radius; 
   

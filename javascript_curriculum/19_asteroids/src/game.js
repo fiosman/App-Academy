@@ -5,7 +5,7 @@ const Bullet = require("./bullet.js");
 
 Game.DIM_X = 1200;
 Game.DIM_Y = 800;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 20;
 
 function Game() { 
   this.asteroids = []; 
@@ -80,16 +80,6 @@ Game.prototype.checkCollisions = function() {
 Game.prototype.step = function() { 
   this.moveObjects(); 
   this.checkCollisions(); 
-}
-
-Game.prototype.removeAsteroid = function(asteroid) { 
-  const indexOfAsteroid = this.asteroids.indexOf(asteroid); 
-  this.asteroids.splice(indexOfAsteroid, 1); 
-}
-
-Game.prototype.removeBullet = function(bullet) { 
-  const indexOfBullet = this.bullets.indexOf(bullet); 
-  this.bullets.splice(indexOfBullet, 1); 
 }
 
 Game.prototype.allObjects = function() { 
