@@ -137,7 +137,7 @@ eval("const Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\n\nf
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval(" const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n const GameView = __webpack_require__(/*! ./game_view.js */ \"./src/game_view.js\"); \n//  const Asteroid = require('./asteroid.js'); \n\n document.addEventListener(\"DOMContentLoaded\", () => {\n   const canvas = document.getElementById(\"game-canvas\");\n   const ctx = canvas.getContext(\"2d\"); \n   const gameView = new GameView(ctx); \n   gameView.start(); \n  //  const asteroid = new Asteroid({pos: [20,20]})\n  //  asteroid.draw(ctx); \n });\n\n window.MovingObject = MovingObject; \n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval(" const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n const GameView = __webpack_require__(/*! ./game_view.js */ \"./src/game_view.js\"); \n \n document.addEventListener(\"DOMContentLoaded\", function() {\n   const canvas = document.getElementById(\"game-canvas\");\n   const ctx = canvas.getContext(\"2d\"); \n   const gameView = new GameView(ctx); \n   gameView.start(); \n });\n\n window.MovingObject = MovingObject; \n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
