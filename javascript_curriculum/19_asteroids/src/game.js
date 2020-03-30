@@ -3,9 +3,12 @@ const MovingObject = require("./moving_object.js");
 const Ship = require("./ship.js"); 
 const Bullet = require("./bullet.js"); 
 
-Game.DIM_X = 1200;
-Game.DIM_Y = 800;
-Game.NUM_ASTEROIDS = 20;
+const SETTINGS = { 
+  DIM_X: 1200,
+  DIM_Y: 800,
+  NUM_ASTEROIDS: 20,
+  BG_COLOR: 'black'
+} 
 
 function Game() { 
   this.asteroids = []; 
@@ -18,7 +21,7 @@ function Game() {
 }
 
 Game.prototype.addAsteroids = function() { 
-  for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
+  for (let i = 0; i < SETTINGS['NUM_ASTEROIDS']; i++) { 
     this.asteroids.push(new Asteroid({pos: this.randomPosition(), game: this})); 
   }
 }
@@ -29,13 +32,13 @@ Game.prototype.addBullets = function(bullet) {
 
 Game.prototype.randomPosition = function() { 
   return [
-    Math.floor(Math.random() * Game.DIM_X), 
-    Math.floor(Math.random() * Game.DIM_Y)
+    Math.floor(Math.random() * SETTINGS["DIM_X"]),
+    Math.floor(Math.random() * SETTINGS["DIM_Y"])
   ];
 }
 
 Game.prototype.draw = function(ctx) { 
-  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y); 
+  ctx.clearRect(0, 0, SETTINGS["DIM_X"], SETTINGS["DIM_Y"]); 
   this.allObjects().forEach(function(object) { 
     object.draw(ctx); 
   }); 
@@ -51,14 +54,14 @@ Game.prototype.wrap = function(pos) {
   let [posX, posY] = pos; 
 
   if (posX < 0) { 
-    posX = Game.DIM_X; 
-  } else if (posX > Game.DIM_X) { 
+    posX = SETTINGS["DIM_X"]; 
+  } else if (posX > SETTINGS["DIM_X"]) { 
     posX = 0; 
   }
 
   if (posY < 0) { 
-    posY = Game.DIM_Y; 
-  } else if (posY > Game.DIM_Y) { 
+    posY = SETTINGS["DIM_Y"]; 
+  } else if (posY > SETTINGS["DIM_Y"]) { 
     posY = 0; 
   }
 
@@ -89,12 +92,12 @@ Game.prototype.allObjects = function() {
 Game.prototype.isOutOfBounds = function(pos) { 
   const [posX, posY] = pos; 
 
-  if (posX < 0 || posX > Game.DIM_X) { 
-    return true; 
-  } else if (posY < 0 || posY > Game.DIM_Y) { 
-    return true; 
-  } else { 
-    return false; 
+  if (posX < 0 || posX > SETTINGS["DIM_X"]) {
+    return true;
+  } else if (posY < 0 || posY > SETTINGS["DIM_Y"]) {
+    return true;
+  } else {
+    return false;
   }
 }
 
