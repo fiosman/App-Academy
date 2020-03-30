@@ -4,7 +4,7 @@ const Ship = require("./ship.js");
 const Bullet = require("./bullet.js"); 
 
 const SETTINGS = { 
-  DIM_X: 1200,
+  DIM_X: 1600,
   DIM_Y: 800,
   NUM_ASTEROIDS: 20,
   BG_COLOR: 'black'
@@ -39,6 +39,8 @@ Game.prototype.randomPosition = function() {
 
 Game.prototype.draw = function(ctx) { 
   ctx.clearRect(0, 0, SETTINGS["DIM_X"], SETTINGS["DIM_Y"]); 
+  ctx.fillStyle = (SETTINGS['BG_COLOR']); 
+  ctx.fillRect(0,0,SETTINGS['DIM_X'], SETTINGS['DIM_Y']);
   this.allObjects().forEach(function(object) { 
     object.draw(ctx); 
   }); 
