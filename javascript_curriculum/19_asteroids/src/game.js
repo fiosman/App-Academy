@@ -17,7 +17,7 @@ function Game() {
   this.addAsteroids(); 
 }
 
-Game.prototype.addAsteroids = function(obj) { 
+Game.prototype.addAsteroids = function() { 
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) { 
     this.asteroids.push(new Asteroid({pos: this.randomPosition(), game: this})); 
   }
@@ -105,6 +105,16 @@ Game.prototype.isOutOfBounds = function(pos) {
     return true; 
   } else { 
     return false; 
+  }
+}
+
+Game.prototype.remove = function(obj) { 
+  if (obj instanceof Asteroid) { 
+    const asteroidIdx = this.asteroids.indexOf(obj); 
+    this.asteroids.splice(asteroidIdx, 1)
+  } else if (obj instanceof Bullet) { 
+    const bulletIdx = this.bullets.indexOf(obj); 
+    this.bullets.splice(bulletIdx, 1); 
   }
 }
 

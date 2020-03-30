@@ -4,7 +4,7 @@ const Util = require('./util.js');
 
 const DEFAULTS = {
   COLOR: "blue",
-  RADIUS: 15
+  RADIUS: 10
 }; 
 
 function Ship(options) { 

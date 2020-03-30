@@ -19,9 +19,19 @@ MovingObject.prototype.move = function() {
   const [velX, velY] = this.vel;
   this.pos[0] += velX;
   this.pos[1] += velY;
+  if (this.game.isOutOfBounds(this.pos)) {
+    if (this.isWrappable) {
+      this.pos = this.game.wrap(this.pos);
+    } else {
+      this.game.remove(this);
+    }
+  }
+  this.pos = this.game.wrap(this.pos); 
+}
 
-  this.pos = this.game.wrap(this.pos);
-};
+// MovingObject.prototype.remove = function() { 
+//   this.game.remove(this); 
+// }
 
 MovingObject.prototype.isCollidedWith = function(otherObject) { 
   const radiiSum = this.radius + otherObject.radius; 
@@ -35,6 +45,8 @@ MovingObject.prototype.isCollidedWith = function(otherObject) {
 
 MovingObject.prototype.collideWith = function(otherObject) { 
 }
+
+MovingObject.prototype.isWrappable = true; 
 
 module.exports = MovingObject; 
 
