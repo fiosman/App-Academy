@@ -5,7 +5,7 @@ const Bullet = require('./bullet.js')
 
 const DEFAULTS = { 
   COLOR: 'gray', 
-  RADIUS: 20, 
+  RADIUS: 30, 
   SPEED: 5
 }; 
 
