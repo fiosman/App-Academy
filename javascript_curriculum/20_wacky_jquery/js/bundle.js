@@ -145,6 +145,7 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
+  $('li').removeClass('square'); 
 };
 
 View.prototype.exercise3 = function () {
