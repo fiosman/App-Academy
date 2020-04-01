@@ -194,6 +194,9 @@ View.prototype.exercise6 = function () {
   //hint: use window._randomColorString() (defined at top) to get a random color!
 
   //your code here!
+  $("li.square").each(function() { 
+    $(this).css("background-color", window._randomColorString()); 
+  }); 
 };
 
 View.prototype.exercise7 = function(){
