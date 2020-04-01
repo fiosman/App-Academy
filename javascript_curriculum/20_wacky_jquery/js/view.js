@@ -66,6 +66,10 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
+  $("li.square").on("click", function(event) { 
+    const $square = $(event.currentTarget); 
+    alert($square.data("pos")); 
+  });
 };
 
 View.prototype.exercise6 = function () {
