@@ -162,6 +162,13 @@ View.prototype.exercise4 = function () {
   //Result: Your name appears in every other square.
 
   //your code here!
+  const $listItems = $("li"); 
+
+  $listItems.each(function (index) { 
+    if (index % 2 != 0) { 
+      this.textContent = 'Fares'; 
+    }
+  }); 
 };
 
 View.prototype.exercise5 = function () {
