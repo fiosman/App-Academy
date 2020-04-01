@@ -15,7 +15,7 @@ View.prototype.exercise0 = function () {
   //just a list of dots
 
   //this one completed as an example :) no additional code necessary
-  $('li').removeClass("square");
+  $('li.square').removeClass("square");
 };
 
 View.prototype.exercise1 = function () {
@@ -23,7 +23,7 @@ View.prototype.exercise1 = function () {
   //Result: Every square should turn orange (we already have a CSS rule)
 
   //your code here!
-  $('li').addClass('orange'); 
+  $('li.square').addClass('orange'); 
 };
 
 View.prototype.exercise2 = function () {
@@ -31,7 +31,7 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
-  $('li').removeClass('square'); 
+  $('li.square').removeClass('square'); 
 };
 
 View.prototype.exercise3 = function () {
@@ -48,7 +48,7 @@ View.prototype.exercise4 = function () {
   //Result: Your name appears in every other square.
 
   //your code here!
-  const $listItems = $("li"); 
+  const $listItems = $("li.square"); 
 
   $listItems.each(function (index) { 
     if (index % 2 != 0) { 
@@ -98,8 +98,6 @@ View.prototype.exercise7 = function(){
     console.log(squareColor); 
   })
 };
-
-
 
 View.prototype.setupEasel = function() {
   const $addRowButton = $('<button>').html('Add a row');
