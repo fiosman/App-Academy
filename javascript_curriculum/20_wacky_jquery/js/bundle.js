@@ -153,7 +153,7 @@ View.prototype.exercise3 = function () {
   //Result: An <h1> with the text 'i love jquery' appears under the grid.
 
   //your code here!
-  const h1Ele = $("<h1>i love jquery</h1>"); 
+  const h1Ele = $("<h1>").text("I love jQuery"); 
   $('#easel').append(h1Ele); 
 };
 
