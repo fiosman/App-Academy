@@ -207,6 +207,10 @@ View.prototype.exercise7 = function(){
   //rainbow.
 
   //your code here!
+  $("li.square").mouseover(function() { 
+    squareColor = $(this).css("background-color"); 
+    console.log(squareColor); 
+  })
 };
 
 
