@@ -3,15 +3,20 @@ class View {
     this.game = game; 
     this.$el = $el; 
     this.setupBoard(); 
+    this.bindEvents();
   }
 
   bindEvents() {
-    $(this.$el).on("click", "li", function() { 
-      this.game.playMove(); 
-    })
+    self = this;
+    $(this.$el).on("click", "li", function(event) { 
+      const $cell = $(event.currentTarget); 
+      self.makeMove($cell);
+    });
   }
 
-  makeMove($square) {}
+  makeMove($square) {
+    // const pos = $square.data("pos");
+  }
 
   setupBoard() {
     let $grid = $("<ul>"); 
@@ -19,7 +24,7 @@ class View {
     for (let rowIdx = 0; rowIdx < 3; rowIdx++) { 
       for (let colIdx = 0; colIdx < 3; colIdx++) { 
         const $li = $("<li>"); 
-        $li.attr("data-pos", [rowIdx, colIdx]);  
+        $li.attr("data-pos", `[${rowIdx}, ${colIdx}]`);  
         $grid.append($li); 
       }
     }

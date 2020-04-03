@@ -12,8 +12,7 @@ class Game {
   }
 
   playMove(pos) {
-    this.board.placeMark(pos, this.currentPlayer);
-    this.swapTurn();
+    console.log(pos[0], pos[2]);
   }
 
   promptMove(reader, callback) {
