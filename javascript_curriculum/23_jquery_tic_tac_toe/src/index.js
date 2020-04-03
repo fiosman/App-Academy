@@ -3,6 +3,6 @@ const Game = require('./game.js');
 
   $(() => {
     const game = new Game(); 
-    const grid = $('figure.ttt'); 
-    new View(game, grid);
+    const $grid = $('figure.ttt'); 
+    new View(game, $grid);
   });

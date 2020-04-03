@@ -115,7 +115,7 @@ eval("const Board = __webpack_require__(/*! ./board */ \"./src/board.js\");\ncon
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\n\n  $(() => {\n    const game = new Game(); \n    const grid = $('figure.ttt'); \n    new View(game, grid);\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\n\n  $(() => {\n    const game = new Game(); \n    const $grid = $('figure.ttt'); \n    new View(game, $grid);\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -137,7 +137,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game; \n    this.el = $el; \n    this.setupBoard(); \n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let $grid = $(\"<ul></ul>\")\n    for (let i = 0; i < 9; i++) { \n      const $li = $(\"<li></li>\")\n      $grid.append($li); \n    }\n\n    this.el.append($grid); \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game; \n    this.$el = $el; \n    this.setupBoard(); \n  }\n\n  bindEvents() {\n    $(this.$el).on(\"click\", \"li\", function() { \n      this.game.playMove(); \n    })\n  }\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let $grid = $(\"<ul>\"); \n\n    for (let rowIdx = 0; rowIdx < 3; rowIdx++) { \n      for (let colIdx = 0; colIdx < 3; colIdx++) { \n        const $li = $(\"<li>\"); \n        $li.attr(\"data-pos\", [rowIdx, colIdx]);  \n        $grid.append($li); \n      }\n    }\n\n    this.$el.append($grid); \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 

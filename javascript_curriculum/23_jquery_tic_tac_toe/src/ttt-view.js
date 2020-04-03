@@ -1,22 +1,30 @@
 class View {
   constructor(game, $el) {
     this.game = game; 
-    this.el = $el; 
+    this.$el = $el; 
     this.setupBoard(); 
   }
 
-  bindEvents() {}
+  bindEvents() {
+    $(this.$el).on("click", "li", function() { 
+      this.game.playMove(); 
+    })
+  }
 
   makeMove($square) {}
 
   setupBoard() {
-    let $grid = $("<ul></ul>")
-    for (let i = 0; i < 9; i++) { 
-      const $li = $("<li></li>")
-      $grid.append($li); 
+    let $grid = $("<ul>"); 
+
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) { 
+      for (let colIdx = 0; colIdx < 3; colIdx++) { 
+        const $li = $("<li>"); 
+        $li.attr("data-pos", [rowIdx, colIdx]);  
+        $grid.append($li); 
+      }
     }
 
-    this.el.append($grid); 
+    this.$el.append($grid); 
   }
 }
 
