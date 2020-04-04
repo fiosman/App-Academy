@@ -15,7 +15,16 @@ class View {
   }
 
   makeMove($square) {
-    // const pos = $square.data("pos");
+    const pos = $square.data("pos");
+    const currentPlayer = this.game.currentPlayer;
+    
+    //change background-color of cell to white 
+    $square.css("background-color", "white"); 
+
+    //add currentPlayer class to cell
+    $square.addClass(currentPlayer); 
+
+    
   }
 
   setupBoard() {
