@@ -29,7 +29,6 @@ class View {
     //add currentPlayer class to clicked cell
     $square.addClass(`${currentPlayer} reg-cell`);
 
-
     //UI logic
     if (game.isOver()) {
       this.$el.off("click");
