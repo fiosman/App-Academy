@@ -18,13 +18,11 @@ class View {
     const pos = $square.data("pos");
     const currentPlayer = this.game.currentPlayer;
     
-    //change background-color of cell to white 
+    //change background-color of clicked cell to white 
     $square.css("background-color", "white"); 
 
-    //add currentPlayer class to cell
+    //add currentPlayer class to clicked cell
     $square.addClass(currentPlayer); 
-
-    
   }
 
   setupBoard() {
