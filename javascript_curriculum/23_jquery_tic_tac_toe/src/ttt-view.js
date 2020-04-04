@@ -17,12 +17,27 @@ class View {
   makeMove($square) {
     const pos = $square.data("pos");
     const currentPlayer = this.game.currentPlayer;
+    const game = this.game;
+
+    //alert user if move is not valid
+    try {
+      game.playMove(pos);
+    } catch (error) {
+      alert(error.msg); 
+    }
     
     //change background-color of clicked cell to white 
     $square.css("background-color", "white"); 
 
     //add currentPlayer class to clicked cell
     $square.addClass(currentPlayer); 
+
+    if (game.isOver()) { 
+      //console.log(game.winner());
+      const winner = game.winner(); 
+      const $winnerMsg = $(`<p>Congrats ${winner}, you win!</p>`)
+      this.$el.append($winnerMsg); 
+    }
   }
 
   setupBoard() {
