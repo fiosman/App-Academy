@@ -1,15 +1,15 @@
 class View {
   constructor(game, $el) {
-    this.game = game; 
-    this.$el = $el; 
-    this.setupBoard(); 
+    this.game = game;
+    this.$el = $el;
+    this.setupBoard();
     this.bindEvents();
   }
 
   bindEvents() {
     self = this;
-    $(this.$el).on("click", "li", function(event) { 
-      const $cell = $(event.currentTarget); 
+    $(this.$el).on("click", "li", function(event) {
+      const $cell = $(event.currentTarget);
       self.makeMove($cell);
     });
   }
@@ -23,35 +23,45 @@ class View {
     try {
       game.playMove(pos);
     } catch (error) {
-      alert(error.msg); 
+      alert(error.msg);
     }
-    
-    //change background-color of clicked cell to white 
-    $square.css("background-color", "white"); 
 
     //add currentPlayer class to clicked cell
-    $square.addClass(currentPlayer); 
+    $square.addClass(`${currentPlayer} reg-cell`);
 
-    if (game.isOver()) { 
-      //console.log(game.winner());
-      const winner = game.winner(); 
-      const $winnerMsg = $(`<p>Congrats ${winner}, you win!</p>`)
-      this.$el.append($winnerMsg); 
+
+    //UI logic
+    if (game.isOver()) {
+      this.$el.off("click");
+      this.$el.addClass("disabled");
+      $("li").addClass("game-over"); 
+
+      const winner = game.winner();
+      const $figcaption = $("<figcaption>");
+
+      if (winner) {
+        $figcaption.html(`Congrats ${winner}, you win!`)
+        $(`.${winner}`).removeClass("reg-cell game-over");
+        $(`.${winner}`).addClass("winner");
+      } else { 
+        $figcaption.html('It is a draw!');
+      }
+      this.$el.append($figcaption);
     }
   }
 
   setupBoard() {
-    let $grid = $("<ul>"); 
+    let $grid = $("<ul>");
 
-    for (let rowIdx = 0; rowIdx < 3; rowIdx++) { 
-      for (let colIdx = 0; colIdx < 3; colIdx++) { 
-        const $li = $("<li>"); 
-        $li.attr("data-pos", `[${rowIdx}, ${colIdx}]`);  
-        $grid.append($li); 
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+      for (let colIdx = 0; colIdx < 3; colIdx++) {
+        const $li = $("<li>");
+        $li.attr("data-pos", `[${rowIdx}, ${colIdx}]`);
+        $grid.append($li);
       }
     }
 
-    this.$el.append($grid); 
+    this.$el.append($grid);
   }
 }
 
