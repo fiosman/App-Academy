@@ -104,7 +104,7 @@ eval("class Game {\n  constructor() {\n    this.towers = [[3, 2, 1], [], []];\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class View { \n  constructor(game, $el) { \n    this.game = game; \n    this.$el = $el; \n    this.setupTowers();\n  }\n\n  setupTowers() { \n    for (let i = 0; i < 3; i++) { \n      const $ul = $(\"<ul>\").addClass(\"tower\");\n      this.$el.append($ul); \n    }\n  }\n}\n\nmodule.exports = View;\n\n//# sourceURL=webpack:///./src/hanoi-view.js?");
+eval("class View { \n  constructor(game, $el) { \n    this.game = game; \n    this.$el = $el; //this is figure\n    this.setupTowers();\n  }\n\n  setupTowers() { \n    for (let i = 0; i < 3; i++) { \n      const $ul = $(\"<ul>\").addClass(\"tower\").data(\"tower-id\", i); \n      this.$el.append($ul); \n    }\n\n    for (let i = 0; i < 3; i++) { \n      let $li = $(\"<li>\").addClass(`disc-${i}`).data(\"disc-id\", i); \n      $(\"ul\").first().append($li)\n    }\n  }\n}\n\nmodule.exports = View;\n\n//# sourceURL=webpack:///./src/hanoi-view.js?");
 
 /***/ }),
 
