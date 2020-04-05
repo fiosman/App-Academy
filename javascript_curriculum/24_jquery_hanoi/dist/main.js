@@ -104,7 +104,7 @@ eval("class Game {\n  constructor() {\n    this.towers = [[3, 2, 1], [], []];\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class View { \n  constructor(game, $el) { \n    this.game = game; \n    this.$el = $el; //this is figure\n    this.setupTowers();\n  }\n\n  setupTowers() { \n    for (let i = 0; i < 3; i++) { \n      const $ul = $(\"<ul>\").addClass(\"tower\").data(\"tower-id\", i); \n      this.$el.append($ul); \n    }\n\n    for (let i = 0; i < 3; i++) { \n      let $li = $(\"<li>\").addClass(`disc-${i}`).data(\"disc-id\", i); \n      $(\"ul\").first().append($li)\n    }\n  }\n}\n\nmodule.exports = View;\n\n//# sourceURL=webpack:///./src/hanoi-view.js?");
+eval("class View { \n  constructor(game, $el) { \n    this.game = game; \n    this.$el = $el;\n    this.setupTowers();\n    this.clickTower();\n    this.from = null;\n  }\n\n  setupTowers() { \n    for (let i = 0; i < 3; i++) { \n      const $ul = $(\"<ul>\").addClass(\"tower\").data(\"tower-id\", i); \n      this.$el.append($ul); \n    }\n\n    for (let i = 0; i < 3; i++) { \n      let $li = $(\"<li>\").addClass(`disc-${i}`).data(\"disc-id\", i); \n      $(\"ul\").first().append($li);\n    }\n  }\n  \n  clickTower() { \n    const self = this; \n\n    this.$el.on(\"click\", \"ul\", function(event) { \n      let $selectedTowerIdx = $(event.currentTarget).data(\"tower-id\");\n      if (self.from  === null) { \n        self.from = $selectedTowerIdx; \n      } else { \n        self.makeMove(self.from, $selectedTowerIdx);\n        self.from = null;\n      }\n    })\n  }\n\n  makeMove($startTowerIdx, $endTowerIdx) { \n    console.log($startTowerIdx, $endTowerIdx);\n  }\n}\n\nmodule.exports = View;\n\n//# sourceURL=webpack:///./src/hanoi-view.js?");
 
 /***/ }),
 

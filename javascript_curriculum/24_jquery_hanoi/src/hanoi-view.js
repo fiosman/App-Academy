@@ -1,8 +1,10 @@
 class View { 
   constructor(game, $el) { 
     this.game = game; 
-    this.$el = $el; //this is figure
+    this.$el = $el;
     this.setupTowers();
+    this.clickTower();
+    this.from = null;
   }
 
   setupTowers() { 
@@ -13,8 +15,26 @@ class View {
 
     for (let i = 0; i < 3; i++) { 
       let $li = $("<li>").addClass(`disc-${i}`).data("disc-id", i); 
-      $("ul").first().append($li)
+      $("ul").first().append($li);
     }
+  }
+  
+  clickTower() { 
+    const self = this; 
+
+    this.$el.on("click", "ul", function(event) { 
+      let $selectedTowerIdx = $(event.currentTarget).data("tower-id");
+      if (self.from  === null) { 
+        self.from = $selectedTowerIdx; 
+      } else { 
+        self.makeMove(self.from, $selectedTowerIdx);
+        self.from = null;
+      }
+    })
+  }
+
+  makeMove($startTowerIdx, $endTowerIdx) { 
+    console.log($startTowerIdx, $endTowerIdx);
   }
 }
 
