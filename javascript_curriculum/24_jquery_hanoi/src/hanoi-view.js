@@ -2,9 +2,9 @@ class View {
   constructor(game, $el) { 
     this.game = game; 
     this.$el = $el;
+    this.from = null;
     this.setupTowers();
     this.clickTower();
-    this.from = null;
   }
 
   setupTowers() { 
@@ -27,7 +27,10 @@ class View {
       if (self.from  === null) { 
         self.from = $selectedTowerIdx; 
       } else { 
-        self.makeMove(self.from, $selectedTowerIdx);
+        if (!self.game.isValidMove(self.from, $selectedTowerIdx)) { 
+          alert('Invalid move!');
+        };
+        self.makeMove(self.from, $selectedTowerIdx)
         self.from = null;
       }
     })
