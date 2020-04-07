@@ -8,14 +8,18 @@ class View {
   }
 
   setupTowers() { 
-    for (let i = 0; i < 3; i++) { 
-      const $ul = $("<ul>").addClass("tower").data("tower-id", i); 
-      this.$el.append($ul); 
-    }
+    let $tower, $disc; 
 
-    for (let i = 0; i < 3; i++) { 
-      let $li = $("<li>").addClass(`disc-${i}`).data("disc-id", i); 
-      $("ul").first().append($li);
+    for (let towerIdx = 0; towerIdx < 3; towerIdx++) { 
+      $tower = $("<ul>").addClass("tower").data("tower-id", towerIdx); 
+      for (let discIdx = 0; discIdx < 3; discIdx++) { 
+        $disc = $("<li>");
+        $tower.append($disc); 
+        if (this.game.towers[towerIdx].length != 0) { 
+          $disc.addClass(`disc-${discIdx}`).data("disc-id", discIdx);
+        }
+      }
+      this.$el.append($tower);
     }
   }
   
@@ -37,7 +41,7 @@ class View {
   }
 
   makeMove($startTowerIdx, $endTowerIdx) { 
-    console.log($startTowerIdx, $endTowerIdx);
+    this.game.towers[$endTowerIdx].push($startTowerIdx);
   }
 }
 
