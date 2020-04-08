@@ -5,6 +5,7 @@ class View {
     this.from = null;
     this.setupTowers();
     this.clickTower();
+    this.render();
   }
 
   setupTowers() { 
@@ -41,7 +42,16 @@ class View {
   }
 
   makeMove($startTowerIdx, $endTowerIdx) { 
-    this.game.towers[$endTowerIdx].push($startTowerIdx);
+
+    // console.log(this.game.towers[$startTowerIdx]);
+    // this.game.towers[$endTowerIdx].push();
+
+  }
+
+  render() { 
+    $("ul.tower").each(function(index) { 
+      console.log(index)
+    })
   }
 }
 
