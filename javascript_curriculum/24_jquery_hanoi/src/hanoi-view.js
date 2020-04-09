@@ -14,7 +14,7 @@ class View {
     for (let towerIdx = 0; towerIdx < 3; towerIdx++) { 
       $tower = $("<ul>").addClass("tower").data("tower-id", towerIdx); 
       for (let discIdx = 0; discIdx < 3; discIdx++) { 
-        $disc = $("<li>");
+        $disc = $("<li>").data("disc-id", discIdx);
         $tower.append($disc); 
         if (this.game.towers[towerIdx].length != 0) { 
           $disc.addClass(`disc-${discIdx}`).data("disc-id", discIdx);
@@ -26,8 +26,11 @@ class View {
   
   clickTower() { 
     const self = this; 
-    this.$el.on("click", "ul", function(event) { 
-      let $selectedTowerIdx = $(event.currentTarget).data("tower-id");
+    this.$el.on("click", "ul", function() {
+      const $currentTower = $(this);
+      $("ul.selected").removeClass("selected");
+      $currentTower.toggleClass("selected"); 
+      let $selectedTowerIdx = $currentTower.data("tower-id");
       if (self.from  === null) { 
         self.from = $selectedTowerIdx; 
       } else { 
@@ -48,8 +51,6 @@ class View {
                        .data("tower-id", $startTowerIdx)
                        .find(`li.disc-${$startTowerIdx}`)
                        .removeClass(`disc-${$startTowerIdx}`)
-    // let $endTower = $("ul.tower").data("tower-id", $endTowerIdx); 
-    // console.log($startTower, $endTower);
   }
 
   render() { 
