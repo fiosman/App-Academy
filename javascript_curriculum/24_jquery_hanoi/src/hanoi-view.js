@@ -26,7 +26,6 @@ class View {
   
   clickTower() { 
     const self = this; 
-
     this.$el.on("click", "ul", function(event) { 
       let $selectedTowerIdx = $(event.currentTarget).data("tower-id");
       if (self.from  === null) { 
@@ -43,7 +42,14 @@ class View {
   }
 
   makeMove($startTowerIdx, $endTowerIdx) { 
-    console.log($startTowerIdx, $endTowerIdx);
+    const game = this.game; 
+    game.move($startTowerIdx, $endTowerIdx);
+    const $startTower = $("ul.tower")
+                       .data("tower-id", $startTowerIdx)
+                       .find(`li.disc-${$startTowerIdx}`)
+                       .removeClass(`disc-${$startTowerIdx}`)
+    // let $endTower = $("ul.tower").data("tower-id", $endTowerIdx); 
+    // console.log($startTower, $endTower);
   }
 
   render() { 
