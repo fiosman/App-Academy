@@ -34,18 +34,16 @@ class View {
       } else { 
         if (!self.game.isValidMove(self.from, $selectedTowerIdx)) { 
           alert('Invalid move!');
-        };
-        self.makeMove(self.from, $selectedTowerIdx)
+        } else { 
+          self.makeMove(self.from, $selectedTowerIdx);
+        }
         self.from = null;
       }
     })
   }
 
   makeMove($startTowerIdx, $endTowerIdx) { 
-
-    // console.log(this.game.towers[$startTowerIdx]);
-    // this.game.towers[$endTowerIdx].push();
-
+    console.log($startTowerIdx, $endTowerIdx);
   }
 
   render() { 
