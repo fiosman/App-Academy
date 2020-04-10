@@ -5,19 +5,18 @@ class View {
     this.from = null;
     this.setupTowers();
     this.clickTower();
-    this.render();
   }
 
   setupTowers() { 
     let $tower, $disc; 
 
     for (let towerIdx = 0; towerIdx < 3; towerIdx++) { 
-      $tower = $("<ul>").addClass("tower").data("tower-id", towerIdx); 
+      $tower = $("<ul>").addClass("tower").attr("data-tower-id", towerIdx); 
       for (let discIdx = 0; discIdx < 3; discIdx++) { 
-        $disc = $("<li>").data("disc-id", discIdx);
+        $disc = $("<li>").attr("data-disc-id", discIdx);
         $tower.append($disc); 
         if (this.game.towers[towerIdx].length != 0) { 
-          $disc.addClass(`disc-${discIdx}`).data("disc-id", discIdx);
+          $disc.addClass(`disc-${discIdx}`).attr("data-disc-id", discIdx);
         }
       }
       this.$el.append($tower);
@@ -47,16 +46,6 @@ class View {
   makeMove($startTowerIdx, $endTowerIdx) { 
     const game = this.game; 
     game.move($startTowerIdx, $endTowerIdx);
-    const $startTower = $("ul.tower")
-                       .data("tower-id", $startTowerIdx)
-                       .find(`li.disc-${$startTowerIdx}`)
-                       .removeClass(`disc-${$startTowerIdx}`)
-  }
-
-  render() { 
-    $("ul.tower").each(function(index) { 
-      console.log(index)
-    })
   }
 }
 
