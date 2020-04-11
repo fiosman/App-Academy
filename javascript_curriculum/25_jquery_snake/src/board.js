@@ -1,21 +1,20 @@
+const Snake = require('./snake.js');
 class Board { 
-  constructor($el) { 
-    this.$gameArea = $el;
-    this.gridSize = 20;
+  constructor(gridSize) { 
+    this.gridSize = gridSize;
+    this.snake = new Snake([
+      Math.floor(this.gridSize/2), 
+      Math.floor(this.gridSize/2)
+    ]);
   }
-  
-  drawGrid() { 
-    for (let rowIdx = 0; rowIdx < this.gridSize; rowIdx++) { 
-      const $tr = $("<tr>");
-      this.$gameArea.append($tr); 
-      for (let colIdx = 0; colIdx < this.gridSize; colIdx++) { 
-        const $td = $("<td>");
-        $td.data("cell-pos", [rowIdx, colIdx]);
-        $tr.append($td);
-      }
-    }
+
+  generateApple() { 
   }
-  
+
+  isValidPos(pos) { 
+    const [x,y] = pos; 
+    return ((x > -1 && x < this.gridSize) && (y > -1 && y < this.gridSize)); 
+  }
 }
 
 module.exports = Board

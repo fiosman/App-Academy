@@ -1,9 +1,9 @@
 const Board = require("./board.js");
+const SnakeView = require("./snake-view.js");
 
 $(() => {
-  const rootEl = $(".game-area");
-  let board = new Board(rootEl);
-  board.drawGrid();
+  const $rootEl = $(".game-area");
+  new SnakeView($rootEl);
 });
 
 
