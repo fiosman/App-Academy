@@ -86,14 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/board.js":
+/*!**********************!*\
+  !*** ./src/board.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class Board { \n  constructor($el) { \n    this.$gameArea = $el;\n    this.gridSize = 20;\n  }\n  \n  drawGrid() { \n    for (let rowIdx = 0; rowIdx < this.gridSize; rowIdx++) { \n      const $tr = $(\"<tr>\");\n      this.$gameArea.append($tr); \n      for (let colIdx = 0; colIdx < this.gridSize; colIdx++) { \n        const $td = $(\"<td>\");\n        $td.data(\"cell-pos\", [rowIdx, colIdx]);\n        $tr.append($td);\n      }\n    }\n  }\n  \n}\n\nmodule.exports = Board\n\n//# sourceURL=webpack:///./src/board.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Board = __webpack_require__(/*! ./board.js */ \"./src/board.js\");\n\n$(() => {\n  const rootEl = $(\".game-area\");\n  let board = new Board(rootEl);\n  board.drawGrid();\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
