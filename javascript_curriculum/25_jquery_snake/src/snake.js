@@ -1,25 +1,33 @@
 class Snake {
-  constructor() {
-    this.direction = DIRS.R; 
+  constructor(position) {
+    this.direction = DIRS[0];
     this.segments = []; 
+    this.position = position;
   }
 
   move() { 
-
+    switch(this.direction) { 
+      case "N": 
+        this.position[1] += 1 
+        break
+      case "S": 
+        this.position[1] -= 1;
+        break
+      case "E": 
+        this.position[0] += 1; 
+        break
+      case "W": 
+        this.position[0] -= 1; 
+        break
+    }; 
   }
 
   turn(direction) { 
     this.direction = direction; 
   }
-  
+
 }
 
-const DIRS = { 
-  R: [1, 0], 
-  L: [-1, 0], 
-  U: [0, 1], 
-  D: [0, -1]
-}; 
-
+const DIRS = ["N", "S", "E", "W"]
 
 module.exports = Snake;
