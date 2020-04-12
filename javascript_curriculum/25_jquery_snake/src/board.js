@@ -7,7 +7,7 @@ class Board {
       Math.floor(this.gridSize/2), 
       Math.floor(this.gridSize/2)
     ]);
-    this.apple = new Apple([13,16]);
+    this.apple = this.generateApple(); 
   }
 
   isValidPos(pos) { 
@@ -18,6 +18,19 @@ class Board {
   isOccupiedBySnake(pos) { 
     return this.snake.position === pos;
   }
-}
+
+  generateApple() { 
+    const potentialApplePos = [ 
+      Math.floor(Math.random() * this.gridSize), 
+      Math.floor(Math.random() * this.gridSize)
+     ]; 
+     
+     if (!this.isOccupiedBySnake(potentialApplePos)) { 
+       return new Apple(potentialApplePos); 
+      } else { 
+        this.generateApple(); 
+      }
+    }
+  }
 
 module.exports = Board
