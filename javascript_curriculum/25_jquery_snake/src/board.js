@@ -7,6 +7,7 @@ class Board {
       Math.floor(this.gridSize/2), 
       Math.floor(this.gridSize/2)
     ]);
+    this.apple = new Apple([13,16]);
   }
 
   isValidPos(pos) { 

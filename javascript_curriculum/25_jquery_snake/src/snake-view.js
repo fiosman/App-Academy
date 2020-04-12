@@ -20,8 +20,10 @@ class SnakeView {
       }
     }
     const initialSnakePos = this.board.snake.position; 
+    const initialApplePos = this.board.apple.position; 
 
     this.findEle(initialSnakePos).addClass("snake");
+    this.findEle(initialApplePos).addClass("apple");
   }
 
   findEle(val) { 
