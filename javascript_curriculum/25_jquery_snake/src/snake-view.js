@@ -6,37 +6,67 @@ class SnakeView {
     this.$gameArea = $gameArea; 
     this.board = new Board(20); 
     this.setUpGrid(this.$gameArea); 
-    this.handleMove()
+    this.moveHandler()
   }
   
   setUpGrid($gameArea) { 
-    for (let rowIdx = 0; rowIdx < this.board.gridSize; rowIdx++) { 
+    for (let yPos = 0; yPos < this.board.gridSize; yPos++) { 
       const $tr = $("<tr>");
       $gameArea.append($tr); 
-      for (let colIdx = 0; colIdx < this.board.gridSize; colIdx++) { 
+      for (let xPos = 0; xPos < this.board.gridSize; xPos++) { 
         const $td = $("<td>");
-        $td.data("cell-pos", [rowIdx, colIdx]);
+        $td.data("cell-pos", [xPos, yPos]);
         $tr.append($td);
       }
     }
     const initialSnakePos = this.board.snake.position; 
 
-    this.setEle(initialSnakePos, "snake");
+    this.findEle(initialSnakePos).addClass("snake");
   }
 
-  setEle(val, className) { 
-    $("td").filter(function() { 
+  findEle(val) { 
+    return $("td").filter(function() { 
       let cellpos = $(this).data('cell-pos');
       return JSON.stringify(cellpos) === JSON.stringify(val);
-    }).addClass(className)
+    })
   }
 
-  handleMove() { 
-    $(this.$gameArea).on("click", "td", function() { 
-      console.log($(this).data("cell-pos"));
-    }) 
+  drawSnake() { 
+    const snake = this.board.snake;
+    if (this.board.isValidPos(snake.position)) { 
+      snake.move();
+      $("td.snake").removeClass("snake");
+      const newSnake = this.findEle(snake.position);
+      newSnake.addClass("snake");
+    } else { 
+      alert('You lose');
+    }
   }
 
+  moveHandler() { 
+    const snake = this.board.snake; 
+    let self = this;
+    $(document).keydown(function(e) { 
+      switch (e.which) {
+        case 37:
+          snake.turn("W")
+          self.drawSnake();
+          break; 
+        case 39: 
+          snake.turn("E");
+          self.drawSnake();
+          break;
+        case 40:
+          snake.turn("S"); 
+          self.drawSnake();
+          break; 
+        case 38:
+          snake.turn("N"); 
+          self.drawSnake();
+          break; 
+      }
+    })
+  }
 }
 
 module.exports = SnakeView;
