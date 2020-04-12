@@ -18,13 +18,21 @@ class SnakeView {
         $td.data("cell-pos", [rowIdx, colIdx]);
         $tr.append($td);
       }
-    }  
+    }
+    
+  }
+
+  findEle(val) { 
+    $("td").filter(function() { 
+      let cellpos = $(this).data('cell-pos');
+      return JSON.stringify(cellpos) === JSON.stringify(val);
+    })
   }
 
   handleMove() { 
-    $(document).keydown(function(event) { 
-      console.log(event.which);
-    })
+    $(this.$gameArea).on("click", "td", function() { 
+      console.log($(this).data("cell-pos"));
+    }) 
   }
 
 }
