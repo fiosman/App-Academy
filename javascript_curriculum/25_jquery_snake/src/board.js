@@ -1,4 +1,5 @@
 const Snake = require('./snake.js');
+const Apple = require('./apple.js'); 
 class Board { 
   constructor(gridSize) { 
     this.gridSize = gridSize;
@@ -8,12 +9,13 @@ class Board {
     ]);
   }
 
-  generateApple() { 
-  }
-
   isValidPos(pos) { 
     const [x,y] = pos; 
     return ((x > -1 && x < this.gridSize) && (y > -1 && y < this.gridSize)); 
+  }
+
+  isOccupiedBySnake(pos) { 
+    return this.snake.position === pos;
   }
 }
 

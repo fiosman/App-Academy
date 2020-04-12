@@ -19,14 +19,16 @@ class SnakeView {
         $tr.append($td);
       }
     }
-    
+    const initialSnakePos = this.board.snake.position; 
+
+    this.setEle(initialSnakePos, "snake");
   }
 
-  findEle(val) { 
+  setEle(val, className) { 
     $("td").filter(function() { 
       let cellpos = $(this).data('cell-pos');
       return JSON.stringify(cellpos) === JSON.stringify(val);
-    })
+    }).addClass(className)
   }
 
   handleMove() { 
