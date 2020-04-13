@@ -40,7 +40,7 @@ class SnakeView {
       const newSnake = this.findEle(this.board.snake.position);
       newSnake.addClass("snake");
       if (this.board.apple.collidedWithSnake(this.board.snake.position)) { 
-        $("td.apple").removeClass("apple");
+        $("td.apple").removeClass().addClass("snake-segment");
         this.board.apple = this.board.generateApple();
         const newApple = this.findEle(this.board.apple.position); 
         newApple.addClass("apple");

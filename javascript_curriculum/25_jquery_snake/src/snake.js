@@ -29,12 +29,10 @@ class Snake {
   growSnake(segment) {
     this.segements.push(segment);
   }
-  
+
 }
 
 module.exports = Snake;
 
 
-// How are we going to make the snake grow? 
-// When it hits a position on the grid that has an apple, console.log that position first
 
