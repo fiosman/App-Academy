@@ -86,14 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/apple.js":
+/*!**********************!*\
+  !*** ./src/apple.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class Apple { \n  constructor(position) { \n    this.position = position; \n  }\n  \n  collidedWithSnake(snakePos) { \n    return JSON.stringify(snakePos) === JSON.stringify(this.position);\n  }\n}\n\nmodule.exports = Apple;\n\n//# sourceURL=webpack:///./src/apple.js?");
+
+/***/ }),
+
 /***/ "./src/board.js":
 /*!**********************!*\
   !*** ./src/board.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("class Board { \n  constructor($el) { \n    this.$gameArea = $el;\n    this.gridSize = 20;\n  }\n  \n  drawGrid() { \n    for (let rowIdx = 0; rowIdx < this.gridSize; rowIdx++) { \n      const $tr = $(\"<tr>\");\n      this.$gameArea.append($tr); \n      for (let colIdx = 0; colIdx < this.gridSize; colIdx++) { \n        const $td = $(\"<td>\");\n        $td.data(\"cell-pos\", [rowIdx, colIdx]);\n        $tr.append($td);\n      }\n    }\n  }\n  \n}\n\nmodule.exports = Board\n\n//# sourceURL=webpack:///./src/board.js?");
+eval("const Snake = __webpack_require__(/*! ./snake.js */ \"./src/snake.js\");\nconst Apple = __webpack_require__(/*! ./apple.js */ \"./src/apple.js\");\nclass Board {\n  constructor(gridSize) {\n    this.gridSize = gridSize;\n    this.snake = new Snake([\n      Math.floor(this.gridSize / 2),\n      Math.floor(this.gridSize / 2),\n    ]);\n    this.apple = this.generateApple(); \n  }\n\n  isValidPos(pos) {\n    const [x, y] = pos;\n    return x > -1 && x < this.gridSize && y > -1 && y < this.gridSize;\n  }\n\n  isOccupiedBySnake(pos) {\n    return this.snake.position === pos;\n  }\n\n  generateApple() {\n    const potentialApplePos = [\n      Math.floor(Math.random() * this.gridSize),\n      Math.floor(Math.random() * this.gridSize),\n    ];\n\n    if (!this.isOccupiedBySnake(potentialApplePos)) {\n      return new Apple(potentialApplePos);\n    } else {\n      this.generateApple();\n    }\n  }\n}\n\nmodule.exports = Board;\n\n\n//# sourceURL=webpack:///./src/board.js?");
 
 /***/ }),
 
@@ -104,7 +115,29 @@ eval("class Board { \n  constructor($el) { \n    this.$gameArea = $el;\n    this
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Board = __webpack_require__(/*! ./board.js */ \"./src/board.js\");\n\n$(() => {\n  const rootEl = $(\".game-area\");\n  let board = new Board(rootEl);\n  board.drawGrid();\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Board = __webpack_require__(/*! ./board.js */ \"./src/board.js\");\nconst SnakeView = __webpack_require__(/*! ./snake-view.js */ \"./src/snake-view.js\");\n\n$(() => {\n  const $rootEl = $(\".game-area\");\n  new SnakeView($rootEl);\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/snake-view.js":
+/*!***************************!*\
+  !*** ./src/snake-view.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const Board = __webpack_require__(/*! ./board.js */ \"./src/board.js\"); \nconst Snake = __webpack_require__(/*! ./snake.js */ \"./src/snake.js\"); \n\nclass SnakeView { \n  constructor($gameArea) { \n    this.$gameArea = $gameArea; \n    this.board = new Board(20); \n    this.setUpGrid(this.$gameArea); \n    this.moveHandler()\n  }\n  \n  setUpGrid($gameArea) { \n    for (let yPos = 0; yPos < this.board.gridSize; yPos++) { \n      const $tr = $(\"<tr>\");\n      $gameArea.append($tr); \n      for (let xPos = 0; xPos < this.board.gridSize; xPos++) { \n        const $td = $(\"<td>\");\n        $td.data(\"cell-pos\", [xPos, yPos]);\n        $tr.append($td);\n      }\n    }\n    const initialSnakePos = this.board.snake.position; \n    const initialApplePos = this.board.apple.position; \n\n    this.findEle(initialSnakePos).addClass(\"snake\");\n    this.findEle(initialApplePos).addClass(\"apple\");\n  }\n\n  findEle(val) { \n    return $(\"td\").filter(function() { \n      let cellpos = $(this).data('cell-pos');\n      return JSON.stringify(cellpos) === JSON.stringify(val);\n    })\n  }\n\n  drawObjects() { \n    if (this.board.isValidPos(this.board.snake.position)) { \n      this.board.snake.move();\n      $(\"td.snake\").removeClass(\"snake\");\n      const newSnake = this.findEle(this.board.snake.position);\n      newSnake.addClass(\"snake\");\n      if (this.board.apple.collidedWithSnake(this.board.snake.position)) { \n        $(\"td.apple\").removeClass().addClass(\"snake-segment\");\n        this.board.apple = this.board.generateApple();\n        const newApple = this.findEle(this.board.apple.position); \n        newApple.addClass(\"apple\");\n      }\n    } else { \n      alert(\"you lose\");\n    }\n  }\n\n  moveHandler() { \n    const snake = this.board.snake; \n    let self = this;\n    $(document).keydown(function(e) { \n      switch (e.which) {\n        case 37:\n          snake.turn(\"W\")\n          self.drawObjects();\n          break; \n        case 39: \n          snake.turn(\"E\");\n          self.drawObjects();\n          break;\n        case 40:\n          snake.turn(\"S\"); \n          self.drawObjects();\n          break; \n        case 38:\n          snake.turn(\"N\"); \n          self.drawObjects();\n          break; \n      }\n    })\n  }\n}\n\nmodule.exports = SnakeView;\n\n//# sourceURL=webpack:///./src/snake-view.js?");
+
+/***/ }),
+
+/***/ "./src/snake.js":
+/*!**********************!*\
+  !*** ./src/snake.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class Snake {\n  constructor(position) {\n    this.direction = \"N\";\n    this.segments = [];\n    this.position = position;\n  }\n\n  move() {\n    switch (this.direction) {\n      case \"N\":\n        this.position[1] -= 1;\n        break;\n      case \"S\":\n        this.position[1] += 1;\n        break;\n      case \"E\":\n        this.position[0] += 1;\n        break;\n      case \"W\":\n        this.position[0] -= 1;\n        break;\n    }\n  }\n\n  turn(direction) {\n    this.direction = direction;\n  }\n\n  growSnake(segment) {\n    this.segements.push(segment);\n  }\n\n}\n\nmodule.exports = Snake;\n\n\n\n\n\n//# sourceURL=webpack:///./src/snake.js?");
 
 /***/ })
 
