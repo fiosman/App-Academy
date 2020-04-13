@@ -33,15 +33,20 @@ class SnakeView {
     })
   }
 
-  drawSnake() { 
-    const snake = this.board.snake;
-    if (this.board.isValidPos(snake.position)) { 
-      snake.move();
+  drawObjects() { 
+    if (this.board.isValidPos(this.board.snake.position)) { 
+      this.board.snake.move();
       $("td.snake").removeClass("snake");
-      const newSnake = this.findEle(snake.position);
+      const newSnake = this.findEle(this.board.snake.position);
       newSnake.addClass("snake");
+      if (this.board.apple.collidedWithSnake(this.board.snake.position)) { 
+        $("td.apple").removeClass("apple");
+        this.board.apple = this.board.generateApple();
+        const newApple = this.findEle(this.board.apple.position); 
+        newApple.addClass("apple");
+      }
     } else { 
-      alert('You lose');
+      alert("you lose");
     }
   }
 
@@ -52,19 +57,19 @@ class SnakeView {
       switch (e.which) {
         case 37:
           snake.turn("W")
-          self.drawSnake();
+          self.drawObjects();
           break; 
         case 39: 
           snake.turn("E");
-          self.drawSnake();
+          self.drawObjects();
           break;
         case 40:
           snake.turn("S"); 
-          self.drawSnake();
+          self.drawObjects();
           break; 
         case 38:
           snake.turn("N"); 
-          self.drawSnake();
+          self.drawObjects();
           break; 
       }
     })
