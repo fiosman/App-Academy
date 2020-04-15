@@ -137,7 +137,7 @@ eval("const Board = __webpack_require__(/*! ./board.js */ \"./src/board.js\"); \
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class Snake {\n  constructor(position) {\n    this.direction = \"N\";\n    this.segments = [];\n    this.position = position;\n  }\n\n  move() {\n    switch (this.direction) {\n      case \"N\":\n        this.position[1] -= 1;\n        break;\n      case \"S\":\n        this.position[1] += 1;\n        break;\n      case \"E\":\n        this.position[0] += 1;\n        break;\n      case \"W\":\n        this.position[0] -= 1;\n        break;\n    }\n  }\n\n  turn(direction) {\n    this.direction = direction;\n  }\n\n  growSnake(segment) {\n    this.segements.push(segment);\n  }\n\n}\n\nmodule.exports = Snake;\n\n\n\n\n\n//# sourceURL=webpack:///./src/snake.js?");
+eval("class Snake {\n  constructor(position) {\n    this.direction = \"N\";\n    this.segments = [this];\n    this.position = position;\n  }\n\n  move() {\n    switch (this.direction) {\n      case \"N\":\n        this.position[1] -= 1;\n        break;\n      case \"S\":\n        this.position[1] += 1;\n        break;\n      case \"E\":\n        this.position[0] += 1;\n        break;\n      case \"W\":\n        this.position[0] -= 1;\n        break;\n    }\n  }\n\n  turn(direction) {\n    this.direction = direction;\n  }\n\n  growSnake(segment) {\n    this.segments.push(segment);\n  }\n\n  head() { \n    return this.segments[0]; \n  }\n\n}\n\nlet snake = new Snake([1,1]);\nlet newSnake = new Snake([2,3])\n\nsnake.growSnake(newSnake);\nconsole.log(snake.segments)\nconsole.log(snake.head())\n\nmodule.exports = Snake;\n\n\n\n\n\n//# sourceURL=webpack:///./src/snake.js?");
 
 /***/ })
 

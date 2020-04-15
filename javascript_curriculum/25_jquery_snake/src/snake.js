@@ -1,7 +1,7 @@
 class Snake {
   constructor(position) {
     this.direction = "N";
-    this.segments = [];
+    this.segments = [this];
     this.position = position;
   }
 
@@ -27,10 +27,21 @@ class Snake {
   }
 
   growSnake(segment) {
-    this.segements.push(segment);
+    this.segments.push(segment);
+  }
+
+  head() { 
+    return this.segments[0]; 
   }
 
 }
+
+let snake = new Snake([1,1]);
+let newSnake = new Snake([2,3])
+
+snake.growSnake(newSnake);
+console.log(snake.segments)
+console.log(snake.head())
 
 module.exports = Snake;
 
