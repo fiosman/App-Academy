@@ -42,25 +42,6 @@ class Snake {
     return this.segments[0]; 
   }
 
-}
-
-let snake = new Snake([1,1]);
-// let newSnake = new Snake([2,3])
-
-snake.move() //[[1,1], [1,2]]
-snake.turn("N")
-snake.move(); // [[1,1], [1,2], [1,1]]
-snake.turn("W")
-snake.move(); // [[1,1], [1,2], [1,1], [0, 1]]
-snake.turn("N") 
-snake.move(); // [[1,1], [1,2], [1,1], [0, 1], [0, 0]]
-snake.turn("E") 
-snake.move() // [[1,1], [1,2], [1,1], [0, 1], [0, 0], [1, 0]]
-console.log(snake.segments)
-// snake.turn("W"); 
-// snake.move();
-// console.log(snake.position);
-
 module.exports = Snake;
 
 
