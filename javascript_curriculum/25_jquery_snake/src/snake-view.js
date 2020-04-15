@@ -35,8 +35,10 @@ class SnakeView {
 
   drawObjects() { 
     if (this.board.isValidPos(this.board.snake.position)) { 
+      let oldPos = this.board.snake.position;
+      this.board.snake.segments.push(oldPos); 
       this.board.snake.move();
-      $("td.snake").removeClass("snake");
+      this.board.snake.segments.push(this.board.snake.position);
       const newSnake = this.findEle(this.board.snake.position);
       newSnake.addClass("snake");
       if (this.board.apple.collidedWithSnake(this.board.snake.position)) { 
@@ -48,6 +50,7 @@ class SnakeView {
     } else { 
       alert("you lose");
     }
+    console.log(this.board.snake.segments);
   }
 
   moveHandler() { 

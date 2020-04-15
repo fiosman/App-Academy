@@ -1,23 +1,31 @@
 class Snake {
   constructor(position) {
-    this.direction = "N";
-    this.segments = [this];
+    this.direction = "S";
     this.position = position;
+    this.segments = [this.position];
   }
 
   move() {
     switch (this.direction) {
       case "N":
-        this.position[1] -= 1;
+        const nPos = [this.position[0], this.position[1] - 1]; 
+        this.segments.push(nPos);
+        this.position = nPos
         break;
       case "S":
-        this.position[1] += 1;
+        const sPos = [this.position[0], this.position[1] + 1];
+        this.segments.push(sPos);
+        this.position = sPos;
         break;
       case "E":
-        this.position[0] += 1;
+        const ePos = [this.position[0] + 1, this.position[1]]; 
+        this.segments.push(ePos); 
+        this.position = ePos; 
         break;
       case "W":
-        this.position[0] -= 1;
+        const wPos = [this.position[0] - 1, this.position[1]]; 
+        this.segments.push(wPos);
+        this.position = wPos
         break;
     }
   }
@@ -26,8 +34,8 @@ class Snake {
     this.direction = direction;
   }
 
-  growSnake(segment) {
-    this.segments.push(segment);
+  growSnake(snakePos) {
+    this.segments.push(snakePos);
   }
 
   head() { 
@@ -37,11 +45,21 @@ class Snake {
 }
 
 let snake = new Snake([1,1]);
-let newSnake = new Snake([2,3])
+// let newSnake = new Snake([2,3])
 
-snake.growSnake(newSnake);
+snake.move() //[[1,1], [1,2]]
+snake.turn("N")
+snake.move(); // [[1,1], [1,2], [1,1]]
+snake.turn("W")
+snake.move(); // [[1,1], [1,2], [1,1], [0, 1]]
+snake.turn("N") 
+snake.move(); // [[1,1], [1,2], [1,1], [0, 1], [0, 0]]
+snake.turn("E") 
+snake.move() // [[1,1], [1,2], [1,1], [0, 1], [0, 0], [1, 0]]
 console.log(snake.segments)
-console.log(snake.head())
+// snake.turn("W"); 
+// snake.move();
+// console.log(snake.position);
 
 module.exports = Snake;
 
