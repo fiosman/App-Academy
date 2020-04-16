@@ -35,13 +35,14 @@ class SnakeView {
 
   drawObjects() { 
     if (this.board.isValidPos(this.board.snake.position)) { 
-      let oldPos = this.board.snake.position;
-      this.board.snake.segments.push(oldPos); 
       this.board.snake.move();
-      this.board.snake.segments.push(this.board.snake.position);
+      $("td.snake").removeClass("snake");
+      console.log(this.board.snake.segments)
       const newSnake = this.findEle(this.board.snake.position);
       newSnake.addClass("snake");
       if (this.board.apple.collidedWithSnake(this.board.snake.position)) { 
+        let segmentPos = this.board.apple.position;
+        this.board.snake.growSnake(segmentPos);
         $("td.apple").removeClass().addClass("snake-segment");
         this.board.apple = this.board.generateApple();
         const newApple = this.findEle(this.board.apple.position); 
@@ -50,7 +51,6 @@ class SnakeView {
     } else { 
       alert("you lose");
     }
-    console.log(this.board.snake.segments);
   }
 
   moveHandler() { 

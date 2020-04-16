@@ -8,24 +8,16 @@ class Snake {
   move() {
     switch (this.direction) {
       case "N":
-        const nPos = [this.position[0], this.position[1] - 1]; 
-        this.segments.push(nPos);
-        this.position = nPos
+        this.position[1] -= 1
         break;
       case "S":
-        const sPos = [this.position[0], this.position[1] + 1];
-        this.segments.push(sPos);
-        this.position = sPos;
+        this.position[1] += 1;
         break;
       case "E":
-        const ePos = [this.position[0] + 1, this.position[1]]; 
-        this.segments.push(ePos); 
-        this.position = ePos; 
+        this.position[0] += 1; 
         break;
       case "W":
-        const wPos = [this.position[0] - 1, this.position[1]]; 
-        this.segments.push(wPos);
-        this.position = wPos
+        this.position[0] -= 1;
         break;
     }
   }
@@ -41,8 +33,6 @@ class Snake {
   head() { 
     return this.segments[0]; 
   }
+}
 
-module.exports = Snake;
-
-
-
+  module.exports = Snake;
