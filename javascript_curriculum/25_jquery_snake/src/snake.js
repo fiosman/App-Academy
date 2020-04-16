@@ -1,6 +1,6 @@
 class Snake {
   constructor(position) {
-    this.direction = "S";
+    this.direction = "E";
     this.position = position;
     this.segments = [this.position];
   }
