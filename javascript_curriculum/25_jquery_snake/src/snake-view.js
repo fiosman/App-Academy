@@ -67,42 +67,42 @@ class SnakeView {
       switch (e.which) {
         case 37: //left
           if (snake.direction === "E" || snake.direction === "W") {
-            clearInterval(this.timer)
-            this.timer = self.animateSnake();
+            clearInterval(self.timer)
+            self.timer = self.animateSnake();
           } else {
             snake.turn("W");
-            clearInterval(this.timer)
-            this.timer = self.animateSnake();
+            clearInterval(self.timer)
+            self.timer = self.animateSnake();
           }
           break;
         case 39: //right
           if (snake.direction === "E" || snake.direction === "W") { 
-            clearInterval(this.timer)
-            this.timer = self.animateSnake();
+            clearInterval(self.timer)
+            self.timer = self.animateSnake();
           } else {
-            clearInterval(this.timer)
+            clearInterval(self.timer)
             snake.turn("E");
-            this.timer = self.animateSnake();
+            self.timer = self.animateSnake();
           }
           break;
         case 40: //down arrow
           if (snake.direction === "S" || snake.direction === "N") {
-            clearInterval(this.timer)
+            clearInterval(self.timer)
             self.animateSnake();
           } else {
-            clearInterval(this.timer)
+            clearInterval(self.timer)
             snake.turn("S");
-            this.timer = self.animateSnake();
+            self.timer = self.animateSnake();
           }
           break;
         case 38: //up arrow
           if (snake.direction === "S" || snake.direction === "N") {
-            clearInterval(this.timer)
-            this.timer = self.animateSnake();
+            clearInterval(self.timer)
+            self.timer = self.animateSnake();
           } else {
-            clearInterval(this.timer)
+            clearInterval(self.timer)
             snake.turn("N");
-            this.timer = self.animateSnake();
+            self.timer = self.animateSnake();
           }
           break
       }
