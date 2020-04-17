@@ -50,14 +50,18 @@ class SnakeView {
       }
     } else {
       alert("you lose");
+      return;
     }
   }
 
   animateSnake() { 
     let self = this;
-    this.timer = setInterval(function() { 
-      self.drawObjects(); 
-    }, 1000)
+    console.log(this.timer);
+    if (typeof(this.timer) === 'undefined') { 
+      this.timer = setInterval(function() { 
+        self.drawObjects(); 
+      }, 1000)
+    }
   }
 
   moveHandler() {
@@ -66,41 +70,33 @@ class SnakeView {
     $(document).keydown(function (e) {
       switch (e.which) {
         case 37: //left
-          if (snake.direction === "E" || snake.direction === "W") {
-            clearInterval(self.timer)
+          if (snake.direction === "E" || snake.direction === "W") { 
             self.timer = self.animateSnake();
           } else {
             snake.turn("W");
-            clearInterval(self.timer)
             self.timer = self.animateSnake();
           }
           break;
         case 39: //right
           if (snake.direction === "E" || snake.direction === "W") { 
-            clearInterval(self.timer)
             self.timer = self.animateSnake();
           } else {
-            clearInterval(self.timer)
             snake.turn("E");
             self.timer = self.animateSnake();
           }
           break;
         case 40: //down arrow
           if (snake.direction === "S" || snake.direction === "N") {
-            clearInterval(self.timer)
             self.animateSnake();
           } else {
-            clearInterval(self.timer)
             snake.turn("S");
             self.timer = self.animateSnake();
           }
           break;
         case 38: //up arrow
           if (snake.direction === "S" || snake.direction === "N") {
-            clearInterval(self.timer)
             self.timer = self.animateSnake();
           } else {
-            clearInterval(self.timer)
             snake.turn("N");
             self.timer = self.animateSnake();
           }
