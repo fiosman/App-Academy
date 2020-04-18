@@ -1,0 +1,26 @@
+<h2>New Tweet!</h2>
+<form action="/tweets" method="POST">
+  <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+
+  <label>
+    Content
+    <textarea name="tweet[content]"></textarea>
+  </label>
+  <br>
+
+  <label>
+    Mention
+    <select name="tweet[mentioned_user_ids][]">
+      <option></option>
+      <% User.all.each do |user| %>
+        <option value="<%= user.id %>"><%= user.username %></option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
+  <input type="Submit" value="Post Tweet!">
+</form>
