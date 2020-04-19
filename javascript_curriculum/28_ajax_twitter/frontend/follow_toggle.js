@@ -10,18 +10,6 @@ class FollowToggle {
   }
 
   render() {
-    // if (this.followState === "unfollowed") {
-    //   this.$el.text("Follow!");
-    // } else if (this.followState === "followed") {
-    //   this.$el.text("Unfollow");
-    // } else if (this.followState === "unfollowing") { 
-    //   this.$el.prop("disabled", true);
-    //   this.$el.text("Unfollowing"); 
-    // } else { 
-    //   this.$el.prop("disabled", false); 
-    //   this.$el.text("Following");
-    // }
-
     switch(this.followState) { 
       case 'followed': 
         this.$el.prop("disabled", false); 
