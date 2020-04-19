@@ -133,10 +133,10 @@ module.exports = APIUtil;
 const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js");
 
 class FollowToggle {
-  constructor($el) {
-    this.userId = $el.data("user-id");
-    this.followState = $el.data("initial-follow-state");
+  constructor($el, options) {
     this.$el = $el;
+    this.userId = this.$el.data("user-id") || options.userId;
+    this.followState = this.$el.data("initial-follow-state") || options.followState;
     this.render();
     this.handleClick();
   }
@@ -219,37 +219,44 @@ $(() => {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js"); 
+const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js");
+const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 
-class UsersSearch { 
-  constructor($el) { 
-    this.$el = $el; 
-    this.$input = this.$el.find("input#users-search-field"); 
+class UsersSearch {
+  constructor($el) {
+    this.$el = $el;
+    this.$input = this.$el.find("input#users-search-field");
     this.$ul = this.$el.find("ul.users");
-    this.handleInput()
+    this.handleInput();
   }
 
-  handleInput() { 
-    this.$input.on("input", () => { 
-      APIUtil.searchUsers(this.$input.val()).then( users => { 
-        this.renderResults(users); 
-      })
-    })
+  handleInput() {
+    this.$input.on("input", () => {
+      APIUtil.searchUsers(this.$input.val()).then((users) => {
+        this.renderResults(users);
+      });
+    });
   }
 
-  renderResults(users) { 
-    this.$ul.empty(); 
+  renderResults(users) {
+    this.$ul.empty();
 
-    for (let i = 0; i < users.length; i++) { 
-      let $li = $("<li>").html(`<a href=/users/${users[i].id}> ${users[i].username}</a>`); 
-      this.$ul.append($li); 
+    for (let i = 0; i < users.length; i++) {
+      let $button = $("<button>");
+      new FollowToggle($button, {
+        userId: users[i].id,
+        followState: users[i].followed ? "followed" : "unfollowed"
+      });
+      let $li = $("<li>").html(`<a href=/users/${users[i].id}> ${users[i].username}</a> `); 
+      $li.append($button);
+      this.$ul.append($li);
     }
-    return this.$ul; 
+    return this.$ul;
   }
-
 }
 
 module.exports = UsersSearch;
+
 
 /***/ })
 
