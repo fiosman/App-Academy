@@ -107,6 +107,14 @@ const APIUtil = {
       type: 'DELETE', 
       dataType: 'JSON'
     }); 
+  }, 
+  searchUsers: function(queryVal) { 
+    return $.ajax({ 
+      url: `/users/search`,
+      type: 'GET', 
+      dataType: 'JSON',
+      data: {query: queryVal}
+    });
   }
 }
 
@@ -188,14 +196,60 @@ module.exports = FollowToggle;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js"); 
+const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
+const UsersSearch = __webpack_require__(/*! ./users_search.js */ "./frontend/users_search.js");
 
-$(() => { 
-  $("button.follow-toggle").each(function() { 
-    new FollowToggle($(this)); 
-  }); 
-})
+$(() => {
+  $("button.follow-toggle").each(function () {
+    console.log(new FollowToggle($(this)));
+  });
 
+  $("nav.users-search").each(function () {
+    console.log(new UsersSearch($(this)));
+  });
+});
+
+
+/***/ }),
+
+/***/ "./frontend/users_search.js":
+/*!**********************************!*\
+  !*** ./frontend/users_search.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js"); 
+
+class UsersSearch { 
+  constructor($el) { 
+    this.$el = $el; 
+    this.$input = this.$el.find("input#users-search-field"); 
+    this.$ul = this.$el.find("ul.users");
+    this.handleInput()
+  }
+
+  handleInput() { 
+    this.$input.on("input", () => { 
+      APIUtil.searchUsers(this.$input.val()).then( users => { 
+        this.renderResults(users); 
+      })
+    })
+  }
+
+  renderResults(users) { 
+    this.$ul.empty(); 
+
+    for (let i = 0; i < users.length; i++) { 
+      let $li = $("<li>").html(`<a href=/users/${users[i].id}> ${users[i].username}</a>`); 
+      this.$ul.append($li); 
+    }
+    return this.$ul; 
+  }
+
+}
+
+module.exports = UsersSearch;
 
 /***/ })
 
