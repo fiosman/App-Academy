@@ -86,12 +86,43 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/api_util.js":
+/*!******************************!*\
+  !*** ./frontend/api_util.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const APIUtil = { 
+  followUser: function(id) { 
+    return $.ajax({ 
+      url: `/users/${id}/follow`, 
+      type: 'POST', 
+      dataType: 'JSON'
+    }); 
+  }, 
+  unfollowUser: function(id) { 
+    return $.ajax({ 
+      url: `/users/${id}/follow`, 
+      type: 'DELETE', 
+      dataType: 'JSON'
+    }); 
+  }
+}
+
+module.exports = APIUtil; 
+
+
+/***/ }),
+
 /***/ "./frontend/follow_toggle.js":
 /*!***********************************!*\
   !*** ./frontend/follow_toggle.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js");
 
 class FollowToggle {
   constructor($el) {
@@ -111,38 +142,22 @@ class FollowToggle {
   }
 
   handleClick() {
-    let self = this; 
+    let self = this;
 
     this.$el.on("click", function (e) {
       e.preventDefault();
       if (self.followState === "unfollowed") {
-        $.ajax({
-          url: `/users/${self.userId}/follow`,
-          type: "POST",
-          dataType: "json",
-          success: function () {
-            self.followState = "followed";
-            self.render();
-          },
-          error: function (e) {
-            console.log(e);
-          },
+        APIUtil.followUser(self.userId).then(() => {
+          self.followState = "followed";
+          self.render();
         });
       } else {
-        $.ajax({
-          url: `/users/${self.userId}/follow`,
-          type: "DELETE",
-          dataType: "json",
-          success: function () {
-            self.followState = "unfollowed";
-            self.render();
-          },
-          error: function (e) {
-            console.log(e);
-          },
+        APIUtil.unfollowUser(self.userId).then(() => {
+          self.followState = "unfollowed";
+          self.render();
         });
       }
-    })
+    });
   }
 }
 
