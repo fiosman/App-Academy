@@ -134,24 +134,51 @@ class FollowToggle {
   }
 
   render() {
-    if (this.followState === "unfollowed") {
-      this.$el.text("Follow!");
-    } else if (this.followState === "followed") {
-      this.$el.text("Unfollow");
+    // if (this.followState === "unfollowed") {
+    //   this.$el.text("Follow!");
+    // } else if (this.followState === "followed") {
+    //   this.$el.text("Unfollow");
+    // } else if (this.followState === "unfollowing") { 
+    //   this.$el.prop("disabled", true);
+    //   this.$el.text("Unfollowing"); 
+    // } else { 
+    //   this.$el.prop("disabled", false); 
+    //   this.$el.text("Following");
+    // }
+
+    switch(this.followState) { 
+      case 'followed': 
+        this.$el.prop("disabled", false); 
+        this.$el.text("Unfollow"); 
+        break; 
+      case 'following': 
+        this.$el.prop("disabled", true); 
+        this.$el.text("Following..."); 
+        break; 
+      case 'unfollowed': 
+        this.$el.prop("disabled", false); 
+        this.$el.text("Follow"); 
+        break; 
+      case 'unfollowing': 
+        this.$el.prop("disabled", true); 
+        this.$el.text("Unfollowing...")
     }
   }
 
   handleClick() {
     let self = this;
-
     this.$el.on("click", function (e) {
       e.preventDefault();
       if (self.followState === "unfollowed") {
+        self.followState = "following"; 
+        self.render();
         APIUtil.followUser(self.userId).then(() => {
           self.followState = "followed";
           self.render();
         });
-      } else {
+      } else if (self.followState === "followed"){
+        self.followState = "unfollowing"; 
+        self.render(); 
         APIUtil.unfollowUser(self.userId).then(() => {
           self.followState = "unfollowed";
           self.render();
