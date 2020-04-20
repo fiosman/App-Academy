@@ -1,12 +1,18 @@
 const FollowToggle = require("./follow_toggle.js");
 const UsersSearch = require("./users_search.js");
+const TweetCompose = require("./tweet_compose.js")
 
 $(() => {
   $("button.follow-toggle").each(function () {
-    console.log(new FollowToggle($(this)));
+    new FollowToggle($(this));
   });
 
   $("nav.users-search").each(function () {
-    console.log(new UsersSearch($(this)));
+    new UsersSearch($(this));
   });
+
+  $("form.tweet-compose").each(function() { 
+    new TweetCompose($(this)); 
+  }); 
+
 });

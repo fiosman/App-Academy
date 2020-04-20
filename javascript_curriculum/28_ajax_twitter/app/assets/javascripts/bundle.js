@@ -115,6 +115,14 @@ const APIUtil = {
       dataType: 'JSON',
       data: {query: queryVal}
     });
+  }, 
+  createTweet: function(data) { 
+    return $.ajax({ 
+      url: '/tweets', 
+      type: 'POST', 
+      dataType: 'JSON', 
+      data: data
+    });
   }
 }
 
@@ -189,6 +197,64 @@ module.exports = FollowToggle;
 
 /***/ }),
 
+/***/ "./frontend/tweet_compose.js":
+/*!***********************************!*\
+  !*** ./frontend/tweet_compose.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const APIUtil = __webpack_require__(/*! ./api_util.js */ "./frontend/api_util.js");
+
+class TweetCompose {
+  constructor($form) {
+    this.$form = $form;
+    this.$form.on("submit", this.submit.bind(this));
+    this.$form.find("textarea").on("input", (e) => {
+      let maxCharCount = 140;
+      let currentTextLength = e.currentTarget.value.length;
+      let currentCharCount = maxCharCount - currentTextLength;
+      this.$form
+        .find("strong.chars-left")
+        .text(`${currentCharCount} characters left`);
+    });
+  }
+
+  submit(e) {
+    e.preventDefault();
+    const $formInputs = this.$form.find(":input");
+
+    const $formData = $(e.currentTarget).serialize();
+
+    $formInputs.prop("disabled", true);
+
+    APIUtil.createTweet($formData).then(this.handleSuccess.bind(this));
+  }
+
+  clearInput() {
+    const $formInputs = this.$form.find(
+      ":input:not(input[type='Submit'], input[type='hidden'])"
+    );
+    $formInputs.val("");
+  }
+
+  handleSuccess(data) {
+    this.clearInput();
+    const $disabledInputs = this.$form.find(":input:disabled");
+    $disabledInputs.removeAttr("disabled");
+
+    const $targetUl = this.$form.data("tweets-ul");
+    const tweet = JSON.stringify(data);
+
+    $($targetUl).prepend(`<li>${tweet}</li>`);
+  }
+}
+
+module.exports = TweetCompose;
+
+
+/***/ }),
+
 /***/ "./frontend/twitter.js":
 /*!*****************************!*\
   !*** ./frontend/twitter.js ***!
@@ -198,15 +264,21 @@ module.exports = FollowToggle;
 
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 const UsersSearch = __webpack_require__(/*! ./users_search.js */ "./frontend/users_search.js");
+const TweetCompose = __webpack_require__(/*! ./tweet_compose.js */ "./frontend/tweet_compose.js")
 
 $(() => {
   $("button.follow-toggle").each(function () {
-    console.log(new FollowToggle($(this)));
+    new FollowToggle($(this));
   });
 
   $("nav.users-search").each(function () {
-    console.log(new UsersSearch($(this)));
+    new UsersSearch($(this));
   });
+
+  $("form.tweet-compose").each(function() { 
+    new TweetCompose($(this)); 
+  }); 
+
 });
 
 
