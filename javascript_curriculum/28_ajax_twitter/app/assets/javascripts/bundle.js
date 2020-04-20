@@ -218,6 +218,7 @@ class TweetCompose {
         .find("strong.chars-left")
         .text(`${currentCharCount} characters left`);
     });
+    this.newUserSelect();
   }
 
   submit(e) {
@@ -247,6 +248,10 @@ class TweetCompose {
     const tweet = JSON.stringify(data);
 
     $($targetUl).prepend(`<li>${tweet}</li>`);
+  }
+
+  newUserSelect() { 
+    console.log(window.users); 
   }
 }
 
