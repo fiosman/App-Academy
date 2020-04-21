@@ -251,7 +251,12 @@ class TweetCompose {
   }
 
   newUserSelect() { 
-    console.log(window.users); 
+    const $selectEle = $("<select name='tweet[mentioned_user_ids][]'>"); 
+    const users = window.users; 
+
+    users.forEach(user => { 
+      $selectEle.append(`<option value=${user.id}>${user.username}</option>`)
+    }); 
   }
 }
 
