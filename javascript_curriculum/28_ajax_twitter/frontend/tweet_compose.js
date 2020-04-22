@@ -12,12 +12,14 @@ class TweetCompose {
         .find("strong.chars-left")
         .text(`${currentCharCount} characters left`);
     });
-    this.newUserSelect();
+    this.$form.find(".add-mention").on("click", () => { 
+      this.newUserSelect(); 
+    })
   }
 
   submit(e) {
     e.preventDefault();
-    const $formInputs = this.$form.find(":input");
+    const $formInputs = this.$form.find(":input")
 
     const $formData = $(e.currentTarget).serialize();
 
@@ -29,7 +31,7 @@ class TweetCompose {
   clearInput() {
     const $formInputs = this.$form.find(
       ":input:not(input[type='Submit'], input[type='hidden'])"
-    );
+    )
     $formInputs.val("");
   }
 
@@ -51,6 +53,8 @@ class TweetCompose {
     users.forEach(user => { 
       $selectEle.append(`<option value=${user.id}>${user.username}</option>`)
     }); 
+
+    $selectEle.insertAfter("textarea");
   }
 }
 
