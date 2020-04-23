@@ -3,9 +3,9 @@ const APIUtil = require("./api_util.js");
 class TweetCompose {
   constructor($form) {
     this.$form = $form;
-    this.$form.on("submit", this.submit.bind(this));
     this.$form.find("textarea").on("input", this.handleInput.bind(this)); 
     this.$form.find(".add-mention").on("click", this.newUserSelect.bind(this))
+    this.$form.on("submit", this.submit.bind(this));
   }
 
   handleInput(e) {
