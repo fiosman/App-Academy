@@ -4,7 +4,7 @@ class TweetCompose {
   constructor($form) {
     this.$form = $form;
     this.$form.find("textarea").on("input", this.handleInput.bind(this)); 
-    this.$form.find(".add-mention").on("click", this.newUserSelect.bind(this))
+    this.$form.find(".add-mention").on("click", this.newUserSelect.bind(this));
     this.$form.on("submit", this.submit.bind(this));
   }
 
@@ -12,17 +12,16 @@ class TweetCompose {
     let maxCharCount = 140; 
     let currentTextLength = e.currentTarget.value.length; 
     let currentCharCount = maxCharCount - currentTextLength; 
+
     this.$form.find("strong.chars-left").text(`${currentCharCount} characters left`);
   }
 
   submit(e) {
     e.preventDefault();
     const $formInputs = this.$form.find(":input");
-
     const $formData = $(e.currentTarget).serialize();
-
+    
     $formInputs.prop("disabled", true);
-
     APIUtil.createTweet($formData).then(this.handleSuccess.bind(this));
   }
 
@@ -46,13 +45,19 @@ class TweetCompose {
 
   newUserSelect() { 
     const $selectEle = $("<select name='tweet[mentioned_user_ids][]'>"); 
+    const $wrapper = $("<div>"); 
+    const $removeMentionedUser = $('<button type="button">').html("Remove").addClass("remove-mentioned-user"); 
     const users = window.users; 
 
     users.forEach(user => { 
       $selectEle.append(`<option value=${user.id}>${user.username}</option>`)
     }); 
+    $wrapper.append($selectEle).insertAfter("textarea");
+    $wrapper.append($removeMentionedUser);
+  }
 
-    $selectEle.insertAfter("textarea");
+  removeMentionedUser() { 
+
   }
   
 }
