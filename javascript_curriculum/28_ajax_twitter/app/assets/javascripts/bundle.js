@@ -211,6 +211,8 @@ class TweetCompose {
     this.$form = $form;
     this.$form.find("textarea").on("input", this.handleInput.bind(this));
     this.$form.find(".add-mention").on("click", this.newUserSelect.bind(this));
+    this.$mentionedUsersUl = this.$form.find(".mentioned-users"); 
+    this.$mentionedUsersUl.on("click", ".remove-mentioned-user", this.removeMentionedUser.bind(this))
     this.$form.on("submit", this.submit.bind(this));
   }
 
@@ -264,6 +266,7 @@ class TweetCompose {
     });
     $wrapper.append($selectEle).insertAfter("textarea");
     $wrapper.append($removeMentionedUser);
+    this.$mentionedUsersUl.append($wrapper);
   }
 
   removeMentionedUser() {}
