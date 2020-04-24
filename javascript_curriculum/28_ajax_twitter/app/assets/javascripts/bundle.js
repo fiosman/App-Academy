@@ -211,8 +211,12 @@ class TweetCompose {
     this.$form = $form;
     this.$form.find("textarea").on("input", this.handleInput.bind(this));
     this.$form.find(".add-mention").on("click", this.newUserSelect.bind(this));
-    this.$mentionedUsersUl = this.$form.find(".mentioned-users"); 
-    this.$mentionedUsersUl.on("click", ".remove-mentioned-user", this.removeMentionedUser.bind(this))
+    this.$mentionedUsersUl = this.$form.find(".mentioned-users");
+    this.$mentionedUsersUl.on(
+      "click",
+      ".remove-mentioned-user",
+      this.removeMentionedUser.bind(this)
+    );
     this.$form.on("submit", this.submit.bind(this));
   }
 
@@ -269,7 +273,9 @@ class TweetCompose {
     this.$mentionedUsersUl.append($wrapper);
   }
 
-  removeMentionedUser() {}
+  removeMentionedUser(e) {
+    $(e.currentTarget).parent().remove();
+  }
 }
 
 module.exports = TweetCompose;
