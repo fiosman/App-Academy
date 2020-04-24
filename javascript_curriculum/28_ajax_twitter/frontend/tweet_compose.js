@@ -38,6 +38,8 @@ class TweetCompose {
       ":input:not(input[type='Submit'], input[type='hidden'])"
     );
     $formInputs.val("");
+
+    this.$mentionedUsersUl.empty();
   }
 
   handleSuccess(data) {
