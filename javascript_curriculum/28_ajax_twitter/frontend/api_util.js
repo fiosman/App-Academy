@@ -28,6 +28,13 @@ const APIUtil = {
       dataType: 'JSON', 
       data: data
     });
+  },
+  fetchTweets: function() { 
+    return $.ajax({ 
+      url: '/feed', 
+      type: 'GET', 
+      dataType: 'JSON'
+    }); 
   }
 }
 
