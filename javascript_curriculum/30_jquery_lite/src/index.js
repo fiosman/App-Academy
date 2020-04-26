@@ -1,11 +1,14 @@
 const DOMNodeCollection = require("./dom_node_collection.js");
 
-window.$l = function (selector) {
-  const nodeList = document.querySelectorAll(selector);
+window.$l = function (element) {
   let arrNodes = [];
-  nodeList.forEach((node) => {
-    arrNodes.push(node);
-  });
-  return new DOMNodeCollection(arrNodes);
+  if (element instanceof HTMLElement) {
+    arrNodes.push(new DOMNodeCollection(element));
+  } else if (element instanceof String || typeof(element) === 'string') {
+    const nodeList = document.querySelectorAll(element);
+    nodeList.forEach((node) => {
+      arrNodes.push(new DOMNodeCollection(node));
+    });
+  }
+  return arrNodes;
 };
-

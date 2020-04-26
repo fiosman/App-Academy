@@ -104,7 +104,7 @@ eval("class DOMNodeCollection { \n  constructor(htmlElements) { \n    this.htmlE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\nwindow.$l = function (selector) {\n  const nodeList = document.querySelectorAll(selector);\n  let arrNodes = [];\n  nodeList.forEach((node) => {\n    arrNodes.push(node);\n  });\n  return new DOMNodeCollection(arrNodes);\n};\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\nwindow.$l = function (element) {\n  let arrNodes = [];\n  if (element instanceof HTMLElement) {\n    arrNodes.push(new DOMNodeCollection(element));\n  } else if (element instanceof String || typeof(element) === 'string') {\n    const nodeList = document.querySelectorAll(element);\n    nodeList.forEach((node) => {\n      arrNodes.push(new DOMNodeCollection(node));\n    });\n  }\n  return arrNodes;\n};\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
