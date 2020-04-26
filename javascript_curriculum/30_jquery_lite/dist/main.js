@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class DOMNodeCollection { \n  constructor(htmlElements) { \n    this.htmlElements = htmlElements;\n  }\n}\n\nmodule.exports = DOMNodeCollection; \n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("class DOMNodeCollection { \n  constructor(htmlElement) { \n    this.htmlElements = htmlElements;\n  }\n\n  html() { \n    if (arguments.length == 1) { \n      this.htmlElements.forEach(element => element.innerHTML = arguments[0]); \n    } else { \n      this.htmlElement[0].innerHTML;\n    }\n  }\n}\n\nmodule.exports = DOMNodeCollection; \n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("class DOMNodeCollection { \n  constructor(htmlElements) { \n    this.htmlE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\nwindow.$l = function (element) {\n  let arrNodes = [];\n  if (element instanceof HTMLElement) {\n    arrNodes.push(new DOMNodeCollection(element));\n  } else if (element instanceof String || typeof(element) === 'string') {\n    const nodeList = document.querySelectorAll(element);\n    nodeList.forEach((node) => {\n      arrNodes.push(new DOMNodeCollection(node));\n    });\n  }\n  return arrNodes;\n};\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\nwindow.$l = function (element) {\n  if (element instanceof HTMLElement) {\n    const node = new DOMNodeCollection([element]);\n    return node; \n  } else if (element instanceof String || typeof(element) === 'string') {\n    const nodeList = document.querySelectorAll(element);\n    const nodes = new DOMNodeCollection(Array.from(nodeList)); \n    return nodes; \n  }\n};\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
