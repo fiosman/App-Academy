@@ -16,32 +16,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // adding SF places as list items
 
-  const submitButton = document.querySelector(".favorite-submit");
-  const inputField = document.querySelector(".favorite-input");
-  const places = document.getElementById("sf-places");
-
-  submitButton.addEventListener("click", (e) => {
+  const handleSubmitPlace = (e) => {
     e.preventDefault();
+    const inputField = document.querySelector(".favorite-input");
+    const places = document.getElementById("sf-places");
     const input = document.createTextNode(`${inputField.value}`);
     const newLi = document.createElement("li");
+
     newLi.appendChild(input);
     places.appendChild(newLi);
     inputField.value = "";
-  });
+  };
+
+  const submitButton = document.querySelector(".favorite-submit");
+  submitButton.addEventListener("click", handleSubmitPlace);
 
   // adding new photos
-  const photoToggle = document.querySelector(".photo-show-button");
 
-  photoToggle.addEventListener("click", (e) => {
-    e.preventDefault();
+  const photoToggleHandler = () => {
     document.querySelector(".photo-form-container").classList.toggle("hidden");
-  });
+  };
 
-  const photoSubmit = document.querySelector(".photo-url-submit");
-  const photoUl = document.querySelector(".dog-photos");
-  const photoInput = document.querySelector(".photo-url-input");
+  const photoToggle = document.querySelector(".photo-show-button");
+  photoToggle.addEventListener("click", photoToggleHandler);
 
-  photoSubmit.addEventListener("click", (e) => {
+  const photoSubmitHandler = (e) => {
+    const photoUl = document.querySelector(".dog-photos");
+    const photoInput = document.querySelector(".photo-url-input");
+
     e.preventDefault();
     const newLi = document.createElement("li");
     const newImg = document.createElement("img");
@@ -49,5 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     newLi.appendChild(newImg);
     photoUl.appendChild(newLi);
     photoInput.value = "";
-  });
+  };
+
+  const photoSubmitBtn = document.querySelector(".photo-url-submit");
+  photoSubmitBtn.addEventListener("click", photoSubmitHandler);
 });
