@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const submitButton = document.querySelector(".favorite-submit");
   const inputField = document.querySelector(".favorite-input");
-  const restaurants = document.getElementById("restaurants");
+  const places = document.getElementById("sf-places");
 
   submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     const input = document.createTextNode(`${inputField.value}`);
     const newItem = document.createElement("li");
     newItem.appendChild(input);
-    restaurants.appendChild(newItem);
+    places.appendChild(newItem);
     inputField.value = "";
   });
 
