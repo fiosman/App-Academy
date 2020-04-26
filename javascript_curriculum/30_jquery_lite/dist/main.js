@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("const $l = function() {}\n\nwindow.$l; \n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("window.$l = function (selector) {\n  const nodeList = document.querySelectorAll(selector);\n  let arrNodes = [];\n  nodeList.forEach((node) => {\n    arrNodes.push(node);\n  });\n  return arrNodes;\n};\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
