@@ -10,6 +10,10 @@ class DOMNodeCollection {
       this.htmlElement[0].innerHTML;
     }
   }
+
+  empty() { 
+    this.html("");
+  }
 }
 
 module.exports = DOMNodeCollection; 
