@@ -23,13 +23,31 @@ document.addEventListener("DOMContentLoaded", () => {
   submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     const input = document.createTextNode(`${inputField.value}`);
-    const newItem = document.createElement("li");
-    newItem.appendChild(input);
-    places.appendChild(newItem);
+    const newLi = document.createElement("li");
+    newLi.appendChild(input);
+    places.appendChild(newLi);
     inputField.value = "";
   });
 
   // adding new photos
+  const photoToggle = document.querySelector(".photo-show-button");
 
-  // --- your code here!
+  photoToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector(".photo-form-container").classList.toggle("hidden");
+  });
+
+  const photoSubmit = document.querySelector(".photo-url-submit");
+  const photoUl = document.querySelector(".dog-photos");
+  const photoInput = document.querySelector(".photo-url-input");
+
+  photoSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newLi = document.createElement("li");
+    const newImg = document.createElement("img");
+    newImg.setAttribute("src", photoInput.value);
+    newLi.appendChild(newImg);
+    photoUl.appendChild(newLi);
+    photoInput.value = "";
+  });
 });
