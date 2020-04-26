@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class DOMNodeCollection { \n  constructor(htmlElement) { \n    this.htmlElements = htmlElements;\n  }\n\n  html() { \n    if (arguments.length == 1) { \n      this.htmlElements.forEach(element => element.innerHTML = arguments[0]); \n    } else { \n      this.htmlElement[0].innerHTML;\n    }\n  }\n\n  empty() { \n    this.html(\"\");\n  }\n}\n\nmodule.exports = DOMNodeCollection; \n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("class DOMNodeCollection {\n  constructor(htmlElements) {\n    this.htmlElements = htmlElements;\n  }\n\n  html() {\n    if (arguments.length == 1) {\n      this.htmlElements.forEach(\n        (element) => (element.innerHTML = arguments[0])\n      );\n    } else {\n      this.htmlElements[0].innerHTML;\n    }\n  }\n\n  empty() {\n    this.html(\"\");\n  }\n\n  append(args) {\n    args = $l(args);\n\n    args.htmlElements.forEach((ele) => {\n      let eleOuterHTML = ele.outerHTML;\n      for (let i = 0; i < this.htmlElements.length; i++) {\n        let currentHTMLElement = this.htmlElements[i];\n        currentHTMLElement.innerHTML += eleOuterHTML;\n      }\n    });\n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ }),
 
