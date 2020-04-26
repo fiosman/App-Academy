@@ -29,11 +29,12 @@ const APIUtil = {
       data: data
     });
   },
-  fetchTweets: function() { 
+  fetchTweets: function(data) { 
     return $.ajax({ 
       url: '/feed', 
       type: 'GET', 
-      dataType: 'JSON'
+      dataType: 'JSON', 
+      data: data
     }); 
   }
 }
