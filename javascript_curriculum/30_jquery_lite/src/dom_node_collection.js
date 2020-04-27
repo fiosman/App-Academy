@@ -29,7 +29,20 @@ class DOMNodeCollection {
     });
   }
 
-  attr() {}
+  attr() {
+    const attributeName = arguments[0]; 
+    const attributeVal = arguments[1]; 
+
+    if (attributeName && attributeVal) { 
+      this.htmlElements.forEach(ele => { 
+        ele.setAttribute(attributeName, attributeVal); 
+      })
+    } else if (attributeName && !attributeVal) { 
+      return this.htmlElements[0].getAttribute(attributeName);
+    } else { 
+      throw "invalid arguments";
+    }
+  }
 
   addClass(classList) {
     if (typeof classList === "string") {
