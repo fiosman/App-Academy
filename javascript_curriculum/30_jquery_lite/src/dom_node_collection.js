@@ -34,15 +34,20 @@ class DOMNodeCollection {
   addClass(classList) {
     if (typeof classList === "string") {
       classList = classList.split(" ");
-      classList.forEach((className) => {
-        for (let i = 0; i < this.htmlElements.length; i++) {
-          this.htmlElements[i].classList.add(className);
-        }
+      this.htmlElements.forEach((ele) => {
+        ele.classList.add(...classList);
       });
     }
   }
 
-  removeClass() {}
+  removeClass(classList) {
+    if (typeof classList === "string") {
+      classList = classList.split(" ");
+      this.htmlElements.forEach((ele) => {
+        ele.classList.remove(...classList);
+      });
+    }
+  }
 }
 
 module.exports = DOMNodeCollection;
