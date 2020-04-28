@@ -30,16 +30,16 @@ class DOMNodeCollection {
   }
 
   attr() {
-    const attributeName = arguments[0]; 
-    const attributeVal = arguments[1]; 
+    const attributeName = arguments[0];
+    const attributeVal = arguments[1];
 
-    if (attributeName && attributeVal) { 
-      this.htmlElements.forEach(ele => { 
-        ele.setAttribute(attributeName, attributeVal); 
-      })
-    } else if (attributeName && !attributeVal) { 
+    if (attributeName && attributeVal) {
+      this.htmlElements.forEach((ele) => {
+        ele.setAttribute(attributeName, attributeVal);
+      });
+    } else if (attributeName && !attributeVal) {
       return this.htmlElements[0].getAttribute(attributeName);
-    } else { 
+    } else {
       throw "invalid arguments";
     }
   }
@@ -60,6 +60,17 @@ class DOMNodeCollection {
         ele.classList.remove(...classList);
       });
     }
+  }
+
+  children() {
+    let childNodes = [];
+    this.htmlElements.forEach((ele) => {
+      for (let i = 0; i < ele.children.length; i++) {
+        childNodes.push($l(ele.children[i]));
+      }
+    });
+
+    return childNodes;
   }
 }
 
