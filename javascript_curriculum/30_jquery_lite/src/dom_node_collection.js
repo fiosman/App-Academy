@@ -82,6 +82,14 @@ class DOMNodeCollection {
     });
     return new DOMNodeCollection(parentNodes);
   }
+
+  find() {}
+
+  remove() { 
+    this.htmlElements.forEach((ele) => { 
+      ele.remove(); 
+    }); 
+  }
 }
 
 module.exports = DOMNodeCollection;
