@@ -66,11 +66,21 @@ class DOMNodeCollection {
     let childNodes = [];
     this.htmlElements.forEach((ele) => {
       for (let i = 0; i < ele.children.length; i++) {
-        childNodes.push($l(ele.children[i]));
+        childNodes.push(ele.children[i]);
       }
     });
+    return new DOMNodeCollection(childNodes);
+  }
 
-    return childNodes;
+  parent() {
+    let parentNodes = [];
+    this.htmlElements.forEach((ele) => {
+      let potentialParent = ele.parentElement;
+      if (parentNodes[parentNodes.length - 1] !== potentialParent) {
+        parentNodes.push(potentialParent);
+      }
+    });
+    return new DOMNodeCollection(parentNodes);
   }
 }
 
