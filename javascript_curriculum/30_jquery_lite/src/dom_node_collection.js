@@ -83,12 +83,19 @@ class DOMNodeCollection {
     return new DOMNodeCollection(parentNodes);
   }
 
-  find() {}
+  find(selector) {
+    let resNodes = [];
+    this.htmlElements.forEach((node) => {
+      let nodeList = node.querySelectorAll(selector);
+      resNodes.push(Array.from(nodeList));
+    });
+    return new DOMNodeCollection(resNodes);
+  }
 
-  remove() { 
-    this.htmlElements.forEach((ele) => { 
-      ele.remove(); 
-    }); 
+  remove() {
+    this.htmlElements.forEach((ele) => {
+      ele.remove();
+    });
   }
 }
 
