@@ -98,14 +98,18 @@ class DOMNodeCollection {
     });
   }
 
-  on(event, callback) { 
-    this.htmlElements.forEach((ele) => { 
-      ele.addEventListener(event, callback)
-    }); 
+  on(event, callback) {
+    this.htmlElements.forEach((ele) => {
+      ele.handler = callback; //A node inside this.htmlElements is just an object, so we can set a property on it!
+      ele.addEventListener(event, callback);
+    });
   }
 
-  off() { 
-
+  off(event) {
+    this.htmlElements.forEach((ele) => {
+      const targetHandler = ele.handler;
+      ele.removeEventListener(event, targetHandler);
+    });
   }
 }
 
