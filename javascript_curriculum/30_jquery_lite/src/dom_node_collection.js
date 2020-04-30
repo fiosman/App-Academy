@@ -97,6 +97,16 @@ class DOMNodeCollection {
       ele.remove();
     });
   }
+
+  on(event, callback) { 
+    this.htmlElements.forEach((ele) => { 
+      ele.addEventListener(event, callback)
+    }); 
+  }
+
+  off() { 
+
+  }
 }
 
 module.exports = DOMNodeCollection;
