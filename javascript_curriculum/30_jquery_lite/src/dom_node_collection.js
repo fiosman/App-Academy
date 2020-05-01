@@ -107,7 +107,7 @@ class DOMNodeCollection {
 
   off(event) {
     this.htmlElements.forEach((ele) => {
-      const targetHandler = ele.handler;
+      const targetHandler = le.handler;
       ele.removeEventListener(event, targetHandler);
     });
   }
