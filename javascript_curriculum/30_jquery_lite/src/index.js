@@ -20,3 +20,12 @@ window.$l = function (element) {
     return nodes;
   }
 };
+
+window.$l.extend = function (firstObj, ...args) {
+  args.forEach((arg) => {
+    let [key, val] = Object.entries(arg)[0];
+    firstObj[key] = val;
+  });
+
+  return firstObj;
+};
