@@ -23,21 +23,39 @@ window.$l = function (element) {
 
 window.$l.extend = function (firstObj, ...args) {
   args.forEach((arg) => {
-    let [key, val] = Object.entries(arg)[0];
-    firstObj[key] = val;
+    let keyValPairs = Object.entries(arg); 
+    for (let i = 0; i < keyValPairs.length; i++ ) { 
+      let [key, val] = keyValPairs[i];
+      firstObj[key] = val;
+    }
   });
 
   return firstObj;
 };
 
-window.$l.ajax = function(opts) { 
-  const defaults = { 
-    success: function() {},
-    error: function() {},
+window.$l.ajax = function (opts) {
+  const defaults = {
+    method: "GET",
     url: "",
-    method: 'GET',
     data: {},
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'  
-  }
-}
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: () => {},
+    error: () => {},
+  };
 
+  opts = window.$l.extend(defaults, opts);
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open(opts.method, opts.url, true);
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      opts.success(xhr.response);
+    } else {
+      opts.error(xhr.response);
+    }
+  };
+
+  xhr.send(JSON.stringify(opts.data));
+};
