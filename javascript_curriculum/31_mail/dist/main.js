@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('It\\'s working'); \n\n//# sourceURL=webpack:///./src/index.js?");
+eval("document.addEventListener('DOMContentLoaded', function() { \n  const navItems = document.querySelectorAll(\".sidebar-nav li\"); \n  navItems.forEach(item => { \n    item.addEventListener(\"click\", function() { \n      const newLoc = item.innerText.toLowerCase(); \n      window.location.hash = newLoc;\n    })\n  })\n})\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
