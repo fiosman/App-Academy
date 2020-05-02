@@ -29,3 +29,15 @@ window.$l.extend = function (firstObj, ...args) {
 
   return firstObj;
 };
+
+window.$l.ajax = function(opts) { 
+  const defaults = { 
+    success: function() {},
+    error: function() {},
+    url: "",
+    method: 'GET',
+    data: {},
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'  
+  }
+}
+
