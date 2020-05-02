@@ -23,8 +23,8 @@ window.$l = function (element) {
 
 window.$l.extend = function (firstObj, ...args) {
   args.forEach((arg) => {
-    let keyValPairs = Object.entries(arg); 
-    for (let i = 0; i < keyValPairs.length; i++ ) { 
+    let keyValPairs = Object.entries(arg);
+    for (let i = 0; i < keyValPairs.length; i++) {
       let [key, val] = keyValPairs[i];
       firstObj[key] = val;
     }
