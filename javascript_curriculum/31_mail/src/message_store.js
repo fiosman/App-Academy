@@ -16,6 +16,7 @@ let messages = {
     },
     { to: "person@mail.com", subject: "zzz", body: "so booring" },
   ],
+
   inbox: [
     {
       from: "grandma@mail.com",
@@ -28,18 +29,26 @@ let messages = {
       body: "Take this free quiz win $1000 dollars",
     },
   ],
+  
 };
 
 const MessageStore =  { 
   getInboxMessages: () => { 
     return messages.inbox;
   }, 
+
   getSentMessages: () => { 
     return messages.sent;
   }, 
+
   updateDraftField: (field, value) => { 
     messageDraft[field] = value;
   }, 
+
+  getMessageDraft: () => { 
+    return messageDraft; 
+  },
+
   sendDraft: () => { 
     messages.sent.push(messageDraft); 
     messageDraft = new Message; 

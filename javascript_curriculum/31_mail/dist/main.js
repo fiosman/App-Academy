@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/compose.js":
+/*!************************!*\
+  !*** ./src/compose.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const MessageStore = __webpack_require__(/*! ./message_store.js */ \"./src/message_store.js\"); \n\nconst Compose = { \n  render: function() { \n    let div = document.createElement(\"div\"); \n    div.className = \"new-message\"\n    div.innerHTML = this.renderForm();\n\n    return div;\n  }, \n\n  renderForm: function() { \n    const currentMessage = MessageStore.getMessageDraft(); \n    const messageHeader ='<p class=\"new-message-header\">New Messaage</p>'\n    const form = \n    `<form class='compose-form'>\n      <input placeholder=\"Recipient\" name=\"to\" type=\"text\" value=${currentMessage.to}>\n      <input placeholder=\"Subject\" name=\"subject\" type=\"text\" value=${currentMessage.subject}>\n      <textarea name=\"body\" rows=\"20\">${currentMessage.body}</textarea>\n      <button type=\"submit\" class=\"btn btn-primary submit-message\">Send</button>\n    </form>`\n    \n    return messageHeader + form;\n  }\n}\n\nmodule.exports = Compose;\n\n//# sourceURL=webpack:///./src/compose.js?");
+
+/***/ }),
+
 /***/ "./src/inbox.js":
 /*!**********************!*\
   !*** ./src/inbox.js ***!
@@ -104,7 +115,7 @@ eval("const MessageStore = __webpack_require__(/*! ./message_store.js */ \"./src
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox.js */ \"./src/inbox.js\");\nconst Sent = __webpack_require__(/*! ./sent.js */ \"./src/sent.js\"); \n\nconst routes = { \n  inbox: Inbox, \n  sent: Sent\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content, routes).start();\n  window.location.hash = \"#inbox\";\n\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox.js */ \"./src/inbox.js\");\nconst Sent = __webpack_require__(/*! ./sent.js */ \"./src/sent.js\"); \nconst Compose = __webpack_require__(/*! ./compose.js */ \"./src/compose.js\");\n\nconst routes = { \n  inbox: Inbox, \n  sent: Sent, \n  compose: Compose\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content, routes).start();\n  window.location.hash = \"#inbox\";\n\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -115,7 +126,7 @@ eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\")
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("const Message = function(from=\"\", to=\"\", subject=\"\", body=\"\") { \n  this.from = from; \n  this.to = to; \n  this.subject = subject; \n  this.body = body; \n}\n\nlet messageDraft = new Message; \n\nlet messages = {\n  sent: [\n    {\n      to: \"friend@mail.com\",\n      subject: \"Check this out\",\n      body: \"It's so cool\",\n    },\n    { to: \"person@mail.com\", subject: \"zzz\", body: \"so booring\" },\n  ],\n  inbox: [\n    {\n      from: \"grandma@mail.com\",\n      subject: \"Fwd: Fwd: Fwd: Check this out\",\n      body: \"Stay at home mom discovers cure for leg cramps. Doctors hate her\",\n    },\n    {\n      from: \"person@mail.com\",\n      subject: \"Questionnaire\",\n      body: \"Take this free quiz win $1000 dollars\",\n    },\n  ],\n};\n\nconst MessageStore =  { \n  getInboxMessages: () => { \n    return messages.inbox;\n  }, \n  getSentMessages: () => { \n    return messages.sent;\n  }, \n  updateDraftField: (field, value) => { \n    messageDraft[field] = value;\n  }, \n  sendDraft: () => { \n    messages.sent.push(messageDraft); \n    messageDraft = new Message; \n  }\n}\n\nmodule.exports = MessageStore; \n\n//# sourceURL=webpack:///./src/message_store.js?");
+eval("const Message = function(from=\"\", to=\"\", subject=\"\", body=\"\") { \n  this.from = from; \n  this.to = to; \n  this.subject = subject; \n  this.body = body; \n}\n\nlet messageDraft = new Message; \n\nlet messages = {\n  sent: [\n    {\n      to: \"friend@mail.com\",\n      subject: \"Check this out\",\n      body: \"It's so cool\",\n    },\n    { to: \"person@mail.com\", subject: \"zzz\", body: \"so booring\" },\n  ],\n\n  inbox: [\n    {\n      from: \"grandma@mail.com\",\n      subject: \"Fwd: Fwd: Fwd: Check this out\",\n      body: \"Stay at home mom discovers cure for leg cramps. Doctors hate her\",\n    },\n    {\n      from: \"person@mail.com\",\n      subject: \"Questionnaire\",\n      body: \"Take this free quiz win $1000 dollars\",\n    },\n  ],\n  \n};\n\nconst MessageStore =  { \n  getInboxMessages: () => { \n    return messages.inbox;\n  }, \n\n  getSentMessages: () => { \n    return messages.sent;\n  }, \n\n  updateDraftField: (field, value) => { \n    messageDraft[field] = value;\n  }, \n\n  getMessageDraft: () => { \n    return messageDraft; \n  },\n\n  sendDraft: () => { \n    messages.sent.push(messageDraft); \n    messageDraft = new Message; \n  }\n}\n\nmodule.exports = MessageStore; \n\n//# sourceURL=webpack:///./src/message_store.js?");
 
 /***/ }),
 
