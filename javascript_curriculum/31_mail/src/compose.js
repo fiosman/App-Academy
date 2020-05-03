@@ -6,6 +6,20 @@ const Compose = {
     div.className = "new-message"
     div.innerHTML = this.renderForm();
 
+    div.addEventListener("change", function(e) { 
+      const targetEle = e.target; 
+      const targetName = targetEle.name; 
+      const targetVal = targetEle.value; 
+
+      MessageStore.updateDraftField(targetName, targetVal);
+    })
+
+    div.addEventListener("submit", function(e) { 
+      e.preventDefault();
+      MessageStore.sendDraft(); 
+      window.location.hash = "inbox";
+    })
+
     return div;
   }, 
 
