@@ -91,9 +91,9 @@
   !*** ./src/inbox.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("const Inbox = { \n  render: () => { \n    const container = document.createElement(\"ul\"); \n    container.className = \"messages\"; \n    container.innerHTML = \"An Inbox Messaage\"; \n    return container;\n  }\n}\n\nmodule.exports = Inbox; \n\n//# sourceURL=webpack:///./src/inbox.js?");
+eval("const MessageStore = __webpack_require__(/*! ./message_store.js */ \"./src/message_store.js\");\n\nconst Inbox = {\n  render: function() {\n    const inboxMessages = MessageStore.getInboxMessages();\n    const container = document.createElement(\"ul\");\n\n    inboxMessages.forEach((message) => {\n      const node = this.renderMessage(message); \n      container.appendChild(node);\n    });\n    container.className = \"messages\";\n    return container;\n  },\n\n  renderMessage: function(message) {\n    let liNode = document.createElement(\"li\");\n    liNode.className = \"message\";\n    let from = `<span class='from'> ${message.from} </span>`;\n    let subject = `<span class='subject'> ${message.subject} </span>`;\n    let body = `<span class='body'> ${message.body} </span>`;\n    liNode.innerHTML = from + subject + body;\n    return liNode;\n  },\n};\n\nmodule.exports = Inbox;\n\n\n//# sourceURL=webpack:///./src/inbox.js?");
 
 /***/ }),
 
@@ -104,7 +104,18 @@ eval("const Inbox = { \n  render: () => { \n    const container = document.creat
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox.js */ \"./src/inbox.js\");\n\nconst routes = { \n  inbox: Inbox\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content, routes).start();\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox.js */ \"./src/inbox.js\");\n\nconst routes = { \n  inbox: Inbox\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content, routes).start();\n  window.location.hash = \"#inbox\";\n\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/message_store.js":
+/*!******************************!*\
+  !*** ./src/message_store.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("let messages = {\n  sent: [\n    {\n      to: \"friend@mail.com\",\n      subject: \"Check this out\",\n      body: \"It's so cool\",\n    },\n    { to: \"person@mail.com\", subject: \"zzz\", body: \"so booring\" },\n  ],\n  inbox: [\n    {\n      from: \"grandma@mail.com\",\n      subject: \"Fwd: Fwd: Fwd: Check this out\",\n      body: \"Stay at home mom discovers cure for leg cramps. Doctors hate her\",\n    },\n    {\n      from: \"person@mail.com\",\n      subject: \"Questionnaire\",\n      body: \"Take this free quiz win $1000 dollars\",\n    },\n  ],\n};\n\nconst MessageStore =  { \n  getInboxMessages: () => { \n    return messages.inbox;\n  }, \n  getSentMessages: () => { \n    return messages.sent;\n  }\n}\n\nmodule.exports = MessageStore; \n\n//# sourceURL=webpack:///./src/message_store.js?");
 
 /***/ }),
 
