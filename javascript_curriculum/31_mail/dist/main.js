@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/inbox.js":
+/*!**********************!*\
+  !*** ./src/inbox.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const Inbox = { \n  render: () => { \n    const container = document.createElement(\"ul\"); \n    container.className = \"messages\"; \n    container.innerHTML = \"An Inbox Messaage\"; \n    return container;\n  }\n}\n\nmodule.exports = Inbox; \n\n//# sourceURL=webpack:///./src/inbox.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -93,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content).start();\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox.js */ \"./src/inbox.js\");\n\nconst routes = { \n  inbox: Inbox\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const navItems = document.querySelectorAll(\".sidebar-nav li\");\n  const content = document.querySelector(\".content\");\n  new Router(content, routes).start();\n  navItems.forEach((item) => {\n    item.addEventListener(\"click\", function () {\n      const newLoc = item.innerText.toLowerCase();\n      window.location.hash = newLoc;\n    });\n  });\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -104,7 +115,7 @@ eval("const Router = __webpack_require__(/*! ./router.js */ \"./src/router.js\")
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("const Router = function (node) {\n  this.node = node;\n};\n\nRouter.prototype.start = function () {\n  this.render();\n  window.addEventListener(\n    \"hashchange\",\n    () => {\n      this.render();\n    },\n    false\n  );\n};\n\nRouter.prototype.activeRoute = function () {\n  return window.location.hash.slice(1);\n};\n\nRouter.prototype.render = function () {\n  this.node.innerHTML = \"\";\n  const newRoute = this.activeRoute();\n  const newNode = document.createElement(\"p\");\n  newNode.innerHTML = newRoute;\n  this.node.appendChild(newNode);\n};\n\nmodule.exports = Router;\n\n\n//# sourceURL=webpack:///./src/router.js?");
+eval("const Router = function (node, routes) {\n  this.node = node;\n  this.routes = routes;\n};\n\nRouter.prototype.start = function () {\n  this.render();\n  window.addEventListener(\n    \"hashchange\",\n    () => {\n      this.render();\n    },\n    false\n  );\n};\n\nRouter.prototype.activeRoute = function () {\n  const currentName = window.location.hash.slice(1);\n  return this.routes[currentName];\n};\n\nRouter.prototype.render = function () {\n  const component = this.activeRoute();\n\n  if (!component) {\n    this.node.innerHTML = \"\";\n  } else {\n    this.node.innerHTML = \"\";\n    const newNode = component.render();\n    this.node.appendChild(newNode);\n  }\n};\n\nmodule.exports = Router;\n\n\n//# sourceURL=webpack:///./src/router.js?");
 
 /***/ })
 

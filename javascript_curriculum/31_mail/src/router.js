@@ -1,5 +1,6 @@
-const Router = function (node) {
+const Router = function (node, routes) {
   this.node = node;
+  this.routes = routes;
 };
 
 Router.prototype.start = function () {
@@ -14,15 +15,20 @@ Router.prototype.start = function () {
 };
 
 Router.prototype.activeRoute = function () {
-  return window.location.hash.slice(1);
+  const currentName = window.location.hash.slice(1);
+  return this.routes[currentName];
 };
 
 Router.prototype.render = function () {
-  this.node.innerHTML = "";
-  const newRoute = this.activeRoute();
-  const newNode = document.createElement("p");
-  newNode.innerHTML = newRoute;
-  this.node.appendChild(newNode);
+  const component = this.activeRoute();
+
+  if (!component) {
+    this.node.innerHTML = "";
+  } else {
+    this.node.innerHTML = "";
+    const newNode = component.render();
+    this.node.appendChild(newNode);
+  }
 };
 
 module.exports = Router;
