@@ -5,13 +5,13 @@ class Calculator extends React.Component {
     super(props);
     this.state = { res: 0, num1: "", num2: "" };
 
-    this.setNum1 = this.setNum1.bind(this); 
-    this.setNum2 = this.setNum2.bind(this); 
-    this.add = this.add.bind(this); 
-    this.subtract = this.subtract.bind(this); 
+    this.setNum1 = this.setNum1.bind(this);
+    this.setNum2 = this.setNum2.bind(this);
+    this.add = this.add.bind(this);
+    this.subtract = this.subtract.bind(this);
     this.multiply = this.multiply.bind(this);
     this.divide = this.divide.bind(this);
-    this.clear = this.clear.bind(this); 
+    this.clear = this.clear.bind(this);
   }
 
   setNum1(e) {
@@ -56,11 +56,7 @@ class Calculator extends React.Component {
   }
 
   render() {
-    const { num1, num2, res } = {
-      num1: this.state.num1,
-      num2: this.state.num2,
-      res: this.state.res,
-    };
+    const { num1, num2, res } = this.state;
     return (
       <div>
         <h1>{res}</h1>
