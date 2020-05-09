@@ -1,7 +1,10 @@
 import React from 'react'; 
+import Clock from './frontend/clock';
 
 function Root(props) { 
-  return <div>{props.name}</div>
+  return <div>
+    <Clock />
+  </div>
 }
 
 export default Root; 
