@@ -24,10 +24,17 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>Clock!</h1>
-        <p>
-          Time: {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}
-        </p>
-        <p>Date: {time.toDateString()}</p>
+        <div className="parent-container">
+          <div className="time-container">
+            <span>Time:</span>
+            <span>
+              {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}
+            </span>
+          </div>
+          <div className="date-container">
+            <span>Date:</span> <span>{time.toDateString()}</span>
+          </div>
+        </div>
       </div>
     );
   }
