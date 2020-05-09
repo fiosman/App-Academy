@@ -1,10 +1,7 @@
 import React from 'react'; 
 
-function Root() { 
-  return ( 
-  <div>
-  </div>
-  ); 
+function Root(props) { 
+  return <div>{props.name}</div>
 }
 
 export default Root; 
