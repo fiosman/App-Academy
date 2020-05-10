@@ -1,7 +1,8 @@
 import React from "react";
 import Clock from "./frontend/clock";
 import Tabs from "./frontend/tabs";
-import Weather from "./frontend/weather"
+import Weather from "./frontend/weather";
+import Autocomplete from "./frontend/autocomplete";
 
 function Root(props) {
   const tabData = [
@@ -18,11 +19,22 @@ function Root(props) {
       content: "I am three",
     },
   ];
+
+  const names = [
+    "Fares",
+    "Andrew",
+    "Vanessa",
+    "Steve",
+    "Sophie",
+    "Kevin",
+    "Victoria",
+  ];
   return (
     <div>
       <Clock />
       <Tabs tabSections={tabData} />
       <Weather />
+      <Autocomplete names={names}/>
     </div>
   );
 }
