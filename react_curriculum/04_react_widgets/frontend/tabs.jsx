@@ -16,7 +16,7 @@ function Headers(props) {
     );
   });
 
-  return <ul>{headers}</ul>;
+  return <ul className="tab-header">{headers}</ul>;
 }
 
 export default class Tabs extends React.Component {
@@ -35,12 +35,14 @@ export default class Tabs extends React.Component {
     return (
       <div>
         <h1>Tabs</h1>
+        <div className="tabs">
         <Headers
           tabSections={this.props.tabSections}
           selectedTab={this.state.selectedPaneIdx}
           tabClickHandler={this.selectPane}
         />
-        <article>{selectedPane.content}</article>
+        <article className="tab-content">{selectedPane.content}</article>
+        </div>
       </div>
     );
   }

@@ -32,9 +32,9 @@ function Root(props) {
   return (
     <div>
       <Clock />
-      <Tabs tabSections={tabData} />
       <Weather />
       <Autocomplete names={names}/>
+      <Tabs tabSections={tabData} />
     </div>
   );
 }

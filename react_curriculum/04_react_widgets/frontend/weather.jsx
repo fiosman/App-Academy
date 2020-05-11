@@ -35,14 +35,29 @@ export default class Weather extends React.Component {
   }
 
   render() {
-    return this.state.city ? (
+    let content;
+    
+    if (this.state.city) {
+      content = (
+        <div>
+          <span>{this.state.city}</span>
+          <span>{this.state.temperature}°C</span>
+        </div>
+      );
+    } else {
+      content = (
+        <div>
+          <span className="fetching-weather">Fetching weather...</span>
+        </div>
+      );
+    }
+
+    return (
       <div>
-        <span>Location: {this.state.city}</span>
-        <span>Temperature: {this.state.temperature}</span>
-      </div>
-    ) : (
-      <div>
-        <span>Fetching weather...</span>
+        <h1>Weather</h1>
+        <div className="weather-container">
+          {content}
+        </div>
       </div>
     );
   }
