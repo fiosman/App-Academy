@@ -23,7 +23,7 @@ class Clock extends React.Component {
     const { time } = this.state;
     return (
       <div>
-        <h1>Clock!</h1>
+        <h1>Clock</h1>
         <div className="parent-container">
           <div className="time-container">
             <span>Time:</span>

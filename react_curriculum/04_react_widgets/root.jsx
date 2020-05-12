@@ -7,15 +7,15 @@ import Autocomplete from "./frontend/autocomplete";
 function Root(props) {
   const tabData = [
     {
-      title: "Tab one",
+      title: "One",
       content: "I am one",
     },
     {
-      title: "Tab two",
+      title: "Two",
       content: "I am two",
     },
     {
-      title: "Tab three",
+      title: "Three",
       content: "I am three",
     },
   ];
