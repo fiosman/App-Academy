@@ -105,6 +105,28 @@ h1 {
   border-style: ridge
 }
 
+.auto-enter {
+  opacity: 0.01;
+  transform: translateY(500%);
+}
+
+.auto-enter.auto-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.auto-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.auto-leave.auto-leave-active {
+  opacity: 0.01;
+  transform: translateY(500%);
+  transition: opacity 500ms, transform 500ms;
+}
+
 /* TABS */ 
 
 .tab-header{

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class NameSearch extends React.Component {
   constructor(props) {
@@ -11,7 +12,14 @@ class NameSearch extends React.Component {
   }
 
   render() {
-    return <input className="auto-search" type="text" placeholder="Search..." onChange={this.updateInput} />;
+    return (
+      <input
+        className="auto-search"
+        type="text"
+        placeholder="Search..."
+        onChange={this.updateInput}
+      />
+    );
   }
 }
 
@@ -33,16 +41,29 @@ export default class Autocomplete extends React.Component {
   }
 
   render() {
-    const filteredNames = this.filterNames(
-      this.state.inputVal
-    ).map((ele, idx) => <li className="name" key={idx}> {ele}</li>);
+    const filteredNames = this.filterNames(this.state.inputVal).map(
+      (ele, idx) => (
+        <li className="name" key={idx}>
+          {" "}
+          {ele}
+        </li>
+      )
+    );
 
     return (
       <div>
         <h1>Autocomplete</h1>
         <div className="auto-container">
           <NameSearch searchState={this.updateState} />
-          <ul className="name-list">{filteredNames}</ul>
+          <ul className="name-list">
+            <ReactCSSTransitionGroup
+              transitionName="auto"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}
+            >
+              {filteredNames}
+            </ReactCSSTransitionGroup>
+          </ul>
         </div>
       </div>
     );
