@@ -3,6 +3,12 @@ import React from "react";
 export default class Tile extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) { 
+    const flagTile = e.altKey; 
+    this.props.update(this.props.tile, flagTile); 
   }
 
   render() {
@@ -26,6 +32,6 @@ export default class Tile extends React.Component {
     }
 
     className = `tile ${className}`;
-    return <td className={className}>{tileStatus}</td>;
+    return <td className={className} onClick={this.handleClick}>{tileStatus}</td>;
   }
 }
