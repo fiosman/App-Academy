@@ -6,9 +6,9 @@ export default class Tile extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) { 
-    const flagTile = e.altKey; 
-    this.props.update(this.props.tile, flagTile); 
+  handleClick(e) {
+    const flagTile = e.altKey;
+    this.props.update(this.props.tile, flagTile);
   }
 
   render() {
@@ -32,6 +32,10 @@ export default class Tile extends React.Component {
     }
 
     className = `tile ${className}`;
-    return <td className={className} onClick={this.handleClick}>{tileStatus}</td>;
+    return (
+      <td className={className} onClick={this.handleClick}>
+        {tileStatus}
+      </td>
+    );
   }
 }
