@@ -26,6 +26,6 @@ export default class Tile extends React.Component {
     }
 
     className = `tile ${className}`;
-    return <div className={className}>{tileStatus}</div>;
+    return <td className={className}>{tileStatus}</td>;
   }
 }

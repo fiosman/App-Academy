@@ -11,13 +11,17 @@ export default class Board extends React.Component {
     const update = this.props.update;
 
     const tiles = grid.map((row, rowIdx) => (
-      <div key={rowIdx}>
+      <tr className="row" key={rowIdx}>
         {row.map((tile, tileIdx) => (
           <Tile tile={tile} update={update} key={tileIdx} />
         ))}
-      </div>
+      </tr>
     ));
 
-    return <div>{tiles}</div>;
+    return (
+      <table className="board">
+        <tbody>{tiles}</tbody>
+      </table>
+    );
   }
 }
