@@ -1,6 +1,6 @@
 import React from 'react';
 import Job from './job';
-import selectLocation from './../actions';
+import selectLocation from "../actions.js";
 
 class Widget extends React.Component {
 
