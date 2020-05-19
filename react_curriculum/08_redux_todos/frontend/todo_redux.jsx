@@ -5,12 +5,6 @@ import {receiveTodo, receiveTodos} from './actions/todo_actions';
 import Root from './components/root'
 import allTodos from './reducers/selectors';
 
-function ToDos() { 
-  return ( 
-    <h1>ToDos App</h1>
-  )
-}
-
 document.addEventListener("DOMContentLoaded", () => { 
   const root = document.getElementById("content"); 
   let store = configureStore(); 
