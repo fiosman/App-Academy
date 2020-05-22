@@ -1,24 +1,32 @@
 import React from "react";
 
-class TodoListItem extends React.Component { 
-  constructor(props) { 
-    super(props); 
-    this.handleSubmit = this.handleSubmit.bind(this); 
+class TodoListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.updateProgress = this.updateProgress.bind(this);
   }
 
-  handleSubmit() { 
-    this.props.removeTodo(this.props.todo)
+  handleDelete() {
+    this.props.removeTodo(this.props.todo);
   }
 
-  render() { 
+  updateProgress() {
+    this.props.todo.done = this.props.todo.done ? false : true;
+    this.props.receiveTodo(this.props.todo);
+  }
+
+  render() {
+    const todoProgress = this.props.todo.done ? "Undo" : "Done";
     return (
       <div>
         <li>
           {this.props.todo.title}
-          <button onClick={this.handleSubmit}>Delete</button>
+          <button onClick={this.handleDelete}>Delete</button>
+          <button onClick={this.updateProgress}>{todoProgress}</button>
         </li>
       </div>
-    )
+    );
   }
 }
 
