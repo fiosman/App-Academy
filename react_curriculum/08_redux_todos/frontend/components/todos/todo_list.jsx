@@ -7,18 +7,22 @@ const TodoList = (props) => {
     <ul>
       {props.todos.map((todo, idx) => (
         <div key={idx}>
-          <TodoListItem todo={todo} />
+          <TodoListItem
+            todo={todo}
+            receiveTodo={props.receiveTodo}
+            removeTodo={props.removeTodo}
+          />
         </div>
       ))}
     </ul>
   );
 
-  return ( 
+  return (
     <div>
       {items}
-      <TodoForm receiveTodo={props.receiveTodo}/>
+      <TodoForm receiveTodo={props.receiveTodo} />
     </div>
-  )
+  );
 };
 
 export default TodoList;

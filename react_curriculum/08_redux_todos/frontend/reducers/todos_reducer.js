@@ -31,7 +31,7 @@ const todosReducer = (state = initialState, action) => {
 
     case REMOVE_TODO: 
       let receivedState = Object.assign({}, state); 
-      delete receivedState[action.todo];
+      delete receivedState[action.todo.id];
       return receivedState; 
 
     default:
