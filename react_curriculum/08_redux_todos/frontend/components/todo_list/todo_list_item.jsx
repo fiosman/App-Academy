@@ -1,14 +1,12 @@
 import React from "react";
+import TodoDetailViewContainer from './todo_detail_view_container'; 
 
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.state = { detail: false};
     this.updateProgress = this.updateProgress.bind(this);
-  }
-
-  handleDelete() {
-    this.props.removeTodo(this.props.todo);
+    this.toggleDetail = this.toggleDetail.bind(this); 
   }
 
   updateProgress() {
@@ -16,14 +14,20 @@ class TodoListItem extends React.Component {
     this.props.receiveTodo(this.props.todo);
   }
 
+  toggleDetail() { 
+    let detailStatus = this.state.detail === true ? false : true;
+    this.setState({detail: detailStatus}); 
+  }
+
   render() {
     const todoProgress = this.props.todo.done ? "Undo" : "Done";
+    const todoDetail = <TodoDetailViewContainer todo={this.props.todo} />
     return (
       <div>
         <li>
-          {this.props.todo.title}
-          <button onClick={this.handleDelete}>Delete</button>
+          <span onClick={this.toggleDetail}>{this.props.todo.title}</span>
           <button onClick={this.updateProgress}>{todoProgress}</button>
+          {this.state.detail ? todoDetail : ''}
         </li>
       </div>
     );

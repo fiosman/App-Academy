@@ -7,11 +7,7 @@ const TodoList = (props) => {
     <ul>
       {props.todos.map((todo, idx) => (
         <div key={idx}>
-          <TodoListItem
-            todo={todo}
-            receiveTodo={props.receiveTodo}
-            removeTodo={props.removeTodo}
-          />
+          <TodoListItem todo={todo} receiveTodo={props.receiveTodo} />
         </div>
       ))}
     </ul>
