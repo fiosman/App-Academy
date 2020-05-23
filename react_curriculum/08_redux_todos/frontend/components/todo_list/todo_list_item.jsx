@@ -1,12 +1,12 @@
 import React from "react";
-import TodoDetailViewContainer from './todo_detail_view_container'; 
+import TodoDetailViewContainer from "./todo_detail_view_container";
 
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { detail: false};
+    this.state = { detail: false };
     this.updateProgress = this.updateProgress.bind(this);
-    this.toggleDetail = this.toggleDetail.bind(this); 
+    this.toggleDetail = this.toggleDetail.bind(this);
   }
 
   updateProgress() {
@@ -14,20 +14,20 @@ class TodoListItem extends React.Component {
     this.props.receiveTodo(this.props.todo);
   }
 
-  toggleDetail() { 
+  toggleDetail() {
     let detailStatus = this.state.detail === true ? false : true;
-    this.setState({detail: detailStatus}); 
+    this.setState({ detail: detailStatus });
   }
 
   render() {
     const todoProgress = this.props.todo.done ? "Undo" : "Done";
-    const todoDetail = <TodoDetailViewContainer todo={this.props.todo} />
+    const todoDetail = <TodoDetailViewContainer todo={this.props.todo} />;
     return (
       <div>
         <li>
           <span onClick={this.toggleDetail}>{this.props.todo.title}</span>
           <button onClick={this.updateProgress}>{todoProgress}</button>
-          {this.state.detail ? todoDetail : ''}
+          {this.state.detail ? todoDetail : ""}
         </li>
       </div>
     );
