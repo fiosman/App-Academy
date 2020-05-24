@@ -30,7 +30,10 @@ class StepListItem extends React.Component {
           >
             {this.props.step.done ? "Undo" : "Done"}
           </button>
-          <button className="delete-button" onClick={() => this.props.removeStep(this.props.step)}>
+          <button
+            className="delete-button"
+            onClick={() => this.props.removeStep(this.props.step)}
+          >
             Delete
           </button>
         </div>
