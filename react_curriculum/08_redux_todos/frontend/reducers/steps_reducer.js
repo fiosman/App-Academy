@@ -4,12 +4,14 @@ const initialState = {
   1: {
     id: 1,
     title: "go to store",
+    body: '',
     done: false,
     todoId: 1,
   },
   2: { 
     id: 2, 
     title: 'buy soap', 
+    body: '',
     done: false, 
     todoId: 1,
   }
@@ -18,7 +20,7 @@ const initialState = {
 const stepsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_STEPS:
-      let newSteps = {};
+      let newSteps = Object.assign({}, state);
       action.steps.forEach((step) => {
         newSteps[step.id] = step;
       });
@@ -32,6 +34,7 @@ const stepsReducer = (state = initialState, action) => {
     case REMOVE_STEP:
       let receivedState = Object.assign({}, state);
       delete receivedState[action.step.id];
+      
       return receivedState;
 
     default:

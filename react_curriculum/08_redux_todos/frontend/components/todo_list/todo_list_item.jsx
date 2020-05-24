@@ -23,10 +23,15 @@ class TodoListItem extends React.Component {
     const todoProgress = this.props.todo.done ? "Undo" : "Done";
     const todoDetail = <TodoDetailViewContainer todo={this.props.todo} />;
     return (
-      <div>
-        <li>
+      <div className="todo-header">
+        <li className="todo-list-item">
           <span onClick={this.toggleDetail}>{this.props.todo.title}</span>
-          <button onClick={this.updateProgress}>{todoProgress}</button>
+          <button
+            className={this.props.todo.done ? " done" : "undone"}
+            onClick={this.updateProgress}
+          >
+            {todoProgress}
+          </button>
           {this.state.detail ? todoDetail : ""}
         </li>
       </div>

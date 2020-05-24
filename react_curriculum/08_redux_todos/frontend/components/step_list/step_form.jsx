@@ -1,25 +1,31 @@
 import React from "react";
 import Util from "../../util/util";
 
-class TodoForm extends React.Component {
+class StepForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: ""};
+    this.state = { body: "", title: ""};
+    this.handleInput = this.handleInput.bind(this); 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleInput(e) { 
+    this.setState({
+      [e.target.name]: e.target.value });
+  }
 
-    this.props.receiveTodo({
-      id: Util.uinqueId(),
+  handleSubmit(e) { 
+    e.preventDefault(); 
+
+    this.props.receiveStep({ 
+      id: Util.uinqueId(), 
       title: this.state.title,
-      body: this.state.body,
-      done: false,
-    });
+      body: this.state.body, 
+      done: false, 
+      todoId: this.props.todoId
+    }); 
 
-    this.setState({ title: "" });
+    this.setState({title: "", body: ""})
   }
 
   handleInput(e) {
@@ -28,7 +34,7 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form className="todo-form" onSubmit={this.handleSubmit}>
+      <form className="step-form" onSubmit={this.handleSubmit}>
         <input
           className="input"
           type="text"
@@ -43,10 +49,10 @@ class TodoForm extends React.Component {
           value={this.state.body}
           onChange={this.handleInput}
         ></textarea>
-        <input className="create-button" type="submit" value="Submit Todo" />
+        <input className="create-button" type="submit" value="Submit Step" />
       </form>
     );
   }
 }
 
-export default TodoForm;
+export default StepForm; 

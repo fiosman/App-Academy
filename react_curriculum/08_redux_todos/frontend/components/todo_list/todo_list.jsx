@@ -14,7 +14,7 @@ const TodoList = (props) => {
   );
 
   return (
-    <div>
+    <div className="todo-list">
       {items}
       <TodoForm receiveTodo={props.receiveTodo} />
     </div>
