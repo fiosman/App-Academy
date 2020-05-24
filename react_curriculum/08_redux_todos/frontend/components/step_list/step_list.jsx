@@ -3,7 +3,6 @@ import StepListItemContainer from "./step_list_item_container";
 import StepForm from "./step_form";
 
 const StepList = (props) => {
-  console.log(props);
   const items = (
     <ul>
       {props.steps.map((step) => (

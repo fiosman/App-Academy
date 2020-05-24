@@ -4,7 +4,7 @@ import Util from "../../util/util";
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: ""};
+    this.state = { title: "", body: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }

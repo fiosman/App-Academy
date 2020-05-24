@@ -4,28 +4,29 @@ import Util from "../../util/util";
 class StepForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: "", title: ""};
-    this.handleInput = this.handleInput.bind(this); 
+    this.state = { body: "", title: "" };
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInput(e) { 
+  handleInput(e) {
     this.setState({
-      [e.target.name]: e.target.value });
+      [e.target.name]: e.target.value,
+    });
   }
 
-  handleSubmit(e) { 
-    e.preventDefault(); 
+  handleSubmit(e) {
+    e.preventDefault();
 
-    this.props.receiveStep({ 
-      id: Util.uinqueId(), 
+    this.props.receiveStep({
+      id: Util.uinqueId(),
       title: this.state.title,
-      body: this.state.body, 
-      done: false, 
-      todoId: this.props.todoId
-    }); 
+      body: this.state.body,
+      done: false,
+      todoId: this.props.todoId,
+    });
 
-    this.setState({title: "", body: ""})
+    this.setState({ title: "", body: "" });
   }
 
   handleInput(e) {
@@ -55,4 +56,4 @@ class StepForm extends React.Component {
   }
 }
 
-export default StepForm; 
+export default StepForm;
