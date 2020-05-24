@@ -1,6 +1,6 @@
 import React from "react";
-import StepListItemContainer from "./step_list_item_container"
-import StepForm from "./step_form"
+import StepListItemContainer from "./step_list_item_container";
+import StepForm from "./step_form";
 
 const StepList = (props) => {
   console.log(props);
