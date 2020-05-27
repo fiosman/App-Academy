@@ -25,7 +25,7 @@ class TodoList extends React.Component {
     return (
       <div className="todo-list">
         {items}
-        <TodoForm receiveTodo={this.props.receiveTodo} />
+        <TodoForm receiveTodo={this.props.receiveTodo} createTodo={this.props.createTodo} />
       </div>
     );
   }

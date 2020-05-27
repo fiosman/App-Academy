@@ -4,7 +4,7 @@ import Util from "../../util/util";
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: "" };
+    this.state = { title: "", body: "", done: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
@@ -12,14 +12,10 @@ class TodoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.receiveTodo({
-      id: Util.uinqueId(),
-      title: this.state.title,
-      body: this.state.body,
-      done: false,
-    });
-
-    this.setState({ title: "" });
+    const todo = Object.assign({}, this.state);
+    this.props
+      .createTodo({ todo })
+      .then(() => this.setState({ title: "", body: "" }));
   }
 
   handleInput(e) {

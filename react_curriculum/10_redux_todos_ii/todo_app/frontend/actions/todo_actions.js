@@ -23,3 +23,9 @@ export const requestTodos = () => (dispatch) => {
     dispatch(receiveTodos(todos));
   });
 };
+
+export const createTodo = (todo) => (dispatch) => { 
+  return APIUtil.createTodo(todo).then((res) => { 
+    dispatch(receiveTodo(res)); 
+  })
+}
