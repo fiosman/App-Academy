@@ -6,4 +6,4 @@ const thunk = (store) => (next) => (action) => {
   }
 }
 
-export default thunk;
+export default thunk
