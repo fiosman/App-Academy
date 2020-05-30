@@ -12,3 +12,11 @@ export const createTodo = (todo) => {
     data: todo
   })
 }
+
+export const updateTodo = (todo) => { 
+  return $.ajax({ 
+    url: `api/todos/${todo.id}`, 
+    method: 'PUT', 
+    data: todo
+  })
+}
