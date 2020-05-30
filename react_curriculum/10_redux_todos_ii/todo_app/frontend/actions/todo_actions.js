@@ -24,8 +24,8 @@ export const requestTodos = () => (dispatch) => {
   });
 };
 
-export const createTodo = (todo) => (dispatch) => { 
-  return APIUtil.createTodo(todo).then((res) => { 
-    dispatch(receiveTodo(res)); 
-  })
-}
+export const createTodo = (todo) => (dispatch) =>
+  APIUtil.createTodo(todo).then(
+    (todo) => dispatch(receiveTodo(todo)),
+    (err) => dispatch(receiveErrors(err.responseJSON))
+  );
