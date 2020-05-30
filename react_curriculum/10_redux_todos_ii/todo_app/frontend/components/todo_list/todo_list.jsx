@@ -7,8 +7,8 @@ class TodoList extends React.Component {
     super(props);
   }
 
-  componentDidMount() { 
-    this.props.requestTodos(); 
+  componentDidMount() {
+    this.props.requestTodos();
   }
 
   render() {
@@ -16,16 +16,23 @@ class TodoList extends React.Component {
       <ul>
         {this.props.todos.map((todo, idx) => (
           <div key={idx}>
-            <TodoListItem todo={todo} receiveTodo={this.props.receiveTodo} />
+            <TodoListItem
+              key={todo.id}
+              todo={todo}
+              receiveTodo={this.props.receiveTodo}
+            />
           </div>
         ))}
       </ul>
     );
 
     return (
-      <div className="todo-list">
-        {items}
-        <TodoForm receiveTodo={this.props.receiveTodo} createTodo={this.props.createTodo} />
+      <div>
+        <TodoForm
+          createTodo={this.props.createTodo}
+          errors={this.props.errors}
+        />
+        <ul className="todo-list">{items}</ul>
       </div>
     );
   }

@@ -15,7 +15,7 @@ class Api::TodosController < ApplicationController
     if @todo.save 
       render json: @todo 
     else 
-      render json: @todo.errors.full_messages
+      render json: @todo.errors.full_messages, status: 422
     end
   end 
 
@@ -35,7 +35,7 @@ class Api::TodosController < ApplicationController
     if @todo.update_attributes(todo_params) 
       render json: @todo 
     else 
-      render json: @todo.errors.full_messages
+      render json: @todo.errors.full_messages, status: 422
     end
   end 
 

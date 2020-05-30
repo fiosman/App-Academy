@@ -1,5 +1,6 @@
 import React from "react";
 import Util from "../../util/util";
+import ErrorList from "./error_list";
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -24,23 +25,26 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form className="todo-form" onSubmit={this.handleSubmit}>
-        <input
-          className="input"
-          type="text"
-          value={this.state.title}
-          name="title"
-          onChange={this.handleInput}
-        />
-        <textarea
-          className="input"
-          type="text"
-          name="body"
-          value={this.state.body}
-          onChange={this.handleInput}
-        ></textarea>
-        <input className="create-button" type="submit" value="Submit Todo" />
-      </form>
+      <div>
+        <form className="todo-form" onSubmit={this.handleSubmit}>
+          <ErrorList errors={this.props.errors} />
+          <input
+            className="input"
+            type="text"
+            value={this.state.title}
+            name="title"
+            onChange={this.handleInput}
+          />
+          <textarea
+            className="input"
+            type="text"
+            name="body"
+            value={this.state.body}
+            onChange={this.handleInput}
+          ></textarea>
+          <input className="create-button" type="submit" value="Submit Todo" />
+        </form>
+      </div>
     );
   }
 }
