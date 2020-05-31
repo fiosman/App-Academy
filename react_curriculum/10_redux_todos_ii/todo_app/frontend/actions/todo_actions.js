@@ -20,9 +20,7 @@ export let removeTodo = (todo) => ({
 });
 
 export const requestTodos = () => (dispatch) => {
-  return APIUtil.fetchTodos().then((todos) => {
-    dispatch(receiveTodos(todos));
-  });
+  return APIUtil.fetchTodos().then((todos) => dispatch(receiveTodos(todos)));
 };
 
 export const createTodo = (todo) => (dispatch) =>
@@ -35,9 +33,9 @@ export const createTodo = (todo) => (dispatch) =>
   );
 
 export const updateTodo = (todo) => (dispatch) => {
-  APIUtil.updateTodo(todo).then(
-    (todo) => {
-      dispatch(receiveTodo(todo));
-    }
-  );
+  APIUtil.updateTodo(todo).then((todo) => dispatch(receiveTodo(todo)));
+};
+
+export const deleteTodo = (todo) => {
+  APIUtil.deleteTodo(todo).then((todo) => dispaatch(removeTodo(todo)));
 };
