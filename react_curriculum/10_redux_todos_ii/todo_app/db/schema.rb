@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_193918) do
+ActiveRecord::Schema.define(version: 2020_05_31_204930) do
 
   create_table "steps", force: :cascade do |t|
     t.text "body", null: false
     t.string "title", null: false
     t.integer "todo_id", null: false
-    t.boolean "done", null: false
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_steps_on_todo_id"
