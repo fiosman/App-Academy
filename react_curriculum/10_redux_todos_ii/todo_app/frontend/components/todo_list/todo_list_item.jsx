@@ -10,8 +10,9 @@ class TodoListItem extends React.Component {
   }
 
   updateProgress() {
+    const todo = this.props.todo
     this.props.todo.done = this.props.todo.done ? false : true;
-    this.props.receiveTodo(this.props.todo);
+    this.props.updateTodo(todo);
   }
 
   toggleDetail() {

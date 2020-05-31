@@ -20,6 +20,7 @@ class TodoList extends React.Component {
               key={todo.id}
               todo={todo}
               receiveTodo={this.props.receiveTodo}
+              updateTodo={this.props.updateTodo}
             />
           </div>
         ))}

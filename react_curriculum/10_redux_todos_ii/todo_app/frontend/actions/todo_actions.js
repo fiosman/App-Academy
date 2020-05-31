@@ -38,7 +38,6 @@ export const updateTodo = (todo) => (dispatch) => {
   APIUtil.updateTodo(todo).then(
     (todo) => {
       dispatch(receiveTodo(todo));
-    },
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
+    }
   );
 };
