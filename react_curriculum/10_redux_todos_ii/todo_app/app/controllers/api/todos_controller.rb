@@ -21,12 +21,8 @@ class Api::TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
-    
-    if @todo.destroy 
-      render json: 'Todo deleted.'
-    else 
-      render json: @todo
-    end
+    @todo.destroy 
+    render json: @todo 
   end 
 
   def update 

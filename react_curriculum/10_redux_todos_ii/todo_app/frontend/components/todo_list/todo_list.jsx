@@ -12,6 +12,7 @@ class TodoList extends React.Component {
   }
 
   render() {
+    console.log('TODOLIST HAS BEEN RE-RENDERED!') //This is interesting, if I modify the props in TodoListItem, it will re-render TodoList"
     const items = (
       <ul>
         {this.props.todos.map((todo, idx) => (
