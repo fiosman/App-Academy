@@ -18,4 +18,6 @@
 class Step < ApplicationRecord 
   validates :body, :title, :todo_id, presence: true 
   validates :done, inclusion: { in: [true, false] }, default: false 
+
+  belongs_to :todo
 end
