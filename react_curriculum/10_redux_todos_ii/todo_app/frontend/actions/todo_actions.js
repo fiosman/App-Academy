@@ -33,3 +33,12 @@ export const createTodo = (todo) => (dispatch) =>
     },
     (err) => dispatch(receiveErrors(err.responseJSON))
   );
+
+export const updateTodo = (todo) => (dispatch) => {
+  APIUtil.updateTodo(todo).then(
+    (todo) => {
+      dispatch(receiveTodo(todo));
+    },
+    (errors) => dispatch(receiveErrors(errors.responseJSON))
+  );
+};
