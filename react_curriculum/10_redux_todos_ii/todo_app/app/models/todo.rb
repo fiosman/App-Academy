@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  body       :string           not null
-#  done       :boolean          not null
+#  done       :boolean          default(FALSE)
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

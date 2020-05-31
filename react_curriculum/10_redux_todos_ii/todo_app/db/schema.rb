@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_204930) do
+ActiveRecord::Schema.define(version: 2020_05_31_210631) do
 
   create_table "steps", force: :cascade do |t|
     t.text "body", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_204930) do
   create_table "todos", force: :cascade do |t|
     t.string "body", null: false
     t.string "title", null: false
-    t.boolean "done", null: false
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
