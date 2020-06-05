@@ -14,7 +14,7 @@ const StepList = (props) => {
   return (
     <div className="step-list">
       {items}
-      <StepForm todoId={props.todoId} receiveStep={props.receiveStep} />
+      <StepForm todoId={props.todoId} createStep={props.createStep} errors={props.errors} />
     </div>
   );
 };

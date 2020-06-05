@@ -1,8 +1,8 @@
-export const createStep = (step) => {
+export const createStep = (todoId, step) => {
   return $.ajax({
     method: "POST",
-    url: `api/todos/${step.todo_id}/steps`,
-    data: step,
+    url: `api/todos/${todoId}/steps`,
+    data: { step } ,
   });
 };
 
