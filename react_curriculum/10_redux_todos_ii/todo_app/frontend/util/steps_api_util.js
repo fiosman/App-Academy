@@ -2,7 +2,7 @@ export const createStep = (todoId, step) => {
   return $.ajax({
     method: "POST",
     url: `api/todos/${todoId}/steps`,
-    data: { step } ,
+    data: { step },
   });
 };
 

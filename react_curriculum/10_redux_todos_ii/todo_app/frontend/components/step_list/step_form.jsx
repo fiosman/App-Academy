@@ -16,6 +16,7 @@ class StepForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props);
     e.preventDefault();
 
     const step = Object.assign({}, this.state); 

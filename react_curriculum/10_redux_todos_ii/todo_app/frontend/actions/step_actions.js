@@ -2,6 +2,7 @@ export const RECEIVE_STEPS = "RECEIVE_STEPS";
 export const RECEIVE_STEP = "RECEIVE_STEP";
 export const REMOVE_STEP = "REMOVE_STEP"; 
 import * as APIUtil from '../util/steps_api_util.js'; 
+import { receiveErrors, clearErrors } from "../actions/error_actions";
 
 export const receiveSteps = (steps) => ({ 
   type: RECEIVE_STEPS, 
@@ -28,4 +29,4 @@ APIUtil.createStep(step, todoId).then((step) => {
     dispatch(clearErrors()); 
   }, 
   (err) => dispatch(receiveErrors(err.responseJSON))
-); 
+);
