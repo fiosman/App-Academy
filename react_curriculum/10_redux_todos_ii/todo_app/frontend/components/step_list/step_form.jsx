@@ -1,50 +1,59 @@
 import React from "react";
-import Util from "../../util/util";
 
 class StepForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: "", title: "" };
-    this.handleInput = this.handleInput.bind(this);
+    this.state = {
+      title: "",
+      body: "",
+      done: false,
+      todo_id: this.props.todo_id,
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInput(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+  update(property) {
+    return (e) => this.setState({ [property]: e.target.value });
   }
 
   handleSubmit(e) {
-    console.log(this.props);
     e.preventDefault();
-
-    const step = Object.assign({}, this.state); 
-    this.props.createStep(step, this.props.todoId).then(() => this.setState({title: "", body: ""}))
-  }
-
-  handleInput(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    const step = Object.assign({}, this.state);
+    this.props.createStep(this.props.todo_id, step).then(
+      this.setState({
+        title: "",
+        body: "",
+      }) // reset form
+    );
   }
 
   render() {
     return (
       <form className="step-form" onSubmit={this.handleSubmit}>
-        <input
-          className="input"
-          type="text"
-          value={this.state.title}
-          name="title"
-          onChange={this.handleInput}
-        />
-        <textarea
-          className="input"
-          type="text"
-          name="body"
-          value={this.state.body}
-          onChange={this.handleInput}
-        ></textarea>
-        <input className="create-button" type="submit" value="Submit Step" />
+        <label>
+          Title:
+          <input
+            className="input"
+            ref="title"
+            value={this.state.title}
+            placeholder="walk to store"
+            onChange={this.update("title")}
+            required
+          />
+        </label>
+        <label>
+          Description:
+          <input
+            className="input"
+            ref="body"
+            value={this.state.body}
+            placeholder="google store directions"
+            onChange={this.update("body")}
+            required
+          />
+        </label>
+        <button className="create-button">Create Step!</button>
       </form>
     );
   }

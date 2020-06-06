@@ -1,20 +1,18 @@
 import React from "react";
+// Components
 import StepListItemContainer from "./step_list_item_container";
 import StepForm from "./step_form";
 
 const StepList = (props) => {
-  const items = (
-    <ul>
-      {props.steps.map((step) => (
-        <StepListItemContainer step={step} key={step.id} />
-      ))}
-    </ul>
-  );
+  console.log(props.todo_id)
+  const stepItems = props.steps.map((step) => (
+    <StepListItemContainer key={step.id} step={step} />
+  ));
 
   return (
-    <div className="step-list">
-      {items}
-      <StepForm todoId={props.todoId} createStep={props.createStep} errors={props.errors} />
+    <div>
+      <ul className="step-list">{stepItems}</ul>
+      <StepForm todo_id={props.todo_id} createStep={props.createStep} />
     </div>
   );
 };

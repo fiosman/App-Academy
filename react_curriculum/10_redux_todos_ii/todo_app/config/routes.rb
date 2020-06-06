@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :todos, except: [:edit, :new] do 
       resources :steps, except: [:edit, :new] 
     end
+
+    resources :steps, only: [:update, :destroy]
   end
 
   root to: 'static_pages#root'

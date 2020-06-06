@@ -4,43 +4,21 @@ import {
   REMOVE_STEP,
 } from "../actions/step_actions";
 
-const initialState = {
-  1: {
-    id: 1,
-    title: "go to store",
-    body: "",
-    done: false,
-    todoId: 1,
-  },
-  2: {
-    id: 2,
-    title: "buy soap",
-    body: "",
-    done: false,
-    todoId: 1,
-  },
-};
+const stepsReducer = (state = {}, action) => {
+  let nextState;
+  Object.freeze(state);
 
-const stepsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_STEPS:
-      let newSteps = Object.assign({}, state);
-      action.steps.forEach((step) => {
-        newSteps[step.id] = step;
-      });
-      return newSteps;
-
+      nextState = Object.assign({}, state);
+      action.steps.forEach((step) => (nextState[step.id] = step));
+      return nextState;
     case RECEIVE_STEP:
-      let newStepState = Object.assign({}, state);
-      newStepState[action.step.id] = action.step;
-      return newStepState;
-
+      return Object.assign({}, state, { [action.step.id]: action.step });
     case REMOVE_STEP:
-      let receivedState = Object.assign({}, state);
-      delete receivedState[action.step.id];
-
-      return receivedState;
-
+      nextState = Object.assign({}, state);
+      delete nextState[action.step.id];
+      return nextState;
     default:
       return state;
   }

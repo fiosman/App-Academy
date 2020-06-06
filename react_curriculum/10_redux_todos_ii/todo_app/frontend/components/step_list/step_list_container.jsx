@@ -1,14 +1,15 @@
-import { stepsByTodoId } from "../../reducers/selectors";
-import { createStep } from "../../actions/step_actions"
 import { connect } from "react-redux";
 import StepList from "./step_list";
+// Actions
+import { stepsByTodoId } from "../../reducers/selectors";
+import { createStep } from "../../actions/step_actions";
 
-const mapStateToProps = (state, ownProps) => ({
-  steps: stepsByTodoId(state, ownProps.todo_Id),
-  todoId: ownProps.todo_id,
+const mapStateToProps = (state, { todo_id }) => ({
+  steps: stepsByTodoId(state, todo_id),
+  todo_id,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   createStep: (...args) => dispatch(createStep(...args)),
 });
 

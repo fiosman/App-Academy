@@ -6,22 +6,19 @@ class StepListItem extends React.Component {
     this.toggleStep = this.toggleStep.bind(this);
   }
 
-  toggleStep() {
+  toggleStep(e) {
     const toggledStep = Object.assign({}, this.props.step, {
       done: !this.props.step.done,
     });
-    this.props.receiveStep(toggledStep);
+    this.props.updateStep(toggledStep);
   }
 
   render() {
-    const title = this.props.step.title;
-    const body = this.props.step.body;
-
     return (
       <li className="step-header">
         <div className="step-info">
-          <span>{title}</span>
-          <p>{body}</p>
+          <h3>{this.props.step.title}</h3>
+          <p>{this.props.step.body}</p>
         </div>
         <div className="step-buttons">
           <button
@@ -30,10 +27,7 @@ class StepListItem extends React.Component {
           >
             {this.props.step.done ? "Undo" : "Done"}
           </button>
-          <button
-            className="delete-button"
-            onClick={() => this.props.removeStep(this.props.step)}
-          >
+          <button className="delete-button" onClick={this.props.destroyStep}>
             Delete
           </button>
         </div>
