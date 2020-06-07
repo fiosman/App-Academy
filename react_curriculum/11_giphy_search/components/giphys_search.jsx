@@ -11,10 +11,11 @@ class GiphysSearch extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ searchTerm: e.target.value });
+    this.setState({ searchTerm: e.currentTarget.value });
   }
 
   handleSubmit(e) {
+    console.log(this.props)
     e.preventDefault();
     this.props.fetchSearchGiphys(this.state.searchTerm);
   }
