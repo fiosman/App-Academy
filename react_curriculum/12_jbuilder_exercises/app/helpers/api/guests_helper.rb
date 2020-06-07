@@ -1,0 +1,2 @@
+module Api::GuestsHelper
+end
