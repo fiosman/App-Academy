@@ -8,6 +8,7 @@
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 
 class Todo < ApplicationRecord 
@@ -15,4 +16,5 @@ class Todo < ApplicationRecord
   validates :done, inclusion: { in: [true, false] }
 
   has_many :steps
+  belongs_to :user
 end
