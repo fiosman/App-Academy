@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private 
 
   def login_user!(user)
-    user.reset_session_token
+    user.reset_session_token!
     session[:session_token] = user.session_token 
   end 
 
@@ -29,5 +29,5 @@ class ApplicationController < ActionController::Base
   def redirect_if_logged_in
     redirect_to root_url if logged_in?
   end
-  
+
 end
