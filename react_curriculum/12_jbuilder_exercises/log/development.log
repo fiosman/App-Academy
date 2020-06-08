@@ -259,3 +259,41 @@ Processing by Api::GuestsController#show as JSON
 Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:49:48 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.8ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.4ms)
+  Rendered api/guests/show.json.jbuilder (3.2ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:50:43 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.3ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (1.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting =>
+...guest: @guest, json.gifts guest.gifts
+...                          ^~~~~:
+  app/views/api/guests/show.json.jbuilder:1:in `'
+  app/controllers/api/guests_controller.rb:9:in `show'
+
+Started POST "/__better_errors/e3c4b37cee4f82c6/variables" for ::1 at 2020-06-07 21:50:43 -0400
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:53:31 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.6ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.3ms)
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/guests/show.json.jbuilder (40.5ms)
+Completed 200 OK in 51ms (Views: 41.2ms | ActiveRecord: 8.7ms)
+
+
