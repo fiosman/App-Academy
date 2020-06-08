@@ -118,3 +118,62 @@
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 4], ["party_id", 2], ["created_at", "2020-06-08 00:39:15.518344"], ["updated_at", "2020-06-08 00:39:15.518344"]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-06-07 21:10:46 -0400
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (10.9ms)
+Completed 200 OK in 55ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:10:58 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (1.5ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.6ms)
+Completed 200 OK in 84ms (Views: 9.9ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:11:30 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.6ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.3ms)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:11:45 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (1.0ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.7ms)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:11:50 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.4ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (16.8ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.4ms)
+
+
+
+ActionView::Template::Error - undefined method `fares' for #<Guest:0x00007fa0ad87bc98>:
+  app/views/api/guests/show.json.jbuilder:1:in `view template'
+  app/controllers/api/guests_controller.rb:9:in `show'
+
+Started POST "/__better_errors/10d1103a7a025f14/variables" for ::1 at 2020-06-07 21:11:50 -0400
+Started GET "/api/guests/1" for ::1 at 2020-06-07 21:11:55 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.4ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.9ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.4ms)
+
+

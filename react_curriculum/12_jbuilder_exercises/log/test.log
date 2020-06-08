@@ -141,3 +141,31 @@ Started GET "/api/parties" for 127.0.0.1 at 2020-06-07 20:39:47 -0400
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
 Started GET "/api/guests" for 127.0.0.1 at 2020-06-07 20:39:47 -0400
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/guests/1" for 127.0.0.1 at 2020-06-07 21:12:55 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.4ms)
+Completed 200 OK in 30ms (Views: 9.0ms | ActiveRecord: 7.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/guests/1" for 127.0.0.1 at 2020-06-07 21:12:55 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/guests/1" for 127.0.0.1 at 2020-06-07 21:12:55 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.3ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/show.json.jbuilder (0.1ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
