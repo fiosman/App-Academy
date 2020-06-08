@@ -402,3 +402,45 @@ Processing by Api::PartiesController#index as JSON
 Completed 200 OK in 36ms (Views: 30.9ms | ActiveRecord: 4.3ms)
 
 
+Started GET "/api/parties/1" for ::1 at 2020-06-07 22:28:31 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mParty Load (0.7ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  Rendered api/parties/show.json.jbuilder (0.6ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2020-06-07 22:28:55 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.4ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  Rendered api/parties/show.json.jbuilder (0.9ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2020-06-07 22:32:20 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (1.0ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  [1m[36mGuest Load (2.3ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (9.8ms)
+Completed 200 OK in 22ms (Views: 16.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2020-06-07 22:32:53 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (8.4ms)
+Completed 200 OK in 21ms (Views: 17.4ms | ActiveRecord: 2.2ms)
+
+
