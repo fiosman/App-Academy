@@ -381,3 +381,24 @@ Processing by Api::GiftsController#index as JSON
 Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/api/parties" for ::1 at 2020-06-07 22:19:17 -0400
+Processing by Api::PartiesController#index as JSON
+  Rendering api/parties/index.json.jbuilder
+  [1m[36mParty Load (0.9ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  Rendered api/parties/index.json.jbuilder (13.8ms)
+Completed 200 OK in 31ms (Views: 16.6ms | ActiveRecord: 7.1ms)
+
+
+  [1m[36mParty Load (0.6ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mParty Load (0.5ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" ORDER BY "parties"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 1]]
+Started GET "/api/parties" for ::1 at 2020-06-07 22:21:18 -0400
+Processing by Api::PartiesController#index as JSON
+  Rendering api/parties/index.json.jbuilder
+  [1m[36mParty Load (0.6ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mGuest Load (0.8ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 1]]
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  Rendered api/parties/index.json.jbuilder (26.7ms)
+Completed 200 OK in 36ms (Views: 30.9ms | ActiveRecord: 4.3ms)
+
+
