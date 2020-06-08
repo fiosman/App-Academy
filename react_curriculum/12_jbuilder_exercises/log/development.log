@@ -334,3 +334,50 @@ Processing by Api::GiftsController#show as JSON
 Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/api/gifts/3" for ::1 at 2020-06-07 22:09:00 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mGift Load (0.8ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.8ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-07 22:11:03 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.3ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.3ms)
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/guests/show.json.jbuilder (3.2ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/guests/1/gifts" for ::1 at 2020-06-07 22:11:05 -0400
+Processing by Api::GiftsController#index as JSON
+  Parameters: {"guest_id"=>"1"}
+  Rendering api/gifts/index.json.jbuilder
+  [1m[36mGift Load (0.7ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/gifts/index.json.jbuilder (2.9ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/guests/2/gifts" for ::1 at 2020-06-07 22:11:13 -0400
+Processing by Api::GiftsController#index as JSON
+  Parameters: {"guest_id"=>"2"}
+  Rendering api/gifts/index.json.jbuilder
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 2]]
+  Rendered api/gifts/index.json.jbuilder (2.8ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/guests/3/gifts" for ::1 at 2020-06-07 22:11:17 -0400
+Processing by Api::GiftsController#index as JSON
+  Parameters: {"guest_id"=>"3"}
+  Rendering api/gifts/index.json.jbuilder
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  Rendered api/gifts/index.json.jbuilder (2.7ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
