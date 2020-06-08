@@ -1,0 +1,120 @@
+  [1m[35mSQL (1.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "gifts" CASCADE[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "gifts" ("id" bigserial primary key, "title" character varying NOT NULL, "description" character varying NOT NULL, "guest_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_gifts_on_guest_id" ON "gifts"  ("guest_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "guests" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "guests" ("id" bigserial primary key, "name" character varying NOT NULL, "age" integer NOT NULL, "favorite_color" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "invitations" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" bigserial primary key, "guest_id" integer, "party_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_invitations_on_guest_id" ON "invitations"  ("guest_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_invitations_on_party_id" ON "invitations"  ("party_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parties" CASCADE[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "parties" ("id" bigserial primary key, "name" character varying NOT NULL, "location" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170714204346)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170714204119),
+(20170714204225),
+(20170714204315);
+
+[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-08 00:39:15.275022"], ["updated_at", "2020-06-08 00:39:15.275022"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "gifts" CASCADE[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "gifts" ("id" bigserial primary key, "title" character varying NOT NULL, "description" character varying NOT NULL, "guest_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_gifts_on_guest_id" ON "gifts"  ("guest_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "guests" CASCADE[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "guests" ("id" bigserial primary key, "name" character varying NOT NULL, "age" integer NOT NULL, "favorite_color" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "invitations" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" bigserial primary key, "guest_id" integer, "party_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_invitations_on_guest_id" ON "invitations"  ("guest_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_invitations_on_party_id" ON "invitations"  ("party_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "parties" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "parties" ("id" bigserial primary key, "name" character varying NOT NULL, "location" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170714204346)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170714204119),
+(20170714204225),
+(20170714204315);
+
+[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-08 00:39:15.369905"], ["updated_at", "2020-06-08 00:39:15.369905"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-06-08 00:39:15.375534"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "John Smith"], ["age", 45], ["favorite_color", "Blue"], ["created_at", "2020-06-08 00:39:15.431007"], ["updated_at", "2020-06-08 00:39:15.431007"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jane Doe"], ["age", 47], ["favorite_color", "Green"], ["created_at", "2020-06-08 00:39:15.434000"], ["updated_at", "2020-06-08 00:39:15.434000"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Josh Brown"], ["age", 22], ["favorite_color", "Brown"], ["created_at", "2020-06-08 00:39:15.436009"], ["updated_at", "2020-06-08 00:39:15.436009"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Helen White"], ["age", 25], ["favorite_color", "White"], ["created_at", "2020-06-08 00:39:15.438017"], ["updated_at", "2020-06-08 00:39:15.438017"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Job Bluth"], ["age", 41], ["favorite_color", "Red"], ["created_at", "2020-06-08 00:39:15.440078"], ["updated_at", "2020-06-08 00:39:15.440078"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "A Bottle of Wine"], ["description", "This one is not so great."], ["guest_id", 1], ["created_at", "2020-06-08 00:39:15.468528"], ["updated_at", "2020-06-08 00:39:15.468528"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Another Bottle of Wine"], ["description", "This one is not so bad."], ["guest_id", 1], ["created_at", "2020-06-08 00:39:15.471563"], ["updated_at", "2020-06-08 00:39:15.471563"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "The Hunger Games"], ["description", "A bit dark for a gift, but it's good."], ["guest_id", 2], ["created_at", "2020-06-08 00:39:15.473415"], ["updated_at", "2020-06-08 00:39:15.473415"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Baseball Glove"], ["description", "Feel like a kid again!"], ["guest_id", 3], ["created_at", "2020-06-08 00:39:15.475342"], ["updated_at", "2020-06-08 00:39:15.475342"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Basketball Tickets"], ["description", "The team's going 82-0 this year."], ["guest_id", 3], ["created_at", "2020-06-08 00:39:15.477214"], ["updated_at", "2020-06-08 00:39:15.477214"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Hawaiian Getaway"], ["description", "Helen has the best gifts."], ["guest_id", 4], ["created_at", "2020-06-08 00:39:15.479218"], ["updated_at", "2020-06-08 00:39:15.479218"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "parties" ("name", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Secret Santa Extravaganza"], ["location", "Portland"], ["created_at", "2020-06-08 00:39:15.492068"], ["updated_at", "2020-06-08 00:39:15.492068"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "parties" ("name", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Charles' Christmas Party"], ["location", "San Francisco"], ["created_at", "2020-06-08 00:39:15.494217"], ["updated_at", "2020-06-08 00:39:15.494217"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 1], ["party_id", 1], ["created_at", "2020-06-08 00:39:15.507085"], ["updated_at", "2020-06-08 00:39:15.507085"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 2], ["party_id", 1], ["created_at", "2020-06-08 00:39:15.509507"], ["updated_at", "2020-06-08 00:39:15.509507"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 3], ["party_id", 1], ["created_at", "2020-06-08 00:39:15.511398"], ["updated_at", "2020-06-08 00:39:15.511398"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 4], ["party_id", 1], ["created_at", "2020-06-08 00:39:15.513139"], ["updated_at", "2020-06-08 00:39:15.513139"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 5], ["party_id", 1], ["created_at", "2020-06-08 00:39:15.514873"], ["updated_at", "2020-06-08 00:39:15.514873"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 3], ["party_id", 2], ["created_at", "2020-06-08 00:39:15.516531"], ["updated_at", "2020-06-08 00:39:15.516531"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 4], ["party_id", 2], ["created_at", "2020-06-08 00:39:15.518344"], ["updated_at", "2020-06-08 00:39:15.518344"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
