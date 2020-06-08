@@ -297,3 +297,40 @@ Processing by Api::GuestsController#show as JSON
 Completed 200 OK in 51ms (Views: 41.2ms | ActiveRecord: 8.7ms)
 
 
+Started GET "/api/gifts/1" for ::1 at 2020-06-07 22:00:07 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.7ms)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mGift Load (0.7ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts"[0m
+Started GET "/api/gifts/2" for ::1 at 2020-06-07 22:01:14 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mGift Load (1.0ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.5ms)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/gifts/3" for ::1 at 2020-06-07 22:01:32 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.5ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/gifts/3" for ::1 at 2020-06-07 22:02:05 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mGift Load (0.9ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.6ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.9ms)
+
+
