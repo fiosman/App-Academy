@@ -444,3 +444,260 @@ Processing by Api::PartiesController#show as JSON
 Completed 200 OK in 21ms (Views: 17.4ms | ActiveRecord: 2.2ms)
 
 
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:38:26 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (7.2ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  [1m[36mGuest Load (0.6ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (76.2ms)
+Completed 200 OK in 149ms (Views: 71.1ms | ActiveRecord: 54.8ms)
+
+
+Started GET "/api/parties/" for ::1 at 2020-06-08 21:40:45 -0400
+Processing by Api::PartiesController#index as JSON
+  Rendering api/parties/index.json.jbuilder
+  [1m[36mParty Load (0.6ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mInvitation Load (0.8ms)[0m  [1m[34mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" IN (1, 2)[0m
+  [1m[36mGuest Load (4.6ms)[0m  [1m[34mSELECT "guests".* FROM "guests" WHERE "guests"."id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  Rendered api/parties/index.json.jbuilder (85.3ms)
+Completed 200 OK in 101ms (Views: 84.1ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/api/parties/" for ::1 at 2020-06-08 21:41:41 -0400
+Processing by Api::PartiesController#index as JSON
+  Rendering api/parties/index.json.jbuilder
+  [1m[36mParty Load (0.5ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 1]]
+  [1m[36mGuest Load (0.6ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  Rendered api/parties/index.json.jbuilder (34.7ms)
+Completed 200 OK in 47ms (Views: 39.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:41:43 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (2.4ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.4ms)
+
+
+
+NoMethodError - undefined method `includes' for #<Party:0x00007fa0acc82fb8>:
+  app/controllers/api/parties_controller.rb:8:in `show'
+
+Started POST "/__better_errors/d2cadf127d8200ae/variables" for ::1 at 2020-06-08 21:41:43 -0400
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:44:25 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (2.4ms)[0m  [1m[34mSELECT  DISTINCT "parties"."id" FROM "parties" LEFT OUTER JOIN "invitations" ON "invitations"."party_id" = "parties"."id" LEFT OUTER JOIN "guests" ON "guests"."id" = "invitations"."guest_id" LEFT OUTER JOIN "gifts" ON "gifts"."guest_id" = "guests"."id" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 51ms (ActiveRecord: 17.2ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Party with 'id'={:id=>"2"}:
+  app/controllers/api/parties_controller.rb:8:in `show'
+
+Started POST "/__better_errors/b85cc6bef6c8dc09/variables" for ::1 at 2020-06-08 21:44:25 -0400
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:44:36 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.5ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mInvitation Load (0.4ms)[0m  [1m[34mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" = 2[0m
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT "guests".* FROM "guests" WHERE "guests"."id" IN (3, 4)[0m
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (3, 4)[0m
+  Rendering api/parties/show.json.jbuilder
+  Rendered api/parties/show.json.jbuilder (0.7ms)
+Completed 200 OK in 79ms (Views: 7.3ms | ActiveRecord: 9.5ms)
+
+
+  [1m[36mParty Load (0.6ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mParty Load (0.5ms)[0m  [1m[34mSELECT "parties".* FROM "parties"[0m
+  [1m[36mInvitation Load (1.9ms)[0m  [1m[34mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" IN (1, 2)[0m
+  [1m[36mGuest Load (0.8ms)[0m  [1m[34mSELECT "guests".* FROM "guests" WHERE "guests"."id" IN (1, 2, 3, 4, 5)[0m
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:47:43 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+
+NoMethodError - undefined method `-' for nil:NilClass:
+  app/controllers/api/parties_controller.rb:9:in `show'
+
+Started POST "/__better_errors/6ec575337d5e4bf7/variables" for ::1 at 2020-06-08 21:47:43 -0400
+Started GET "/api/parties/2" for ::1 at 2020-06-08 21:47:55 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (2.1ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 2]]
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[36mGift Load (0.3ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (34.1ms)
+Completed 200 OK in 64ms (Views: 44.0ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/parties/1" for ::1 at 2020-06-08 21:48:25 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mParty Load (0.9ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/parties/show.json.jbuilder
+  [1m[36mGuest Load (1.8ms)[0m  [1m[34mSELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1[0m  [["party_id", 1]]
+  [1m[36mGift Load (0.9ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  [1m[36mGift Load (1.3ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 2]]
+  [1m[36mGift Load (1.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  [1m[36mGift Load (0.3ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 5]]
+  Rendered api/parties/show.json.jbuilder (19.5ms)
+Completed 200 OK in 34ms (Views: 24.8ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/parties/1" for ::1 at 2020-06-08 21:49:04 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mParty Load (0.4ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInvitation Load (0.5ms)[0m  [1m[34mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" = 1[0m
+  [1m[36mGuest Load (0.4ms)[0m  [1m[34mSELECT "guests".* FROM "guests" WHERE "guests"."id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  Rendering api/parties/show.json.jbuilder
+  Rendered api/parties/show.json.jbuilder (1.3ms)
+Completed 200 OK in 91ms (Views: 9.2ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/api/parties/1" for ::1 at 2020-06-08 21:49:22 -0400
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mParty Load (1.1ms)[0m  [1m[34mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInvitation Load (1.0ms)[0m  [1m[34mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" = 1[0m
+  [1m[36mGuest Load (1.9ms)[0m  [1m[34mSELECT "guests".* FROM "guests" WHERE "guests"."id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGift Load (0.8ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  Rendering api/parties/show.json.jbuilder
+  Rendered api/parties/show.json.jbuilder (1.1ms)
+Completed 200 OK in 21ms (Views: 8.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-08 21:54:28 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.8ms)
+  [1m[36mGift Load (1.0ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/guests/show.json.jbuilder (8.7ms)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/guests/2" for ::1 at 2020-06-08 21:54:32 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mGuest Load (0.7ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.4ms)
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 2]]
+  Rendered api/guests/show.json.jbuilder (5.1ms)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/guests/3" for ::1 at 2020-06-08 21:54:34 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.3ms)
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  Rendered api/guests/show.json.jbuilder (4.1ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/guests/4" for ::1 at 2020-06-08 21:54:36 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mGuest Load (2.5ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.4ms)
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 4]]
+  Rendered api/guests/show.json.jbuilder (4.3ms)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/guests/5" for ::1 at 2020-06-08 21:54:38 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mGuest Load (0.9ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.4ms)
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 5]]
+  Rendered api/guests/show.json.jbuilder (4.5ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/guests/6" for ::1 at 2020-06-08 21:54:40 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mGuest Load (2.9ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (5.8ms)
+  Rendered api/guests/show.json.jbuilder (7.9ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.9ms)
+
+
+
+ActionView::Template::Error - undefined method `name' for nil:NilClass:
+  app/views/api/guests/_guest.json.jbuilder:1:in `view template'
+  app/views/api/guests/show.json.jbuilder:1:in `_app_views_api_guests_show_json_jbuilder___645937410006074877_70164043296080'
+  app/controllers/api/guests_controller.rb:9:in `show'
+
+Started POST "/__better_errors/8b48751a3cc2fbda/variables" for ::1 at 2020-06-08 21:54:40 -0400
+Started GET "/api/guests/1" for ::1 at 2020-06-08 21:54:42 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.4ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.5ms)
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/guests/show.json.jbuilder (5.6ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/gifts/1" for ::1 at 2020-06-08 21:55:54 -0400
+Processing by Api::GiftsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGift Load (0.8ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/gifts/show.json.jbuilder
+  Rendered api/gifts/show.json.jbuilder (0.6ms)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2020-06-08 21:56:08 -0400
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mGuest Load (0.2ms)[0m  [1m[34mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/guests/show.json.jbuilder
+  Rendered api/guests/_guest.json.jbuilder (0.3ms)
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/guests/show.json.jbuilder (3.2ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/guests/1/gifts" for ::1 at 2020-06-08 21:56:09 -0400
+Processing by Api::GiftsController#index as JSON
+  Parameters: {"guest_id"=>"1"}
+  Rendering api/gifts/index.json.jbuilder
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 1]]
+  Rendered api/gifts/index.json.jbuilder (5.2ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT "guests".* FROM "guests"[0m
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGuest Load (0.6ms)[0m  [1m[34mSELECT "guests".* FROM "guests"[0m
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGuest Load (0.4ms)[0m  [1m[34mSELECT "guests".* FROM "guests"[0m
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT "guests".* FROM "guests"[0m
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (1, 2, 3, 4, 5)[0m
+  [1m[36mGuest Load (0.5ms)[0m  [1m[34mSELECT "guests".* FROM "guests"[0m
