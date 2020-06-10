@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "variables";
+
+ html {
+   height: 100%;
+ }
+
+ body {
+   font-family: sans-serif;
+   background: white;
+   color: $grey;
+   font-size: 12px;
+   height: 100%;
+ }
+
+ header {
+   display: flex;
+   justify-content: center;
+   background-color: $red;
+   padding: 10px;
+
+   img {
+     width: 43px;
+     height: 43px;
+   }
+ }
+
+ nav {
+   width: 900px;
+   background-color: $red;
+   padding: 6px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   ul {
+     display: flex;
+     justify-content: flex-end;
+
+     li {
+       a {
+         background-color: white;
+         border-radius: 4px;
+         color: $grey;
+         font-weight: 700;
+         display: block;
+         padding: 15px;
+         text-decoration: none;
+         text-transform: uppercase;
+         cursor: pointer;
+         z-index: 1;
+         position: relative;
+         -webkit-transition: box-shadow 0.1s ease-out, background-color 0.1s ease-in-out;
+         -moz-transition: box-shadow 0.1s ease-out, background-color 0.1s ease-in-out;
+         -ms-transition: box-shadow 0.1s ease-out, background-color 0.1s ease-in-out;
+         -o-transition: box-shadow 0.1s ease-out, background-color 0.1s ease-in-out;
+         transition: box-shadow 0.1s ease-out, background-color 0.1s ease-in-out;
+
+         &:hover {
+           color: $light-grey;
+           -webkit-box-shadow: 0px 2px 2px 1px rgba(0,0,0,0.75);
+           -moz-box-shadow: 0px 2px 2px 1px rgba(0,0,0,0.75);
+           box-shadow: 0px 2px 2px 1px rgba(0,0,0,0.75);
+         }
+
+         &:active {
+           background-color: $light-grey;
+           color: white;
+           -webkit-box-shadow: none;
+           -moz-box-shadow: none;
+           box-shadow: none;
+         }
+       }
+     }
+   }
+ }
+
+ #root {
+   height: 100%;
+   padding-top: 20px;
+ }
+
+ h2 {
+   font-size: 32px;
+ }
+
+ h3 {
+   font-size: 24px;
+   text-align: center;
+   color: $black;
+ }
