@@ -4594,3 +4594,142 @@ Processing by Api::PokemonController#show as JSON
 Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/pokemon/" for ::1 at 2020-06-10 23:57:51 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.json.jbuilder
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.json.jbuilder:1
+  Rendered api/pokemon/index.json.jbuilder (170.2ms)
+Completed 200 OK in 182ms (Views: 180.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/pokemon/" for ::1 at 2020-06-11 20:51:41 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.json.jbuilder
+  [1m[36mPokemon Load (4.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.json.jbuilder:1
+  Rendered api/pokemon/index.json.jbuilder (337.4ms)
+Completed 200 OK in 355ms (Views: 347.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/api/pokemon//3" for ::1 at 2020-06-11 20:51:44 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 3]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 3]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (12.8ms)
+Completed 200 OK in 28ms (Views: 21.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/pokemon/3" for ::1 at 2020-06-11 20:51:46 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 3]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 3]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (11.1ms)
+Completed 200 OK in 23ms (Views: 19.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/pokemon/6" for ::1 at 2020-06-11 20:52:00 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (7.7ms)
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/pokemon/6" for ::1 at 2020-06-11 20:52:43 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mPokemon Load (1.0ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (8.7ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    14: 
+    15: json.items do 
+    16:   @pokemon.items.each do |item| 
+    17:     json.item.id do 
+    18:       json.extract! item, :id, :name, :pokemon_id, :price, :happiness
+    19:       json.image_url asset_path("#{item.image_url}")
+    20:     end
+  
+app/views/api/pokemon/show.json.jbuilder:17:in `block (2 levels) in _app_views_api_pokemon_show_json_jbuilder___2064755313571048991_70094264814400'
+app/views/api/pokemon/show.json.jbuilder:16:in `block in _app_views_api_pokemon_show_json_jbuilder___2064755313571048991_70094264814400'
+app/views/api/pokemon/show.json.jbuilder:15:in `_app_views_api_pokemon_show_json_jbuilder___2064755313571048991_70094264814400'
+app/controllers/api/pokemon_controller.rb:9:in `show'
+Started GET "/api/pokemon/6" for ::1 at 2020-06-11 20:52:54 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (8.2ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/pokemon/6" for ::1 at 2020-06-11 20:53:03 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT  "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:8
+  Rendering api/pokemon/show.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:11
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."pokemon_id" = $1[0m  [["pokemon_id", 6]]
+  ↳ app/views/api/pokemon/show.json.jbuilder:16
+  Rendered api/pokemon/show.json.jbuilder (6.3ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-06-11 21:11:23 -0400
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/techreset/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (1.5ms)
+Completed 200 OK in 1694ms (Views: 1691.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-06-11 21:13:02 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.4ms)
+Completed 200 OK in 48ms (Views: 41.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-06-11 21:13:11 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.3ms)
+Completed 200 OK in 34ms (Views: 31.1ms | ActiveRecord: 0.0ms)
+
+
