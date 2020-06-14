@@ -8,6 +8,7 @@ class Blue extends React.Component {
     return (
       <div>
         <h2 className="blue"></h2>
+        <Link to="/blue/indigo">Indigo</Link>
         <Route path="/blue/indigo" component={Indigo}/>
       </div>
     );
