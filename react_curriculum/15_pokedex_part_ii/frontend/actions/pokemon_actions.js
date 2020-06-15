@@ -9,9 +9,9 @@ export const receiveAllPokemon = (pokemon) => ({
   pokemon
 })
 
-export const receiveSinglePokemon = (pokemon) => ({ 
+export const receiveSinglePokemon = (onePokemon) => ({ 
   type: RECEIVE_SINGLE_POKEMON, 
-  pokemon
+  onePokemon
 })
 
 //asynchronous action creators
