@@ -1,5 +1,5 @@
 import React from "react";
-import Item from '../items/item'
+import Item from "../items/item";
 class PokemonDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class PokemonDetail extends React.Component {
 
   render() {
     const pokemon = this.props.pokemon;
-    const items = this.props.items
+    const items = this.props.items;
     console.log(items);
     return (
       <section>
@@ -29,15 +29,15 @@ class PokemonDetail extends React.Component {
           <li>Attack: {pokemon.attack}</li>
           <li>Defense: {pokemon.defense}</li>
           <li>Moves: {pokemon.moves.join(", ")} </li>
-          </ul>
-            {/* <section>
-        <h2>Items:</h2>
-        <ul>
-            {pokemon.items.map(item => (
+        </ul>
+        <section>
+          <h2>Items:</h2>
+          <ul>
+            {items.map((item) => (
               <Item key={item.name} item={item} />
             ))}
           </ul>
-          </section> */}
+        </section>
       </section>
     );
   }
