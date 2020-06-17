@@ -1,22 +1,14 @@
-import React from 'react'; 
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Item = (props) => { 
+const Item = (props) => {
   return (
-    <img src={props.item.image_url} />
-  )
-}
+    <li>
+      <Link to={`/pokemon/${props.item.pokemon_id}/item/${props.item.id}`}>
+        <img src={props.item.image_url} />
+      </Link>
+    </li>
+  );
+};
 
 export default Item;
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// const ToyItem = ({ item }) => (
-//   <li>
-//     <Link to={`/pokemon/${item.pokemon_id}/item/${item.id}`}>
-//       <img src={item.image_url} alt={item.name} />
-//     </Link>
-//   </li>
-// );
-
-// export default ToyItem;

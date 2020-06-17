@@ -9,9 +9,9 @@ import { requestSinglePokemon } from './actions/pokemon_actions';
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   const store = configureStore();
-  window.store = store; 
-  window.fetchPokemon = fetchPokemon;
-  window.receiveSinglePokemon = receiveSinglePokemon;
-  window.requestSinglePokemon = requestSinglePokemon;
+  // window.store = store; 
+  // window.fetchPokemon = fetchPokemon;
+  // window.receiveSinglePokemon = receiveSinglePokemon;
+  // window.requestSinglePokemon = requestSinglePokemon;
   ReactDOM.render(<Root store={store} />, root);
 });
