@@ -14,7 +14,7 @@ export const receiveSinglePokemon = (onePokemon) => ({
   onePokemon,
 });
 
-//asynchronous action creators
+//thunk action creators
 export const requestAllPokemon = () => (dispatch) =>
   APIUtil.fetchAllPokemon().then((pokemon) =>
     dispatch(receiveAllPokemon(pokemon))
@@ -23,4 +23,9 @@ export const requestAllPokemon = () => (dispatch) =>
 export const requestSinglePokemon = (pokemonId) => (dispatch) =>
   APIUtil.fetchPokemon(pokemonId).then((pokemon) =>
     dispatch(receiveSinglePokemon(pokemon))
+  );
+
+export const createNewPokemon = (pokeData) => (dispatch) =>
+  APIUtil.createPokemon(pokeData).then((poke) =>
+    dispatch(receiveSinglePokemon(poke))
   );
