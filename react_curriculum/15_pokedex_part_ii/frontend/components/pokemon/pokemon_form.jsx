@@ -5,8 +5,8 @@ class PokemonForm extends React.Component {
     super(props);
     this.state = {
       name: "",
-      attack: "",
-      defense: "",
+      attack: '',
+      defense: '',
       moves: {},
       poke_type: "",
       image_url: "",
@@ -19,22 +19,33 @@ class PokemonForm extends React.Component {
 
   handleSubmit() {}
 
-  handleInput() {}
+  handleInput(e) {
+    const currentField = e.target.name; 
+    return this.setState({[currentField]: e.target.value});
+  }
 
-  handleMoves() {}
+  handleMoves(e) {
+    const currentField = e.target.name;
+    return this.setState({ moves: Object.assign({}, this.state.moves, { 
+      [currentField]: e.target.value
+    })});
+  }
 
   render() {
+    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Create a Pokemon</h2>
         <input
           type="text"
+          name="name"
           placeholder="Name"
           value={this.state.name}
           onChange={this.handleInput}
         ></input>
         <input
           type="text"
+          name="image_url"
           placeholder="Image URL"
           value={this.state.image_url}
           onChange={this.handleInput}
@@ -43,6 +54,7 @@ class PokemonForm extends React.Component {
           placeholder="Pokemon Type"
           value={this.state.poke_type}
           onChange={this.handleInput}
+          name="poke_type"
         >
           <option value="fire">fire</option>
           <option value="electric">electric</option>
@@ -66,6 +78,7 @@ class PokemonForm extends React.Component {
           min="1"
           max="100"
           placeholder="Attack"
+          name="attack"
           value={this.state.attack}
           onChange={this.handleInput}
         ></input>
@@ -74,19 +87,22 @@ class PokemonForm extends React.Component {
           min="1"
           max="100"
           placeholder="Defense"
+          name="defense"
           value={this.state.defense}
           onChange={this.handleInput}
         ></input>
         <input
           type="text"
           placeholder="Move 1"
-          value={this.state.moves.move_1}
+          name="move_1"
+          value={this.state.moves.move_1 || ''}
           onChange={this.handleMoves}
         ></input>
         <input
           type="text"
           placeholder="Move 2"
-          value={this.state.moves.move_2}
+          value={this.state.moves.move_2 || ''}
+          name="move_2"
           onChange={this.handleMoves}
         ></input>
         <button>Create Pokemon</button>
