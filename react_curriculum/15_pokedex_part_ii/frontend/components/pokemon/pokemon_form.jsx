@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class PokemonForm extends React.Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class PokemonForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewPokemon(this.state); 
+    this.props
+      .createNewPokemon(this.state)
+      .then((res) => this.props.history.push(`/pokemon/${res.pokemon.id}`));
   }
 
   handleInput(e) {
@@ -35,7 +38,7 @@ class PokemonForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Create a Pokemon</h2>
@@ -114,4 +117,4 @@ class PokemonForm extends React.Component {
   }
 }
 
-export default PokemonForm;
+export default withRouter(PokemonForm);

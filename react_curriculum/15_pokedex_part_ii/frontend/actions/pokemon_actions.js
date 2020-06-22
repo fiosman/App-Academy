@@ -26,6 +26,9 @@ export const requestSinglePokemon = (pokemonId) => (dispatch) =>
   );
 
 export const createNewPokemon = (pokeData) => (dispatch) =>
-  APIUtil.createPokemon(pokeData).then((poke) =>
-    dispatch(receiveSinglePokemon(poke))
-  );
+  APIUtil.createPokemon(pokeData)
+    .then((poke) => {
+      dispatch(receiveSinglePokemon(poke));
+      return poke;
+    })
+

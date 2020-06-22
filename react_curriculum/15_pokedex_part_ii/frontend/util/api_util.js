@@ -16,9 +16,6 @@ export const createPokemon = (pokemon) => {
   return $.ajax({ 
     method: 'POST', 
     url: `/api/pokemon`,
-    // dataType: 'json',
-    // contentType: 'application/json',
-    // data: JSON.stringify(pokemon)
     data: { pokemon }
   })
 }
