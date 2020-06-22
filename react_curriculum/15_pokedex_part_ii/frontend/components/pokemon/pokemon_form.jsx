@@ -5,8 +5,8 @@ class PokemonForm extends React.Component {
     super(props);
     this.state = {
       name: "",
-      attack: '',
-      defense: '',
+      attack: "",
+      defense: "",
       moves: [],
       poke_type: "",
       image_url: "",
@@ -18,21 +18,20 @@ class PokemonForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault(); 
-    console.log(Object.values(this.state.moves))
-    this.props.createNewPokemon(Object.assign())
+    e.preventDefault();
+    this.props.createNewPokemon(this.state); 
   }
 
   handleInput(e) {
-    const currentField = e.target.name; 
-    return this.setState({[currentField]: e.target.value});
+    const currentField = e.target.name;
+    return this.setState({ [currentField]: e.target.value });
   }
 
   handleMoves(e) {
     let currMoves = this.state.moves.slice(0);
-    const currPos = e.target.name === 'move1' ? 0 : 1;
-    currMoves[currPos] = e.target.value; 
-    return this.setState({moves: currMoves});
+    const currPos = e.target.name === "move1" ? 0 : 1;
+    currMoves[currPos] = e.target.value;
+    return this.setState({ moves: currMoves });
   }
 
   render() {
@@ -98,14 +97,14 @@ class PokemonForm extends React.Component {
         <input
           type="text"
           placeholder="Move 1"
-          value={this.state.moves[0] || ''}
+          value={this.state.moves[0] || ""}
           onChange={this.handleMoves}
           name="move1"
         ></input>
         <input
           type="text"
           placeholder="Move 2"
-          value={this.state.moves[1] || ''}
+          value={this.state.moves[1] || ""}
           onChange={this.handleMoves}
           name="move2"
         ></input>
