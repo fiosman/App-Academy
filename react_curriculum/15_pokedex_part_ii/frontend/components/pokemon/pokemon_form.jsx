@@ -7,7 +7,7 @@ class PokemonForm extends React.Component {
       name: "",
       attack: '',
       defense: '',
-      moves: {},
+      moves: [],
       poke_type: "",
       image_url: "",
     };
@@ -17,7 +17,11 @@ class PokemonForm extends React.Component {
     this.handleMoves = this.handleMoves.bind(this);
   }
 
-  handleSubmit() {}
+  handleSubmit(e) {
+    e.preventDefault(); 
+    console.log(Object.values(this.state.moves))
+    this.props.createNewPokemon(Object.assign())
+  }
 
   handleInput(e) {
     const currentField = e.target.name; 
@@ -25,10 +29,10 @@ class PokemonForm extends React.Component {
   }
 
   handleMoves(e) {
-    const currentField = e.target.name;
-    return this.setState({ moves: Object.assign({}, this.state.moves, { 
-      [currentField]: e.target.value
-    })});
+    let currMoves = this.state.moves.slice(0);
+    const currPos = e.target.name === 'move1' ? 0 : 1;
+    currMoves[currPos] = e.target.value; 
+    return this.setState({moves: currMoves});
   }
 
   render() {
@@ -94,16 +98,16 @@ class PokemonForm extends React.Component {
         <input
           type="text"
           placeholder="Move 1"
-          name="move_1"
-          value={this.state.moves.move_1 || ''}
+          value={this.state.moves[0] || ''}
           onChange={this.handleMoves}
+          name="move1"
         ></input>
         <input
           type="text"
           placeholder="Move 2"
-          value={this.state.moves.move_2 || ''}
-          name="move_2"
+          value={this.state.moves[1] || ''}
           onChange={this.handleMoves}
+          name="move2"
         ></input>
         <button>Create Pokemon</button>
       </form>
