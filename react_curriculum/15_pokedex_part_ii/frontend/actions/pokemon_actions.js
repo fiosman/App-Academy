@@ -2,6 +2,7 @@ import * as APIUtil from "../util/api_util";
 
 export const RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
 export const RECEIVE_SINGLE_POKEMON = "RECEIVE_SINGLE_POKEMON";
+export const RECEIVE_POKEMON_ERRORS = "RECEIVE_POKEMON_ERRORS";
 
 //synchronous action creators
 export const receiveAllPokemon = (pokemon) => ({
@@ -13,6 +14,11 @@ export const receiveSinglePokemon = (onePokemon) => ({
   type: RECEIVE_SINGLE_POKEMON,
   onePokemon,
 });
+
+export const receivePokemonErrors = (errors) => ({ 
+  type: RECEIVE_POKEMON_ERRORS, 
+  errors
+})
 
 //thunk action creators
 export const requestAllPokemon = () => (dispatch) =>
