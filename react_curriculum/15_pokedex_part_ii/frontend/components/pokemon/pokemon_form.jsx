@@ -38,10 +38,11 @@ class PokemonForm extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    const errors = this.props.errors.map((error) => <li>{error}</li>);
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Create a Pokemon</h2>
+        <ul>{errors}</ul>
         <input
           type="text"
           name="name"
