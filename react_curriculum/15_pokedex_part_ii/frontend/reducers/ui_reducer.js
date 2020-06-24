@@ -1,8 +1,8 @@
-// import { combineReducers } from 'redux'; 
-// import errorsReducer from './'
-// import loadingReducer from './'
+import { combineReducers } from 'redux'; 
+import errorsReducer from './errors_reducer';
 
-// const uiReducer = combineReducers({ 
-//   errors: errorsReducer, 
-//   loading: loadingReducer,
-// })
+const uiReducer = combineReducers({ 
+  errors: errorsReducer
+})
+
+export default uiReducer;
