@@ -15,10 +15,10 @@ export const receiveSinglePokemon = (onePokemon) => ({
   onePokemon,
 });
 
-export const receivePokemonErrors = (errors) => ({ 
-  type: RECEIVE_POKEMON_ERRORS, 
-  errors
-})
+export const receivePokemonErrors = (errors) => ({
+  type: RECEIVE_POKEMON_ERRORS,
+  errors,
+});
 
 //thunk action creators
 export const requestAllPokemon = () => (dispatch) =>
@@ -33,9 +33,8 @@ export const requestSinglePokemon = (pokemonId) => (dispatch) =>
 
 export const createNewPokemon = (pokeData) => (dispatch) =>
   APIUtil.createPokemon(pokeData)
-    .then((poke, errors) => {
+    .then((poke) => {
       dispatch(receiveSinglePokemon(poke));
-      dispatch(receivePokemonErrors(errors.responseJSON));
       return poke;
     })
-
+    .fail((errors) => dispatch(receivePokemonErrors(errors.responseJSON)));
