@@ -37,6 +37,14 @@ class PokemonForm extends React.Component {
     return this.setState({ moves: currMoves });
   }
 
+  errors() { 
+    if (this.props.errors.length > 0) { 
+      this.props.errors.map((error) => { 
+        return <li>{error}</li>
+      })
+    }
+  }
+
   render() {
     const errors = this.props.errors.map((error) => <li>{error}</li>);
     return (
