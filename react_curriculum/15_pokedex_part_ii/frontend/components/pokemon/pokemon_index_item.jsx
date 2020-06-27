@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 const PokemonIndexItem = (props) => {
   return (
-    <li>
+    <li className="poke">
       <Link to={`/pokemon/${props.poke.id}`}>
-        <span>{props.poke.name}</span>
+        <span>{props.poke.id}</span>
         <img src={props.poke.image_url} />
+        <span>{props.poke.name}</span>
       </Link>
     </li>
   );
