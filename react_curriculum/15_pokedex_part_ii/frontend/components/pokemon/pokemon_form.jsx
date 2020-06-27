@@ -47,80 +47,82 @@ class PokemonForm extends React.Component {
 
   render() {
     return (
-      <form className="pokemon-form" onSubmit={this.handleSubmit}>
-        <img className="logo" src={window.images.pokeLogo}></img>
-        <ul>{this.errors()}</ul>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={this.state.name}
-          onChange={this.handleInput}
-        ></input>
-        <input
-          type="text"
-          name="image_url"
-          placeholder="Image URL"
-          value={this.state.image_url}
-          onChange={this.handleInput}
-        ></input>
-        <select
-          placeholder="Pokemon Type"
-          value={this.state.poke_type}
-          onChange={this.handleInput}
-          name="poke_type"
-        >
-          <option value="fire">fire</option>
-          <option value="electric">electric</option>
-          <option value="normal">normal</option>
-          <option value="ghost">ghost</option>
-          <option value="psychic">psychic</option>
-          <option value="water">water</option>
-          <option value="bug">bug</option>
-          <option value="dragon">dragon</option>
-          <option value="grass">grass</option>
-          <option value="fighting">fighting</option>
-          <option value="ice">ice</option>
-          <option value="flying">flying</option>
-          <option value="poison">poison</option>
-          <option value="ground">ground</option>
-          <option value="rock">rock</option>
-          <option value="steel">steel</option>
-        </select>
-        <input
-          type="number"
-          min="1"
-          max="100"
-          placeholder="Attack"
-          name="attack"
-          value={this.state.attack}
-          onChange={this.handleInput}
-        ></input>
-        <input
-          type="number"
-          min="1"
-          max="100"
-          placeholder="Defense"
-          name="defense"
-          value={this.state.defense}
-          onChange={this.handleInput}
-        ></input>
-        <input
-          type="text"
-          placeholder="Move 1"
-          value={this.state.moves[0] || ""}
-          onChange={this.handleMoves}
-          name="move1"
-        ></input>
-        <input
-          type="text"
-          placeholder="Move 2"
-          value={this.state.moves[1] || ""}
-          onChange={this.handleMoves}
-          name="move2"
-        ></input>
-        <button>Create Pokemon</button>
-      </form>
+      <section>
+        <form className="pokemon-form" onSubmit={this.handleSubmit}>
+          <img className="logo" src={window.images.pokeLogo}></img>
+          <ul>{this.errors()}</ul>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.handleInput}
+          ></input>
+          <input
+            type="text"
+            name="image_url"
+            placeholder="Image URL"
+            value={this.state.image_url}
+            onChange={this.handleInput}
+          ></input>
+          <select
+            placeholder="Pokemon Type"
+            value={this.state.poke_type}
+            onChange={this.handleInput}
+            name="poke_type"
+          >
+            <option value="fire">fire</option>
+            <option value="electric">electric</option>
+            <option value="normal">normal</option>
+            <option value="ghost">ghost</option>
+            <option value="psychic">psychic</option>
+            <option value="water">water</option>
+            <option value="bug">bug</option>
+            <option value="dragon">dragon</option>
+            <option value="grass">grass</option>
+            <option value="fighting">fighting</option>
+            <option value="ice">ice</option>
+            <option value="flying">flying</option>
+            <option value="poison">poison</option>
+            <option value="ground">ground</option>
+            <option value="rock">rock</option>
+            <option value="steel">steel</option>
+          </select>
+          <input
+            type="number"
+            min="1"
+            max="100"
+            placeholder="Attack"
+            name="attack"
+            value={this.state.attack}
+            onChange={this.handleInput}
+          ></input>
+          <input
+            type="number"
+            min="1"
+            max="100"
+            placeholder="Defense"
+            name="defense"
+            value={this.state.defense}
+            onChange={this.handleInput}
+          ></input>
+          <input
+            type="text"
+            placeholder="Move 1"
+            value={this.state.moves[0] || ""}
+            onChange={this.handleMoves}
+            name="move1"
+          ></input>
+          <input
+            type="text"
+            placeholder="Move 2"
+            value={this.state.moves[1] || ""}
+            onChange={this.handleMoves}
+            name="move2"
+          ></input>
+          <button>Create Pokemon</button>
+        </form>
+      </section>
     );
   }
 }
