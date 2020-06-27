@@ -37,20 +37,19 @@ class PokemonForm extends React.Component {
     return this.setState({ moves: currMoves });
   }
 
-  errors() { 
-    if (this.props.errors.length > 0) { 
-      this.props.errors.map((error) => { 
-        return <li>{error}</li>
-      })
+  errors() {
+    if (this.props.errors.length > 0) {
+      return this.props.errors.map((error, index) => {
+        return <li key={index}>{error}</li>;
+      });
     }
   }
 
   render() {
-    const errors = this.props.errors.map((error) => <li>{error}</li>);
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Create a Pokemon</h2>
-        <ul>{errors}</ul>
+        <ul>{this.errors()}</ul>
         <input
           type="text"
           name="name"

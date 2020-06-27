@@ -1,4 +1,4 @@
-import RECEIVE_POKEMON_ERRORS from "../actions/pokemon_actions";
+import { RECEIVE_POKEMON_ERRORS } from "../actions/pokemon_actions";
 
 const errorsReducer = (state = [], action) => {
   switch (action.type) {
