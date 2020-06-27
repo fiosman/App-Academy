@@ -47,8 +47,8 @@ class PokemonForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Create a Pokemon</h2>
+      <form className="pokemon-form" onSubmit={this.handleSubmit}>
+        <img className="logo" src={window.images.pokeLogo}></img>
         <ul>{this.errors()}</ul>
         <input
           type="text"

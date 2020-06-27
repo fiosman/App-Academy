@@ -19,9 +19,7 @@ class PokemonIndex extends React.Component {
     ));
     return (
       <div className="container">
-        <section className="pokemon-view">
-          <ul>{items}</ul>
-        </section>
+          <ul className="pokemon-view">{items}</ul>
           <section>
             <Route
               path="/pokemon/:pokemonId"
