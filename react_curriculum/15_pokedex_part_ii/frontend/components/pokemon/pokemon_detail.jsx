@@ -19,12 +19,15 @@ class PokemonDetail extends React.Component {
       this.props.requestSinglePokemon(this.props.match.params.pokemonId);
     }
   }
-
+  
   render() {
     const pokemon = this.props.pokemon;
     const items = this.props.items;
+
+    if (!pokemon) return null;
+
     return (
-      <section>
+      <section className="pokemon-details">
         <ul>
           <li>{pokemon.name}</li>
           <li>Type: {pokemon.poke_type}</li>
@@ -32,7 +35,7 @@ class PokemonDetail extends React.Component {
           <li>Defense: {pokemon.defense}</li>
           <li>Moves: {pokemon.moves.join(", ")} </li>
         </ul>
-        <section>
+        <section className="pokemon-items">
           <h2>Items:</h2>
           <ul>
             {items.map((item) => (

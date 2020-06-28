@@ -47,7 +47,7 @@ class PokemonForm extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className="pokemon-details">
         <form className="pokemon-form" onSubmit={this.handleSubmit}>
           <img className="logo" src={window.images.pokeLogo}></img>
           <ul>{this.errors()}</ul>
@@ -122,7 +122,7 @@ class PokemonForm extends React.Component {
           ></input>
           <button>Create Pokemon</button>
         </form>
-      </section>
+        </section>
     );
   }
 }
