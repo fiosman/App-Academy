@@ -4,7 +4,7 @@ import loadingReducer from './loading_reducer'
 
 const uiReducer = combineReducers({ 
   errors: errorsReducer, 
-  loadingReducer: loadingReducer
+  loading: loadingReducer
 })
 
 export default uiReducer;

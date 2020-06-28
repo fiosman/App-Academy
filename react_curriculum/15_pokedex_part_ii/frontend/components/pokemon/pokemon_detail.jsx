@@ -2,6 +2,7 @@ import React from "react";
 import Item from "../items/item";
 import { Route } from "react-router-dom";
 import ItemDetailContainer from "../items/item_detail_container";
+import Loader from "../loader";
 
 class PokemonDetail extends React.Component {
   constructor(props) {
@@ -19,10 +20,14 @@ class PokemonDetail extends React.Component {
       this.props.requestSinglePokemon(this.props.match.params.pokemonId);
     }
   }
-  
+
   render() {
     const pokemon = this.props.pokemon;
     const items = this.props.items;
+
+    if (this.props.loading) {
+      return <Loader />;
+    }
 
     if (!pokemon) return null;
 
