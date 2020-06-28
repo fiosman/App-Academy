@@ -71,22 +71,9 @@ class PokemonForm extends React.Component {
             onChange={this.handleInput}
             name="poke_type"
           >
-            <option value="fire">fire</option>
-            <option value="electric">electric</option>
-            <option value="normal">normal</option>
-            <option value="ghost">ghost</option>
-            <option value="psychic">psychic</option>
-            <option value="water">water</option>
-            <option value="bug">bug</option>
-            <option value="dragon">dragon</option>
-            <option value="grass">grass</option>
-            <option value="fighting">fighting</option>
-            <option value="ice">ice</option>
-            <option value="flying">flying</option>
-            <option value="poison">poison</option>
-            <option value="ground">ground</option>
-            <option value="rock">rock</option>
-            <option value="steel">steel</option>
+            {window.POKEMON_TYPES.map((type, idx) => {
+              return <option key={idx} value={type}>{type}</option>;
+            })}
           </select>
           <input
             type="number"
@@ -122,7 +109,7 @@ class PokemonForm extends React.Component {
           ></input>
           <button>Create Pokemon</button>
         </form>
-        </section>
+      </section>
     );
   }
 }
