@@ -535,3 +535,86 @@ Processing by Api::ChirpsController#index as JSON
 Completed 200 OK in 22ms (Views: 18.4ms | ActiveRecord: 0.4ms)
 
 
+Started POST "/api/users" for ::1 at 2020-06-29 21:22:33 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"lol123", "email"=>"lmfaooo", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "lol123"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "lol123"], ["email", "lmfaooo"], ["password_digest", "$2a$12$Rlm9NTH51wg3usNKiqR6WeIiNj3palN6uIHeAjxIOFJ6TOC83ZRDW"], ["session_token", "6y2PW42eZSSaCVHGP1PttA"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.3ms)
+Completed 200 OK in 262ms (Views: 5.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/chirps" for ::1 at 2020-06-29 21:22:33 -0400
+Processing by Api::ChirpsController#index as JSON
+  Rendering api/chirps/index.json.jbuilder
+  [1m[36mChirp Load (0.8ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/views/api/chirps/index.json.jbuilder:1
+  Rendered api/chirps/_chirp.json.jbuilder (0.5ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/index.json.jbuilder (13.3ms)
+Completed 200 OK in 27ms (Views: 22.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-06-29 21:22:44 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 307ms (Views: 305.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-06-29 21:23:34 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 75ms (Views: 72.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2020-06-29 21:23:45 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"lmfao", "email"=>"yaya", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "lmfao"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "lmfao"], ["email", "yaya"], ["password_digest", "$2a$12$Oq4hIFbBsBoM.lDEbLYiFOpwxT7FUYZYGnvra6nw2VxajPlM6VvGu"], ["session_token", "sR8c5DBje8exFOuEyRjq4w"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.3ms)
+Completed 200 OK in 258ms (Views: 6.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/chirps" for ::1 at 2020-06-29 21:23:45 -0400
+Processing by Api::ChirpsController#index as JSON
+  Rendering api/chirps/index.json.jbuilder
+  [1m[36mChirp Load (0.7ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/views/api/chirps/index.json.jbuilder:1
+  Rendered api/chirps/_chirp.json.jbuilder (1.4ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.0ms)
+  Rendered api/chirps/index.json.jbuilder (10.2ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-06-29 21:24:01 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 51ms (Views: 49.6ms | ActiveRecord: 0.0ms)
+
+
