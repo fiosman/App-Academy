@@ -618,3 +618,61 @@ Processing by RootController#root as HTML
 Completed 200 OK in 51ms (Views: 49.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2020-06-29 21:30:29 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/react_curriculum/16_frontend_auth/app/views/layouts/application.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+          ^~~~~~
+/Users/techreset/Desktop/App-Academy/react_curriculum/16_frontend_auth/app/views/layouts/application.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/layouts/application.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/layouts/application.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/" for ::1 at 2020-06-29 21:32:09 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/techreset/Desktop/App-Academy/react_curriculum/16_frontend_auth/app/views/layouts/application.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+          ^~~~~~
+/Users/techreset/Desktop/App-Academy/react_curriculum/16_frontend_auth/app/views/layouts/application.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/layouts/application.html.erb:25: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/layouts/application.html.erb:27: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/" for ::1 at 2020-06-29 21:33:09 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "sR8c5DBje8exFOuEyRjq4w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 51ms (Views: 47.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/chirps" for ::1 at 2020-06-29 21:33:20 -0400
+Processing by Api::ChirpsController#index as JSON
+  Rendering api/chirps/index.json.jbuilder
+  [1m[36mChirp Load (1.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/views/api/chirps/index.json.jbuilder:1
+  Rendered api/chirps/_chirp.json.jbuilder (0.6ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/index.json.jbuilder (11.5ms)
+Completed 200 OK in 27ms (Views: 20.1ms | ActiveRecord: 1.1ms)
+
+
