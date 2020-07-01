@@ -4,14 +4,14 @@ import NavBar from './nav_bar';
 
 // Comment this back in after you have built the login functionality
 
-import { logout } from '../../actions/session';
+import { logoutCurrentUser } from '../../actions/session';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
+  logout: () => dispatch(logoutCurrentUser()),
 });
 
 
