@@ -3,7 +3,7 @@ import {
   RECEIVE_CURRENT_USER,
 } from "../actions/session_actions";
 
-export const errorsReducer = (state = {}, action) => {
+const sessionErrorsReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
@@ -15,3 +15,5 @@ export const errorsReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export default sessionErrorsReducer;
