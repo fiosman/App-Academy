@@ -1,13 +1,13 @@
-import React from 'react'; 
-import { HashRouter } from 'react-router-dom';
-import App from './app';
+import React from "react";
+import { HashRouter } from "react-router-dom";
+import App from "./app";
 
-const Root = (props) => ( 
+const Root = (props) => (
   <Provider store={props.store}>
     <HashRouter>
-      <App/>
+      <App />
     </HashRouter>
   </Provider>
-)
+);
 
 export default Root;
