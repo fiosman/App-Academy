@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
+    this.props.processForm(this.state).then(() => this.props.history.push("/"));
   }
 
   formHeader() {
@@ -53,20 +53,20 @@ class SessionForm extends React.Component {
   }
 
   displayErrors() {
-    return this.props.errors.map((error, idx) => {
-      return <li key={idx}>{error}</li>;
-    });
+    return (
+      <ul>
+        {this.props.errors.map((error, idx) => {
+          return <li key={idx}>{error}</li>;
+        })}
+      </ul>
+    );
   }
 
   render() {
-    const errors = <ul>{this.props.errors ? this.displayErrors() : ""}</ul>;
+    const errors = this.props.errors ? this.displayErrors() : "";
     return (
       <div>
-        {this.props.formType === "login" ? (
-          <Link to="/signup"> Sign up</Link>
-        ) : (
-          <Link to="/login"> Login</Link>
-        )}
+        {this.props.navLink}
         {this.formHeader()}
         {errors}
       </div>
