@@ -1,0 +1,8 @@
+<% if current_user %>
+    <script>
+      window.currentUser = <%= (render partial: '/api/users/user.json.jbuilder', locals: { user: current_user }).html_safe %>
+    </script>
+<% end %>
+
+<main id="root"></main>
+
