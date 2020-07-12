@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   // window.login = login;
+  window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.getBenches = getBenches;
   ReactDOM.render(<Root store={store} />, root);
