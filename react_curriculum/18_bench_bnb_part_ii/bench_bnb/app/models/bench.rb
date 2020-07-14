@@ -19,8 +19,11 @@ class Bench < ApplicationRecord
 
     #sort the lat aand long pairs
     lat_pairs = fst_hsh_cds.first < snd_hsh_cds.first ? 
-      [fst_hsh_cds.first, snd_hsh_cds.first] : [fst_hsh_cds.first, snd_hsh_cds.first]
-    long_pairs = fst_hsh_cds.last < snd_hsh_cds.last ? 
-      [fst_hsh_cds.last, snd_hsh_cds.last] : [fst_hsh_cds.last, snd_hsh_cds.last]
+      [fst_hsh_cds.first, snd_hsh_cds.first] : [snd_hsh_cds.first, fst_hsh_cds.last]
+    lng_pairs = fst_hsh_cds.last < snd_hsh_cds.last ? 
+      [fst_hsh_cds.last, snd_hsh_cds.last] : [snd_hsh_cds.last, fst_hsh_cds.last]
+    
+    #query for benches between latitude and longitude pairs
+    Bench.where(lat: lat_pairs.first..lat_pairs.last, lng: lng_pairs.first..lng_pairs.last)
   end
 end
