@@ -8,5 +8,5 @@ export const receiveBenches = (benches) => ({
 
 //async action creators
 
-export const getBenches = () => (dispatch) =>
-  fetchBenches().then((benches) => dispatch(receiveBenches(benches)));
+export const getBenches = (filters) => (dispatch) =>
+  fetchBenches(filters).then((benches) => dispatch(receiveBenches(benches)));
