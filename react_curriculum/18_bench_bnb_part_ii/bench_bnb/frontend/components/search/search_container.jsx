@@ -5,10 +5,11 @@ import { updateBounds } from '../../actions/filter_actions';
 
 const mapStateToProps = (state) => ({
   benches: state.entities.benches,
+  filters: state.filters
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchBenches: () => dispatch(getBenches()),
+  fetchBenches: (filters) => dispatch(getBenches(filters)),
   updateBounds: (bounds) => dispatch(updateBounds(bounds)),
 });
 
