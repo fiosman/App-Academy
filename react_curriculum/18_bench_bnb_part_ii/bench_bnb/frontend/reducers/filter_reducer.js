@@ -7,7 +7,7 @@ const filterReducer = (state, action) => {
 
   switch(action.type) { 
     case UPDATE_BOUNDS: 
-      return action.bounds
+      return Object.assign({}, state, { [action.filter]: action.value})
     default: 
       return _default;
   }

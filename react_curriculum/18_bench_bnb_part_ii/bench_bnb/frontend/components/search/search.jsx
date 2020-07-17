@@ -6,7 +6,7 @@ const Search = (props) => (
   <div>
     <BenchMap
       benches={props.benches}
-      changeBounds={props.changeBounds}
+      updateFilter={props.updateFilter}
     />
     <BenchIndex benches={props.benches} />
   </div>

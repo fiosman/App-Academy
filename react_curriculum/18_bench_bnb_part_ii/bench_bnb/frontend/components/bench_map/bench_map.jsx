@@ -20,13 +20,12 @@ class BenchMap extends React.Component {
       const northEast = this.map.getBounds().getNorthEast();
       const southWest = this.map.getBounds().getSouthWest();
       const bounds = {
-        bounds: {
           northEast: { lat: northEast.lat(), lng: northEast.lng() },
           southWest: { lat: southWest.lat(), lng: southWest.lng() },
+      }
+      this.props.updateFilter('bounds', bounds)
         },
-      };
-      this.props.changeBounds(bounds)
-    });
+    );
   }
 
   componentDidUpdate() {
