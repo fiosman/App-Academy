@@ -10,6 +10,12 @@ class MarkerManger {
         this.createMarkerFromBench(benches[benchId]);
       }
     });
+
+    Object.keys(this.markers).forEach((markerId) => {
+      if (!benches[markerId]) {
+        this.removeMarker(markerId);
+      }
+    });
   }
 
   createMarkerFromBench(bench) {
@@ -18,8 +24,12 @@ class MarkerManger {
       map: this.map,
       title: bench.description,
     });
-
     this.markers[bench.id] = marker;
+  }
+
+  removeMarker(markerId) {
+    this.markers[markerId].setMap(null);
+    delete this.markers[markerId];
   }
 }
 
