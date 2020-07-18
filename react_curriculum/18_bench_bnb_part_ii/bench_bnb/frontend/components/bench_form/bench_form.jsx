@@ -6,8 +6,8 @@ class BenchForm extends React.Component {
     this.state = {
       description: "",
       numSeats: "",
-      latitude: "",
-      longitude: "",
+      latitude: this.props.lat,
+      longitude: this.props.lng,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +41,7 @@ class BenchForm extends React.Component {
             type="text"
             name="latitude"
             value={this.state.latitude}
-            onChange={this.handleInput}
+            disabled
           />
         </label>
         <label>
@@ -50,7 +50,7 @@ class BenchForm extends React.Component {
             type="text"
             name="longitude"
             value={this.state.longitude}
-            onChange={this.handleInput}
+            disabled
           />
         </label>
         <label>

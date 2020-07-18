@@ -43,7 +43,7 @@ class BenchMap extends React.Component {
 
   _handleClick(coords) {
     this.props.history.push({
-      pathname: "/benches/form",
+      pathname: "/benches/new",
       search: `lat=${coords.lat}&lng=${coords.lng}`,
     });
   }
