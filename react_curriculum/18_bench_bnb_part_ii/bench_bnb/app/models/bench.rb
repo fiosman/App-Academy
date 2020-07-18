@@ -6,6 +6,7 @@
 #  description :string           not null
 #  lat         :float            not null
 #  lng         :float            not null
+#  seating     :integer          default(2), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
