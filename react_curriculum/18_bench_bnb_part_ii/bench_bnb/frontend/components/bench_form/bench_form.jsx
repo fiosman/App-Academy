@@ -19,7 +19,9 @@ class BenchForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    return this.props.createBench(this.state).then(this.props.history.push('/'))
+    return this.props
+      .createBench(this.state)
+      .then(this.props.history.push("/"));
   }
 
   render() {
@@ -37,21 +39,11 @@ class BenchForm extends React.Component {
         </label>
         <label>
           Latitude:
-          <input
-            type="text"
-            name="lat"
-            value={this.state.lat}
-            disabled
-          />
+          <input type="text" name="lat" value={this.state.lat} disabled />
         </label>
         <label>
           Longitude:
-          <input
-            type="text"
-            name="lng"
-            value={this.state.lng}
-            disabled
-          />
+          <input type="text" name="lng" value={this.state.lng} disabled />
         </label>
         <label>
           Number of Seats:
