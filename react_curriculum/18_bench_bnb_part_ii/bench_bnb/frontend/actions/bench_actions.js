@@ -1,4 +1,5 @@
 import { fetchBenches } from "../util/bench_api_util";
+import { createBench } from '../util/bench_api_util'; 
 export const RECEIVE_BENCHES = 'RECEIVE_BENCHES'; 
 export const RECEIVE_BENCH = 'RECEIVE_BENCH';
 //regular action creators
@@ -15,3 +16,6 @@ export const receiveBench = (bench) => ({
 
 export const getBenches = (filters) => (dispatch) =>
   fetchBenches(filters).then((benches) => dispatch(receiveBenches(benches)));
+
+export const makeBench = (bench) => (dispatch) => 
+  createBench(bench).then((bench) => dispatch(receiveBench(bench)));
