@@ -1,9 +1,11 @@
 import React from "react";
 import MarkerManager from "../../util/marker_manager";
+import { withRouter } from "react-router-dom";
 
 class BenchMap extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   componentDidMount() {
@@ -20,16 +22,30 @@ class BenchMap extends React.Component {
       const northEast = this.map.getBounds().getNorthEast();
       const southWest = this.map.getBounds().getSouthWest();
       const bounds = {
-          northEast: { lat: northEast.lat(), lng: northEast.lng() },
-          southWest: { lat: southWest.lat(), lng: southWest.lng() },
-      }
-      this.props.updateFilter('bounds', bounds)
-        },
-    );
+        northEast: { lat: northEast.lat(), lng: northEast.lng() },
+        southWest: { lat: southWest.lat(), lng: southWest.lng() },
+      };
+      this.props.updateFilter("bounds", bounds);
+    });
+
+    this.map.addListener("click", (event) => {
+      const coords = {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+      };
+      return this._handleClick(coords);
+    });
   }
 
   componentDidUpdate() {
     this.markerManager.updateMarkers(this.props.benches);
+  }
+
+  _handleClick(coords) {
+    this.props.history.push({
+      pathname: "/benches/form",
+      search: `lat=${coords.lat}&lng=${coords.lng}`,
+    });
   }
 
   render() {
@@ -37,4 +53,4 @@ class BenchMap extends React.Component {
   }
 }
 
-export default BenchMap;
+export default withRouter(BenchMap);
