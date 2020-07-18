@@ -5,9 +5,9 @@ class BenchForm extends React.Component {
     super(props);
     this.state = {
       description: "",
-      numSeats: "",
-      latitude: this.props.lat,
-      longitude: this.props.lng,
+      seating: "",
+      lat: this.props.lat,
+      lng: this.props.lng,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,7 @@ class BenchForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //invoke dispatch prop here which will send request to Rails API
+    return this.props.createBench(this.state).then(this.props.history.push('/'))
   }
 
   render() {
@@ -39,8 +39,8 @@ class BenchForm extends React.Component {
           Latitude:
           <input
             type="text"
-            name="latitude"
-            value={this.state.latitude}
+            name="lat"
+            value={this.state.lat}
             disabled
           />
         </label>
@@ -48,17 +48,17 @@ class BenchForm extends React.Component {
           Longitude:
           <input
             type="text"
-            name="longitude"
-            value={this.state.longitude}
+            name="lng"
+            value={this.state.lng}
             disabled
           />
         </label>
         <label>
           Number of Seats:
           <input
-            type="text"
-            name="numSeats"
-            value={this.state.numSeats}
+            type="number"
+            name="seating"
+            value={this.state.seating}
             onChange={this.handleInput}
           />
         </label>
