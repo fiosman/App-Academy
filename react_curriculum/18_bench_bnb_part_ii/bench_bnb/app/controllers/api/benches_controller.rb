@@ -8,6 +8,11 @@ class Api::BenchesController < ApplicationController
     render 'api/benches/index'
   end 
 
+  def show 
+    @bench = Bench.find(params[:id])
+    render 'api/benches/show'
+  end
+
   def create 
     @bench = Bench.new(bench_params) 
 
