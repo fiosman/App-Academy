@@ -1,8 +1,5 @@
 import React from "react";
 
-// const handleInput = (filter, value) => { 
-
-// }
 const FilterForm = (props) => {
   return (
     <div>
