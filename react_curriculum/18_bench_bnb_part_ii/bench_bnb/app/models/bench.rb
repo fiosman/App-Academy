@@ -27,4 +27,8 @@ class Bench < ApplicationRecord
     #query for benches between latitude and longitude pairs
     Bench.where(lat: lat_pairs.first..lat_pairs.last, lng: lng_pairs.first..lng_pairs.last)
   end
+
+  def self.seating_range(min=1, max)
+    Bench.where(seating: min..max)
+  end
 end
