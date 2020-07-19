@@ -28,7 +28,7 @@ class Bench < ApplicationRecord
     Bench.where(lat: lat_pairs.first..lat_pairs.last, lng: lng_pairs.first..lng_pairs.last)
   end
 
-  def self.seating_range(min=1, max)
+  def self.seating_range(min, max)
     Bench.where(seating: min..max)
   end
 end
