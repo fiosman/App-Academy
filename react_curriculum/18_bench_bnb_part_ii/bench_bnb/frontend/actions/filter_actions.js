@@ -1,8 +1,8 @@
-export const UPDATE_BOUNDS = "UPDATE_BOUNDS";
+export const UPDATE_FILTER = "UPDATE_FILTER";
 import { getBenches } from './bench_actions';
 
 export const changeFilter = (filter, value) => ({
-  type: UPDATE_BOUNDS,
+  type: UPDATE_FILTER,
   filter, 
   value, 
 });
