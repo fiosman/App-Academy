@@ -19,10 +19,12 @@ class MarkerManger {
   }
 
   createMarkerFromBench(bench) {
+    const position = new google.maps.LatLng(bench.lat, bench.lng)
     const marker = new google.maps.Marker({
-      position: { lat: bench.lat, lng: bench.lng },
+      position,
       map: this.map,
       title: bench.description,
+      benchId: bench.id
     });
     this.markers[bench.id] = marker;
   }
