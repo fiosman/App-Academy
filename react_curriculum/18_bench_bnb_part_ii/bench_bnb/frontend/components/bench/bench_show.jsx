@@ -1,6 +1,6 @@
 import React from "react";
 import BenchMap from "../bench_map/bench_map";
-import BenchDetail from './bench_detail';
+import BenchDetail from "./bench_detail";
 
 const BenchShow = (props) => {
   const benches = {
