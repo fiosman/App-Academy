@@ -1,7 +1,8 @@
 class MarkerManger {
-  constructor(map) {
+  constructor(map, clickHandler) {
     this.map = map;
     this.markers = {};
+    this.clickHandler = clickHandler;
   }
 
   updateMarkers(benches) {
@@ -19,14 +20,20 @@ class MarkerManger {
   }
 
   createMarkerFromBench(bench) {
-    const position = new google.maps.LatLng(bench.lat, bench.lng)
+    const position = new google.maps.LatLng(bench.lat, bench.lng);
     const marker = new google.maps.Marker({
       position,
       map: this.map,
       title: bench.description,
-      benchId: bench.id
+      benchId: bench.id,
     });
+
     this.markers[bench.id] = marker;
+
+    marker.addListener("click", () => {
+      this.markers.selectedMarker = marker.get("benchId");
+      this.clickHandler();
+    });
   }
 
   removeMarker(markerId) {
