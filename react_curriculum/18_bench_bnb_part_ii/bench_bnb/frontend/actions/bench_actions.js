@@ -1,8 +1,11 @@
 import { fetchBenches } from "../util/bench_api_util";
 import { createBench } from "../util/bench_api_util";
 import { fetchBench } from "../util/bench_api_util";
+import { createReview } from "../util/bench_api_util";
+export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const RECEIVE_BENCHES = "RECEIVE_BENCHES";
 export const RECEIVE_BENCH = "RECEIVE_BENCH";
+
 //regular action creators
 export const receiveBenches = (benches) => ({
   type: RECEIVE_BENCHES,
@@ -12,6 +15,11 @@ export const receiveBenches = (benches) => ({
 export const receiveBench = (bench) => ({
   type: RECEIVE_BENCH,
   bench,
+});
+
+export const receiveReview = (review) => ({
+  type: RECEIVE_REVIEW,
+  review,
 });
 //async action creators
 
@@ -23,3 +31,8 @@ export const getBench = (benchId) => (dispatch) =>
 
 export const makeBench = (bench) => (dispatch) =>
   createBench(bench).then((bench) => dispatch(receiveBench(bench)));
+
+export const postReview = (review, benchId) => (dispatch) =>
+  createReview(review, benchId).then((review) =>
+    dispatch(receiveReview(review))
+  );

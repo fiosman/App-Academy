@@ -21,3 +21,11 @@ export const createBench = (bench) => {
     data: { bench },
   });
 };
+
+export const createReview = (review, benchId) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/benches/${benchId}/review`,
+    data: { review },
+  });
+};
