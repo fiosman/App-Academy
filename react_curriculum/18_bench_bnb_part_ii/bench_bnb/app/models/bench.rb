@@ -13,6 +13,8 @@
 class Bench < ApplicationRecord 
   validates :description, :lat, :lng, presence: true
 
+  has_many :reviews
+
   def self.in_bounds(bounds) 
     #get the values lat and long coordinates from both hashes
     fst_hsh_cds = bounds[bounds.keys.first].values
