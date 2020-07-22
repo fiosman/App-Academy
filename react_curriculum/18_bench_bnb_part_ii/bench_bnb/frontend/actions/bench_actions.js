@@ -12,9 +12,10 @@ export const receiveBenches = (benches) => ({
   benches,
 });
 
-export const receiveBench = (bench) => ({
+export const receiveBench = (bench, review) => ({
   type: RECEIVE_BENCH,
   bench,
+  review
 });
 
 export const receiveReview = (review) => ({
