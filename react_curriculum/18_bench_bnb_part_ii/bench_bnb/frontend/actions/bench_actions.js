@@ -33,7 +33,7 @@ export const getBench = (benchId) => (dispatch) =>
 export const makeBench = (bench) => (dispatch) =>
   createBench(bench).then((bench) => dispatch(receiveBench(bench)));
 
-export const postReview = (review, benchId) => (dispatch) =>
-  createReview(review, benchId).then((review) =>
+export const postReview = (review) => (dispatch) =>
+  createReview(review).then((review) =>
     dispatch(receiveReview(review))
   );

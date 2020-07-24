@@ -22,10 +22,10 @@ export const createBench = (bench) => {
   });
 };
 
-export const createReview = (review, benchId) => {
+export const createReview = (review) => {
   return $.ajax({
     method: "POST",
-    url: `/api/benches/${benchId}/review`,
+    url: `/api/reviews/`,
     data: { review },
   });
 };
