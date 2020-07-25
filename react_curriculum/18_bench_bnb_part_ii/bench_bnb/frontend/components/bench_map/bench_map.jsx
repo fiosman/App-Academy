@@ -9,7 +9,7 @@ class BenchMap extends React.Component {
 
   componentDidMount() {
     let mapOptions = {
-      center: {lat: 37.7758, lng: -122.435},
+      center: { lat: 37.7758, lng: -122.435 },
       zoom: 13,
     };
     this.map = new google.maps.Map(this.mapNode, mapOptions);
@@ -61,9 +61,7 @@ class BenchMap extends React.Component {
 
   handleMarkerClick() {
     const benchId = this.markerManager.markers.selectedMarker;
-    this.props.history.push(
-      `/benches/${benchId}`
-    );
+    this.props.history.push(`/benches/${benchId}`);
   }
 
   _handleClick(coords) {
