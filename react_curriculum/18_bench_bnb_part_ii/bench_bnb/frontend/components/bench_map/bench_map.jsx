@@ -8,20 +8,10 @@ class BenchMap extends React.Component {
   }
 
   componentDidMount() {
-    const bench = this.props.benches[this.props.benchId];
     let mapOptions = {
-      center: {},
+      center: {lat: 37.7758, lng: -122.435},
       zoom: 13,
     };
-    if (this.props.singleBench) {
-      mapOptions.center.lat = bench.lat;
-      mapOptions.center.lng = bench.lng;
-      mapOptions.zoomControl = false;
-      mapOptions.gestureHandling = "none";
-    } else {
-      mapOptions.center.lat = 37.7758;
-      mapOptions.center.lng = -122.435;
-    }
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.markerManager = new MarkerManager(
       this.map,
@@ -61,7 +51,7 @@ class BenchMap extends React.Component {
         zoomControl: false,
         gestureHandling: "none",
       };
-      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.map.setOptions(mapOptions);
       this.markerManager = new MarkerManager(this.map);
       this.markerManager.updateMarkers(this.props.benches);
     } else {
