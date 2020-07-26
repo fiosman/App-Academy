@@ -11,7 +11,8 @@ const BenchDetail = (props) => {
         <li>Latitude: {props.bench.lat}</li>
         <li>Longitude: {props.bench.lng}</li>
       </ul>
-      <ReviewIndex bench={props.bench} />
+      <h2>Reviews</h2>
+      <ReviewIndex bench={props.bench} reviews={props.reviews} />
     </div>
   );
 };
