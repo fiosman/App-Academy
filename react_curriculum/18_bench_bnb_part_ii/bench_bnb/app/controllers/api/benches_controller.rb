@@ -3,8 +3,10 @@ class Api::BenchesController < ApplicationController
     benches = params[:bounds] ? Bench.in_bounds(params[:bounds]) : Bench.all
     
     if params[:maxSeating] && params[:minSeating] 
-      @benches = benches.where(seating: params[:minSeating]..params[:maxSeating])
+      benches = benches.where(seating: params[:minSeating]..params[:maxSeating])
     end
+
+    @benches = benches.includes(:reviews)
     render 'api/benches/index'
   end 
 

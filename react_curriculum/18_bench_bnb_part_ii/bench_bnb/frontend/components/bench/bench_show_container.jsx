@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   const benches =  state.entities.benches;
   return { 
     benchId, 
-    bench, 
+    bench,
     benches,
   }
 }

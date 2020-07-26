@@ -17,8 +17,7 @@ class BenchMap extends React.Component {
       this.map,
       this.handleMarkerClick.bind(this)
     );
-    this.markerManager.updateMarkers(this.props.benches);
-
+    // this.markerManager.updateMarkers(this.props.benches);
     if (this.props.singleBench) {
       this.props.fetchBench(this.props.benchId);
     } else {
