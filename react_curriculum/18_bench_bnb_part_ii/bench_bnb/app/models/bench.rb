@@ -33,4 +33,8 @@ class Bench < ApplicationRecord
   def self.seating_range(min, max)
     Bench.where(seating: min..max)
   end
+
+  def average_rating
+    self.reviews.average(:rating).to_f.round
+  end
 end
