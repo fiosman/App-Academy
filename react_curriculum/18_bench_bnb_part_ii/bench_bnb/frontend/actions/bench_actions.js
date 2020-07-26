@@ -15,15 +15,17 @@ export const receiveBenches = (benches) => ({
 export const receiveBench = (bench) => ({
   type: RECEIVE_BENCH,
   bench,
-  reviews: bench.reviews
+  reviews: bench.reviews, 
+  average_rating: bench.average_rating
 });
 
 export const receiveReview = (review) => ({
   type: RECEIVE_REVIEW,
   review,
+  average_rating: review.average_rating
 });
-//async action creators
 
+//async action creators
 export const getBenches = (filters) => (dispatch) =>
   fetchBenches(filters).then((benches) => dispatch(receiveBenches(benches)));
 

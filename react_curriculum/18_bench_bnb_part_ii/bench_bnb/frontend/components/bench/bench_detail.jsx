@@ -5,7 +5,7 @@ const BenchDetail = (props) => {
   return (
     <div>
       <ul>
-        <li>Rating: {props.bench.rating || "Not yet rated"}</li>
+        <li>Rating: {props.bench.average_rating || "Not yet rated"}</li>
         <li>Description: {props.bench.description}</li>
         <li>Seats: {props.bench.seating}</li>
         <li>Latitude: {props.bench.lat}</li>

@@ -7,3 +7,5 @@ json.set! :reviews do
     end
   end
 end
+
+json.average_rating @bench.average_rating
