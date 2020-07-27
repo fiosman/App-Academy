@@ -20,4 +20,7 @@ class Review < ApplicationRecord
   validates :rating, inclusion: {in: 1..5, message: 'must be between 1 and 5!'}
   
   belongs_to :bench
+  belongs_to :author, 
+    foreign_key: :author_id, 
+    class_name: :User
 end
