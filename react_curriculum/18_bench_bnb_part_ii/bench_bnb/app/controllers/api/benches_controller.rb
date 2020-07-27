@@ -12,7 +12,6 @@ class Api::BenchesController < ApplicationController
 
   def show 
     @bench = Bench.find(params[:id])
-    @avg_rating = @bench.average_rating
     render 'api/benches/show'
   end
 

@@ -22,7 +22,8 @@ export const receiveBench = (bench) => ({
 export const receiveReview = (review) => ({
   type: RECEIVE_REVIEW,
   review,
-  average_rating: review.average_rating
+  average_rating: review.average_rating, 
+  author: review.author
 });
 
 //async action creators
