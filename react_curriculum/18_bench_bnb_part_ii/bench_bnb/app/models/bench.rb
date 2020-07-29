@@ -15,6 +15,8 @@ class Bench < ApplicationRecord
 
   has_many :reviews
 
+  has_one_attached :photo
+
   def self.in_bounds(bounds) 
     #get the values lat and long coordinates from both hashes
     fst_hsh_cds = bounds[bounds.keys.first].values
