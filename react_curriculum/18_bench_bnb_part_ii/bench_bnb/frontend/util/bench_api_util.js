@@ -18,7 +18,9 @@ export const createBench = (bench) => {
   return $.ajax({
     method: "POST",
     url: "/api/benches",
-    data: { bench },
+    data: bench, 
+    contentType: false, 
+    processData: false,
   });
 };
 
