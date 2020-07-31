@@ -17,7 +17,6 @@ class Api::BenchesController < ApplicationController
 
   def create 
     @bench = Bench.new(bench_params) 
-
     if @bench.save 
       render 'api/benches/show'
     else 

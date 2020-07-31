@@ -11,7 +11,12 @@ class BenchIndexItem extends React.Component {
   }
 
   render() {
-    return <li onClick={this.handleClick}>{this.props.bench.description}</li>;
+    return ( 
+      <ul>
+        <li onClick={this.handleClick}>{this.props.bench.description}</li>
+        {/* <li><img src={this.props.bench.photoUrl}></img></li> */}
+      </ul>
+    )
   }
 }
 

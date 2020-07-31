@@ -20,7 +20,7 @@ class BenchForm extends React.Component {
   }
 
   handleFile(e) { 
-    this.setState({photoFile: e.currentTarget.files[0]});
+    return this.setState({photoFile: e.currentTarget.files[0]});
   }
 
   handleSubmit(e) {

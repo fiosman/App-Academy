@@ -27,6 +27,7 @@ const BenchShow = (props) => {
       />
       <h2>Bench Details</h2>
       <BenchDetail bench={props.bench} reviews={props.reviews} />
+      <img src={benches[props.benchId].photoUrl} />
       {reviewStatus}
       <ProtectedRoute
         path="/benches/:benchId/review"
