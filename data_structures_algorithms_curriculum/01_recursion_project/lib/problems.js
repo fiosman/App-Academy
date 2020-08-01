@@ -71,7 +71,15 @@ function reverseString(str) {
 // pow(2, 5)    // => 32
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
-function pow(base, exponent) {}
+function pow(base, exponent) {
+    if (exponent === 0) return 1;
+
+    if (exponent < 0) { 
+        return 1 / (pow(base, -exponent))
+    } else { 
+        return pow(base, exponent-1) * base
+    }
+}
 
 // A 1-dimensional array is also known as a flattened array.
 // Write a method, flatten(data), that accepts a single argument. The
