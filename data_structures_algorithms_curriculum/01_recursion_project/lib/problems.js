@@ -10,20 +10,21 @@
 //
 // Examples:
 //
-// lucasNumber(0)   // => 2
-// lucasNumber(1)   // => 1
-// lucasNumber(2)   // => 3
-// lucasNumber(3)   // => 4
-// lucasNumber(5)   // => 11
-// lucasNumber(9)   // => 76
+// lucasNumber(0); // => 2
+// lucasNumber(1); // => 1
+// lucasNumber(2); // => 3
+// lucasNumber(3); // => 4
+// lucasNumber(5); // => 11
+// lucasNumber(9); // => 76
 function lucasNumber(n) {
-
+  if (n === 0) return 2;
+  if (n === 1) return 1;
+  return lucasNumber(n - 1) + lucasNumber(n - 2);
 }
-
 
 // Write a function, sumArray(array), that takes in an array of numbers.
 // The function should return the total sum of the elements.
-// 
+//
 // Solve this recursively!
 //
 // Examples:
@@ -32,10 +33,7 @@ function lucasNumber(n) {
 // sumArray([5])            // => 5
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
-function sumArray(array) {
-
-}
-
+function sumArray(array) {}
 
 // Write a function, reverseString(str), that takes in a string.
 // The function should return the string with it's characters in reverse order.
@@ -43,23 +41,20 @@ function sumArray(array) {
 // Solve this recursively!
 //
 // Examples:
-// 
+//
 // reverseString("")            // => ""
 // reverseString("c")           // => "c"
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
-function reverseString(str) {
-
-}
-
+function reverseString(str) {}
 
 // Write a function, pow(base, exponent), that takes in two numbers.
 // The function should calculate the base raised to the exponent power.
 //
-// Note: 
+// Note:
 // A negative exponent can be calculate by taking the reciprocal of the positive exponent.
 // That is, pow(2, -5) is equal to 1 / pow(2, 5)
-// 
+//
 // Solve this recursively!
 //
 // Examples:
@@ -69,16 +64,13 @@ function reverseString(str) {
 // pow(2, 5)    // => 32
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
-function pow(base, exponent) {
-
-}
-
+function pow(base, exponent) {}
 
 // A 1-dimensional array is also known as a flattened array.
 // Write a method, flatten(data), that accepts a single argument. The
 // method should take in an array of any dimension and return the flattened
 // version of that array. Solve this recursively.
-//   
+//
 // Hint:
 //  - if the argument is not an array, then we have reached the base case
 //  - look up the documentation for how to check if data is an array or not
@@ -102,14 +94,12 @@ function pow(base, exponent) {
 //     1-dimensional array: ['some data']
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
-function flatten(data) {
-
-}
+function flatten(data) {}
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
 // The function should return true, if the file is contained anywhere in the given directories.
 // Note that directory names will begin with '/', but file names will not.
-// 
+//
 // Example:
 //
 // let desktop = {
@@ -145,10 +135,7 @@ function flatten(data) {
 // fileFinder(desktop, 'app_academy_logo.svg');     // => true
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
-function fileFinder(directories, targetFile) {
-
-}
-
+function fileFinder(directories, targetFile) {}
 
 // Write another function, pathFinder(directories, targetFile), that returns the path that contains the targetFile.
 // If the targetFile is not found in the directories, then return null.
@@ -159,17 +146,14 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
-function pathFinder(directories, targetFile) {
-
-}
-
+function pathFinder(directories, targetFile) {}
 
 module.exports = {
-    lucasNumber,
-    sumArray,
-    reverseString,
-    pow,
-    flatten,
-    fileFinder,
-    pathFinder
+  lucasNumber,
+  sumArray,
+  reverseString,
+  pow,
+  flatten,
+  fileFinder,
+  pathFinder,
 };
