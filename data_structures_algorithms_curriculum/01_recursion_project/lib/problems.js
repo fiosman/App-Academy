@@ -34,8 +34,8 @@ function lucasNumber(n) {
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
 function sumArray(array) {
-    if (array.length === 0) return 0; 
-    return array[0] + sumArray(array.slice(1));
+  if (array.length === 0) return 0;
+  return array[0] + sumArray(array.slice(1));
 }
 
 // Write a function, reverseString(str), that takes in a string.
@@ -50,9 +50,9 @@ function sumArray(array) {
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
 function reverseString(str) {
-    const strLength = str.length;
-    if (strLength === 0) return str; 
-    return str[strLength-1] + reverseString(str.slice(0, strLength-1));
+  const strLength = str.length;
+  if (strLength === 0) return str;
+  return str[strLength - 1] + reverseString(str.slice(0, strLength - 1));
 }
 
 // Write a function, pow(base, exponent), that takes in two numbers.
@@ -72,13 +72,13 @@ function reverseString(str) {
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
 function pow(base, exponent) {
-    if (exponent === 0) return 1;
+  if (exponent === 0) return 1;
 
-    if (exponent < 0) { 
-        return 1 / (pow(base, -exponent))
-    } else { 
-        return pow(base, exponent-1) * base
-    }
+  if (exponent < 0) {
+    return 1 / pow(base, -exponent);
+  } else {
+    return pow(base, exponent - 1) * base;
+  }
 }
 
 // A 1-dimensional array is also known as a flattened array.
