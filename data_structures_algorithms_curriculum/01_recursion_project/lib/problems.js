@@ -179,10 +179,20 @@ function fileFinder(directories, targetFile) {
 //
 // Example using the same desktop from previously:
 //
-// pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
-// pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
-// pathFinder(desktop, 'honeybadger.png'));     // => null
+// console.log(pathFinder(desktop, "trixie_lou.jpeg")); // => '/images/pets/trixie_lou.jpeg'
+// // console.log(pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
+// // console.log(pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+  for (let key in directories) {
+    if (key === targetFile) return "/" + targetFile;
+
+    let subdir = directories[key];
+    let res = pathFinder(subdir, targetFile);
+    if (res !== null) {
+      return key + res;
+    }
+  }
+  return null;
 }
 
 module.exports = {
