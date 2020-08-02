@@ -12,11 +12,17 @@
 //
 // lucasNumberMemo(0)   // => 2
 // lucasNumberMemo(1)   // => 1
-// lucasNumberMemo(40)  // => 228826127
-// lucasNumberMemo(41)  // => 370248451
-// lucasNumberMemo(42)  // => 599074578
+// lucasNumberMemo(2)   // => 3
+// lucasNumberMemo(3)   // => 4
+// lucasNumberMemo(50) // => 28143753123
 function lucasNumberMemo(n, memo = {}) {
+    if (n in memo) return memo[n];
 
+    if (n === 0) return 2; 
+    if (n === 1) return 1;
+    
+    memo[n] = lucasNumberMemo(n - 1, memo) + lucasNumberMemo(n - 2, memo);
+    return memo[n];
 }
 
 
