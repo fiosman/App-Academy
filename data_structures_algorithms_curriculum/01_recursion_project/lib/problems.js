@@ -110,17 +110,17 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
-    if (!Array.isArray(data)) return [data]
-    
-    const newArr = [];
-    data.forEach(ele => { 
-        if (Array.isArray(ele)) { 
-            newArr.push(...flatten(ele))
-        } else { 
-            newArr.push(ele)
-        }
-    })
-    return newArr;
+  if (!Array.isArray(data)) return [data];
+
+  const newArr = [];
+  data.forEach((ele) => {
+    if (Array.isArray(ele)) {
+      newArr.push(...flatten(ele));
+    } else {
+      newArr.push(ele);
+    }
+  });
+  return newArr;
 }
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
@@ -129,40 +129,49 @@ function flatten(data) {
 //
 // Example:
 //
-// let desktop = {
-//     '/images': {
-//         'app_academy_logo.svg': null,
-//         '/parks': {
-//             'yosemite.jpeg': null,
-//             'acadia.jpeg': null,
-//             'yellowstone.png': null
-//         },
-//         '/pets': {
-//             'trixie_lou.jpeg': null,
-//             'rolo.jpeg': null,
-//             'opal.jpeg': null,
-//             'diana.jpeg': null,
-//         }
-//     },
-//     '/music': {
-//         'hey_programmers.mp3': null,
-//         '/genres': {
-//             '/rock': {
-//                 'everlong.flac': null,
-//                 'livin_on_a_prayer.mp3': null
-//             },
-//             '/hip_hop': {
-//                 'express_yourself.wav': null,
-//                 'ny_state_of_mind.mp3': null
-//             }
-//         }
-//     }
-// };
+let desktop = {
+  "/images": {
+    "app_academy_logo.svg": null,
+    "/parks": {
+      "yosemite.jpeg": null,
+      "acadia.jpeg": null,
+      "yellowstone.png": null,
+    },
+    "/pets": {
+      "trixie_lou.jpeg": null,
+      "rolo.jpeg": null,
+      "opal.jpeg": null,
+      "diana.jpeg": null,
+    },
+  },
+  "/music": {
+    "hey_programmers.mp3": null,
+    "/genres": {
+      "/rock": {
+        "everlong.flac": null,
+        "livin_on_a_prayer.mp3": null,
+      },
+      "/hip_hop": {
+        "express_yourself.wav": null,
+        "ny_state_of_mind.mp3": null,
+      },
+    },
+  },
+};
 //
-// fileFinder(desktop, 'app_academy_logo.svg');     // => true
-// fileFinder(desktop, 'everlong.flac');            // => true
-// fileFinder(desktop, 'sequoia.jpeg');             // => false
-function fileFinder(directories, targetFile) {}
+// console.log(fileFinder(desktop, "app_academy_logo.svg")); // => true
+// console.log(fileFinder(desktop, "yosemite.jpeg")); // => true
+// console.log(fileFinder(desktop, "everlong.flac")); // => true
+// console.log(fileFinder(desktop, "sequoia.jpeg")); // => false
+
+function fileFinder(directories, targetFile) {
+  for (let key in directories) {
+    if (key === targetFile || fileFinder(directories[key], targetFile)) {
+      return true;
+    }
+  }
+  return false;
+}
 
 // Write another function, pathFinder(directories, targetFile), that returns the path that contains the targetFile.
 // If the targetFile is not found in the directories, then return null.
@@ -173,7 +182,8 @@ function fileFinder(directories, targetFile) {}
 // pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
-function pathFinder(directories, targetFile) {}
+function pathFinder(directories, targetFile) {
+}
 
 module.exports = {
   lucasNumber,
