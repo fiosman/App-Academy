@@ -35,3 +35,6 @@ function change(amount, coins, memo = {}) {
   return memo[key];
 }
 
+// console.log(change(500, [1, 2, 5, 10, 25]));
+// console.log(change(3, [2]));
+// console.log(change(10, [10]));
