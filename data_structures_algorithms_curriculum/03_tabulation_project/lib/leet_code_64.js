@@ -2,5 +2,5 @@
 // Feel free to use this file for scratch work.
 
 function minPathSum(grid) {
-
+  
 }
