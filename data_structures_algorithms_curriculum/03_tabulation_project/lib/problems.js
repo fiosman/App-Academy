@@ -17,10 +17,25 @@
 //
 // Examples:
 //
-// stepper([3, 1, 0, 5, 10]);           // => true, because we can step through elements 3 -> 5 -> 10
-// stepper([3, 4, 1, 0, 10]);           // => true, because we can step through elements 3 -> 4 -> 10
-// stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the end
-function stepperTab(nums) {}
+// console.log(stepper([3, 1, 0, 5, 10]));           // => true, because we can step through elements 3 -> 5 -> 10
+// console.log(stepper([3, 4, 1, 0, 10]));           // => true, because we can step through elements 3 -> 4 -> 10
+// console.log(stepper([2, 3, 1, 1, 0, 4, 7, 8]))    // => false, there is no way to step to the end
+function stepperTab(nums) {
+  let dp = new Array(nums.length);
+  dp[0] = true;
+
+  for (let i = 0; i < dp.length; i++) {
+    if (dp[i] === true) {
+      let maxRange = nums[i];
+      for (let j = 1; j <= maxRange; j++) {
+        dp[i + j] = true;
+      }
+    } else {
+      dp[i] = false;
+    }
+  }
+  return dp[nums.length - 1];
+}
 
 function stepperMemo(nums, memo = {}) {
   let memoKey = String(nums);
@@ -30,7 +45,7 @@ function stepperMemo(nums, memo = {}) {
   const maxRange = nums[0];
 
   for (let i = 1; i <= maxRange; i++) {
-    if (stepper(nums.slice(i), memo)) {
+    if (stepperMemo(nums.slice(i), memo)) {
       memo[memoKey] = true;
       return memo[memoKey];
     }
