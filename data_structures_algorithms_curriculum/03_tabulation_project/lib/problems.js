@@ -99,7 +99,7 @@ function maxNonAdjacentSum(nums) {
 // console.log(minChange([1, 5, 10, 25], 15))    // => 2, because 10 + 5 = 15
 // console.log(minChange([1, 5, 10, 25], 100))   // => 4, because 25 + 25 + 25 + 25 = 100
 function minChange(coins, amount) {
-  let dp = new Array(amount + 1).fill(Infinity);
+  let dp = new Array(amount + 1).fill(Infinity); //fill all elements with values greater than amount, with the exception of index 0
   dp[0] = 0;
 
   for (let i = 0; i <= amount; i++) {
