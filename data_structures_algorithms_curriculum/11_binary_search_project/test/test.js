@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { binarySearch, binarySearchIndex } = require('../lib/binary_search.js');
 
 
-describe('binarySearch', () => {
+describe.only('binarySearch', () => {
     // it should accept an sorted array of numbers and a target as an arg
 
     context('when the target is contained in the array', () => {
