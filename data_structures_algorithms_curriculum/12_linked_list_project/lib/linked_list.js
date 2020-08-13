@@ -65,6 +65,7 @@ class LinkedList {
       if (node.val === target) {
         return true;
       }
+      node = node.next;
     }
     return false;
   }
