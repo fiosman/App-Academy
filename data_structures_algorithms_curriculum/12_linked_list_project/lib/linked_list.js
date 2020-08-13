@@ -100,7 +100,21 @@ class LinkedList {
   }
 
   // TODO: Implement the get method here
-  get(index) {}
+  get(index) {
+    //   if (index > this.length - 1) return null;
+    let currentPos = 0;
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentPos === index) {
+        return currentNode;
+      } else {
+        currentNode = currentNode.next;
+        currentPos++;
+      }
+    }
+    return null;
+  }
 
   // TODO: Implement the set method here
   set(index, val) {}
