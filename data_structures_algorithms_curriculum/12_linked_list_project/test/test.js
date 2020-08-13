@@ -157,7 +157,7 @@ describe('LinkedList', () => {
 
         });
 
-        describe.only('addToHead', () => {
+        describe('addToHead', () => {
             it('Should reassign the head pointer when new nodes are added to the head', () => {
                 expect(linkedList.head).to.equal(null);
                 linkedList.addToHead('B');
@@ -194,7 +194,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe('removeHead', () => {
+        describe.only('removeHead', () => {
             it('Should return undefined if the list is empty', () => {
                 expect(linkedList.removeHead()).to.equal(undefined);
             });

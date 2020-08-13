@@ -71,7 +71,21 @@ class LinkedList {
   }
 
   // TODO: Implement the removeHead method here
-  removeHead() {}
+  removeHead() {
+    if (this.length === 0) {
+      return undefined;
+    } else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return;
+    }
+
+    let removedNode = this.head;
+    this.head = this.head.next;
+    this.length--;
+    return removedNode;
+  }
 
   // TODO: Implement the contains method here
   contains(target) {
@@ -110,8 +124,11 @@ const list = new LinkedList();
 // console.log(list);
 
 // list.addToHead(4);
+// list.addToHead(6);
 // list.addToHead(3);
-// console.log(list.addToHead(5));
+// list.addToHead(5);
+// console.log(list);
+// console.log(list.removeHead());
 
 exports.Node = Node;
 exports.LinkedList = LinkedList;
