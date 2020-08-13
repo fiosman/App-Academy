@@ -60,7 +60,7 @@ class LinkedList {
 
   // TODO: Implement the contains method here
   contains(target) {
-    node = this.head;
+    let node = this.head;
     while (node.next) {
       if (node.val === target) {
         return true;
