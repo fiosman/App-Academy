@@ -117,7 +117,29 @@ class LinkedList {
   }
 
   // TODO: Implement the set method here
-  set(index, val) {}
+  set(index, val) {
+    // let currentPos = 0;
+    // let currentNode = this.head;
+
+    // while (currentNode) {
+    //   if (currentPos === index) {
+    //     currentNode.value = val;
+    //     return true;
+    //   } else {
+    //     currentNode = currentNode.next;
+    //     currentPos++;
+    //   }
+    // }
+    // return false;
+    let node = this.get(index);
+
+    if (node) {
+      node.value = val;
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   // TODO: Implement the insert method here
   insert(index, val) {}
