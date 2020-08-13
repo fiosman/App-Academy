@@ -157,7 +157,7 @@ describe('LinkedList', () => {
 
         });
 
-        describe('addToHead', () => {
+        describe.only('addToHead', () => {
             it('Should reassign the head pointer when new nodes are added to the head', () => {
                 expect(linkedList.head).to.equal(null);
                 linkedList.addToHead('B');

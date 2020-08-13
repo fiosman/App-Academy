@@ -23,7 +23,7 @@
 // TODO: Implement a Linked List Node class here
 class Node {
   constructor(val) {
-    this.val = val;
+    this.value = val;
     this.next = null;
   }
 }
@@ -53,7 +53,22 @@ class LinkedList {
   removeTail() {}
 
   // TODO: Implement the addToHead method here
-  addToHead(val) {}
+  addToHead(val) {
+    let newNode = new Node(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length++;
+      return this;
+    }
+
+    let oldHead = this.head;
+    this.head = newNode;
+    this.head.next = oldHead;
+    this.length++;
+    return this;
+  }
 
   // TODO: Implement the removeHead method here
   removeHead() {}
@@ -87,11 +102,16 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.addToTail(1);
-list.addToTail(3);
-list.removeTail();
 
-console.log(list);
+// list.addToTail(3);
+// list.addToTail(2);
+// console.log(list);
+// list.addToHead(4);
+// console.log(list);
+
+// list.addToHead(4);
+// list.addToHead(3);
+// console.log(list.addToHead(5));
 
 exports.Node = Node;
 exports.LinkedList = LinkedList;
