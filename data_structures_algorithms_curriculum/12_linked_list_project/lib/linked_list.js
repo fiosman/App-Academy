@@ -59,7 +59,15 @@ class LinkedList {
   removeHead() {}
 
   // TODO: Implement the contains method here
-  contains(target) {}
+  contains(target) {
+    node = this.head;
+    while (node.next) {
+      if (node.val === target) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   // TODO: Implement the get method here
   get(index) {}
