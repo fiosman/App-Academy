@@ -5,7 +5,7 @@ const { LRUCache, LRUCacheItem } = require('../lib/4_lru_cache.js');
 
 const { expect } = require('chai');
 
-describe('Problem 1: reverseLinkedList', () => {
+describe.only('Problem 1: reverseLinkedList', () => {
     let linkedList;
     let result;
     let expected;
