@@ -50,7 +50,21 @@ class LinkedList {
   }
 
   // TODO: Implement the removeTail method here
-  removeTail() {}
+  removeTail() {
+    if (this.length === 0) return undefined;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return;
+    }
+    const newTail = this.get(this.length - 2);
+    const oldTail = this.tail;
+    newTail.next = null;
+    this.tail = newTail;
+    this.length--;
+    return oldTail;
+  }
 
   // TODO: Implement the addToHead method here
   addToHead(val) {
@@ -147,21 +161,25 @@ class LinkedList {
   }
 
   // TODO: Implement the remove method here
-  remove(index) {}
+  remove(index) {
+    //if index @ 0, removeHead
+    //if index @ n - 1, removeTail
+    //Otherwise, set next pointer of element before target ele to element after target.
+  }
 
   // TODO: Implement the size method here
   size() {
-      return this.length;
+    return this.length;
   }
 }
 
 const linkedList = new LinkedList();
 
-// list.addToTail(3);
-// list.addToTail(2);
-// console.log(list);
-// list.addToHead(4);
-// console.log(list);
+linkedList.addToTail(3);
+console.log(linkedList);
+
+linkedList.removeTail();
+console.log(linkedList);
 
 // list.addToHead(4);
 // list.addToHead(6);

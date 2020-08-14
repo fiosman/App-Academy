@@ -109,7 +109,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe('removeTail', () => {
+        describe.only('removeTail', () => {
             it('Should return undefined if the list is empty', () => {
                 expect(linkedList.removeTail()).to.equal(undefined);
             });
@@ -289,7 +289,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe.only('insert', () => {
+        describe('insert', () => {
             it('Should return false if index is out of bounds', () => {
                 linkedList.addToTail('A');
                 linkedList.addToTail('B');
@@ -354,7 +354,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe.only('size', () => {
+        describe('size', () => {
             it('Should return the length of the list', () => {
                 expect(linkedList.size()).to.equal(0);
                 linkedList.addToTail('A');
