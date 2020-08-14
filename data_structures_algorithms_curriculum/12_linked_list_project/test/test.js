@@ -109,7 +109,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe.only('removeTail', () => {
+        describe('removeTail', () => {
             it('Should return undefined if the list is empty', () => {
                 expect(linkedList.removeTail()).to.equal(undefined);
             });
@@ -320,7 +320,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe('remove', () => {
+        describe.only('remove', () => {
             it('Should return undefined if index is out of bounds', () => {
                 linkedList.addToTail('A');
                 linkedList.addToTail('B');

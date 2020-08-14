@@ -162,9 +162,15 @@ class LinkedList {
 
   // TODO: Implement the remove method here
   remove(index) {
-    //if index @ 0, removeHead
-    //if index @ n - 1, removeTail
-    //Otherwise, set next pointer of element before target ele to element after target.
+    if (index > this.length - 1) return undefined;
+    if (index === 0) return this.removeHead();
+    if (index === this.length - 1) return this.removeTail();
+
+    const nodeBeforeTarget = this.get(index - 1);
+    const target = nodeBeforeTarget.next;
+    nodeBeforeTarget.next = target.next;
+    this.length--;
+    return target;
   }
 
   // TODO: Implement the size method here
