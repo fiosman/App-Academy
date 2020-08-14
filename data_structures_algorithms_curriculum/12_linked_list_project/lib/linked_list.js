@@ -150,7 +150,9 @@ class LinkedList {
   remove(index) {}
 
   // TODO: Implement the size method here
-  size() {}
+  size() {
+      return this.length;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -168,12 +170,7 @@ const linkedList = new LinkedList();
 // console.log(list);
 // console.log(list.removeHead());
 
-linkedList.addToTail("A");
-linkedList.addToTail("B");
-linkedList.addToTail("D");
-console.log(linkedList.length);
-console.log(linkedList.insert(0, "C"));
-console.log(linkedList.length);
+// console.log(linkedList.length)
 
 exports.Node = Node;
 exports.LinkedList = LinkedList;

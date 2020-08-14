@@ -354,7 +354,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe('size', () => {
+        describe.only('size', () => {
             it('Should return the length of the list', () => {
                 expect(linkedList.size()).to.equal(0);
                 linkedList.addToTail('A');
