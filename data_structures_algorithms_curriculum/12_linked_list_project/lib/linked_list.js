@@ -104,8 +104,8 @@ class LinkedList {
   // TODO: Implement the contains method here
   contains(target) {
     let node = this.head;
-    while (node.next) {
-      if (node.val === target) {
+    while (node) {
+      if (node.value === target) {
         return true;
       }
       node = node.next;
@@ -178,23 +178,6 @@ class LinkedList {
     return this.length;
   }
 }
-
-const linkedList = new LinkedList();
-
-linkedList.addToTail(3);
-console.log(linkedList);
-
-linkedList.removeTail();
-console.log(linkedList);
-
-// list.addToHead(4);
-// list.addToHead(6);
-// list.addToHead(3);
-// list.addToHead(5);
-// console.log(list);
-// console.log(list.removeHead());
-
-// console.log(linkedList.length)
 
 exports.Node = Node;
 exports.LinkedList = LinkedList;

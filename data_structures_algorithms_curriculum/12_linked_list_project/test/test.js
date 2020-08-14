@@ -320,7 +320,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe.only('remove', () => {
+        describe('remove', () => {
             it('Should return undefined if index is out of bounds', () => {
                 linkedList.addToTail('A');
                 linkedList.addToTail('B');
