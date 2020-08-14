@@ -272,7 +272,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe.only('set', () => {
+        describe('set', () => {
             it('Should return true if node\'s value at index is updated', () => {
                 linkedList.addToTail('A');
                 linkedList.addToTail('B');
@@ -289,7 +289,7 @@ describe('LinkedList', () => {
             });
         });
 
-        describe('insert', () => {
+        describe.only('insert', () => {
             it('Should return false if index is out of bounds', () => {
                 linkedList.addToTail('A');
                 linkedList.addToTail('B');

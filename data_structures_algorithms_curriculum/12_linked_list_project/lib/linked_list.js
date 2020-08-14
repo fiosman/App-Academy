@@ -118,19 +118,6 @@ class LinkedList {
 
   // TODO: Implement the set method here
   set(index, val) {
-    // let currentPos = 0;
-    // let currentNode = this.head;
-
-    // while (currentNode) {
-    //   if (currentPos === index) {
-    //     currentNode.value = val;
-    //     return true;
-    //   } else {
-    //     currentNode = currentNode.next;
-    //     currentPos++;
-    //   }
-    // }
-    // return false;
     let node = this.get(index);
 
     if (node) {
@@ -142,7 +129,22 @@ class LinkedList {
   }
 
   // TODO: Implement the insert method here
-  insert(index, val) {}
+  insert(index, val) {
+    let newNode = new Node(val);
+
+    if (index === 0) return this.addToHead(val);
+
+    if (index - 1 < this.length - 1) {
+      const prevNode = this.get(index - 1);
+      const currentNodeAtIdx = prevNode.next;
+      prevNode.next = newNode;
+      newNode.next = currentNodeAtIdx;
+      this.length++;
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   // TODO: Implement the remove method here
   remove(index) {}
@@ -151,7 +153,7 @@ class LinkedList {
   size() {}
 }
 
-const list = new LinkedList();
+const linkedList = new LinkedList();
 
 // list.addToTail(3);
 // list.addToTail(2);
@@ -165,6 +167,13 @@ const list = new LinkedList();
 // list.addToHead(5);
 // console.log(list);
 // console.log(list.removeHead());
+
+linkedList.addToTail("A");
+linkedList.addToTail("B");
+linkedList.addToTail("D");
+console.log(linkedList.length);
+console.log(linkedList.insert(0, "C"));
+console.log(linkedList.length);
 
 exports.Node = Node;
 exports.LinkedList = LinkedList;
