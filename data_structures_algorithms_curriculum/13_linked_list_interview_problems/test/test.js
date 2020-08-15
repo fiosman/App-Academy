@@ -72,7 +72,7 @@ describe('Problem 1: reverseLinkedList', () => {
     });
 });
 
-describe.only('Problem 2: linkedListIntersection', function () {
+describe('Problem 2: linkedListIntersection', function () {
     let list1;
     let list2;
     let expected;
@@ -154,7 +154,7 @@ describe.only('Problem 2: linkedListIntersection', function () {
     });
 });
 
-describe('Problem 3: hasCycle', () => {
+describe.only('Problem 3: hasCycle', () => {
     let linkedList;
     let result;
 
