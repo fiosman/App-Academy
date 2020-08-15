@@ -121,4 +121,3 @@ linkedList.addToTail("Second");
 linkedList.addToTail("Third");
 linkedList.addToTail("Fourth");
 linkedList.addToTail("Fifth");
-console.log(reverseLinkedList(linkedList));
