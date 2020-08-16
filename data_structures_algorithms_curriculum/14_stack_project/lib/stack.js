@@ -21,11 +21,26 @@
 // -----------
 
 class Node {
-
+	constructor(val) { 
+		this.next = null; 
+		this.val = val;
+	}
 }
 
 class Stack {
+	constructor() { 
+		this.top = null; 
+		this.bottom = null; 
+		this.length = 0;
+	}
 
+	pop() {}
+
+	push() {}
+
+	size() { 
+		return this.length;
+	}
 }
 
 exports.Node = Node;
