@@ -21,10 +21,26 @@
 // -----------
 
 class Node {
-
+	constructor(val) { 
+		this.next = null; 
+		this.value = val;
+	}
 }
 
 class Queue {
+	constructor() { 
+		this.front = null; 
+		this.back = null; 
+		this.length = 0;
+	}
+
+	enqueue() {}
+
+	dequeue() {}
+	
+	size() { 
+		return this.length;
+	}
 
 }
 
