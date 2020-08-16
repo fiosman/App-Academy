@@ -79,16 +79,23 @@ class LRUCache {
 
   // TODO: Implement the get method here
   get(key) {
-    if (this.map[key]) return this.map[key].val;
-    return null;
+    if (!this.map[key]) return null;
+    const ele = this.map[key];
+    this.promote(ele);
+    return ele.val;
   }
 
   // TODO: Implement the set method here
   set(key, val) {
-    if (!this.map[key]) {
-      this.map[key] = new LRUCacheItem(val, key);
-    } else if (this.map[key]) {
+    if (this.map[key]) {
       this.map[key].val = val;
+      this.promote(this.map[key]);
+    } else {
+      let newEle;
+      if (this.isFull()) this.prune();
+      newEle = new LRUCacheItem(val, key);
+      newEle.node = this.store.unshift(newEle);
+      this.map[key] = newEle;
     }
   }
 
@@ -97,8 +104,8 @@ class LRUCache {
   }
 
   prune() {
-    const oldest = this.store.pop(); 
-    delete this.map[oldest.key]; 
+    const oldest = this.store.pop();
+    delete this.map[oldest.key];
   }
 
   promote(item) {
