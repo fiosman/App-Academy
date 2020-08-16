@@ -96,7 +96,10 @@ class LRUCache {
     return this.size >= this.limit;
   }
 
-  prune() {}
+  prune() {
+    const oldest = this.store.pop(); 
+    delete this.map[oldest.key]; 
+  }
 
   promote(item) {
     return this.store.moveToFront(item.node);
