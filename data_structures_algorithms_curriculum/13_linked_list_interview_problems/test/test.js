@@ -154,7 +154,7 @@ describe('Problem 2: linkedListIntersection', function () {
     });
 });
 
-describe.only('Problem 3: hasCycle', () => {
+describe('Problem 3: hasCycle', () => {
     let linkedList;
     let result;
 
@@ -352,7 +352,7 @@ describe.only('Problem 3: hasCycle', () => {
     });
 });
 
-describe('Problem 4: LRUCache', () => {
+describe.only('Problem 4: LRUCache', () => {
     let lruCache;
 
     beforeEach(() => {
