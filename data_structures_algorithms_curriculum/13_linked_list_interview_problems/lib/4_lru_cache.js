@@ -60,6 +60,7 @@ class LRUCacheItem {
   constructor(val = null, key = null) {
     this.val = val;
     this.key = key;
+    this.node = null;
   }
 }
 
@@ -97,7 +98,9 @@ class LRUCache {
 
   prune() {}
 
-  promote(item) {}
+  promote(item) {
+    return this.store.moveToFront(item.node);
+  }
 }
 
 // ----------------------------------------
