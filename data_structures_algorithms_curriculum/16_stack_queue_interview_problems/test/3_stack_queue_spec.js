@@ -60,7 +60,7 @@ describe('Problem 3: StackQueue', () => {
             });
         });
 
-        describe('Stack Methods', () => {
+        describe.only('Stack Methods', () => {
             it('Should have methods named "push", "pop", and "size"', () => {
                 expect(stack.push).to.be.a('function');
                 expect(stack.pop).to.be.a('function');
