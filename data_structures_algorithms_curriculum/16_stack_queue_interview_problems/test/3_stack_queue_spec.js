@@ -197,7 +197,7 @@ describe('Problem 3: StackQueue', () => {
         });
     });
 
-    describe('StackQueue', () => {
+    describe.only('StackQueue', () => {
         let stackQueue;
 
         beforeEach(() => {

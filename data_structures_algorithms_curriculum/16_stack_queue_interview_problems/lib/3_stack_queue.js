@@ -60,10 +60,10 @@ class Stack {
   }
 
   pop() {
-    if (!this.top) return null; 
+    if (!this.top) return null;
     if (this.top === this.bottom) this.bottom = null;
 
-    const currentTop = this.top; 
+    const currentTop = this.top;
     this.top = this.top.next;
     this.length--;
     return currentTop;
@@ -72,6 +72,50 @@ class Stack {
 
 class StackQueue {
   // TODO: Implement the StackQueue class!
+  constructor() {
+    this.front = null;
+    this.back = null;
+    this.inStack = new Stack();
+    this.outStack = new Stack();
+  }
+
+  enqueue(val) {
+    const newNode = new Node(val);
+    if (!this.front) {
+      this.front = newNode;
+      this.back = newNode;
+    } else {
+      this.back.next = newNode;
+      this.back = newNode;
+    }
+
+    this.inStack.push(new Node(newNode.value));
+    return this.size();
+  }
+
+  dequeue() {
+    if (!this.front) {
+      return null;
+    } else if (this.front === this.back) {
+      this.front = null;
+      this.back = null;
+    } else {
+      this.front = this.front.next;
+    }
+
+    if (this.outStack.size() === 0) {
+      while (this.inStack.size() > 0) {
+        this.outStack.push(this.inStack.pop());
+      }
+    }
+
+    const ele = this.outStack.pop();
+    return ele;
+  }
+
+  size() {
+    return this.inStack.size() + this.outStack.size();
+  }
 }
 
 exports.Node = Node;
