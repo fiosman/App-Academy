@@ -41,7 +41,7 @@ describe('TreeOrder', () => {
     });
 
 
-    describe.only('inOrderArray()', () => {
+    describe('inOrderArray()', () => {
         context('when given an empty tree', () => {
             it('should return an empty array', () => {
                 expect(inOrderArray(null)).to.eql([]);
@@ -53,7 +53,7 @@ describe('TreeOrder', () => {
         });
     });
 
-    describe('postOrderArray()', () => {
+    describe.only('postOrderArray()', () => {
         context('when given an empty tree', () => {
             it('should return an empty array', () => {
                 expect(postOrderArray(null)).to.eql([]);
