@@ -4,7 +4,7 @@ const { inOrderArray, postOrderArray } = require('../lib/tree_order.js');
 const { buildTree } = require('../lib/leet_code_105.js');
 
 
-describe.only('TreeNode', () => {
+describe('TreeNode', () => {
     describe('#constructor()', () => {
         it('should set the `val` property to the given arg', () => {
             let a = new TreeNode('a');
@@ -41,7 +41,7 @@ describe('TreeOrder', () => {
     });
 
 
-    describe('inOrderArray()', () => {
+    describe.only('inOrderArray()', () => {
         context('when given an empty tree', () => {
             it('should return an empty array', () => {
                 expect(inOrderArray(null)).to.eql([]);
