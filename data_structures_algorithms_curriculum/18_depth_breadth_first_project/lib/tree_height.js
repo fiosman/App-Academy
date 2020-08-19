@@ -1,20 +1,6 @@
 function treeHeight(root) {
-  let stack = [root];
-  if (!root) return -1;
-
-  let maxHeight = 0;
-  while (stack.length) {
-    let node = stack.pop();
-
-    if (node.left || node.right) {
-      maxHeight++;
-    }
-
-    if (node.right) stack.push(node.right);
-    if (node.left) stack.push(node.left);
-  }
-
-  return maxHeight;
+    if (!root) return -1; 
+    return Math.max(treeHeight(root.left), treeHeight(root.right)) + 1;
 }
 
 module.exports = {
