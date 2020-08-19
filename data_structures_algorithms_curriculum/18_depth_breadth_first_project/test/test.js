@@ -104,7 +104,7 @@ describe('treeSum()', () => {
 });
 
 
-describe.only('treeHeight()', () => {
+describe('treeHeight()', () => {
     // it should accept a tree as an arg
 
     it('should return the maximum number of edges between the root and any leaf', () => {
