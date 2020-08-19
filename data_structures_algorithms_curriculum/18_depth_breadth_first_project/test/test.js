@@ -6,7 +6,7 @@ const { treeSum } = require('../lib/tree_sum');
 const { treeHeight } = require('../lib/tree_height');
 
 
-describe.only('depthFirstSearch()', () => {
+describe('depthFirstSearch()', () => {
     // it should accept a tree and a targetVal as args
 
     it('should return the node of the tree that contains the targetVal', () => {
@@ -104,7 +104,7 @@ describe('treeSum()', () => {
 });
 
 
-describe('treeHeight()', () => {
+describe.only('treeHeight()', () => {
     // it should accept a tree as an arg
 
     it('should return the maximum number of edges between the root and any leaf', () => {
