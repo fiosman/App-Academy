@@ -57,7 +57,7 @@ describe('depthFirstSearch()', () => {
 });
 
 
-describe('breadthFirstArray()', () => {
+describe.only('breadthFirstArray()', () => {
     // it should accept a tree as an arg
 
     it('should return an array containing tree\'s nodes\' values in Breadth-First order (from left to right)', () => {
