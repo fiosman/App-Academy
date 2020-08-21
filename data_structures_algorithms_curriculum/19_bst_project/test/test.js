@@ -4,7 +4,7 @@ const { expect, spy } = chai;
 
 const { TreeNode, BST } = require('../lib/bst');
 
-describe.only('BST', () => {
+describe('BST', () => {
     describe('#constructor()', () => {
         it ('should initialize the `root` property to null', () => {
             let tree = new BST();
@@ -13,7 +13,7 @@ describe.only('BST', () => {
         });
     });
 
-    describe.only('#insert(val)', () => {
+    describe('#insert(val)', () => {
         it ('should insert a TreeNode with the given value into the BST', () => {
             let tree = new BST();
             tree.insert(10);
@@ -40,7 +40,7 @@ describe.only('BST', () => {
         });
     });
 
-    describe('#searchRecur(val)', () => {
+    describe.only('#searchRecur(val)', () => {
         let tree;
 
         beforeEach(() => {
