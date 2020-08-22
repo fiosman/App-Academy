@@ -8,7 +8,7 @@ const { maxValue } = require('../lib/max_value');
 const { numRegions } = require('../lib/num_regions');
 
 describe('GraphNode Algorithms', () => {
-    describe.only('breadthFirstSearch(startingNode, targetVal)', () => {
+    describe('breadthFirstSearch(startingNode, targetVal)', () => {
         // it should accept a starting GraphNode and a targetVal as args
 
         context('when the targetVal is not contained in the full graph', () => {
@@ -68,7 +68,7 @@ describe('GraphNode Algorithms', () => {
         });
     });
 
-    describe('maxValue(startingNode)', () => {
+    describe.only('maxValue(startingNode)', () => {
         // it should accept a starting GraphNode as an arg
 
         it('should return the largest value within the full graph', () => {
