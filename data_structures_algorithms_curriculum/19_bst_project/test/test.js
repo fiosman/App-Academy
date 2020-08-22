@@ -81,7 +81,7 @@ describe('BST', () => {
         });
     });
 
-    describe('#searchIter(val)', () => {
+    describe.only('#searchIter(val)', () => {
         let tree;
 
         beforeEach(() => {

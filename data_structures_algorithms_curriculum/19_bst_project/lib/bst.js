@@ -45,6 +45,21 @@ class BST {
       return true;
     }
   }
+
+  searchIter(val) {
+    let localRoot = this.root;
+
+    while (localRoot) {
+      if (val < localRoot.val) {
+        localRoot = localRoot.left;
+      } else if (val > localRoot.val) {
+        localRoot = localRoot.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 module.exports = {
