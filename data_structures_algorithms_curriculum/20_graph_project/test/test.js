@@ -68,7 +68,7 @@ describe('GraphNode Algorithms', () => {
         });
     });
 
-    describe.only('maxValue(startingNode)', () => {
+    describe('maxValue(startingNode)', () => {
         // it should accept a starting GraphNode as an arg
 
         it('should return the largest value within the full graph', () => {
