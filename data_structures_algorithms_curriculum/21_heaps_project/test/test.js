@@ -6,7 +6,7 @@ const { MaxHeap } = require('../lib/max_heap');
 const { isMaxHeap } = require('../lib/is_heap'); 
 
 
-describe('MaxHeap', () => {
+describe.only('MaxHeap', () => {
     describe('constructor()', () => {
         it('should initialize an `array` property to an array containing null', () => {
             let heap = new MaxHeap();
@@ -92,7 +92,7 @@ describe('MaxHeap', () => {
         });
     });
 
-    describe.only('#siftDown(idx)', () => {
+    describe('#siftDown(idx)', () => {
         it('should continually sift down the element at given index until max heap property is restored', () => {
             let heap1 = new MaxHeap();
             heap1.array = [null, 27, 30, 40, 20, 25, 16];
