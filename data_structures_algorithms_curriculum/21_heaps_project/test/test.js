@@ -92,7 +92,7 @@ describe('MaxHeap', () => {
         });
     });
 
-    describe('#siftDown(idx)', () => {
+    describe.only('#siftDown(idx)', () => {
         it('should continually sift down the element at given index until max heap property is restored', () => {
             let heap1 = new MaxHeap();
             heap1.array = [null, 27, 30, 40, 20, 25, 16];
