@@ -6,7 +6,7 @@ const { MaxHeap } = require('../lib/max_heap');
 const { isMaxHeap } = require('../lib/is_heap'); 
 
 
-describe.only('MaxHeap', () => {
+describe('MaxHeap', () => {
     describe('constructor()', () => {
         it('should initialize an `array` property to an array containing null', () => {
             let heap = new MaxHeap();
@@ -155,7 +155,7 @@ describe.only('MaxHeap', () => {
     });
 });
 
-describe('isMaxHeap(array)', () => {
+describe.only('isMaxHeap(array)', () => {
     context('when the given array has max heap property', () => {
         it('should return true', () => {
             expect(isMaxHeap([null, 50, 42, 27, 32, 24])).to.equal(true);
