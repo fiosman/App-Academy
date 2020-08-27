@@ -28,7 +28,7 @@ describe('Trie', () => {
         });
     });
 
-    describe('#insertRecur(word)', () => {
+    describe.only('#insertRecur(word)', () => {
         it('should be a recursive function', () => {
             let trie = new Trie();
             spy.on(trie, 'insertRecur');
