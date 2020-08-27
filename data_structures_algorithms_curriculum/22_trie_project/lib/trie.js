@@ -50,6 +50,21 @@ class Trie {
 
     return false;
   }
+
+  searchIter(word) {
+    let root = this.root;
+    for (let i = 0; i < word.length; i++) {
+      let letter = word[i];
+      if (letter in root.children) {
+        if (root.children[letter].isTerminal) {
+          return true;
+        }
+        root = root.children[letter];
+      }
+    }
+
+    return false;
+  }
 }
 
 module.exports = {

@@ -80,7 +80,7 @@ describe('Trie', () => {
         });
     });
 
-    describe.only('#insertIter(word)', () => {
+    describe('#insertIter(word)', () => {
         it('should not be recursive', () => {
             let trie = new Trie();
             spy.on(trie, 'insertIter');
@@ -173,7 +173,7 @@ describe('Trie', () => {
         });
     });
 
-    describe('#searchIter(word)', () => {
+    describe.only('#searchIter(word)', () => {
         it('should not be a recursive function', () => {
             let trie = new Trie();
             trie.insertRecur('ten');
