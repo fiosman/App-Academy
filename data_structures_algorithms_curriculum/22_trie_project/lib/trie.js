@@ -23,9 +23,34 @@ class Trie {
       this.insertRecur(word.slice(1), root.children[letter]);
     }
   }
+
+  searchRecur(word, root = this.root) {
+    let letter = word[0];
+
+    if (letter in root.children) {
+      if (root.children[letter].isTerminal === true && word.length === 1) {
+        return true;
+      } else {
+        return this.searchRecur(word.slice(1), root.children[letter]);
+      }
+    }
+
+    return false;
+  }
 }
 
 module.exports = {
   Node,
   Trie,
 };
+
+let trie = new Trie();
+trie.insertRecur("ten");
+trie.insertRecur("tea");
+trie.insertRecur("in");
+trie.insertRecur("inn");
+
+console.log(trie.searchRecur("ten"));
+console.log(trie.searchRecur("tea"));
+console.log(trie.searchRecur("in"));
+console.log(trie.searchRecur("inx"));
