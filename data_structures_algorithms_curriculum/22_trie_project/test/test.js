@@ -173,7 +173,7 @@ describe('Trie', () => {
         });
     });
 
-    describe.only('#searchIter(word)', () => {
+    describe('#searchIter(word)', () => {
         it('should not be a recursive function', () => {
             let trie = new Trie();
             trie.insertRecur('ten');
@@ -214,7 +214,7 @@ describe('Trie', () => {
         });
     });
 
-    describe('#wordsWithPrefix(prefix)', () => {
+    describe.only('#wordsWithPrefix(prefix)', () => {
         context('when the prefix is the empty string', () => {
             it('should return an array of all recognized words', () => {
                 let trie = new Trie();
