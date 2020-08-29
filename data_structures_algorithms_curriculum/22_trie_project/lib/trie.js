@@ -66,34 +66,21 @@ class Trie {
     return false;
   }
 
-  //in progress, pretty tough problem!
-  wordsWithPrefix(prefix) {
+  getDestinationRoot(prefix) {
     let root = this.root;
-    let recognized = [];
 
     for (let i = 0; i < prefix.length; i++) {
       let letter = prefix[i];
       if (letter in root.children) {
         root = root.children[letter];
       }
-    }
 
-    let destinationRoot = root;
-    let newRoot = destinationRoot;
-    let children = Object(root.children).keys;
-    for (let letter in destinationRoot.children) {
-      let word = prefix;
-      if (newRoot.children[letter].isTerminal === false) {
-        word += letter;
-        newRoot = newRoot.children[letter];
-      } else {
-        word += letter;
-        recognized.push(word);
-        word = prefix;
-      }
+      return root;
     }
+  }
 
-    return recognized;
+  wordsWithPrefix(prefix) {
+    let prefixChildren = this.getDestinationRoot(prefix);
   }
 
   //returns true if any word in the trie starts with the given prefix, false otherwise, ezzzz
@@ -121,15 +108,11 @@ module.exports = {
 
 let trie = new Trie();
 
-trie.insertRecur("apple");
-// trie.insertRecur("tea");
-// trie.insertRecur("taco");
-// trie.insertRecur("tex");
-// trie.insertRecur("in");
-// trie.insertRecur("inn");
-// trie.insertRecur("inside");
-// trie.insertRecur("instructor");
-
-// console.log(trie.wordsWithPrefix("te"));
-
-console.log(trie.startsWith("apple"));
+// trie.insertRecur("aapple");
+trie.insertRecur("tea");
+trie.insertRecur("taco");
+trie.insertRecur("tex");
+trie.insertRecur("in");
+trie.insertRecur("inn");
+trie.insertRecur("inside");
+trie.insertRecur("instructor");
