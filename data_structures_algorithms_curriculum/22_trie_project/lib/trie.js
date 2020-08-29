@@ -79,8 +79,43 @@ class Trie {
     }
   }
 
+  //in progress ^_____^
   wordsWithPrefix(prefix) {
-    let prefixChildren = this.getDestinationRoot(prefix);
+    let prefixChildren = this.getDestinationRoot(prefix).children;
+
+    let queue = [Object.keys(prefixChildren)];
+    let word = prefix;
+    let recognized = [];
+
+    // console.log(prefixChildren);
+
+    while (queue.length > 0) {
+      let letter = queue.shift();
+      word += letter;
+
+      if (prefixChildren[letter].isTerminal) {
+        if (this.hasChildren(prefixChildren[letter])) {
+          recognized.push(word);
+        } else {
+          recognized.push(word);
+          word = prefix;
+        }
+      }
+
+      if (Object.keys(prefixChildren[letter].children).length > 0) {
+        prefixChildren = prefixChildren[letter].children;
+
+        for (let key in prefixChildren) {
+          queue.push(key);
+        }
+      }
+    }
+
+    return recognized;
+  }
+
+  hasChildren(node) {
+    return Object.keys(node).length > 0;
   }
 
   //returns true if any word in the trie starts with the given prefix, false otherwise, ezzzz
@@ -109,10 +144,12 @@ module.exports = {
 let trie = new Trie();
 
 // trie.insertRecur("aapple");
-trie.insertRecur("tea");
-trie.insertRecur("taco");
-trie.insertRecur("tex");
+// trie.insertRecur("tea");
+// trie.insertRecur("taco");
+// trie.insertRecur("tex");
 trie.insertRecur("in");
 trie.insertRecur("inn");
 trie.insertRecur("inside");
-trie.insertRecur("instructor");
+// trie.insertRecur("instructor");
+
+console.log(trie.wordsWithPrefix("i"));
