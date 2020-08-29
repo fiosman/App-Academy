@@ -141,15 +141,17 @@ module.exports = {
   Trie,
 };
 
-let trie = new Trie();
+// let trie = new Trie();
 
+// console.log(trie.longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple']));
 // trie.insertRecur("aapple");
 // trie.insertRecur("tea");
 // trie.insertRecur("taco");
 // trie.insertRecur("tex");
-trie.insertRecur("in");
-trie.insertRecur("inn");
-trie.insertRecur("inside");
+// trie.insertRecur("in");
+// trie.insertRecur("inn");
+// trie.insertRecur("inside");
 // trie.insertRecur("instructor");
 
-console.log(trie.wordsWithPrefix("i"));
+// console.log(trie.wordsWithPrefix("i"));
+
