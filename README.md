@@ -6,8 +6,8 @@ App Academy Open is identical to App Academy's in-person full-time software engi
 
 ~~The repo will be *FREQUENTLY* updated with my solutions to all the exercises and challenges from the curriculum.~~
 
-Curriculum start date: January 14, 2019
-Curriculum completion date: August 29, 2020 
+Curriculum start date: January 14, 2019.
+Curriculum completion date: August 29, 2020.
 
 ## FAQ
 
