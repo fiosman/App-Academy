@@ -19,7 +19,8 @@ Curriculum completion date: August 29, 2020
 * Did you get help? I tried to solve all the problems on my own. If I couldn't come up with a solution to a problem, I went to Google and tried to reason about what I could find on there. If it still didn't make sense, I asked my colleagues employed in the industry. I found that was the best approach of learning for me. App Aacademy does offer a mentorship program for a cost though. 
 * Where are your personal projects? They will be in separate repos. 
 * Did you buy any resources? No. All resources I used were free. 
-* Would you recommend App Academy Open? If you can afford the in-person/online courses, I highly advise going through that route. It will save you a lot of time. I did not want to quit my job and spend my savings, so I decided to teach my self. It takes a lot of dedication and commitment to go through the entire course on your own. For most people going through the self taught route, it can be tempting to quit early on, but if you are goal oriented and have a passion for learning, you can and will complete the entire course. 
+* Would you recommend App Academy Open? If you can afford the in-person/online courses, I highly advise going through that route. It will save you a lot of time. I did not want to quit my job and spend my savings, so I decided to teach my self. It takes a lot of dedication and commitment to go through the entire course on your own. For most people going through the self taught route, it can be tempting to quit early on, but if you are goal oriented and have a passion for learning, you can and will complete the entire course.
+* Are you employed as a software developer? Yes. I am currently working at a startup as a full stack developer. 
 * I have questions, how can I contact you? fares.osman@outlook.com
  
 
